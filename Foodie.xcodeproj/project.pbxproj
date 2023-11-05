@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0455BD3B2AF7F518006218AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD3A2AF7F518006218AB /* HomeViewController.swift */; };
+		0455BD3F2AF7FD85006218AB /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD3E2AF7FD85006218AB /* HomeTableViewCell.swift */; };
+		0455BD412AF7FFB1006218AB /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD402AF7FFB1006218AB /* Restaurant.swift */; };
 		04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D122AF79F1F004C2E7E /* AppDelegate.swift */; };
 		04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */; };
 		04D08D172AF79F1F004C2E7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D162AF79F1F004C2E7E /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0455BD3A2AF7F518006218AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0455BD3E2AF7FD85006218AB /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		0455BD402AF7FFB1006218AB /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		04D08D0F2AF79F1F004C2E7E /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D08D122AF79F1F004C2E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +83,7 @@
 		04D08D272AF79F3B004C2E7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0455BD402AF7FFB1006218AB /* Restaurant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -87,6 +94,8 @@
 				04D08D122AF79F1F004C2E7E /* AppDelegate.swift */,
 				04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */,
 				04D08D162AF79F1F004C2E7E /* ViewController.swift */,
+				0455BD3A2AF7F518006218AB /* HomeViewController.swift */,
+				0455BD3E2AF7FD85006218AB /* HomeTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,8 +172,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D08D172AF79F1F004C2E7E /* ViewController.swift in Sources */,
+				0455BD3F2AF7FD85006218AB /* HomeTableViewCell.swift in Sources */,
+				0455BD412AF7FFB1006218AB /* Restaurant.swift in Sources */,
 				04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
+				0455BD3B2AF7F518006218AB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

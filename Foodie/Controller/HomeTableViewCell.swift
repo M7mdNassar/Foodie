@@ -26,10 +26,10 @@ class HomeTableViewCell: UITableViewCell {
     
     
     
-    func setUpCell(img: UIImage , name: String ){
-        imgRestaurant.image = img
+    func setUpCell(img: String , name: String , isFavourite: Bool){
+        imgRestaurant.image = UIImage(named: img)
         labelRestaurantName.text = name
-    
+        favouriteButton.isEnabled = isFavourite
     }
     
     

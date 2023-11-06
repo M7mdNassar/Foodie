@@ -1,31 +1,24 @@
 //
-//  Restaurant.swift
+//  Resturants.swift
 //  Foodie
 //
-//  Created by Mac on 05/11/2023.
+//  Created by Mac on 06/11/2023.
 //
 
 import Foundation
 
-struct Restaurant: Decodable {
+
+struct Restaurants: Decodable {
     let name: String
     let isFavorite: Bool
     let imageName: String
-    let coordinates: Coordinates
-    let description: String
-    let city: String
-}
-
-struct Coordinates: Decodable {
-    let longitude: Double
-    let latitude: Double
 }
 
 
 
-protocol sendData {
+protocol sendData{
     
-    func didFetchData(restaurants:[Restaurant])
+    func didFetchData(restaurants:[Restaurants])
     
     
 }
@@ -39,7 +32,7 @@ class RestaurantApi {
         if let path = Bundle.main.path(forResource: "RestaurantsData", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
-                let restaurants = try JSONDecoder().decode([Restaurant].self, from: data)
+                let restaurants = try JSONDecoder().decode([Restaurants].self, from: data)
                 
                 delegate?.didFetchData(restaurants: restaurants)
             } catch {

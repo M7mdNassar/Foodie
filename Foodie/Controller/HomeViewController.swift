@@ -1,9 +1,3 @@
-//
-//  HomeViewController.swift
-//  Foodie
-//
-//  Created by Mac on 05/11/2023.
-//
 
 import UIKit
 
@@ -11,7 +5,7 @@ class HomeViewController: UIViewController {
  
     
     
-    let restaurantApi = RestaurantApi()
+    let restaurantApi = RestaurantServiceManager()
     var restaurants:[Restaurant] = []
 
     @IBOutlet weak var tableView: UITableView!

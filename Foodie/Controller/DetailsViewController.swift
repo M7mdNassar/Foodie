@@ -1,9 +1,3 @@
-//
-//  DetailsViewController.swift
-//  Foodie
-//
-//  Created by Mac on 06/11/2023.
-//
 
 import UIKit
 import MapKit
@@ -41,7 +35,8 @@ class DetailsViewController: UIViewController {
         setStartingLocation(location: initialLocation, distance: 100)
         
         restaurantImageView.image = UIImage(named: restaurantImage!)
-        restaurantImageView.layer.cornerRadius = restaurantImageView.frame.size.width / 2
+    
+        circleImage()
         restaurantNameLabel.text = restaurantName!
         restaurantDescriptionLabel.text = restaurantDescription!
         restaurantCityLabel.text = restaurantCity!
@@ -69,7 +64,23 @@ class DetailsViewController: UIViewController {
     }
     
 
+    func circleImage(){
+        restaurantImageView.layer.cornerRadius = restaurantImageView.frame.size.width / 2
+        restaurantImageView.layer.borderWidth = 6.0
+        restaurantImageView.layer.borderColor = UIColor.white.cgColor
+        
+
+        restaurantImageView.layer.shadowColor = UIColor.black.cgColor
+        restaurantImageView.layer.shadowOpacity = 0.5
+        restaurantImageView.layer.shadowOffset = CGSize(width: 2, height: 2)
+        restaurantImageView.layer.shadowRadius = 4.0
+        restaurantImageView.superview?.backgroundColor = UIColor.clear // Set a background color
+        restaurantImageView.superview?.alpha = 1.0 // Ensure non-zero alpha
+        
+        
+
     
+    }
   
     
     

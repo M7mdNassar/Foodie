@@ -2,16 +2,16 @@
 import Foundation
 
 struct Restaurant: Decodable {
-    let name: String
-    let isFavorite: Bool
-    let imageName: String
-    let coordinates: Coordinates
-    let description: String
-    let city: String
+    var name: String
+    var isFavorite: Bool
+    var imageName: String
+    var coordinates: Coordinates
+    var description: String
+    var city: String
 }
 
 struct Coordinates: Decodable {
-    let longitude: Double
-    let latitude: Double
+    var longitude: Double
+    var latitude: Double
 }
 

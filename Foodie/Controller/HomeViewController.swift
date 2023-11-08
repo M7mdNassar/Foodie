@@ -1,78 +1,92 @@
-
 import UIKit
 
 class HomeViewController: UIViewController {
- 
-    
-    
-    let restaurantApi = RestaurantServiceManager()
-    var restaurants:[Restaurant] = []
 
+    // MARK: - Properties
+    
+    let restaurantManager = RestaurantServiceManager()
+    var restaurants: [Restaurant] = []
+    
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - View Controller Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let backButton = UIBarButtonItem()
         backButton.title = "مطاعم"
         self.navigationItem.backBarButtonItem = backButton
-        
-        restaurantApi.delegate = self
-        tableView.dataSource = self
-        restaurantApi.fetchData()
-        tableView.delegate = self
-        
-        
+
+        setUpTableView()
+        fetchRestaurantData()
     }
-    
+
+    // MARK: - Actions
+
+    @IBAction func favoriteSwitchChanged(_ sender: UISwitch) {
+        updateDisplayedRestaurants(isFavorite: sender.isOn)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let detail = segue.destination as! DetailsViewController
-        
-        let selectedIndex = tableView.indexPathForSelectedRow?.row
-        detail.restaurantImage = restaurants[selectedIndex!].imageName
-        detail.restaurantName = restaurants[selectedIndex!].name
-        detail.restaurantDescription = restaurants[selectedIndex!].description
-        detail.restaurantCity = restaurants[selectedIndex!].city
-        detail.latitude = restaurants[selectedIndex!].coordinates.latitude
-        detail.longitude = restaurants[selectedIndex!].coordinates.longitude
+        if segue.identifier == "goToDetail", let selectedIndex = tableView.indexPathForSelectedRow?.row {
+            let detail = segue.destination as! DetailsViewController
+            detail.restaurant = restaurants[selectedIndex]
+        }
     }
-    
-    
-    
 }
 
-extension HomeViewController: UITableViewDataSource{
+// MARK: - TableView Data Source
+
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        restaurants.count
+        return restaurants.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell") as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
         let data = restaurants[indexPath.row]
-        cell.setUpCell(img: data.imageName, name: data.name , isFavourite:data.isFavorite)
+        cell.setUpCell(img: data.imageName, name: data.name, isFavourite: data.isFavorite)
         return cell
     }
-    
-    
 }
 
-extension HomeViewController: sendData{
+// MARK: - Data Fetching Delegate
+
+extension HomeViewController: sendData {
     func didFetchData(restaurants: [Restaurant]) {
         self.restaurants = restaurants
         tableView.reloadData()
     }
-    
-    
-    
- 
-    
-    
-    
 }
-extension HomeViewController: UITableViewDelegate{
+
+// MARK: - TableView Delegate
+
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row)
         performSegue(withIdentifier: "goToDetail", sender: self)
     }
-    
+}
+
+// MARK: - Private Methods
+
+private extension HomeViewController {
+    func setUpTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+
+    func fetchRestaurantData() {
+        restaurantManager.delegate = self
+        restaurantManager.fetchData()
+    }
+
+    func updateDisplayedRestaurants(isFavorite: Bool) {
+        if isFavorite {
+            restaurants = restaurantManager.getFavoriteRestaurants()
+        } else {
+            restaurants = restaurantManager.getAllRestaurants()
+        }
+        tableView.reloadData()
+    }
 }

@@ -4,46 +4,35 @@ import MapKit
 
 class DetailsViewController: UIViewController {
     
-    var restaurantImage : String?
-    var restaurantName : String?
-    var restaurantDescription: String?
-    var restaurantCity: String?
-    var longitude: Double?
-    var latitude: Double?
-
+    // MARK: - Outlets
     
+    @IBOutlet weak var circleView: UIView!
     @IBOutlet weak var restaurantMapView: MKMapView!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantCityLabel: UILabel!
     @IBOutlet weak var restaurantDescriptionLabel: UILabel!
     
-
+    // MARK: - Properties
+    
+    var restaurant: Restaurant =
+    Restaurant (name: "", isFavorite: false, imageName: "", coordinates: .init(longitude: 1.0, latitude: 1.0), description: " ", city: " ")  // defualt values
+    
+    // MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.orange
-
-        title = restaurantName
-        
-        display()
+        title = restaurant.name
+        setUpRestaurant()
     }
-    
-    
-    func display(){
-        let initialLocation = CLLocation(latitude: latitude!, longitude: longitude!)
-        setStartingLocation(location: initialLocation, distance: 100)
         
-        restaurantImageView.image = UIImage(named: restaurantImage!)
-    
-        circleImage()
-        restaurantNameLabel.text = restaurantName!
-        restaurantDescriptionLabel.text = restaurantDescription!
-        restaurantCityLabel.text = restaurantCity!
+}
 
-    }
+
+private extension DetailsViewController{
     
-    
+    // MARK: - Map View Methods
     
     func setStartingLocation(location: CLLocation , distance: CLLocationDistance){
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: distance, longitudinalMeters: distance)
@@ -54,35 +43,44 @@ class DetailsViewController: UIViewController {
         addAnnotation()
     }
     
-    
     func addAnnotation(){
         let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-        pin.title = restaurantName!
+        pin.coordinate = CLLocationCoordinate2D(latitude: restaurant.coordinates.latitude, longitude: restaurant.coordinates.longitude)
+        pin.title = restaurant.name
         restaurantMapView.addAnnotation(pin)
-        
     }
     
+}
 
-    func circleImage(){
+private extension DetailsViewController{
+    
+    // MARK: - UI Setup Method
+    
+    private func setUpRestaurant(){
+        let initialLocation = CLLocation(latitude: restaurant.coordinates.latitude, longitude: restaurant.coordinates.longitude)
+        setStartingLocation(location: initialLocation, distance: 100)
+        setUpImageAsCircleWithShadowAndBorder()
+        restaurantNameLabel.text = restaurant.name
+        restaurantDescriptionLabel.text = restaurant.description
+        restaurantCityLabel.text = restaurant.city
+
+    }
+    
+    func setUpImageAsCircleWithShadowAndBorder(){
+                
+        // Make view as circle shape & apply a shadow
+        circleView.layer.cornerRadius = circleView.frame.size.width / 2
+        circleView.clipsToBounds = true
+        circleView.layer.shadowColor = UIColor.black.cgColor
+        circleView.layer.shadowOpacity = 1
+        circleView.layer.shadowOffset = CGSize.zero
+        circleView.layer.shadowRadius = 10
+        circleView.clipsToBounds = false
+        
+        // Make image as circle shape & apply a border
         restaurantImageView.layer.cornerRadius = restaurantImageView.frame.size.width / 2
-        restaurantImageView.layer.borderWidth = 6.0
+        restaurantImageView.layer.borderWidth = 4.0
         restaurantImageView.layer.borderColor = UIColor.white.cgColor
-        
-
-        restaurantImageView.layer.shadowColor = UIColor.black.cgColor
-        restaurantImageView.layer.shadowOpacity = 0.5
-        restaurantImageView.layer.shadowOffset = CGSize(width: 2, height: 2)
-        restaurantImageView.layer.shadowRadius = 4.0
-        restaurantImageView.superview?.backgroundColor = UIColor.clear // Set a background color
-        restaurantImageView.superview?.alpha = 1.0 // Ensure non-zero alpha
-        
-        
-
-    
+        restaurantImageView.image = UIImage(named: restaurant.imageName)
     }
-  
-    
-    
-    
 }

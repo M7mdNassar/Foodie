@@ -1,22 +1,16 @@
 
 import Foundation
 
-
-protocol sendData {
-    func didFetchData(restaurants: [Restaurant])
-}
-
 class RestaurantServiceManager {
-    
+
     // MARK: - Properties
-    
-    var delegate: sendData?
+
     private var allRestaurants: [Restaurant] = []
     private var favoriteRestaurants: [Restaurant] = []
 
     // MARK: - Data Fetching
-    
-    func fetchData() {
+
+    func fetchData(completion: @escaping ([Restaurant]) -> Void) {
         if let path = Bundle.main.path(forResource: "RestaurantsData", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path))
@@ -24,23 +18,24 @@ class RestaurantServiceManager {
 
                 allRestaurants = restaurants
                 favoriteRestaurants = restaurants.filter { $0.isFavorite }
-                delegate?.didFetchData(restaurants: allRestaurants)
-                
+                completion(allRestaurants)
             } catch {
                 print("Error loading JSON data: \(error)")
+                completion([])
             }
         } else {
             print("JSON file not found in the bundle.")
+            completion([])
         }
     }
-    
+
     // MARK: - Getter Methods
 
-    func getFavoriteRestaurants() -> [Restaurant] {
-        return favoriteRestaurants
+    func getFavoriteRestaurants(completion: @escaping ([Restaurant]) -> Void) {
+        completion(favoriteRestaurants)
     }
-    
-    func getAllRestaurants() -> [Restaurant] {
-        return allRestaurants
+
+    func getAllRestaurants(completion: @escaping ([Restaurant]) -> Void) {
+        completion(allRestaurants)
     }
 }

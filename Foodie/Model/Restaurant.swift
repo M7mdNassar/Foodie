@@ -8,6 +8,7 @@ struct Restaurant: Decodable {
     var coordinates: Coordinates
     var description: String
     var city: String
+    var category: String
 }
 
 struct Coordinates: Decodable {

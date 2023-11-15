@@ -56,7 +56,7 @@
                 <outlet property="restaurantImageView" destination="oya-Pt-X6Z" id="Ao6-Je-8O1"/>
                 <outlet property="restaurantNameLabel" destination="9oT-6b-KBI" id="n7R-bq-a16"/>
             </connections>
-            <point key="canvasLocation" x="43.511450381679388" y="-34.154929577464792"/>
+            <point key="canvasLocation" x="54" y="-56"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -4,8 +4,11 @@ import Lottie
 
 class SplashViewController: UIViewController {
     
+    // MARK: - Outlets
     
     @IBOutlet weak var animationView: LottieAnimationView!
+    
+    // MARK: - Life Cycle Controller
     
     override func viewDidLoad() {
         
@@ -13,6 +16,8 @@ class SplashViewController: UIViewController {
         setUpAnimation()
         
     }
+    
+    // MARK: - Methods
     
     func setUpAnimation(){
         animationView.contentMode = .scaleAspectFit
@@ -22,7 +27,6 @@ class SplashViewController: UIViewController {
             self.transitionToMain()
         }
     }
-    
     
     func transitionToMain() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

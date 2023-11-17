@@ -32,7 +32,7 @@ class RestaurantDetails: UIViewController {
 
 }
 
-// MARK: - Map View
+    // MARK: - Map View
 extension RestaurantDetails: MKMapViewDelegate {
     
     func configureMapView() {
@@ -138,11 +138,26 @@ private extension RestaurantDetails {
 
     }
 
+   
     func setUpFontLabels() {
-        restaurantNameLabel.font = UIFont(name: "NotoKufiArabic-Regular_Bold", size: 31.0)
-        restaurantCityLabel.font = UIFont(name: "NotoKufiArabic-Regular", size: 17.0)
-        restaurantDescriptionLabel.font = UIFont(name: "NotoKufiArabic-Regular", size: 20.0)
+        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 31.0) {
+               restaurantNameLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
+           }
+           
+           if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 17.0) {
+               restaurantCityLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
+           }
+           
+           if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 20.0) {
+               restaurantDescriptionLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
+           }
     }
 
+
 }
+
+
+
+
+
 

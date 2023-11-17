@@ -37,7 +37,11 @@ class RestaurantTableViewCell: UITableViewCell {
     }
     
     func setUpFontLabels(){
-        self.restaurantCategoryLabel.font = UIFont(name: "NotoKufiArabic-Regular", size: 15.0)
+        let maximumFontSizeRestaurantCategory: CGFloat = 50.0
+        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 15.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            restaurantCategoryLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSizeRestaurantCategory))
+        }
     }
 
     // MARK: - Collection View Configuration
@@ -67,6 +71,7 @@ extension RestaurantTableViewCell: UICollectionViewDataSource{
     }
     
     
+    
 }
 
 
@@ -74,6 +79,7 @@ extension RestaurantTableViewCell: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width * 0.5 , height: collectionView.frame.height)
     }
+    
 
 
 }

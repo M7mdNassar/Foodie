@@ -9,6 +9,7 @@ class PageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var restaurantCityLabel: UILabel!
     
      // MARK: - Configure cell content
+    
     func setUpCell(img: String , name: String , city: String){
         restaurantImageView.image = UIImage(named: img)
         restaurantNameLabel.text = name
@@ -17,10 +18,22 @@ class PageCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Set up font styles
-    func setUpFontLabels(){
-        restaurantNameLabel.font = UIFont(name: "NotoKufiArabic-Regular_Bold", size: 30.0)
-        restaurantCityLabel.font = UIFont(name: "NotoKufiArabic-Regular", size: 17.0)
+
+    func setUpFontLabels() {
+        let maximumFontSizeRestaurantName: CGFloat = 60.0
+        let maximumFontSizeRestaurantCity: CGFloat = 50.0
+        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 30.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            restaurantNameLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSizeRestaurantName))
+        }
         
+        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 17.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            restaurantCityLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSizeRestaurantCity))
+        }
     }
     
 }
+
+
+

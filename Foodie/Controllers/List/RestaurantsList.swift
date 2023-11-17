@@ -48,6 +48,19 @@ extension RestaurantsList: UITableViewDataSource {
         cell.setUpCell(img: data.imageName, name: data.name, isFavourite: data.isFavorite)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell") as! RestaurantCell
+        let data = restaurants[indexPath.row]
+        cell.setUpCell(img: data.imageName, name: data.name, isFavourite: data.isFavorite)
+
+        // Calculate the height required for the restaurantNameLabel
+        let labelSize = cell.restaurantNameLabel.sizeThatFits(CGSize(width: cell.restaurantNameLabel.frame.width, height: CGFloat.greatestFiniteMagnitude))
+
+        // Set the cell height as the maximum between label height and 120
+        return max(labelSize.height, 100)
+    }
+
 }
 
 

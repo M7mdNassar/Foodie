@@ -2,7 +2,7 @@
 import UIKit
 import Lottie
 
-class SplashViewController: UIViewController {
+class LaunchScreenController: UIViewController {
     
     // MARK: - Outlets
     

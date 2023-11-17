@@ -23,8 +23,13 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
        }
     
     func setUpFontLabels(){
-        restaurantNameLabel.font = UIFont(name: "NotoKufiArabic-Regular", size: 17.0)
+        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 17.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            restaurantNameLabel.font = scaledFont.withSize(scaledFont.pointSize)
+        }
     }
+
 }
+
 
 

@@ -5,8 +5,8 @@ class RestaurantCell: UITableViewCell {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var imgRestaurant: UIImageView!
-    @IBOutlet weak var labelRestaurantName: UILabel!
+    @IBOutlet weak var restaurantImage: UIImageView!
+    @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var favouriteButton: UIButton!
     
     // MARK: - Actions
@@ -23,15 +23,18 @@ class RestaurantCell: UITableViewCell {
     // MARK: - UI Setup Cell
     
     func setUpCell(img: String , name: String , isFavourite: Bool){
-        imgRestaurant.image = UIImage(named: img)
-        labelRestaurantName.text = name
+        restaurantImage.image = UIImage(named: img)
+        restaurantNameLabel.text = name
         setUpFontLabels()
         favouriteButton.isEnabled = isFavourite
     }
     
     func setUpFontLabels(){
-        labelRestaurantName.font = UIFont(name: "NotoKufiArabic-Regular", size: 19.0)
-      
+//        let maximumFontSizeRestaurantName: CGFloat = 50.0
+        
+        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 19.0)  {
+            restaurantNameLabel.font =  UIFontMetrics.default.scaledFont(for: customFont)
+        }
     }
-    
 }
+

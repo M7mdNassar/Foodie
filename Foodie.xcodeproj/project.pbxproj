@@ -27,7 +27,7 @@
 		04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */; };
 		04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */; };
 		04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */; };
-		04F501602B0235B2008820C6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F5015F2B0235B2008820C6 /* SplashViewController.swift */; };
+		04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */; };
 		3F24F946D0BE8214D935CFBE /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 		04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RestaurantsData.json; sourceTree = "<group>"; };
 		04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoKufiArabic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		04F5015F2B0235B2008820C6 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
 		441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.debug.xcconfig"; sourceTree = "<group>"; };
 		5DBCB224C774BBE67C855047 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
 		F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +175,7 @@
 			children = (
 				043325002AFC2D2200452C1E /* Featured */,
 				0456DFB72B053FE6003BA658 /* List */,
-				04F5015F2B0235B2008820C6 /* SplashViewController.swift */,
+				04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */,
 				0412220C2B0382120013A273 /* LoginViewController.swift */,
 				04D08D122AF79F1F004C2E7E /* AppDelegate.swift */,
 				04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */,
@@ -342,7 +342,7 @@
 				04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */,
 				044E1E3B2AFD4ABB006E554E /* RestaurantTableViewCell.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
-				04F501602B0235B2008820C6 /* SplashViewController.swift in Sources */,
+				04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */,
 				043325022AFC2D6000452C1E /* PageViewController.swift in Sources */,
 				0455BD3B2AF7F518006218AB /* RestaurantsList.swift in Sources */,
 				04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */,

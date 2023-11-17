@@ -56,11 +56,33 @@ extension RestaurantViewController: UITableViewDataSource{
         return cell
     }
     
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tabelViewCell") as! RestaurantTableViewCell
+
+        let category = RestaurantCategory.allCases[indexPath.row]
+        var images = [String]()
+        var names = [String]()
+        if let restaurants = restaurantSections[category] {
+            images = restaurants.map {$0.imageName}
+            names = restaurants.map {$0.name}
+            cell.setUpCell(title: category.rawValue, images: images, names: names)
+        }
+
+        let categoryLabelSize = cell.restaurantCategoryLabel.sizeThatFits(CGSize(width: cell.restaurantCategoryLabel.frame.width, height: CGFloat.greatestFiniteMagnitude))
+
+        // Dequeue a cell from the collectionView, not the tableView
+        let cell2 = cell.collectionView.dequeueReusableCell(withReuseIdentifier: "RCell", for: indexPath) as! RestaurantCollectionViewCell
+        cell2.configureCell(imageName: images[indexPath.row], name: names[indexPath.row])
+
+
+        let restaurantNameLabelSize = cell2.restaurantNameLabel.sizeThatFits(CGSize(width: cell2.restaurantNameLabel.frame.width, height: CGFloat.greatestFiniteMagnitude))
+        let restaurantImageSize = cell2.restaurantImageView.sizeThatFits(CGSize(width: cell2.restaurantImageView.frame.width, height: CGFloat.greatestFiniteMagnitude))
+
+
+        return categoryLabelSize.height + restaurantNameLabelSize.height +         restaurantImageSize.height/5
     }
-    
-    
+ 
 }
 
     // MARK: - Private Methods

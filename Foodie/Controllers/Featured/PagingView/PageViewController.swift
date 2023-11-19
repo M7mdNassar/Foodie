@@ -17,8 +17,7 @@ class PageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Featured"
+        configureNavigationBar()
         fetchRestaurantData()
         setUpCollectionView()
         startTimer()
@@ -66,6 +65,15 @@ private extension PageViewController{
            timer?.invalidate()
            timer = nil
        }
+    
+    func configureNavigationBar(){
+        title = "Featured"
+        
+        if let tabBarItem = self.tabBarItem {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+            tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
+        }
+    }
 }
 
      // MARK: - UICollection DataSource

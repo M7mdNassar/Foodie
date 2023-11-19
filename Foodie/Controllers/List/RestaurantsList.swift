@@ -17,7 +17,6 @@ class RestaurantsList: UIViewController {
         configureNavigationBar()
         setUpTableView()
         fetchRestaurantData()
- 
     }
 
     // MARK: - Actions
@@ -104,8 +103,15 @@ private extension RestaurantsList {
     func configureNavigationBar(){
         backButton.title = "مطاعم"
         self.navigationItem.backBarButtonItem = backButton
+        
+        let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+        backButton.setTitleTextAttributes([.font: scaledFont], for: .normal)
+        
+        if let tabBarItem = self.tabBarItem {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+            tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
+        }
     }
-    
     
     }
 

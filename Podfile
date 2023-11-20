@@ -8,5 +8,5 @@ target 'Foodie' do
   # Pods for Foodie
 
 pod 'lottie-ios'
-
+pod 'IQKeyboardManagerSwift'
 end

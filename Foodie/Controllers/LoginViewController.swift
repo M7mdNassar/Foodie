@@ -3,7 +3,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-        // MARK: - Properties
+    @IBOutlet weak var profileImageView: UIImageView!
+    // MARK: - Properties
     
     var defaults = UserDefaults.standard
     @IBOutlet weak var userNameLabel: UITextField!
@@ -13,6 +14,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpImageAsCircle()
+        setUpBackground()
         // store this values in defaults
        defaults.set("m", forKey: "username")
        defaults.set("1", forKey: "password")
@@ -51,4 +54,22 @@ class LoginViewController: UIViewController {
            present(alert, animated: true, completion: nil)
        }
     
+}
+
+    // MARK: - Set Up UI
+
+private extension LoginViewController {
+    func setUpBackground() {
+        let foodieColor = UIColor(named: "FoodieLightGreen")
+
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.frame = view.bounds
+        gradientLayer.colors = [foodieColor!.cgColor, UIColor.white.cgColor]
+            gradientLayer.locations = [0.0, 1.0]
+            view.layer.insertSublayer(gradientLayer, at: 0)
+
+    }
+
+    func setUpImageAsCircle() {        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+    }
 }

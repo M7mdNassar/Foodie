@@ -24,6 +24,8 @@
 		04D08D1A2AF79F1F004C2E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D182AF79F1F004C2E7E /* Main.storyboard */; };
 		04D08D1C2AF79F22004C2E7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D1B2AF79F22004C2E7E /* Assets.xcassets */; };
 		04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D1D2AF79F22004C2E7E /* LaunchScreen.storyboard */; };
+		04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */; };
+		04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */; };
 		04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */; };
 		04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */; };
 		04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */; };
@@ -51,6 +53,8 @@
 		04D08D1B2AF79F22004C2E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D08D1E2AF79F22004C2E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D08D202AF79F22004C2E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Regular.ttf"; sourceTree = "<group>"; };
+		04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Bold.ttf"; sourceTree = "<group>"; };
 		04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RestaurantsData.json; sourceTree = "<group>"; };
 		04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoKufiArabic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */,
+				04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */,
+				04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -276,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */,
+				04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */,
 				04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */,
 				04D08D1C2AF79F22004C2E7E /* Assets.xcassets in Resources */,
 				041641E22AFD2E5E0054CCAC /* RestaurantCollectionViewCell.xib in Resources */,
@@ -427,7 +435,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -485,7 +493,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -522,7 +530,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -553,7 +561,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -5,11 +5,18 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Harmattan-Bold.ttf">
+            <string>Harmattan-Bold</string>
+        </array>
+        <array key="Harmattan-Regular.ttf">
+            <string>Harmattan-Regular</string>
+        </array>
         <array key="NotoKufiArabic-VariableFont_wght.ttf">
             <string>NotoKufiArabic-Regular</string>
         </array>
@@ -434,44 +441,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqJ-BP-XzT">
-                                <rect key="frame" x="16" y="101" width="361" height="83"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-TE-Onw">
+                                <rect key="frame" x="16" y="528" width="361" height="52"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.46800676560559812" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHv-RU-PvS">
+                                <rect key="frame" x="16" y="599" width="361" height="52"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.46430666083531663" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvA-Kd-w2Q">
+                                <rect key="frame" x="90" y="119" width="213" height="111"/>
+                                <fontDescription key="fontDescription" name="Harmattan-Bold" family="Harmattan" pointSize="65"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mrg-q9-4uq">
+                                <rect key="frame" x="96.666666666666686" y="238" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                <color key="tintColor" red="0.27621876562275788" green="0.28702552872474751" blue="0.098258295340525714" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="83" id="rdV-Gt-3zf"/>
+                                    <constraint firstAttribute="height" constant="200" id="E0E-Xb-aEU"/>
+                                    <constraint firstAttribute="width" constant="200" id="SdD-e7-cY8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="52"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xf-aY-jwQ">
-                                <rect key="frame" x="16" y="260" width="107" height="26.666666666666686"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="21"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G4b-TE-Onw">
-                                <rect key="frame" x="131" y="260" width="246" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBo-x7-fRb">
-                                <rect key="frame" x="16" y="315.66666666666669" width="89.666666666666671" height="28.666666666666686"/>
-                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHv-RU-PvS">
-                                <rect key="frame" x="128.66666666666663" y="313" width="248.33333333333337" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <imageReference key="image" image="profile" variableValue="1"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt5-Rr-HV7">
-                                <rect key="frame" x="131" y="379.33333333333331" width="101" height="39.666666666666686"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <rect key="frame" x="90" y="688" width="213" height="73.666666666666629"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                <color key="tintColor" name="FoodieLightGreen"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Login">
-                                    <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login" cornerStyle="large">
+                                    <fontDescription key="titleFontDescription" name="Harmattan-Bold" family="Harmattan" pointSize="35"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButton:" destination="Wi4-kt-25T" eventType="touchUpInside" id="txf-56-cNN"/>
@@ -479,33 +483,28 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NHc-uq-bas"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.56607351891123769" green="0.5882205385150332" blue="0.20136727090293091" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="Dt5-Rr-HV7" secondAttribute="trailing" constant="161" id="5ip-Vc-OAL"/>
-                            <constraint firstItem="G4b-TE-Onw" firstAttribute="top" secondItem="UqJ-BP-XzT" secondAttribute="bottom" constant="76" id="7MF-Q6-YYJ"/>
-                            <constraint firstItem="HBo-x7-fRb" firstAttribute="leading" secondItem="NHc-uq-bas" secondAttribute="leading" constant="16" id="Bss-Jj-qVN"/>
-                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="G4b-TE-Onw" secondAttribute="trailing" constant="16" id="EH9-iX-X5S"/>
-                            <constraint firstItem="UqJ-BP-XzT" firstAttribute="top" secondItem="NHc-uq-bas" secondAttribute="top" constant="42" id="FqE-uj-ehJ"/>
-                            <constraint firstItem="4Xf-aY-jwQ" firstAttribute="top" secondItem="G4b-TE-Onw" secondAttribute="top" id="IQl-Fq-CLU"/>
-                            <constraint firstItem="qHv-RU-PvS" firstAttribute="leading" secondItem="HBo-x7-fRb" secondAttribute="trailing" constant="23" id="LDt-Vt-efF"/>
-                            <constraint firstItem="UqJ-BP-XzT" firstAttribute="leading" secondItem="NHc-uq-bas" secondAttribute="leading" constant="16" id="Q0e-fa-pLl"/>
-                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="UqJ-BP-XzT" secondAttribute="trailing" constant="16" id="SkT-ls-N5j"/>
-                            <constraint firstItem="qHv-RU-PvS" firstAttribute="top" secondItem="G4b-TE-Onw" secondAttribute="bottom" constant="18" id="T8q-Hg-OcZ"/>
-                            <constraint firstItem="4Xf-aY-jwQ" firstAttribute="width" secondItem="fzw-LX-tcU" secondAttribute="height" multiplier="107:852" id="Tk8-VC-bvo"/>
-                            <constraint firstItem="qHv-RU-PvS" firstAttribute="leading" secondItem="HBo-x7-fRb" secondAttribute="trailing" constant="23" id="X1a-Lv-bZq"/>
-                            <constraint firstItem="qHv-RU-PvS" firstAttribute="top" secondItem="G4b-TE-Onw" secondAttribute="bottom" constant="18" id="acN-zx-oKc"/>
-                            <constraint firstItem="G4b-TE-Onw" firstAttribute="leading" secondItem="4Xf-aY-jwQ" secondAttribute="trailing" constant="8" id="bek-FW-7JO"/>
-                            <constraint firstItem="NHc-uq-bas" firstAttribute="bottom" secondItem="Dt5-Rr-HV7" secondAttribute="bottom" constant="399" id="gof-hF-G8p"/>
-                            <constraint firstItem="HBo-x7-fRb" firstAttribute="top" secondItem="4Xf-aY-jwQ" secondAttribute="bottom" constant="29" id="hBo-Xs-bGJ"/>
-                            <constraint firstItem="Dt5-Rr-HV7" firstAttribute="leading" secondItem="NHc-uq-bas" secondAttribute="leading" constant="131" id="iLg-QZ-dBn"/>
-                            <constraint firstItem="4Xf-aY-jwQ" firstAttribute="leading" secondItem="NHc-uq-bas" secondAttribute="leading" constant="16" id="oug-NQ-ake"/>
-                            <constraint firstItem="HBo-x7-fRb" firstAttribute="centerY" secondItem="qHv-RU-PvS" secondAttribute="centerY" id="qPH-nS-PQ8"/>
-                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="qHv-RU-PvS" secondAttribute="trailing" constant="16" id="uhr-fS-gbo"/>
-                            <constraint firstItem="HBo-x7-fRb" firstAttribute="top" secondItem="4Xf-aY-jwQ" secondAttribute="bottom" constant="29" id="x7F-RK-oPv"/>
-                            <constraint firstItem="Dt5-Rr-HV7" firstAttribute="top" secondItem="qHv-RU-PvS" secondAttribute="bottom" constant="32.329999999999998" id="yxe-Pm-myf"/>
+                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="qHv-RU-PvS" secondAttribute="trailing" constant="16" id="0fe-Jl-ecj"/>
+                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="Dt5-Rr-HV7" secondAttribute="trailing" constant="90" id="1M1-uy-q4u"/>
+                            <constraint firstItem="G4b-TE-Onw" firstAttribute="leading" secondItem="NHc-uq-bas" secondAttribute="leading" constant="16" id="1tG-ct-jj5"/>
+                            <constraint firstItem="Dt5-Rr-HV7" firstAttribute="top" secondItem="qHv-RU-PvS" secondAttribute="bottom" constant="37" id="62W-6I-5Db"/>
+                            <constraint firstItem="MvA-Kd-w2Q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NHc-uq-bas" secondAttribute="leading" id="CkK-lB-st2"/>
+                            <constraint firstItem="MvA-Kd-w2Q" firstAttribute="top" secondItem="NHc-uq-bas" secondAttribute="top" constant="60" id="Lqw-Z7-gtt"/>
+                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MvA-Kd-w2Q" secondAttribute="trailing" id="NcT-9u-b0G"/>
+                            <constraint firstItem="NHc-uq-bas" firstAttribute="trailing" secondItem="G4b-TE-Onw" secondAttribute="trailing" constant="16" id="OHh-Dm-vWh"/>
+                            <constraint firstItem="Dt5-Rr-HV7" firstAttribute="centerX" secondItem="NHc-uq-bas" secondAttribute="centerX" id="R3r-fj-9G3"/>
+                            <constraint firstItem="mrg-q9-4uq" firstAttribute="top" secondItem="MvA-Kd-w2Q" secondAttribute="bottom" constant="8" id="XyI-V8-Bpq"/>
+                            <constraint firstItem="qHv-RU-PvS" firstAttribute="top" secondItem="G4b-TE-Onw" secondAttribute="bottom" constant="19" id="aeg-se-9Zk"/>
+                            <constraint firstItem="G4b-TE-Onw" firstAttribute="top" secondItem="mrg-q9-4uq" secondAttribute="bottom" constant="90" id="eZO-cE-8yT"/>
+                            <constraint firstItem="Dt5-Rr-HV7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NHc-uq-bas" secondAttribute="leading" id="ku4-pi-YDg"/>
+                            <constraint firstItem="mrg-q9-4uq" firstAttribute="centerX" secondItem="MvA-Kd-w2Q" secondAttribute="centerX" id="lcz-lY-Gr2"/>
+                            <constraint firstItem="qHv-RU-PvS" firstAttribute="leading" secondItem="NHc-uq-bas" secondAttribute="leading" constant="16" id="scb-X5-9h2"/>
+                            <constraint firstItem="mrg-q9-4uq" firstAttribute="centerX" secondItem="NHc-uq-bas" secondAttribute="centerX" id="skf-QD-RmC"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="profileImageView" destination="mrg-q9-4uq" id="nCk-Gv-SDw"/>
                         <outlet property="userNameLabel" destination="G4b-TE-Onw" id="oji-Bo-vOY"/>
                         <outlet property="userPasswordLabel" destination="qHv-RU-PvS" id="cFD-dy-8nd"/>
                         <segue destination="ZVY-OF-G77" kind="presentation" identifier="goToHome" modalPresentationStyle="fullScreen" id="T5D-C2-zRQ"/>
@@ -513,7 +512,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP6-p7-P7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2256" y="-1111"/>
+            <point key="canvasLocation" x="2255.7251908396947" y="-1111.2676056338028"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ckc-S4-d8N">
@@ -659,8 +658,12 @@
         <image name="fork.knife" catalog="system" width="94" height="128"/>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="profile" width="684" height="684"/>
         <image name="star.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="FoodieLightGreen">
+            <color red="0.69999998807907104" green="0.72699999809265137" blue="0.24699999392032623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -673,11 +676,11 @@
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

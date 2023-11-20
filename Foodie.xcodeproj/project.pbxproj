@@ -14,6 +14,7 @@
 		04285EF32B023EA100461CFE /* Loadingbbb.json in Resources */ = {isa = PBXBuildFile; fileRef = 04285EF22B023EA100461CFE /* Loadingbbb.json */; };
 		043325022AFC2D6000452C1E /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043325012AFC2D6000452C1E /* PageViewController.swift */; };
 		043325042AFC2D9D00452C1E /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043325032AFC2D9D00452C1E /* PageCollectionViewCell.swift */; };
+		0441F3F82B0B5B22009E8043 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441F3F72B0B5B22009E8043 /* HomeViewController.swift */; };
 		044E1E3B2AFD4ABB006E554E /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E1E3A2AFD4ABB006E554E /* RestaurantTableViewCell.swift */; };
 		0455BD3B2AF7F518006218AB /* RestaurantsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD3A2AF7F518006218AB /* RestaurantsList.swift */; };
 		0455BD3F2AF7FD85006218AB /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD3E2AF7FD85006218AB /* RestaurantCell.swift */; };
@@ -26,6 +27,8 @@
 		04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D1D2AF79F22004C2E7E /* LaunchScreen.storyboard */; };
 		04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */; };
 		04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */; };
+		04DC0F392B0BF8800077FE2B /* IngredientsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F382B0BF8800077FE2B /* IngredientsData.json */; };
+		04DC0F3B2B0BF8900077FE2B /* cookingPotBlue.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */; };
 		04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */; };
 		04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */; };
 		04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */; };
@@ -41,6 +44,7 @@
 		04285EF22B023EA100461CFE /* Loadingbbb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loadingbbb.json; sourceTree = "<group>"; };
 		043325012AFC2D6000452C1E /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		043325032AFC2D9D00452C1E /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
+		0441F3F72B0B5B22009E8043 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		044E1E3A2AFD4ABB006E554E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		0455BD3A2AF7F518006218AB /* RestaurantsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsList.swift; sourceTree = "<group>"; };
 		0455BD3E2AF7FD85006218AB /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
@@ -55,6 +59,8 @@
 		04D08D202AF79F22004C2E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Regular.ttf"; sourceTree = "<group>"; };
 		04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Bold.ttf"; sourceTree = "<group>"; };
+		04DC0F382B0BF8800077FE2B /* IngredientsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IngredientsData.json; sourceTree = "<group>"; };
+		04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cookingPotBlue.json; sourceTree = "<group>"; };
 		04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RestaurantsData.json; sourceTree = "<group>"; };
 		04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoKufiArabic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */,
+				04DC0F382B0BF8800077FE2B /* IngredientsData.json */,
 				04EB58242B021D360035D5A4 /* Animations Lottie */,
 				04EB58232B021D220035D5A4 /* Fonts */,
 			);
@@ -177,6 +184,7 @@
 		04D08D282AF79F41004C2E7E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04DC0F3C2B0BFE240077FE2B /* Home */,
 				043325002AFC2D2200452C1E /* Featured */,
 				0456DFB72B053FE6003BA658 /* List */,
 				04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */,
@@ -185,6 +193,14 @@
 				04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		04DC0F3C2B0BFE240077FE2B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0441F3F72B0B5B22009E8043 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		04EB58232B021D220035D5A4 /* Fonts */ = {
@@ -201,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				04285EF22B023EA100461CFE /* Loadingbbb.json */,
+				04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */,
 			);
 			path = "Animations Lottie";
 			sourceTree = "<group>";
@@ -288,8 +305,10 @@
 				04D08D1C2AF79F22004C2E7E /* Assets.xcassets in Resources */,
 				041641E22AFD2E5E0054CCAC /* RestaurantCollectionViewCell.xib in Resources */,
 				04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */,
+				04DC0F392B0BF8800077FE2B /* IngredientsData.json in Resources */,
 				04285EF32B023EA100461CFE /* Loadingbbb.json in Resources */,
 				04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */,
+				04DC0F3B2B0BF8900077FE2B /* cookingPotBlue.json in Resources */,
 				04D08D1A2AF79F1F004C2E7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +367,7 @@
 				041641D82AFD24B70054CCAC /* RestaurantViewController.swift in Sources */,
 				0455BD412AF7FFB1006218AB /* Restaurant.swift in Sources */,
 				04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */,
+				0441F3F82B0B5B22009E8043 /* HomeViewController.swift in Sources */,
 				044E1E3B2AFD4ABB006E554E /* RestaurantTableViewCell.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
 				04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */,

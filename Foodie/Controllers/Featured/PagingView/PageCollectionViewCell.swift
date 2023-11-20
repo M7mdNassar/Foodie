@@ -22,12 +22,12 @@ class PageCollectionViewCell: UICollectionViewCell {
     func setUpFontLabels() {
         let maximumFontSizeRestaurantName: CGFloat = 60.0
         let maximumFontSizeRestaurantCity: CGFloat = 50.0
-        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 30.0) {
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 30.0) {
             let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
             restaurantNameLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSizeRestaurantName))
         }
         
-        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 17.0) {
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 17.0) {
             let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
             restaurantCityLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSizeRestaurantCity))
         }

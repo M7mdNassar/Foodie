@@ -32,7 +32,7 @@ class RestaurantCell: UITableViewCell {
     func setUpFontLabels(){
 //        let maximumFontSizeRestaurantName: CGFloat = 50.0
         
-        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 19.0)  {
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
             restaurantNameLabel.font =  UIFontMetrics.default.scaledFont(for: customFont)
         }
     }

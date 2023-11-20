@@ -140,15 +140,15 @@ private extension RestaurantDetails {
 
    
     func setUpFontLabels() {
-        if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 31.0) {
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 31.0) {
                restaurantNameLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
            }
            
-           if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 17.0) {
+           if let customFont = UIFont(name: "Harmattan-Regular", size: 17.0) {
                restaurantCityLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
            }
            
-           if let customFont = UIFont(name: "NotoKufiArabic-Regular", size: 20.0) {
+           if let customFont = UIFont(name: "Harmattan-Regular", size: 20.0) {
                restaurantDescriptionLabel.font = UIFontMetrics.default.scaledFont(for: customFont)
            }
     }

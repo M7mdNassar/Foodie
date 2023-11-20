@@ -51,6 +51,7 @@ extension RestaurantsList: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell") as! RestaurantCell
         let data = restaurants[indexPath.row]
+        #warning("why u need to setup the cell here?")
         cell.setUpCell(img: data.imageName, name: data.name, isFavourite: data.isFavorite)
 
         // Calculate the height required for the restaurantNameLabel

@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
         setUpImageAsCircle()
         setUpBackground()
         // store this values in defaults
+#warning("why u need to set the user name and pass here?")
        defaults.set("m", forKey: "username")
        defaults.set("1", forKey: "password")
 

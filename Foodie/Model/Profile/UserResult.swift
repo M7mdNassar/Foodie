@@ -24,7 +24,6 @@ struct User: Decodable {
 }
 
 
-
 // Struct representing "location" key
 struct Location: Decodable {
     let street: Street

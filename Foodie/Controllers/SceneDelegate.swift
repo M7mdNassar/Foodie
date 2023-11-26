@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else {
             return
@@ -19,34 +18,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // change the root view controller to your specific view controller
         window.rootViewController = vc
-        //  Animation
-        //        UIView.transition(with: window,
-        //                             duration: 0.5,
-        //                             options: [.transitionFlipFromLeft],
-        //                             animations: nil,
-        //                             completion: nil)
+
     }
     
+    // MARK: - Deep Links
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let url = URLContexts.first?.url{
-            print(url)
-            let stringUrl = url.absoluteString
-            let component = stringUrl.components(separatedBy: "//")
-            
-            if component.count > 1 , let p = component.last {
-                print(p)
-                
                 navigateTo()
-            }
-            
-            
-        }
     }
     
-    
+    // MARK: - Navigate To Specific Page - Deep Links
     func navigateTo() {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         // Get the relevant window scene
@@ -56,9 +38,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController") as? UITabBarController
                 mainTabBarController?.selectedIndex = 1
                 changeRootViewController(mainTabBarController!)
-
-                
-        
             }
         }
         

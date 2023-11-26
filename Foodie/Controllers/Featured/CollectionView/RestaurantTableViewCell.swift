@@ -52,14 +52,9 @@ class RestaurantTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        let layout = UICollectionViewFlowLayout()
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        collectionView.collectionViewLayout = layout
-//        
         let nib = UINib(nibName: "RestaurantCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "RCell")
     }
-
 
 }
 
@@ -77,9 +72,10 @@ extension RestaurantTableViewCell: UICollectionViewDataSource{
      
         return cell
     }
-    
 
 }
+
+    // MARK: - UICollectionViewDelegateFlowLayout
 
 extension RestaurantTableViewCell: UICollectionViewDelegateFlowLayout {
 

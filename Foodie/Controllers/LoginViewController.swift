@@ -10,9 +10,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     
     // MARK: - Properties
+    
     var defaults = UserDefaults.standard
 
     // MARK: - Life Cycle Controller
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,7 @@ class LoginViewController: UIViewController {
     }
 
     // MARK: - Methods
+    
     @IBAction func loginButton(_ sender: UIButton) {
         
         if attemptLogin(){
@@ -54,7 +57,8 @@ class LoginViewController: UIViewController {
 
 }
 
-// MARK: - Set Up UI
+    // MARK: - Set Up UI
+
 private extension LoginViewController {
     func setUpBackground() {
         let foodieColor = UIColor(named: "FoodieLightGreen")
@@ -81,6 +85,8 @@ private extension LoginViewController {
     
 }
 
+    // MARK: - UITextFieldDelegate
+
 extension LoginViewController: UITextFieldDelegate {
     func configure() {
         userNameLabel.delegate = self
@@ -100,8 +106,4 @@ extension LoginViewController: UITextFieldDelegate {
 
         return true
     }
-    
-    
-    
-    
 }

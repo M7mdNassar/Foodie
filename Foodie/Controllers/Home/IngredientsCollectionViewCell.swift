@@ -1,7 +1,9 @@
 import UIKit
 
 class IngredientsCollectionViewCell: UICollectionViewCell {
-
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var ingredientImageView: UIImageView!
     @IBOutlet weak var ingredientNameLabel: UILabel!
 
@@ -15,7 +17,9 @@ class IngredientsCollectionViewCell: UICollectionViewCell {
         ingredientImageView.image = UIImage(named: imageName)
         ingredientNameLabel.text = NSLocalizedString(itemName, comment: "")
     }
-
+    
+    // MARK: - SetUp Cell
+    
     func setUpImage(_ image: UIImageView) {
         image.layer.cornerRadius = image.frame.size.width / 2
         image.clipsToBounds = true
@@ -23,9 +27,14 @@ class IngredientsCollectionViewCell: UICollectionViewCell {
         image.layer.borderWidth = 2.0
         image.layer.borderColor = UIColor.foodieLightBlue.cgColor
     }
+    
+    override func prepareForReuse() {
+         super.prepareForReuse()
 
-    // Reset cell background color
-    func resetCellBackgroundColor() {
-        ingredientImageView.backgroundColor = UIColor.foodieLightGreenBlue
-    }
+         // Reset any state that might be changed during usage
+        self.ingredientImageView.layer.borderColor = UIColor.foodieLightBlue.cgColor
+        self.ingredientNameLabel.textColor = .black
+        
+     }
+    
 }

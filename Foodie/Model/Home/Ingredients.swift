@@ -8,7 +8,5 @@ class Ingredients: Decodable {
     var id: Int
     var imageName: String
 
-    
 }
-
 

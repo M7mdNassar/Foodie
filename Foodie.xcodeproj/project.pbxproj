@@ -116,13 +116,13 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
-		042483212B11EEE900B84CB0 /* Data */ = {
+		042483212B11EEE900B84CB0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				04FD8E0F2B0F598200EB9941 /* UserResult.swift */,
 				04FD8E112B0F5D2200EB9941 /* UserApi.swift */,
 			);
-			path = Data;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		043325002AFC2D2200452C1E /* Featured */ = {
@@ -164,13 +164,22 @@
 			path = PagingView;
 			sourceTree = "<group>";
 		};
-		04BF4AF92B0D04100000EB36 /* Data */ = {
+		04B838342B13EB0200494F49 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				0455BD402AF7FFB1006218AB /* Restaurant.swift */,
+				045A7A352AFAD7F400C29688 /* RestaurantServiceManager.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		04BF4AF92B0D04100000EB36 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */,
 				04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */,
 			);
-			path = Data;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		04D08D062AF79F1F004C2E7E = {
@@ -217,8 +226,9 @@
 		04D08D272AF79F3B004C2E7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0455BD402AF7FFB1006218AB /* Restaurant.swift */,
-				045A7A352AFAD7F400C29688 /* RestaurantServiceManager.swift */,
+				04BF4AF92B0D04100000EB36 /* Home */,
+				042483212B11EEE900B84CB0 /* Profile */,
+				04B838342B13EB0200494F49 /* Restaurant */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,11 +239,11 @@
 				04DC0F3C2B0BFE240077FE2B /* Home */,
 				043325002AFC2D2200452C1E /* Featured */,
 				0456DFB72B053FE6003BA658 /* List */,
-				04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */,
+				04FD8E0C2B0F3C5000EB9941 /* Profile */,
 				0412220C2B0382120013A273 /* LoginViewController.swift */,
+				04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */,
 				04D08D122AF79F1F004C2E7E /* AppDelegate.swift */,
 				04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */,
-				04FD8E0C2B0F3C5000EB9941 /* Profile */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -244,7 +254,6 @@
 				0441F3F72B0B5B22009E8043 /* HomeViewController.swift */,
 				04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */,
 				04BF4AF62B0D02EC0000EB36 /* IngredientsCollectionViewCell.xib */,
-				04BF4AF92B0D04100000EB36 /* Data */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -274,7 +283,6 @@
 				04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */,
 				0424831D2B11ECD200B84CB0 /* ProfileTableViewCell.swift */,
 				0424831E2B11ECD200B84CB0 /* ProfileTableViewCell.xib */,
-				042483212B11EEE900B84CB0 /* Data */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

@@ -1,6 +1,6 @@
-
 import UIKit
 
+// MARK: - Option Struct
 
 struct Option {
     let title: String
@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
                             Option(title: "تسجيل الخروج", icon: UIImage(systemName: "rectangle.portrait.and.arrow.forward.fill")!)
     ]
     
+    // MARK: - Life Cycle Controller
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,9 @@ class ProfileViewController: UIViewController {
         configureTable()
         individualApi.delegate = self
         individualApi.feachData()
-        
     }
     
+    // MARK: - Table Configration
     
     func configureTable(){
         tableView.delegate = self
@@ -47,11 +48,11 @@ class ProfileViewController: UIViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100 // this the default without scaling (average) .
-        
-        
-    }
     
+    }
 }
+
+    // MARK: - Assistent To Retrive Data
 
 extension ProfileViewController: ApiDelegate{
     func didRetriveData(user: UserResult) {
@@ -73,11 +74,13 @@ extension ProfileViewController: ApiDelegate{
     }
 }
 
+    // MARK: - TableView Delegate
 
 extension ProfileViewController: UITableViewDelegate{
     
 }
 
+    // MARK: - TableView Data Source
 
 extension ProfileViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -98,8 +101,9 @@ extension ProfileViewController : UITableViewDataSource {
 
 }
 
+    // MARK: - Private Methods For UI
 
-extension ProfileViewController{
+private extension ProfileViewController{
     
     func setUpImageAsCircleWithShadowAndBorder() {
         // Make view as circle shape & apply a shadow
@@ -121,14 +125,8 @@ extension ProfileViewController{
        
     }
     
-    
-    func setUpFontLabels(){
-        
-    }
-    
-    
     func setUpFont(){
-//        let maximumFontSizeRestaurantName: CGFloat = 50.0
+       //let maximumFontSizeRestaurantName: CGFloat = 50.0
         
         if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
             userNameLabel.font =  UIFontMetrics.default.scaledFont(for: customFont)

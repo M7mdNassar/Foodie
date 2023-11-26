@@ -1,4 +1,3 @@
-
 import UIKit
 import Lottie
 
@@ -8,6 +7,7 @@ class HomeViewController: UIViewController {
     
     var ingredients = [Ingredients]()
     let manager = IngredientsServiceManager()
+    var draggedIndexPaths = [IndexPath]()
     
     // MARK: - Outlets
     
@@ -22,15 +22,11 @@ class HomeViewController: UIViewController {
         configureCollection()
         setUpAnimation()
         ingredients = manager.loadIngredients()!.shuffled()
-        
-        collectionView.dragDelegate = self
-        collectionView.dropDelegate = self
-        collectionView.dragInteractionEnabled = true
     }
     
    
 
-    // MARK: - Methods
+    //MARK: - Animation Setup
     
      func setUpAnimation(){
         animationView.layer.cornerRadius = 15
@@ -39,10 +35,18 @@ class HomeViewController: UIViewController {
     
     }
     
+    //MARK: - Animation Control
+    
     func startAnimation(){
-        animationView.loopMode = .playOnce
+        animationView.loopMode = .loop
         animationView.play()
     }
+    
+    func stopAnimation(){
+        animationView.stop()
+    }
+    
+    //MARK: - CollectionView Configuration
     
     func configureCollection(){
         collectionView.delegate = self
@@ -50,8 +54,12 @@ class HomeViewController: UIViewController {
         let nib = UINib(nibName: "IngredientsCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "itemCell")
 
+        collectionView.dragDelegate = self
+        collectionView.dropDelegate = self
+        collectionView.dragInteractionEnabled = true
     }
     
+    //MARK: - Tab Bar Configuration
     
     func configureTabBar(){
         self.tabBarItem = UITabBarItem(title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "fork.knife.circle.fill"), selectedImage: nil)
@@ -66,7 +74,7 @@ class HomeViewController: UIViewController {
 }
 
 
-
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -80,60 +88,73 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         let data = ingredients[indexPath.row]
         cell.configureCell(imageName: data.imageName, itemName: data.name)
+        
+            // Check if this cell corresponds to a dragged item
+        if draggedIndexPaths.contains(indexPath) {
+            cell.ingredientImageView.layer.borderColor = UIColor.green.cgColor
+            cell.ingredientNameLabel.textColor = .green
+          } else {
+              // Reset cell state for non-dragged items
+              cell.ingredientImageView.layer.borderColor = UIColor.foodieLightBlue.cgColor
+              cell.ingredientNameLabel.textColor = .black
 
-       
+          }
+        
         return cell
     }
 
-
 }
 
-
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 70, height: 89.0)
     }
-
-
     
 }
 
+// MARK: - UICollectionViewDragDelegate,  UICollectionViewDropDelegate
 
 extension HomeViewController: UICollectionViewDragDelegate,  UICollectionViewDropDelegate{
+
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let item = ingredients[indexPath.row]
+        let itemProvider = NSItemProvider(object: String(item.id) as NSItemProviderWriting)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        startAnimation()
+
+        // Set the draggedIndexPath
+        draggedIndexPaths.append(indexPath)
+
+        return [dragItem]
+    }
     
+    func collectionView(_ collectionView: UICollectionView, dragSessionDidEnd session: UIDragSession) {
+
+        // Iterate through each draggedIndexPath and update the cells
+         for indexPath in draggedIndexPaths {
+             if let cell = collectionView.cellForItem(at: indexPath) as? IngredientsCollectionViewCell {
+                 stopAnimation()
+                 cell.ingredientNameLabel.textColor = .green
+                 cell.ingredientImageView.layer.borderColor = UIColor.green.cgColor
+             }
+         }
+    }
     
-    // MARK: - UICollectionViewDragDelegate
-
-       func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-           let itemProvider = NSItemProvider()
-           let dragItem = UIDragItem(itemProvider: itemProvider)
-           // You can set additional data to the drag item if needed
-           return [dragItem]
-       }
-
-
-
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+
         // Check if there's at least one item being dropped
-        guard let item = coordinator.items.first else {
+        guard coordinator.items.first != nil else {
             return
         }
-
-        // Get the cell being dragged
-        if let draggedCell = item.sourceIndexPath,
-           let cell = collectionView.cellForItem(at: draggedCell) as? IngredientsCollectionViewCell {
-
-            // Start your animation
-            startAnimation()
-
-            // Change color
-            cell.ingredientImageView.tintColor = .green
-        }
+        // Reset draggedIndexPath
+        draggedIndexPaths.removeAll()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
 
-
-    
 }
-

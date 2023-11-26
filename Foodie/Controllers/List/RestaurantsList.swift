@@ -8,6 +8,8 @@ class RestaurantsList: UIViewController {
     var restaurants: [Restaurant] = []
     let backButton = UIBarButtonItem()
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - View Controller Lifecycle

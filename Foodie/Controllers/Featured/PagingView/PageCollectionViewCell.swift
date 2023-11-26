@@ -12,8 +12,8 @@ class PageCollectionViewCell: UICollectionViewCell {
     
     func setUpCell(img: String , name: String , city: String){
         restaurantImageView.image = UIImage(named: img)
-        restaurantNameLabel.text = name
-        restaurantCityLabel.text = city
+        restaurantNameLabel.text = NSLocalizedString(name, comment: "")
+        restaurantCityLabel.text = NSLocalizedString(city, comment: "")
         setUpFontLabels()
     }
     

@@ -49,17 +49,9 @@ extension RestaurantsList: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell") as! RestaurantCell
-        let data = restaurants[indexPath.row]
-        #warning("why u need to setup the cell here?")
-        cell.setUpCell(img: data.imageName, name: data.name, isFavourite: data.isFavorite)
-
-        // Calculate the height required for the restaurantNameLabel
-        let labelSize = cell.restaurantNameLabel.sizeThatFits(CGSize(width: cell.restaurantNameLabel.frame.width, height: CGFloat.greatestFiniteMagnitude))
-
-        // Set the cell height as the maximum between label height and 120
-        return max(labelSize.height, 100)
+        return UITableView.automaticDimension
     }
+    
 
 }
 
@@ -77,9 +69,11 @@ extension RestaurantsList: UITableViewDelegate {
 
 private extension RestaurantsList {
     func setUpTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
+           tableView.dataSource = self
+           tableView.delegate = self
+           tableView.rowHeight = UITableView.automaticDimension
+           tableView.estimatedRowHeight = 100 // this the default without scaling (average) .
+       }
     
     func fetchRestaurantData() {
         restaurantManager.fetchData { [weak self] restaurants in
@@ -102,16 +96,21 @@ private extension RestaurantsList {
         }
     
     func configureNavigationBar(){
-        backButton.title = "مطاعم"
+        backButton.title = NSLocalizedString("مطاعم", comment: "")
         self.navigationItem.backBarButtonItem = backButton
         
         let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
         backButton.setTitleTextAttributes([.font: scaledFont], for: .normal)
         
-        if let tabBarItem = self.tabBarItem {
-            let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+    
+        self.navigationController?.tabBarItem.title = NSLocalizedString("List", comment: "")
+        self.navigationController?.tabBarItem.image = UIImage(systemName: "list.bullet.circle.fill")
+
+        if let tabBarItem = self.navigationController?.tabBarItem {
+            let scaledFont = UIFont.systemFont(ofSize: UIFont.labelFontSize).withSize(12.0)
             tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
         }
+        
     }
     
     }

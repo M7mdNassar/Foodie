@@ -7,7 +7,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var userNameLabel: UITextField!
     @IBOutlet weak var userPasswordLabel: UITextField!
-
+    @IBOutlet weak var welcomeLabel: UILabel!
+    
     // MARK: - Properties
     var defaults = UserDefaults.standard
 
@@ -18,15 +19,7 @@ class LoginViewController: UIViewController {
         configure()
         setUpUI()
         setUpBackground()
-<<<<<<< HEAD
-        // store this values in defaults
-#warning("why u need to set the user name and pass here?")
-       defaults.set("m", forKey: "username")
-       defaults.set("1", forKey: "password")
 
-=======
-        
->>>>>>> testLogin
     }
 
     // MARK: - Methods
@@ -74,19 +67,28 @@ private extension LoginViewController {
     }
 
     func setUpUI() {
+        welcomeLabel.text = NSLocalizedString("welcome", comment: "greating")
+        
         // make the image as a circle
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
 
         // make corner for Button
         loginButton.layer.cornerRadius = 18.0
         loginButton.clipsToBounds = true
+        loginButton.setTitle(NSLocalizedString("loginButton", comment: "Login Button Title"), for: .normal)
     }
+
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func configure() {
         userNameLabel.delegate = self
         userPasswordLabel.delegate = self
+        
+        userNameLabel.placeholder = NSLocalizedString("userName", comment: "")
+        userPasswordLabel.placeholder = NSLocalizedString("password", comment: "")
+
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -98,5 +100,8 @@ extension LoginViewController: UITextFieldDelegate {
 
         return true
     }
+    
+    
+    
     
 }

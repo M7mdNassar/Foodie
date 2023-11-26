@@ -1,0 +1,69 @@
+
+/* Class = "UITabBarItem"; title = "Featured"; ObjectID = "0Nq-fR-oKQ"; */
+"0Nq-fR-oKQ.title" = "Featured";
+
+/* Class = "UILabel"; text = "مفضلتي"; ObjectID = "4zG-eu-6og"; */
+"4zG-eu-6og.text" = "مفضلتي";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8vf-lR-JfN"; */
+"8vf-lR-JfN.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "Apb-mH-a4B"; */
+"Apb-mH-a4B.title" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "CqK-ks-FP0"; */
+"CqK-ks-FP0.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "دخول"; ObjectID = "Dt5-Rr-HV7"; */
+"Dt5-Rr-HV7.configuration.title" = "دخول";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Dt5-Rr-HV7"; */
+"Dt5-Rr-HV7.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "اسم المستخدم"; ObjectID = "G4b-TE-Onw"; */
+"G4b-TE-Onw.placeholder" = "اسم المستخدم";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "GT8-ad-Oat"; */
+"GT8-ad-Oat.title" = "Home";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Mcz-mL-58c"; */
+"Mcz-mL-58c.text" = "Label";
+
+/* Class = "UILabel"; text = "أهلا وسهلاً"; ObjectID = "MvA-Kd-w2Q"; */
+"MvA-Kd-w2Q.text" = "أهلا وسهلاً";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "P9o-ha-LS2"; */
+"P9o-ha-LS2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PKL-m2-wlX"; */
+"PKL-m2-wlX.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "List"; ObjectID = "Q8m-ul-wIL"; */
+"Q8m-ul-wIL.title" = "List";
+
+/* Class = "UITabBarController"; title = "HomeView"; ObjectID = "ZVY-OF-G77"; */
+"ZVY-OF-G77.title" = "HomeView";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "aWs-hc-2pn"; */
+"aWs-hc-2pn.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cMY-6J-ALp"; */
+"cMY-6J-ALp.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gl3-52-uaG"; */
+"gl3-52-uaG.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hXq-UR-9cl"; */
+"hXq-UR-9cl.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "k8r-J3-0fQ"; */
+"k8r-J3-0fQ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lae-K7-CyR"; */
+"lae-K7-CyR.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "الرقم السري"; ObjectID = "qHv-RU-PvS"; */
+"qHv-RU-PvS.placeholder" = "الرقم السري";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "t8t-z1-HY1"; */
+"t8t-z1-HY1.text" = "Label";

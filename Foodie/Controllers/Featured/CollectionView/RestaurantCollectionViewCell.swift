@@ -20,14 +20,21 @@ class RestaurantCollectionViewCell: UICollectionViewCell {
            restaurantImageView.layer.masksToBounds = true
            restaurantNameLabel.text = name
            setUpFontLabels()
+       
        }
     
-    func setUpFontLabels(){
-        if let customFont = UIFont(name: "Harmattan-Regular", size: 17.0) {
+    func setUpFontLabels() {
+        let maximumFontSizeRestaurantName: CGFloat = 37
+        let desiredFontSize: CGFloat = 17.0
+
+        if let customFont = UIFont(name: "Harmattan-Regular", size: desiredFontSize) {
             let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
-            restaurantNameLabel.font = scaledFont.withSize(scaledFont.pointSize)
+            let finalFontSize = min(scaledFont.pointSize, maximumFontSizeRestaurantName)
+            restaurantNameLabel.font = scaledFont.withSize(finalFontSize)
         }
     }
+
+    
 
 }
 

@@ -17,6 +17,7 @@ class PageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureNavigationBar()
         fetchRestaurantData()
         setUpCollectionView()
@@ -66,11 +67,12 @@ private extension PageViewController{
            timer = nil
        }
     
-    func configureNavigationBar(){
-        title = "Featured"
-        
-        if let tabBarItem = self.tabBarItem {
-            let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+    func configureNavigationBar() {
+        self.navigationController?.tabBarItem.title = NSLocalizedString("Featured", comment: "")
+        self.navigationController?.tabBarItem.image = UIImage(systemName: "star.circle.fill")
+
+        if let tabBarItem = self.navigationController?.tabBarItem {
+            let scaledFont = UIFont.systemFont(ofSize: UIFont.labelFontSize).withSize(12.0)
             tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
         }
     }
@@ -102,7 +104,6 @@ extension PageViewController: UICollectionViewDelegateFlowLayout{
         return 0
     }
 }
-
 
 
 

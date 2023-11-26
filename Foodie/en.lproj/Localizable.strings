@@ -1,0 +1,30 @@
+
+// Login
+
+"welcome" = "Welcome" ; 
+"loginButton" = "Login" ; 
+"userName" = "User Name" ;
+"password" = "Password" ;
+
+
+// Home
+"Home" = "Home";
+
+
+
+// Featured
+
+"Featured" = "Featured";
+"Rivers" = "Rivers";
+"Mountains" = "Mountains";
+
+
+
+// List
+
+"List" = "List";
+
+
+
+// Profile
+"Profile" = "Profile" ;

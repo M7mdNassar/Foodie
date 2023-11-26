@@ -27,7 +27,7 @@ class RestaurantDetails: UIViewController {
     // MARK: - Private Methods
     private func configureNavigationBar() {
         self.navigationController?.navigationBar.tintColor = UIColor.orange
-        title = restaurant.name
+        title = NSLocalizedString(restaurant.name, comment: "")
     }
 
 }
@@ -53,7 +53,7 @@ extension RestaurantDetails: MKMapViewDelegate {
     func addAnnotation() {
         let pin = MKPointAnnotation()
         pin.coordinate = CLLocationCoordinate2D(latitude: restaurant.coordinates.latitude, longitude: restaurant.coordinates.longitude)
-        pin.title = restaurant.name
+        pin.title = NSLocalizedString(restaurant.name, comment: "")
         restaurantMapView.addAnnotation(pin)
     }
 
@@ -115,9 +115,9 @@ private extension RestaurantDetails {
 
     func setUpRestaurant() {
         setUpImageAsCircleWithShadowAndBorder()
-        restaurantNameLabel.text = restaurant.name
-        restaurantDescriptionLabel.text = restaurant.description
-        restaurantCityLabel.text = restaurant.city
+        restaurantNameLabel.text = NSLocalizedString(restaurant.name, comment: "")
+        restaurantDescriptionLabel.text = NSLocalizedString(restaurant.description, comment: "")
+        restaurantCityLabel.text = NSLocalizedString(restaurant.city, comment: "")
     }
 
     func setUpImageAsCircleWithShadowAndBorder() {

@@ -24,9 +24,10 @@ class RestaurantCell: UITableViewCell {
     
     func setUpCell(img: String , name: String , isFavourite: Bool){
         restaurantImage.image = UIImage(named: img)
-        restaurantNameLabel.text = name
+        restaurantNameLabel.text = NSLocalizedString(name, comment: "")
         setUpFontLabels()
         favouriteButton.isEnabled = isFavourite
+
     }
     
     func setUpFontLabels(){

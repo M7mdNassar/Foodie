@@ -48,3 +48,12 @@
 
 // Profile
 "Profile" = "الملف الشخصي" ;
+
+
+
+
+//edit
+
+"userCity" = "المدينه";
+"userPhone" = "الهاتف";
+"saveButton" = "حفظ التغييرات";

@@ -6,26 +6,27 @@ class IngredientsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var ingredientImageView: UIImageView!
     @IBOutlet weak var ingredientNameLabel: UILabel!
-
+    @IBOutlet weak var circleView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     // MARK: - Cell Configuration
     func configureCell(imageName: String, itemName: String) {
-        setUpImage(ingredientImageView)
+        setUpCircleView()
         ingredientImageView.image = UIImage(named: imageName)
         ingredientNameLabel.text = NSLocalizedString(itemName, comment: "")
     }
     
     // MARK: - SetUp Cell
     
-    func setUpImage(_ image: UIImageView) {
-        image.layer.cornerRadius = image.frame.size.width / 2
-        image.clipsToBounds = true
-        image.backgroundColor = UIColor.foodieLightGreenBlue
-        image.layer.borderWidth = 2.0
-        image.layer.borderColor = UIColor.foodieLightBlue.cgColor
+    func setUpCircleView() {
+        circleView.layer.cornerRadius = circleView.frame.size.width / 2
+        circleView.clipsToBounds = true
+        circleView.backgroundColor = UIColor.foodieLightGreenBlue
+        circleView.layer.borderWidth = 2.0
+        circleView.layer.borderColor = UIColor.foodieLightBlue.cgColor
     }
     
     override func prepareForReuse() {

@@ -91,11 +91,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
             // Check if this cell corresponds to a dragged item
         if draggedIndexPaths.contains(indexPath) {
-            cell.ingredientImageView.layer.borderColor = UIColor.green.cgColor
+            cell.circleView.layer.borderColor = UIColor.green.cgColor
             cell.ingredientNameLabel.textColor = .green
           } else {
               // Reset cell state for non-dragged items
-              cell.ingredientImageView.layer.borderColor = UIColor.foodieLightBlue.cgColor
+              cell.circleView.layer.borderColor = UIColor.foodieLightBlue.cgColor
               cell.ingredientNameLabel.textColor = .black
 
           }
@@ -138,7 +138,7 @@ extension HomeViewController: UICollectionViewDragDelegate,  UICollectionViewDro
              if let cell = collectionView.cellForItem(at: indexPath) as? IngredientsCollectionViewCell {
                  stopAnimation()
                  cell.ingredientNameLabel.textColor = .green
-                 cell.ingredientImageView.layer.borderColor = UIColor.green.cgColor
+                 cell.circleView.layer.borderColor = UIColor.green.cgColor
              }
          }
     }

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,9 +18,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="70" height="89"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iVL-1l-iaH">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="COX-uP-aIC">
                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
-                    </imageView>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iVL-1l-iaH">
+                                <rect key="frame" x="12" y="12" width="46" height="46"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iVL-1l-iaH" secondAttribute="trailing" constant="12" id="A4d-Jg-69O"/>
+                            <constraint firstAttribute="bottom" secondItem="iVL-1l-iaH" secondAttribute="bottom" constant="12" id="g8a-eu-aZN"/>
+                            <constraint firstItem="iVL-1l-iaH" firstAttribute="leading" secondItem="COX-uP-aIC" secondAttribute="leading" constant="12" id="h4i-gN-xco"/>
+                            <constraint firstItem="iVL-1l-iaH" firstAttribute="top" secondItem="COX-uP-aIC" secondAttribute="top" constant="12" id="sIu-al-3fY"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hw-G9-Iyv">
                         <rect key="frame" x="0.0" y="70" width="70" height="19"/>
                         <constraints>
@@ -33,20 +46,26 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="iVL-1l-iaH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9Rm-go-ejh"/>
+                <constraint firstItem="1hw-G9-Iyv" firstAttribute="top" secondItem="COX-uP-aIC" secondAttribute="bottom" id="5Vn-9X-K4h"/>
                 <constraint firstAttribute="bottom" secondItem="1hw-G9-Iyv" secondAttribute="bottom" id="AUa-Df-GxE"/>
                 <constraint firstAttribute="trailing" secondItem="1hw-G9-Iyv" secondAttribute="trailing" id="LPx-h4-ZDn"/>
-                <constraint firstItem="1hw-G9-Iyv" firstAttribute="top" secondItem="iVL-1l-iaH" secondAttribute="bottom" id="NhN-hC-DIc"/>
-                <constraint firstItem="iVL-1l-iaH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PRI-9c-yiF"/>
+                <constraint firstItem="COX-uP-aIC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="W2g-fb-30j"/>
                 <constraint firstItem="1hw-G9-Iyv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WSj-d0-jyY"/>
-                <constraint firstAttribute="trailing" secondItem="iVL-1l-iaH" secondAttribute="trailing" id="obf-ny-x1g"/>
+                <constraint firstAttribute="trailing" secondItem="COX-uP-aIC" secondAttribute="trailing" id="bgf-Nz-Gz8"/>
+                <constraint firstItem="COX-uP-aIC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fGR-ns-lc0"/>
             </constraints>
             <size key="customSize" width="70" height="89"/>
             <connections>
+                <outlet property="circleView" destination="COX-uP-aIC" id="9QJ-CP-kD0"/>
                 <outlet property="ingredientImageView" destination="iVL-1l-iaH" id="Oa5-sl-9EM"/>
                 <outlet property="ingredientNameLabel" destination="1hw-G9-Iyv" id="tS0-xv-lQx"/>
             </connections>
-            <point key="canvasLocation" x="-80.916030534351137" y="-82.74647887323944"/>
+            <point key="canvasLocation" x="-102.29007633587786" y="-95.422535211267615"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

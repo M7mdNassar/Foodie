@@ -2,24 +2,23 @@ import Foundation
 
 
 struct UserResult: Decodable {
-    let results: [User]
-    let info: Info
+    var results: [User]
 }
 
 
 // Struct representing "results" key
 struct User: Decodable {
     let gender: String
-    let name: Name
-    let location: Location?
+    var name: Name
+    var location: Location?
     let email: String
     let login: Login
-    let dob: DateOfBirth
+    var dob: DateOfBirth
     let registered: Registered
-    let phone: String
+    var phone: String
     let cell: String
     let id: ID
-    let picture: Picture
+    var picture: Picture
     let nat: String
 }
 
@@ -27,7 +26,7 @@ struct User: Decodable {
 // Struct representing "location" key
 struct Location: Decodable {
     let street: Street
-    let city: String
+    var city: String
     let state: String
     let country: String
 //    let postcode: String?
@@ -68,7 +67,7 @@ struct Login: Decodable {
 
 // Struct representing "dob" key
 struct DateOfBirth: Decodable {
-    let date: String
+    var date: String
     let age: Int
 }
 
@@ -86,7 +85,7 @@ struct ID: Decodable {
 
 // Struct representing "picture" key
 struct Picture: Decodable {
-    let large: String
+    var large: String
     let medium: String
     let thumbnail: String
 }
@@ -94,16 +93,8 @@ struct Picture: Decodable {
 // Struct representing "name" key
 struct Name: Decodable {
     let title: String
-    let first: String
+    var first: String
     let last: String
 }
 
-
-// Struct representing "info" key
-struct Info: Decodable {
-    let seed: String
-    let results: Int
-    let page: Int
-    let version: String
-}
 

@@ -19,7 +19,9 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Variables
     
+    let backButton = UIBarButtonItem()
     let individualApi = UserApi()
+    var user: User?
     let options:[Option] = [Option(title: "تعديل الملف الشخصي", icon:                               UIImage(systemName: "person.crop.circle.fill")!) ,
                             Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
                             Option(title: "تواصل معنا", icon: UIImage(systemName: "message.fill")!),
@@ -36,6 +38,7 @@ class ProfileViewController: UIViewController {
         configureTable()
         individualApi.delegate = self
         individualApi.feachData()
+        configureNavigationBar()
     }
     
     // MARK: - Table Configration
@@ -49,6 +52,40 @@ class ProfileViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100 // this the default without scaling (average) .
     
+    }
+    
+    // MARK: - Methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+               if segue.identifier == "goToEdit",
+                   let editProfileVC = segue.destination as? EditProfile {
+                   editProfileVC.user = user
+                   editProfileVC.delegate = self
+               }
+           }
+     
+    
+    func logout() {
+        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.foodieLightGreen
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { action in
+            // Perform logout actions
+
+            // Remove user defaults
+            UserDefaults.standard.removeObject(forKey: "username")
+            UserDefaults.standard.removeObject(forKey: "password")
+
+            // Navigate to the LoginViewController
+            if let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+                let navigationController = UINavigationController(rootViewController: loginViewController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
+            }
+        }))
+
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -71,6 +108,7 @@ extension ProfileViewController: ApiDelegate{
                 }
             }
         }
+        self.user = user.results.first
     }
 }
 
@@ -98,12 +136,22 @@ extension ProfileViewController : UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedOption = indexPath.row
 
+             if selectedOption == 0 {
+                 performSegue(withIdentifier: "goToEdit", sender: self)
+             } else if selectedOption == 5{
+                 logout()
+             }
+        tableView.deselectRow(at: indexPath, animated: true)  // for remove the highlight of selected cell
+
+         }
 }
 
     // MARK: - Private Methods For UI
 
-private extension ProfileViewController{
+ private extension ProfileViewController{
     
     func setUpImageAsCircleWithShadowAndBorder() {
         // Make view as circle shape & apply a shadow
@@ -141,6 +189,34 @@ private extension ProfileViewController{
             tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
         }
     }
+     
+     func configureNavigationBar(){
+         backButton.title = NSLocalizedString("رجوع", comment: "")
+         self.navigationItem.backBarButtonItem = backButton
+         
+         let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+         backButton.setTitleTextAttributes([.font: scaledFont], for: .normal)
+     }
 
     
+}
+
+ // MARK: - Update User
+
+extension ProfileViewController: EditProfileDelegate{
+    
+    func didUpdateUser(_ user: User) {
+           // Handle the updated user data
+           self.user = user
+
+        DispatchQueue.main.async {
+            // Update UI on the main queue
+            self.setUpImageAsCircleWithShadowAndBorder()
+            //self.userImageView.image = user.picture.large
+            self.userNameLabel.text = user.name.first
+            self.setUpFont()
+        }
+        
+       }
+
 }

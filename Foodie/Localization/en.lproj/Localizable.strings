@@ -28,3 +28,11 @@
 
 // Profile
 "Profile" = "Profile" ;
+
+
+
+//Edit Profile
+
+"userCity" = "City" ;
+"userPhone" = "Phone";
+"saveButton" = "Save Changes";

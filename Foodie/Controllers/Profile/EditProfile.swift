@@ -77,15 +77,23 @@ private extension EditProfile{
         userCityTextField.text = user.location?.city
         userPhoneTextField.text = user.phone
         // Convert the string dob.date to a Date object
-           let dateString = user.dob.date
-               let dateFormatter = DateFormatter()
-               dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-               if let date = dateFormatter.date(from: dateString) {
-                   userBirthDatePicker.date = date
-               }
-           
+        userBirthDatePicker.date = toDateFormat(dateString: user.dob.date)
+        // load image
+        loadUserImage(from: user.picture.large)
+        setUpFont()
+        
+       }
+    
+    func toDateFormat(dateString: String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+         let date = dateFormatter.date(from: dateString)
+            return date!
+    }
+    
+    func loadUserImage(from urlString: String) {
         DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: user.picture.large),
+            if let imageURL = URL(string: urlString),
                let imageData = try? Data(contentsOf: imageURL),
                let image = UIImage(data: imageData) {
                 
@@ -95,9 +103,7 @@ private extension EditProfile{
                 }
             }
         }
-        setUpFont()
-        
-       }
+    }
     
     func setUpImageAsCircleWithShadowAndBorder() {
         // Make view as circle shape & apply a shadow
@@ -121,21 +127,29 @@ private extension EditProfile{
     func setUpFont(){
        //let maximumFontSizeRestaurantName: CGFloat = 50.0
         
-        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
-            userNameTextField.font =  UIFontMetrics.default.scaledFont(for: customFont)
+        let maximumFontSize: CGFloat = 30.0
+        let maximumEmailFontSize : CGFloat = 26.0
+        
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            userNameTextField.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSize))
         }
         
-        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
-            userEmailLabel.font =  UIFontMetrics.default.scaledFont(for: customFont)
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            userEmailLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumEmailFontSize))
+        }
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            userCityTextField.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSize))
         }
         
-        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
-            userCityTextField.font =  UIFontMetrics.default.scaledFont(for: customFont)
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            userPhoneTextField.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSize))
         }
         
-        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
-            userPhoneTextField.font =  UIFontMetrics.default.scaledFont(for: customFont)
-        }
+     
         
     }
     
@@ -144,10 +158,11 @@ private extension EditProfile{
         title = NSLocalizedString("Edit Profile", comment: "")
     }
     
-    func setUpButton(){
+    func setUpButton() {
         saveButton.layer.cornerRadius = 18.0
         saveButton.clipsToBounds = true
-        saveButton.setTitle(NSLocalizedString("saveButton", comment: "save Button Title"), for: .normal)
+       
+        saveButton.setTitle(NSLocalizedString("save", comment: "save Button Title"), for: .normal)
     }
 }
 
@@ -188,7 +203,7 @@ extension EditProfile: UITextFieldDelegate {
             
         }
         else {
-            textField.resignFirstResponder()
+            textField.becomeFirstResponder()
         }
 
         return true

@@ -3,7 +3,6 @@ import Foundation
 
 class IngredientsServiceManager{
     
-    
     func loadIngredients() -> [Ingredients]? {
         if let url = Bundle.main.url(forResource: "IngredientsData", withExtension: "json"),
             let data = try? Data(contentsOf: url) {
@@ -18,5 +17,4 @@ class IngredientsServiceManager{
         }
         return nil
     }
-    
 }

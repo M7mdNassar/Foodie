@@ -1,4 +1,3 @@
-
 import Foundation
 
 class RestaurantServiceManager {
@@ -10,32 +9,33 @@ class RestaurantServiceManager {
 
     // MARK: - Data Fetching
 
-    func fetchData(completion: @escaping ([Restaurant]) -> Void) {
-        if let path = Bundle.main.path(forResource: "RestaurantsData", ofType: "json") {
+    func fetchData() -> [Restaurant]? {
+        if let path = Bundle.main.url(forResource: "RestaurantsData", withExtension:"json") , let data = try? Data(contentsOf: path){
             do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path))
                 let restaurants = try JSONDecoder().decode([Restaurant].self, from: data)
-
                 allRestaurants = restaurants
                 favoriteRestaurants = restaurants.filter { $0.isFavorite }
-                completion(allRestaurants)
-            } catch {
-                print("Error loading JSON data: \(error)")
-                completion([])
+                return allRestaurants
             }
-        } else {
-            print("JSON file not found in the bundle.")
-            completion([])
+            catch {
+                print("Error decoding JSON: \(error)")
+                return nil
+           }
+            
         }
-    }
+        return nil
+        }
+    
 
     // MARK: - Getter Methods
 
-    func getFavoriteRestaurants(completion: @escaping ([Restaurant]) -> Void) {
-        completion(favoriteRestaurants)
+    func getFavoriteRestaurants() -> [Restaurant] {
+        return favoriteRestaurants
     }
 
-    func getAllRestaurants(completion: @escaping ([Restaurant]) -> Void) {
-        completion(allRestaurants)
+    func getAllRestaurants() -> [Restaurant] {
+        return allRestaurants
     }
 }
+
+

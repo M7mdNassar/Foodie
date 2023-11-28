@@ -15,9 +15,9 @@ class RestaurantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTableView()
-        fetchRestaurantData()
+        restaurantData = restaurantManager.fetchData()!
         categoriseData()
+        setUpTableView()
     }
     
 }
@@ -72,13 +72,6 @@ private extension RestaurantViewController {
         tableView.estimatedRowHeight = 1000.0
         tableView.rowHeight = UITableView.automaticDimension
     }
-    
-    func fetchRestaurantData() {
-        restaurantManager.fetchData { [weak self] restaurants in
-            self?.restaurantData = restaurants
-        }
-    }
-    
     
     func categoriseData(){
         for category in RestaurantCategory.allCases {

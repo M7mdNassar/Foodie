@@ -236,9 +236,9 @@
 		04D08D272AF79F3B004C2E7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				04B838342B13EB0200494F49 /* Restaurant */,
 				04BF4AF92B0D04100000EB36 /* Home */,
 				042483212B11EEE900B84CB0 /* Profile */,
-				04B838342B13EB0200494F49 /* Restaurant */,
 			);
 			path = Model;
 			sourceTree = "<group>";

@@ -19,7 +19,7 @@ class PageViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigationBar()
-        fetchRestaurantData()
+        restaurants = restaurantManager.fetchData()!
         setUpCollectionView()
         startTimer()
     }
@@ -39,12 +39,6 @@ private extension PageViewController{
         pageControl.numberOfPages = restaurants.count
     }
     
-    func fetchRestaurantData() {
-        restaurantManager.fetchData { [weak self] restaurants in
-            self?.restaurants = restaurants
-           
-        }
-    }
     
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNext), userInfo: nil, repeats: true)

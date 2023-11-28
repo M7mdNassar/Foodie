@@ -1,6 +1,6 @@
 import UIKit
 
-// MARK: - Option Struct
+   // MARK: - Option Struct
 
 struct Option {
     let title: String
@@ -20,14 +20,15 @@ class ProfileViewController: UIViewController {
     // MARK: - Variables
     
     let backButton = UIBarButtonItem()
-    let individualApi = UserApi()
+    let userApi = UserApi()
     var user: User?
-    let options:[Option] = [Option(title: "تعديل الملف الشخصي", icon:                               UIImage(systemName: "person.crop.circle.fill")!) ,
-                            Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
-                            Option(title: "تواصل معنا", icon: UIImage(systemName: "message.fill")!),
-                            Option(title: "دعوه صديق", icon: UIImage(systemName: "person.crop.circle.badge.plus")!),
-                            Option(title: "سياسه الخصوصيه", icon: UIImage(systemName: "lock.circle.fill")!),
-                            Option(title: "تسجيل الخروج", icon: UIImage(systemName: "rectangle.portrait.and.arrow.forward.fill")!)
+    let options:[Option] = [
+        Option(title: "تعديل الملف الشخصي", icon: UIImage(systemName: "person.crop.circle.fill")!),
+        Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
+        Option(title: "تواصل معنا", icon: UIImage(systemName: "message.fill")!),
+        Option(title: "دعوه صديق", icon: UIImage(systemName: "person.crop.circle.badge.plus")!),
+        Option(title: "سياسه الخصوصيه", icon: UIImage(systemName: "lock.circle.fill")!),
+        Option(title: "تسجيل الخروج", icon: UIImage(systemName: "rectangle.portrait.and.arrow.forward.fill")!)
     ]
     
     // MARK: - Life Cycle Controller
@@ -36,34 +37,62 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureTabBar()
         configureTable()
-        individualApi.delegate = self
-        individualApi.feachData()
         configureNavigationBar()
-    }
-    
-    // MARK: - Table Configration
-    
-    func configureTable(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: "ProfileTableViewCell")
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100 // this the default without scaling (average) .
-    
+        fetchDataAndUpdateUI()
     }
     
     // MARK: - Methods
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-               if segue.identifier == "goToEdit",
-                   let editProfileVC = segue.destination as? EditProfile {
-                   editProfileVC.user = user
-                   editProfileVC.delegate = self
-               }
-           }
-     
+    func configureTable() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        let cellNib = UINib(nibName: "ProfileTableViewCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "ProfileTableViewCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
+    }
+    
+    func configureNavigationBar() {
+        backButton.title = NSLocalizedString("رجوع", comment: "")
+        self.navigationItem.backBarButtonItem = backButton
+        let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
+        backButton.setTitleTextAttributes([.font: scaledFont], for: .normal)
+    }
+    
+    func configureTabBar() {
+        self.tabBarItem = UITabBarItem(title: NSLocalizedString("Profile", comment: ""), image: UIImage(systemName: "person.crop.circle.fill"), selectedImage: nil)
+        if let tabBarItem = self.tabBarItem {
+            let scaledFont = UIFont.systemFont(ofSize: UIFont.labelFontSize).withSize(12.0)
+            tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
+        }
+    }
+    
+    func fetchDataAndUpdateUI() {
+        Task {
+            do {
+                user = try await userApi.fetchData().results.first
+                updateUI(user: user!)
+            } catch {
+                print("Error fetching data: \(error)")
+            }
+        }
+    }
+    
+    func updateUI(user: User) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let imageURL = URL(string: user.picture.large),
+               let imageData = try? Data(contentsOf: imageURL),
+               let image = UIImage(data: imageData) {
+                DispatchQueue.main.async {
+                    self.setUpImageAsCircleWithShadowAndBorder()
+                    self.userImageView.image = image
+                    self.userNameLabel.text = user.name.first
+                    self.setUpFont()
+                }
+            }
+        }
+        self.user = user
+    }
     
     func logout() {
         let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
@@ -72,53 +101,32 @@ class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { action in
             // Perform logout actions
-
-            // Remove user defaults
             UserDefaults.standard.removeObject(forKey: "username")
             UserDefaults.standard.removeObject(forKey: "password")
-
-            // Navigate to the LoginViewController
             if let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
                 let navigationController = UINavigationController(rootViewController: loginViewController)
                 navigationController.modalPresentationStyle = .fullScreen
                 self.present(navigationController, animated: true, completion: nil)
             }
         }))
-
         present(alert, animated: true, completion: nil)
     }
-}
-
-    // MARK: - Assistent To Retrive Data
-
-extension ProfileViewController: ApiDelegate{
-    func didRetriveData(user: UserResult) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            // Perform the network operation in the background queue
-            if let imageURL = URL(string: (user.results.first?.picture.large)!),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-
-                DispatchQueue.main.async {
-                    // Update UI on the main queue
-                    self.setUpImageAsCircleWithShadowAndBorder()
-                    self.userImageView.image = image
-                    self.userNameLabel.text = user.results[0].name.first
-                    self.setUpFont()
-                }
-            }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let editProfileVC = segue.destination as? EditProfile {
+            editProfileVC.user = user
+            editProfileVC.delegate = self
         }
-        self.user = user.results.first
     }
 }
 
-    // MARK: - TableView Delegate
+// MARK: - TableView Delegate
 
-extension ProfileViewController: UITableViewDelegate{
+extension ProfileViewController: UITableViewDelegate {
     
 }
 
-    // MARK: - TableView Data Source
+// MARK: - TableView Data Source
 
 extension ProfileViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -138,23 +146,20 @@ extension ProfileViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedOption = indexPath.row
-
-             if selectedOption == 0 {
-                 performSegue(withIdentifier: "goToEdit", sender: self)
-             } else if selectedOption == 5{
-                 logout()
-             }
-        tableView.deselectRow(at: indexPath, animated: true)  // for remove the highlight of selected cell
-
-         }
+        if selectedOption == 0 {
+            performSegue(withIdentifier: "goToEdit", sender: self)
+        } else if selectedOption == 5 {
+            logout()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
-    // MARK: - Private Methods For UI
+// MARK: - Private Methods For UI
 
- private extension ProfileViewController{
+private extension ProfileViewController {
     
     func setUpImageAsCircleWithShadowAndBorder() {
-        // Make view as circle shape & apply a shadow
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.clipsToBounds = true
         circleView.layer.shadowColor = UIColor.black.cgColor
@@ -163,60 +168,32 @@ extension ProfileViewController : UITableViewDataSource {
         circleView.layer.shadowRadius = 7
         circleView.clipsToBounds = false
 
-        // Make image as circle shape & apply a border
         userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
         userImageView.layer.borderWidth = 4.0
         userImageView.layer.borderColor = UIColor.white.cgColor
         
-        // contentView corner
         contentView.layer.cornerRadius = 15
-       
     }
     
-    func setUpFont(){
-       //let maximumFontSizeRestaurantName: CGFloat = 50.0
-        
-        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0)  {
-            userNameLabel.font =  UIFontMetrics.default.scaledFont(for: customFont)
+    func setUpFont() {
+        let maximumFontSize: CGFloat = 40.0
+        if let customFont = UIFont(name: "Harmattan-Regular", size: 19.0) {
+            let scaledFont = UIFontMetrics.default.scaledFont(for: customFont)
+            userNameLabel.font = scaledFont.withSize(min(scaledFont.pointSize, maximumFontSize))
         }
     }
-
-    func configureTabBar(){
-        self.tabBarItem = UITabBarItem(title: NSLocalizedString("Profile", comment: ""), image: UIImage(systemName: "person.crop.circle.fill"), selectedImage: nil)
-        
-        if let tabBarItem = self.tabBarItem {
-            let scaledFont = UIFont.systemFont(ofSize: UIFont.labelFontSize).withSize(12.0) 
-            tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
-        }
-    }
-     
-     func configureNavigationBar(){
-         backButton.title = NSLocalizedString("رجوع", comment: "")
-         self.navigationItem.backBarButtonItem = backButton
-         
-         let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
-         backButton.setTitleTextAttributes([.font: scaledFont], for: .normal)
-     }
-
-    
 }
 
- // MARK: - Update User
+// MARK: - Update User After Edit
 
-extension ProfileViewController: EditProfileDelegate{
+extension ProfileViewController: EditProfileDelegate {
     
     func didUpdateUser(_ user: User) {
-           // Handle the updated user data
-           self.user = user
-
+        self.user = user
         DispatchQueue.main.async {
-            // Update UI on the main queue
             self.setUpImageAsCircleWithShadowAndBorder()
-            //self.userImageView.image = user.picture.large
             self.userNameLabel.text = user.name.first
             self.setUpFont()
         }
-        
-       }
-
+    }
 }

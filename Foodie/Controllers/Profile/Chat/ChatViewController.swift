@@ -16,7 +16,7 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var inputTextField: UITextField!
     
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -39,6 +39,8 @@ class ChatViewController: UIViewController {
            super.viewDidAppear(animated)
            scrollToBottom() // Scroll to the last cell when the view appears
        }
+    
+    
 
     // MARK: - Actions
 
@@ -172,7 +174,6 @@ extension ChatViewController {
             let topViewHeight = topView.frame.height
             let bottomViewHeight = bottomView.frame.height
             let newTableViewHeight = view.frame.height - keyboardSize.height - bottomViewHeight - topViewHeight
-            
             UIView.animate(withDuration: 0.3) {
                 self.tableView.frame.size.height = newTableViewHeight
                 self.view.layoutIfNeeded()
@@ -185,7 +186,6 @@ extension ChatViewController {
                 self.view.layoutIfNeeded()
             }
 
-            
             // Calculate the offset needed to keep the last cell visible above the keyboard
             let lastCellIndexPath = IndexPath(row: self.messages.count - 1, section: 0)
             let lastCellRect = self.tableView.rectForRow(at: lastCellIndexPath)
@@ -197,6 +197,8 @@ extension ChatViewController {
             // Scroll to the last cell
             self.tableView.scrollToRow(at: lastCellIndexPath, at: .bottom, animated: true)
         }
+        
+
     }
 
     
@@ -209,5 +211,7 @@ extension ChatViewController {
         }
         
         tableView.contentInset = UIEdgeInsets.zero
+        
+
     }
 }

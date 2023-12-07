@@ -10,14 +10,16 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet weak var favouriteButton: UIButton!
     
     // MARK: - Actions
-    
-    @IBAction func showRestaurantButton(_ sender: UIButton) {
-        print("Show Clicked")
-    }
-    
+        
+    var favoriteButtonTapped: (() -> Void)?
+
     
     @IBAction func addToFavourite(_ sender: UIButton) {
         print("Star Clicked")
+        
+        favoriteButtonTapped?()
+
+        
     }
     
     // MARK: - UI Setup Cell
@@ -26,8 +28,15 @@ class RestaurantCell: UITableViewCell {
         restaurantImage.image = UIImage(named: img)
         restaurantNameLabel.text = NSLocalizedString(name, comment: "")
         setUpFontLabels()
-        favouriteButton.isEnabled = isFavourite
+        
+        if isFavourite{
+            favouriteButton.tintColor = .systemYellow
+        }
+        else{
+            favouriteButton.tintColor = .systemGray3
 
+        }
+      
     }
     
     func setUpFontLabels(){

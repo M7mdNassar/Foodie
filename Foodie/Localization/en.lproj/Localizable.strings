@@ -1,11 +1,16 @@
 
 // Login
 
-"welcome" = "Welcome" ; 
-"loginButton" = "Login" ; 
-"userName" = "User Name" ;
-"password" = "Password" ;
+//"welcome" = "Welcome" ; 
+//"loginButton" = "Login" ; 
+//"userName" = "User Name" ;
+//"password" = "Password" ;
+//
 
+"welcome" = "أهلا وسهلاً" ;
+"loginButton" = "دخول" ;
+"userName" = "اسم المستخدم" ;
+"password" = "الرقم السري" ;
 
 // Home
 "Home" = "Home";
@@ -35,4 +40,5 @@
 
 "userCity" = "City" ;
 "userPhone" = "Phone";
-"save" = "Save Changes";
+"save" = "حفظ التغييرات";
+"Edit Profile" = "الملف الشخصي";

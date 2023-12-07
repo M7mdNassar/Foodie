@@ -35,6 +35,8 @@ class IngredientsCollectionViewCell: UICollectionViewCell {
          // Reset any state that might be changed during usage
         self.ingredientImageView.layer.borderColor = UIColor.foodieLightBlue.cgColor
         self.ingredientNameLabel.textColor = .black
+        self.ingredientImageView.tintColor = .black
+
         
      }
     

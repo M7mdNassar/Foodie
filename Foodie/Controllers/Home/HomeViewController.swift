@@ -18,6 +18,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoadingView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { self.hideLoadingView() }
         configureTabBar()
         configureCollection()
         setUpAnimation()
@@ -62,6 +64,8 @@ class HomeViewController: UIViewController {
     //MARK: - Tab Bar Configuration
     
     func configureTabBar(){
+        self.tabBarController?.selectedIndex = 0
+        
         self.tabBarItem = UITabBarItem(title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "fork.knife.circle.fill"), selectedImage: nil)
         
         if let tabBarItem = self.tabBarItem {
@@ -91,12 +95,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
             // Check if this cell corresponds to a dragged item
         if draggedIndexPaths.contains(indexPath) {
-            cell.circleView.layer.borderColor = UIColor.green.cgColor
-            cell.ingredientNameLabel.textColor = .green
+            cell.circleView.layer.borderColor = UIColor.foodieLightGreen.cgColor
+            cell.ingredientNameLabel.textColor = .foodieLightGreen
+            cell.ingredientImageView.tintColor = .foodieLightGreen
           } else {
               // Reset cell state for non-dragged items
               cell.circleView.layer.borderColor = UIColor.foodieLightBlue.cgColor
               cell.ingredientNameLabel.textColor = .black
+              cell.ingredientImageView.tintColor = .black
+
 
           }
         
@@ -137,8 +144,10 @@ extension HomeViewController: UICollectionViewDragDelegate,  UICollectionViewDro
          for indexPath in draggedIndexPaths {
              if let cell = collectionView.cellForItem(at: indexPath) as? IngredientsCollectionViewCell {
                  stopAnimation()
-                 cell.ingredientNameLabel.textColor = .green
-                 cell.circleView.layer.borderColor = UIColor.green.cgColor
+                 cell.ingredientNameLabel.textColor = .foodieLightGreen
+                 cell.circleView.layer.borderColor = UIColor.foodieLightGreen.cgColor
+                 cell.ingredientImageView.tintColor = .foodieLightGreen
+
              }
          }
     }
@@ -157,4 +166,30 @@ extension HomeViewController: UICollectionViewDragDelegate,  UICollectionViewDro
         return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
 
+}
+
+
+
+// MARK: - Loading View
+extension HomeViewController {
+    private func showLoadingView() {
+        let loadingView = UIView(frame: view.bounds)
+        loadingView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        loadingView.tag = 123 // Set a unique tag
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = loadingView.center
+        activityIndicator.color = .white
+        activityIndicator.startAnimating()
+        
+        loadingView.addSubview(activityIndicator)
+        view.addSubview(loadingView)
+    }
+    
+    func hideLoadingView() {
+        let loadingViewTag = 123 // Assign a unique tag to your loading view
+        if let loadingView = view.viewWithTag(loadingViewTag) {
+            loadingView.removeFromSuperview()
+        }
+    }
 }

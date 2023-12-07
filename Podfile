@@ -6,7 +6,6 @@ target 'Foodie' do
   use_frameworks!
 
   # Pods for Foodie
-
 pod 'lottie-ios'
 pod 'IQKeyboardManagerSwift'
 end

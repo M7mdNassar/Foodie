@@ -25,7 +25,7 @@ class RestaurantsList: UIViewController {
     // MARK: - Actions
 
     @IBAction func favoriteSwitchChanged(_ sender: UISwitch)  {
-        updateDisplayedRestaurants(isFavorite: sender.isOn)
+        updateDisplayedRestaurants(isOn: sender.isOn)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,7 +47,14 @@ extension RestaurantsList: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! RestaurantCell
         let data = restaurants[indexPath.row]
+        
+        
         cell.setUpCell(img: data.imageName, name: data.name, isFavourite: data.isFavorite)
+        
+        cell.favoriteButtonTapped = {
+               self.toggleFavoriteStatus(at: indexPath)
+           }
+        
         return cell
     }
     
@@ -76,16 +83,18 @@ private extension RestaurantsList {
     }
     
 
-    private func updateDisplayedRestaurants(isFavorite: Bool) {
-            if isFavorite {
-                let favoriteRestaurants = restaurantManager.getFavoriteRestaurants()
-                self.restaurants = favoriteRestaurants
-            } else {
-                let allRestaurants = restaurantManager.getAllRestaurants()
-                self.restaurants = allRestaurants
-            }
-            self.tableView.reloadData()
-      
+    private func updateDisplayedRestaurants(isOn: Bool) {
+
+        if isOn {
+            let favoriteRestaurants = restaurants.filter({ $0.isFavorite })
+            self.restaurants = favoriteRestaurants
+        } else {
+            let allRestaurants = restaurantManager.getAllRestaurants()
+            self.restaurants = allRestaurants
+        }
+        self.tableView.reloadData()
+
+        
     }
     
     func configureNavigationBar() {
@@ -102,5 +111,15 @@ private extension RestaurantsList {
             let scaledFont = UIFont.systemFont(ofSize: UIFont.labelFontSize).withSize(12.0)
             tabBarItem.setTitleTextAttributes([.font: scaledFont], for: .normal)
         }
+    }
+    
+}
+
+private extension RestaurantsList {
+    func toggleFavoriteStatus(at indexPath: IndexPath) {
+        restaurants[indexPath.row].isFavorite.toggle()
+                
+        
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

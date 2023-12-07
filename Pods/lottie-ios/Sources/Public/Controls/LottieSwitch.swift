@@ -1,6 +1,7 @@
 // Created by Cal Stephens on 8/11/23.
 // Copyright © 2023 Airbnb Inc. All rights reserved.
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A wrapper which exposes Lottie's `AnimatedSwitch` to SwiftUI
@@ -32,8 +33,8 @@ public struct LottieSwitch: UIViewConfiguringSwiftUIView {
       #if os(macOS)
       // Disable the intrinsic content size constraint on the inner animation view,
       // or the Epoxy `SwiftUIMeasurementContainer` won't size this view correctly.
-      context.launchView.animationView.isVerticalContentSizeConstraintActive = false
-      context.launchView.animationView.isHorizontalContentSizeConstraintActive = false
+      context.view.animationView.isVerticalContentSizeConstraintActive = false
+      context.view.animationView.isHorizontalContentSizeConstraintActive = false
       #endif
 
       if let isOn = isOn?.wrappedValue, isOn != context.view.isOn {
@@ -142,3 +143,4 @@ public struct LottieSwitch: UIViewConfiguringSwiftUIView {
   private var isOn: Binding<Bool>?
 
 }
+#endif

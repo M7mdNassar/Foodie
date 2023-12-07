@@ -1,7 +1,8 @@
 
 import Foundation
 
-struct Restaurant: Decodable {
+struct Restaurant: Decodable{
+  
     var name: String
     var isFavorite: Bool
     var imageName: String
@@ -9,6 +10,7 @@ struct Restaurant: Decodable {
     var description: String
     var city: String
     var category: String
+    
 }
 
 struct Coordinates: Decodable {

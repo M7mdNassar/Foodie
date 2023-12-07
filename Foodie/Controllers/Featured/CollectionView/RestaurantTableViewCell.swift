@@ -80,7 +80,8 @@ extension RestaurantTableViewCell: UICollectionViewDataSource{
 extension RestaurantTableViewCell: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width * 0.5 , height: collectionView.frame.height)
+        
+        return CGSize(width: collectionView.frame.width * 0.4 , height: collectionView.frame.height)
     }
     }
 

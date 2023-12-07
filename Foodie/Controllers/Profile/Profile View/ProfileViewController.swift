@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController {
     
     let backButton = UIBarButtonItem()
     let userApi = UserApi()
-    var user: User?
     let options:[Option] = [
         Option(title: "تعديل الملف الشخصي", icon: UIImage(systemName: "person.crop.circle.fill")!),
         Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
@@ -37,6 +36,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureTabBar()
         configureTable()
+        PlaceholderForImage()
         configureNavigationBar()
         fetchDataAndUpdateUI()
     }
@@ -50,6 +50,7 @@ class ProfileViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: "ProfileTableViewCell")
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+        contentView.layer.cornerRadius = 15 //make corner around the table content
     }
     
     func configureNavigationBar() {
@@ -70,36 +71,34 @@ class ProfileViewController: UIViewController {
     func fetchDataAndUpdateUI() {
         Task {
             do {
-                user = try await userApi.fetchData().results.first
+                let user = try await userApi.fetchData().results.first
                 updateUI(user: user!)
+                UserManager.saveUserToUserDefaults(user: user!)
             } catch {
                 print("Error fetching data: \(error)")
             }
         }
     }
-    
     func updateUI(user: User) {
         DispatchQueue.global(qos: .userInitiated).async {
             if let imageURL = URL(string: user.picture.large),
                let imageData = try? Data(contentsOf: imageURL),
                let image = UIImage(data: imageData) {
                 DispatchQueue.main.async {
-                    self.setUpImageAsCircleWithShadowAndBorder()
+                    self.setShadowAroundImage()
                     self.userImageView.image = image
                     self.userNameLabel.text = user.name.first
                     self.setUpFont()
                 }
             }
         }
-        self.user = user
     }
     
     func logout() {
-        let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.foodieLightGreen
+        let alert = UIAlertController(title: "تسجيل الخروج", message:"هل أنت متأكد أنك تريد تسجيل الخروج؟", preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { action in
+        alert.addAction(UIAlertAction(title: "إلغاء", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "تسجيل الخروج", style: .destructive, handler: { action in
             // Perform logout actions
             UserDefaults.standard.removeObject(forKey: "username")
             UserDefaults.standard.removeObject(forKey: "password")
@@ -113,11 +112,14 @@ class ProfileViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let editProfileVC = segue.destination as? EditProfile {
-            editProfileVC.user = user
-            editProfileVC.delegate = self
+        
+        if segue.identifier == "goToEdit"{
+            if let editProfileVC = segue.destination as? EditProfile {
+                editProfileVC.delegate = self
+            }
         }
     }
+    
 }
 
 // MARK: - TableView Delegate
@@ -148,9 +150,14 @@ extension ProfileViewController : UITableViewDataSource {
         let selectedOption = indexPath.row
         if selectedOption == 0 {
             performSegue(withIdentifier: "goToEdit", sender: self)
-        } else if selectedOption == 5 {
+        }
+        else if selectedOption == 2 {
+            performSegue(withIdentifier: "goToChat", sender: self)
+        }
+        else if selectedOption == 5 {
             logout()
         }
+       
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -159,20 +166,22 @@ extension ProfileViewController : UITableViewDataSource {
 
 private extension ProfileViewController {
     
-    func setUpImageAsCircleWithShadowAndBorder() {
+    func PlaceholderForImage() {
+        userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
+        userImageView.layer.borderWidth = 4.0
+        userImageView.layer.borderColor = UIColor.white.cgColor
+        userImageView.clipsToBounds = true
+        
         circleView.layer.cornerRadius = circleView.frame.size.width / 2
         circleView.clipsToBounds = true
+        circleView.clipsToBounds = false
+    }
+    
+    func setShadowAroundImage() {
         circleView.layer.shadowColor = UIColor.black.cgColor
         circleView.layer.shadowOpacity = 0.7
         circleView.layer.shadowOffset = CGSize.zero
         circleView.layer.shadowRadius = 7
-        circleView.clipsToBounds = false
-
-        userImageView.layer.cornerRadius = userImageView.frame.size.width / 2
-        userImageView.layer.borderWidth = 4.0
-        userImageView.layer.borderColor = UIColor.white.cgColor
-        
-        contentView.layer.cornerRadius = 15
     }
     
     func setUpFont() {
@@ -188,12 +197,22 @@ private extension ProfileViewController {
 
 extension ProfileViewController: EditProfileDelegate {
     
-    func didUpdateUser(_ user: User) {
-        self.user = user
-        DispatchQueue.main.async {
-            self.setUpImageAsCircleWithShadowAndBorder()
-            self.userNameLabel.text = user.name.first
-            self.setUpFont()
+    func saveUpdatedUserToUserDefaults(updatedUser: User) {
+        if var currentUser = UserManager.getUserFromUserDefaults() {
+            // Update the locally saved user data
+            currentUser.name = updatedUser.name
+            currentUser.location = updatedUser.location
+            currentUser.phone = updatedUser.phone
+            currentUser.dob = updatedUser.dob
+            currentUser.picture = updatedUser.picture
+
+            // Save the updated user to UserDefaults
+            UserManager.saveUserToUserDefaults(user: currentUser)
         }
+    }
+    
+    func didUpdateUser(_ user: User) {
+        updateUI(user: user)
+        saveUpdatedUserToUserDefaults(updatedUser: user)
     }
 }

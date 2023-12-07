@@ -1,6 +1,7 @@
 // Created by Cal Stephens on 8/14/23.
 // Copyright © 2023 Airbnb Inc. All rights reserved.
 
+#if canImport(SwiftUI)
 import SwiftUI
 
 /// A wrapper which exposes Lottie's `AnimatedButton` to SwiftUI
@@ -33,8 +34,8 @@ public struct LottieButton: UIViewConfiguringSwiftUIView {
       #if os(macOS)
       // Disable the intrinsic content size constraint on the inner animation view,
       // or the Epoxy `SwiftUIMeasurementContainer` won't size this view correctly.
-      context.launchView.animationView.isVerticalContentSizeConstraintActive = false
-      context.launchView.animationView.isHorizontalContentSizeConstraintActive = false
+      context.view.animationView.isVerticalContentSizeConstraintActive = false
+      context.view.animationView.isHorizontalContentSizeConstraintActive = false
       #endif
     }
     .configurations(configurations)
@@ -118,5 +119,5 @@ public struct LottieButton: UIViewConfiguringSwiftUIView {
   private let animation: LottieAnimation?
   private let action: () -> Void
   private var configuration: LottieConfiguration = .shared
-
 }
+#endif

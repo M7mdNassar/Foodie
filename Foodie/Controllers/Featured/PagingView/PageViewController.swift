@@ -17,7 +17,6 @@ class PageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureNavigationBar()
         restaurants = restaurantManager.fetchData()!
         setUpCollectionView()
@@ -37,6 +36,9 @@ private extension PageViewController{
         pagingCollectionView.dataSource = self
         pagingCollectionView.delegate = self
         pageControl.numberOfPages = restaurants.count
+        
+        pagingCollectionView.isUserInteractionEnabled = false
+
     }
     
     

@@ -22,15 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iVL-1l-iaH">
-                                <rect key="frame" x="12" y="12" width="46" height="46"/>
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iVL-1l-iaH" secondAttribute="trailing" constant="12" id="A4d-Jg-69O"/>
-                            <constraint firstAttribute="bottom" secondItem="iVL-1l-iaH" secondAttribute="bottom" constant="12" id="g8a-eu-aZN"/>
-                            <constraint firstItem="iVL-1l-iaH" firstAttribute="leading" secondItem="COX-uP-aIC" secondAttribute="leading" constant="12" id="h4i-gN-xco"/>
-                            <constraint firstItem="iVL-1l-iaH" firstAttribute="top" secondItem="COX-uP-aIC" secondAttribute="top" constant="12" id="sIu-al-3fY"/>
+                            <constraint firstAttribute="trailing" secondItem="iVL-1l-iaH" secondAttribute="trailing" constant="20" id="A4d-Jg-69O"/>
+                            <constraint firstAttribute="bottom" secondItem="iVL-1l-iaH" secondAttribute="bottom" constant="20" id="g8a-eu-aZN"/>
+                            <constraint firstItem="iVL-1l-iaH" firstAttribute="leading" secondItem="COX-uP-aIC" secondAttribute="leading" constant="20" id="h4i-gN-xco"/>
+                            <constraint firstItem="iVL-1l-iaH" firstAttribute="top" secondItem="COX-uP-aIC" secondAttribute="top" constant="20" id="sIu-al-3fY"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hw-G9-Iyv">

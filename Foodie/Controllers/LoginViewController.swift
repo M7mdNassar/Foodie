@@ -1,7 +1,8 @@
 import UIKit
+import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
@@ -10,100 +11,86 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     
     // MARK: - Properties
-    
     var defaults = UserDefaults.standard
-
+    
     // MARK: - Life Cycle Controller
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        IQKeyboardManager.shared.enable = true
         configure()
         setUpUI()
         setUpBackground()
-
     }
-
-    // MARK: - Methods
     
+    // MARK: - Actions
     @IBAction func loginButton(_ sender: UIButton) {
-        
-        if attemptLogin(){
+        if attemptLogin() {
+                self.transitionToHomeScreen()
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-            
-            // This is to get the SceneDelegate object from your view controller
-            // then call the change root view controller function to change to main tab bar
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
-            
-        }else {
+        } else {
             return
         }
     }
-
-    private func attemptLogin() -> Bool{
+    
+    // MARK: - Private Methods
+    private func attemptLogin() -> Bool {
         guard let username = userNameLabel.text,
-              let password = userPasswordLabel.text , !username.isEmpty, !password.isEmpty else {
+              let password = userPasswordLabel.text,
+              !username.isEmpty, !password.isEmpty else {
             return false
         }
-
+        
         defaults.set(username, forKey: "username")
         defaults.set(password, forKey: "password")
         return true
-       
     }
     
-
-}
-
+    private func transitionToHomeScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+    }
+    
     // MARK: - Set Up UI
-
-private extension LoginViewController {
-    func setUpBackground() {
+    private func setUpBackground() {
         let foodieColor = UIColor(named: "FoodieLightGreen")
-
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [foodieColor!.cgColor, UIColor.white.cgColor]
         gradientLayer.locations = [0.0, 1.2]
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
-
-    func setUpUI() {
-        welcomeLabel.text = NSLocalizedString("welcome", comment: "greating")
+    
+    private func setUpUI() {
+        welcomeLabel.text = NSLocalizedString("welcome", comment: "greeting")
         
         // make the image as a circle
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
-
+        
         // make corner for Button
         loginButton.layer.cornerRadius = 18.0
         loginButton.clipsToBounds = true
         loginButton.setTitle(NSLocalizedString("loginButton", comment: "Login Button Title"), for: .normal)
     }
-
     
 }
 
     // MARK: - UITextFieldDelegate
-
-extension LoginViewController: UITextFieldDelegate {
-    func configure() {
-        userNameLabel.delegate = self
-        userPasswordLabel.delegate = self
-        
-        userNameLabel.placeholder = NSLocalizedString("userName", comment: "")
-        userPasswordLabel.placeholder = NSLocalizedString("password", comment: "")
-
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userNameLabel {
-            userPasswordLabel.becomeFirstResponder()
-        } else if textField == userPasswordLabel {
-            textField.resignFirstResponder()
+    extension LoginViewController: UITextFieldDelegate {
+        func configure() {
+            userNameLabel.delegate = self
+            userPasswordLabel.delegate = self
+            userNameLabel.placeholder = NSLocalizedString("userName", comment: "")
+            userPasswordLabel.placeholder = NSLocalizedString("password", comment: "")
         }
 
-        return true
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            if textField == userNameLabel {
+                userPasswordLabel.becomeFirstResponder()
+            } else if textField == userPasswordLabel {
+                textField.resignFirstResponder()
+            }
+            return true
+        }
     }
-}

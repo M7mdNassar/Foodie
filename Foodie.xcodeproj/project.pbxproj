@@ -36,8 +36,6 @@
 		04BF4AF42B0CD4940000EB36 /* IngredientsServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */; };
 		04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */; };
 		04BF4AF82B0D02EC0000EB36 /* IngredientsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BF4AF62B0D02EC0000EB36 /* IngredientsCollectionViewCell.xib */; };
-		04C072E52B20FB18003A7599 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C072E42B20FB18003A7599 /* UserManager.swift */; };
-		04C072E72B2112D1003A7599 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C072E62B2112D1003A7599 /* Message.swift */; };
 		04C73CDA2B1881F6005D7F38 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C73CD92B1881F6005D7F38 /* ChatViewController.swift */; };
 		04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D122AF79F1F004C2E7E /* AppDelegate.swift */; };
 		04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */; };
@@ -46,6 +44,8 @@
 		04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D1D2AF79F22004C2E7E /* LaunchScreen.storyboard */; };
 		04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */; };
 		04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */; };
+		04DB69952B232AED0074569A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB69942B232AED0074569A /* UserManager.swift */; };
+		04DB69972B232B110074569A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB69962B232B110074569A /* Message.swift */; };
 		04DC0F392B0BF8800077FE2B /* IngredientsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F382B0BF8800077FE2B /* IngredientsData.json */; };
 		04DC0F3B2B0BF8900077FE2B /* cookingPotBlue.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */; };
 		04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */; };
@@ -89,8 +89,6 @@
 		04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsServiceManager.swift; sourceTree = "<group>"; };
 		04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF4AF62B0D02EC0000EB36 /* IngredientsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientsCollectionViewCell.xib; sourceTree = "<group>"; };
-		04C072E42B20FB18003A7599 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		04C072E62B2112D1003A7599 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		04C73CD92B1881F6005D7F38 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		04D08D0F2AF79F1F004C2E7E /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D08D122AF79F1F004C2E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +99,8 @@
 		04D08D202AF79F22004C2E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Regular.ttf"; sourceTree = "<group>"; };
 		04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Bold.ttf"; sourceTree = "<group>"; };
+		04DB69942B232AED0074569A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		04DB69962B232B110074569A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		04DC0F382B0BF8800077FE2B /* IngredientsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IngredientsData.json; sourceTree = "<group>"; };
 		04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cookingPotBlue.json; sourceTree = "<group>"; };
 		04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RestaurantsData.json; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 				04B838342B13EB0200494F49 /* Restaurant */,
 				04BF4AF92B0D04100000EB36 /* Home */,
 				042483212B11EEE900B84CB0 /* Profile */,
-				04C072E42B20FB18003A7599 /* UserManager.swift */,
-				04C072E62B2112D1003A7599 /* Message.swift */,
+				04DB69942B232AED0074569A /* UserManager.swift */,
+				04DB69962B232B110074569A /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -532,12 +532,12 @@
 				04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
 				04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */,
-				04C072E52B20FB18003A7599 /* UserManager.swift in Sources */,
 				04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */,
-				04C072E72B2112D1003A7599 /* Message.swift in Sources */,
 				04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */,
+				04DB69972B232B110074569A /* Message.swift in Sources */,
 				046A75022B1935C2002F62E2 /* ImageIncomingMessageCell.swift in Sources */,
 				043325022AFC2D6000452C1E /* PageViewController.swift in Sources */,
+				04DB69952B232AED0074569A /* UserManager.swift in Sources */,
 				0480428B2B14BAD4001406FA /* EditProfile.swift in Sources */,
 				0455BD3B2AF7F518006218AB /* RestaurantsList.swift in Sources */,
 				04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */,

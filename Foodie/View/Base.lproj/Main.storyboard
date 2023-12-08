@@ -1052,7 +1052,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0901960656" green="0.0901960656" blue="0.0901960656" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1083,7 +1083,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomView" destination="dKl-Ba-WpA" id="AOY-NQ-2Y0"/>
-                        <outlet property="inputTextField" destination="Cje-gg-h6c" id="Eyy-I6-TiY"/>
                         <outlet property="tableView" destination="ceo-mO-eyH" id="kgk-B2-Aq6"/>
                         <outlet property="topView" destination="fEP-um-k8a" id="ymN-55-SBm"/>
                         <outlet property="userImageView" destination="JPK-PG-0Ep" id="tml-k2-DhM"/>
@@ -1095,9 +1094,6 @@
             <point key="canvasLocation" x="5864.8854961832058" y="1453.5211267605634"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="uf4-eV-bzy"/>
-    </designables>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="95"/>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
@@ -1115,19 +1111,19 @@
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

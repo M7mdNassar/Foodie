@@ -27,8 +27,7 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ATD-U4-G1f">
                         <rect key="frame" x="41" y="16" width="200" height="168"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="h5v-o4-6RQ"/>
-                            <constraint firstAttribute="width" secondItem="ATD-U4-G1f" secondAttribute="height" multiplier="25:21" id="zwp-vl-ROc"/>
+                            <constraint firstAttribute="width" secondItem="ATD-U4-G1f" secondAttribute="height" multiplier="25:21" id="8IM-jE-5JH"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -46,7 +45,7 @@
                 <outlet property="messageImageView" destination="ATD-U4-G1f" id="tiA-Xc-kz8"/>
                 <outlet property="userImageView" destination="6h1-K3-yYD" id="dyg-sI-4Im"/>
             </connections>
-            <point key="canvasLocation" x="-3.0534351145038165" y="74.647887323943664"/>
+            <point key="canvasLocation" x="-151" y="74"/>
         </tableViewCell>
     </objects>
 </document>

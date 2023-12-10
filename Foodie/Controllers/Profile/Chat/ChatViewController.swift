@@ -29,10 +29,7 @@ class ChatViewController: UIViewController {
         setUpNavigationItem()
         setUpTable()
         populateMessages()
-
-        // Add observer for keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        addNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,8 +82,11 @@ private extension ChatViewController {
             Message(text: "Hi there!", image: nil, sender: otherUser, type: .text),
             Message(text: "Hi there!", image: nil, sender: currentUser!, type: .text),
             Message(text: "Helo!Helo!Helo!...", image: nil, sender: otherUser, type: .text),
-            Message(text: "", image: UIImage(named: "1002"), sender: currentUser!, type: .image),
-            Message(text: "", image: UIImage(named: "1004"), sender: otherUser, type: .image)
+            Message(text: "", image: UIImage(named: "1005"), sender: currentUser!, type: .image),
+            Message(text: "", image: UIImage(named: "1002"), sender: otherUser, type: .image),
+            Message(text: "", image: UIImage(named: "1003"), sender: otherUser, type: .image),
+            Message(text: "", image: UIImage(named: "1004"), sender: currentUser!, type: .image),
+            Message(text: "", image: UIImage(named: "1001"), sender: currentUser!, type: .image),
         ]
     }
 
@@ -138,24 +138,24 @@ private extension ChatViewController {
 
     func configureTextCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
         if data.sender == currentUser {
-            let cell = tableView.dequeue() as TextIncomingMessageCell
-            cell.configure(messageText: data.text, userImageUrl: otherUser.picture.large)
-            return cell
-        } else {
             let cell = tableView.dequeue() as TextOutgoingMessageCell
             cell.configure(messageText: data.text, userImageUrl: currentUser!.picture.large)
+            return cell
+        } else {
+            let cell = tableView.dequeue() as TextIncomingMessageCell
+            cell.configure(messageText: data.text, userImageUrl: otherUser.picture.large)
             return cell
         }
     }
 
     func configureImageCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
         if data.sender == currentUser {
-            let cell = tableView.dequeue() as ImageIncomingMessageCell
-            cell.configure(messageImage: data.image ?? UIImage(named: "1001")!, userImageUrl: otherUser.picture.large)
-            return cell
-        } else {
             let cell = tableView.dequeue() as ImageOutgoingMessageCell
             cell.configure(messageImage: data.image ?? UIImage(named: "1001")!, userImageUrl: currentUser!.picture.large)
+            return cell
+        } else {
+            let cell = tableView.dequeue() as ImageIncomingMessageCell
+            cell.configure(messageImage: data.image ?? UIImage(named: "1001")!, userImageUrl: otherUser.picture.large)
             return cell
         }
     }
@@ -165,6 +165,11 @@ private extension ChatViewController {
 // MARK: - Keyboard Handling
 
 extension ChatViewController {
+    
+    func addNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {

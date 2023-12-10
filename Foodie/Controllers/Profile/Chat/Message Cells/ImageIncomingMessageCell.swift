@@ -8,14 +8,62 @@ class ImageIncomingMessageCell: UITableViewCell {
     @IBOutlet weak var messageImageView: UIImageView!
     
     
-    func configure(messageImage: UIImage , userImageUrl: String ){
-        self.messageImageView.image = messageImage
+    
+    func configure(messageImage: UIImage, userImageUrl: String) {
+        // Set initial corner radius and masking
         self.messageImageView.layer.cornerRadius = 15.0
         self.messageImageView.layer.masksToBounds = true
-        
-        loadUserImage(urlString: userImageUrl)
 
+        // Calculate image dimensions
+        let dimensions = calculateImageDimensions(for: messageImage, maxWidth: 310.0, minWidth: 150.0)
+
+        // Update image view frame constraints
+        self.messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+        self.messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
+        self.messageImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40).isActive = true
+
+        // Set image and content mode
+        self.messageImageView.image = messageImage
+        
+        // Calculate aspect ratio
+        let aspectRatio = dimensions.width / dimensions.height
+
+        if dimensions.width > dimensions.height {
+            self.messageImageView.contentMode = .scaleAspectFill // Landscape
+        } else {
+            self.messageImageView.contentMode = .scaleAspectFit // Portrait
+        }
+
+        // Update aspect ratio constraint
+        for constraint in self.messageImageView.constraints {
+            if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
+                // Assuming you have only one aspect ratio constraint
+                constraint.isActive = false // deactivate existing constraint
+                let aspectRatioConstraint = self.messageImageView.widthAnchor.constraint(equalTo: self.messageImageView.heightAnchor, multiplier: aspectRatio)
+                aspectRatioConstraint.isActive = true
+            }
+        }
+
+        // Load user image (optional)
+        loadUserImage(urlString: userImageUrl)
     }
+
+    
+    func calculateImageDimensions(for image: UIImage, maxWidth: CGFloat , minWidth: CGFloat) -> (width: CGFloat, height: CGFloat) {
+      let imageWidth = image.size.width
+      let imageHeight = image.size.height
+      let aspectRatio = imageWidth / imageHeight
+      
+      // Calculate width based on maximum width and aspect ratio
+        
+      let width = min (maxWidth , max(minWidth , imageWidth))
+      let height = width / aspectRatio
+      
+      return (width, height)
+    }
+
+
+
     
     
     func loadUserImage(urlString: String) {

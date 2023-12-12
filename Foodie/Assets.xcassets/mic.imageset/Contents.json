@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "icons8-camera-50.png",
+      "filename" : "icons8-mic-48.png",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

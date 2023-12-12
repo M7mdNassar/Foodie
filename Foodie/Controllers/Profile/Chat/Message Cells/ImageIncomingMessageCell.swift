@@ -48,7 +48,7 @@ class ImageIncomingMessageCell: UITableViewCell {
     }
 
     func calculateImageDimensions(for image: UIImage) -> (width: CGFloat, height: CGFloat) {
-        let maxWidth = 310.0, minWidth = 150.0
+        let maxWidth = UIScreen.main.bounds.width * 0.7 , minWidth = 150.0
 
         let imageWidth = image.size.width
         let imageHeight = image.size.height

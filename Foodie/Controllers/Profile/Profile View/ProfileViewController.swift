@@ -41,6 +41,10 @@ class ProfileViewController: UIViewController {
         fetchDataAndUpdateUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.backgroundColor = UIColor.tertiarySystemGroupedBackground
+    }
+    
     // MARK: - Methods
     
     func configureTable() {
@@ -58,6 +62,7 @@ class ProfileViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backButton
         let scaledFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: UIFont.labelFontSize))
         backButton.setTitleTextAttributes([.font: scaledFont], for: .normal)
+
     }
     
     func configureTabBar() {

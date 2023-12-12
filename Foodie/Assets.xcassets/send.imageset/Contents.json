@@ -1,12 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Screenshot 2023-12-11 at 11.09.26 am.png",
+      "filename" : "icons8-send-30.png",
       "idiom" : "universal"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

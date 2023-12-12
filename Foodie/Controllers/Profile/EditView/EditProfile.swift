@@ -31,8 +31,9 @@ class EditProfile: UIViewController {
         setUpImageAsCircleWithShadowAndBorder()
         tapGesture()
         populateUserData()
-        
+
         userBirthDatePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        
     }
     
     // MARK: - Actions
@@ -173,6 +174,8 @@ class EditProfile: UIViewController {
     private func configureNavigationBar() {
         navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.navigationBar.tintColor = UIColor.foodieLightGreen
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+   
         title = NSLocalizedString("Edit Profile", comment: "")
     }
     

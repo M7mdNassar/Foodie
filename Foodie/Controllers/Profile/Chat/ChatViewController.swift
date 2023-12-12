@@ -10,16 +10,17 @@ class ChatViewController: UIViewController {
     let otherUser = User(gender: "female", name: Name(first: "Krystle", last: "Melis"), email: "krystle.melis@example.com", dob: DateOfBirth(date: "1987-02-03T21:40:35.906Z", age: 36), phone: "(025) 7310305", id: ID(name: "BSN", value: "51718516"), picture: Picture(large: "https://randomuser.me/api/portraits/women/77.jpg"))
 
     var messages: [Message] = []
+    private let defaultTextViewHeight: CGFloat = 33.0
+    private let maxTextViewHeight: CGFloat = 50.0
 
     // MARK: - Outlets
   
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Life Cycle
 
@@ -28,8 +29,11 @@ class ChatViewController: UIViewController {
         IQKeyboardManager.shared.enable = false
         setUpNavigationItem()
         setUpTable()
+        setUpTextView()
         populateMessages()
         addNotifications()
+
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +45,36 @@ class ChatViewController: UIViewController {
 
     @IBAction func back(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func sendButton(_ sender: UIButton) {
+        
+        // Get the text from the textView
+              guard let messageText = textView.text, !messageText.isEmpty else {
+                  return // Don't send empty messages
+              }
+
+              // Create a new message and add it to the messages array
+           let newMessage = Message(text: messageText, image: nil, sender: currentUser!, type: .text)
+               messages.append(newMessage)
+
+              // Reload the table view to display the new message
+              tableView.reloadData()
+
+              // Clear the textView after sending the message
+              textView.text = ""
+
+              // Scroll to the bottom to show the latest message
+              scrollToBottom()
+        
+        // Reset textView height to the original value
+           textViewHeightConstraint.constant = defaultTextViewHeight
+           view.layoutIfNeeded()
+        
+    }
+    
+    @IBAction func sendImage(_ sender: UIButton) {
+        showImagePicker()
     }
 
 }
@@ -86,9 +120,7 @@ private extension ChatViewController {
             Message(text: "", image: UIImage(named: "1002"), sender: otherUser, type: .image),
             Message(text: "", image: UIImage(named: "1003"), sender: otherUser, type: .image),
             Message(text: "", image: UIImage(named: "1004"), sender: currentUser!, type: .image),
-            Message(text: "", image: UIImage(named: "1001"), sender: currentUser!, type: .image),
-            Message(text: "", image: UIImage(named: "00"), sender: currentUser!, type: .image),
-            Message(text: "", image: UIImage(named: "11"), sender: currentUser!, type: .image)
+            Message(text: "", image: UIImage(named: "1001"), sender: currentUser!, type: .image)
         ]
     }
 
@@ -109,6 +141,14 @@ private extension ChatViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         loadUserImage(from: otherUser.picture.large)
         userNameLabel.text = otherUser.name.first
+    }
+    
+    func setUpTextView(){
+        textView.layer.cornerRadius = 15.0
+        textView.layer.borderColor = UIColor.quaternaryLabel.cgColor
+        textView.layer.borderWidth = 1.0
+        
+        textView.delegate = self
     }
 
     func loadUserImage(from urlString: String) {
@@ -164,6 +204,58 @@ private extension ChatViewController {
 
 }
 
+
+extension ChatViewController: UITextViewDelegate{
+    
+    
+    func textViewDidChange(_ textView: UITextView) {
+        // Calculate the expected height based on the content size of the textView
+        let newSize = textView.sizeThatFits(CGSize(width: textView.frame.width, height: CGFloat.greatestFiniteMagnitude))
+        let newHeight = min(newSize.height, maxTextViewHeight) // Limit the height to maxTextViewHeight
+
+        // Update the textView's height constraint
+        textViewHeightConstraint.constant = newHeight
+
+        // Scroll the tableView to the bottom when the textView expands
+        scrollToBottom()
+    }
+    
+}
+
+    // MARK: UIImagePickerControllerDelegate
+
+extension ChatViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+        
+        private func showImagePicker() {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            present(imagePicker, animated: true, completion: nil)
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            dismiss(animated: true, completion: nil)
+            
+            if let pickedImage = info[.originalImage] as? UIImage {
+             
+                let newMessage = Message(text: "", image: pickedImage, sender: currentUser!, type: .image)
+                messages.append(newMessage)
+                
+                // Reload the table view to display the new message
+                tableView.reloadData()
+                
+                // Scroll to the bottom to show the latest message
+                scrollToBottom()
+            }
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            dismiss(animated: true, completion: nil)
+        }
+}
+
+
+
 // MARK: - Keyboard Handling
 
 extension ChatViewController {
@@ -174,29 +266,33 @@ extension ChatViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-           if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-               
-               let keyboardHeight = keyboardFrame.height
+            if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                
+                let keyboardHeight = keyboardFrame.height
 
-               // Adjust bottom view and table view
-               bottomView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
-               tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -keyboardHeight - bottomView.frame.height).isActive = true
-               
-               // Animate the changes with duration
-               UIView.animate(withDuration: 0.3) {
-                   self.view.layoutIfNeeded()
-               }
-           }
-       }
+                bottomConstraint.constant = keyboardHeight
+                // Animate the changes with duration
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                }
+                
+                // Scroll the table view to the last cell
+                     let lastRowIndex = self.tableView.numberOfRows(inSection: 0) - 1
+                     if lastRowIndex >= 0 {
+                         let indexPath = IndexPath(row: lastRowIndex, section: 0)
+                         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                     }
+            }
+        }
 
-       @objc func keyboardWillHide(_ notification: Notification) {
-           // Reset bottom view and table view constraints to original positions
-           bottomView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
-           tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -bottomView.frame.height).isActive = true
-
-           // Animate the changes with duration
-           UIView.animate(withDuration: 0.3) {
-               self.view.layoutIfNeeded()
-           }
-       }
+        @objc func keyboardWillHide(_ notification: Notification) {
+            // Reset bottom view and table view constraints to original positions
+            bottomConstraint.constant = 0
+            // Animate the changes with duration
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+            
+            scrollToBottom()
+        }
 }

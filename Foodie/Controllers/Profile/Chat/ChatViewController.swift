@@ -12,7 +12,7 @@ class ChatViewController: UIViewController {
     var messages: [Message] = []
 
     // MARK: - Outlets
-
+  
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -87,6 +87,8 @@ private extension ChatViewController {
             Message(text: "", image: UIImage(named: "1003"), sender: otherUser, type: .image),
             Message(text: "", image: UIImage(named: "1004"), sender: currentUser!, type: .image),
             Message(text: "", image: UIImage(named: "1001"), sender: currentUser!, type: .image),
+            Message(text: "", image: UIImage(named: "00"), sender: currentUser!, type: .image),
+            Message(text: "", image: UIImage(named: "11"), sender: currentUser!, type: .image)
         ]
     }
 
@@ -172,47 +174,29 @@ extension ChatViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            
-            let topViewHeight = topView.frame.height
-            let bottomViewHeight = bottomView.frame.height
-            let newTableViewHeight = view.frame.height - keyboardSize.height - bottomViewHeight - topViewHeight
-            
-            UIView.animate(withDuration: 0.3) {
-                self.tableView.frame.size.height = newTableViewHeight
-                self.view.layoutIfNeeded()
-            }
+           if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+               
+               let keyboardHeight = keyboardFrame.height
 
-            
-            let newBottomViewY = self.view.frame.height - keyboardSize.height - bottomViewHeight
-            UIView.animate(withDuration: 0.3) {
-                self.bottomView.frame.origin.y = newBottomViewY
-                self.view.layoutIfNeeded()
-            }
+               // Adjust bottom view and table view
+               bottomView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
+               tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -keyboardHeight - bottomView.frame.height).isActive = true
+               
+               // Animate the changes with duration
+               UIView.animate(withDuration: 0.3) {
+                   self.view.layoutIfNeeded()
+               }
+           }
+       }
 
-            
-            // Calculate the offset needed to keep the last cell visible above the keyboard
-            let lastCellIndexPath = IndexPath(row: self.messages.count - 1, section: 0)
-            let lastCellRect = self.tableView.rectForRow(at: lastCellIndexPath)
-            let offset = lastCellRect.origin.y + bottomViewHeight - newTableViewHeight
-            
-            // Set the content inset to avoid hiding the last cell behind the keyboard
-            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: offset, right: 0)
-            
-            // Scroll to the last cell
-            self.tableView.scrollToRow(at: lastCellIndexPath, at: .bottom, animated: true)
-        }
-    }
+       @objc func keyboardWillHide(_ notification: Notification) {
+           // Reset bottom view and table view constraints to original positions
+           bottomView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
+           tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -bottomView.frame.height).isActive = true
 
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        // Reset the table view height and content inset when the keyboard hides
-        UIView.animate(withDuration: 0.3) {
-            self.tableView.frame.size.height = self.view.frame.height - self.topView.frame.height - self.bottomView.frame.height
-            self.view.layoutIfNeeded()
-            self.bottomView.frame.origin.y = self.view.frame.height - self.bottomView.frame.height
-        }
-        
-        tableView.contentInset = UIEdgeInsets.zero
-    }
+           // Animate the changes with duration
+           UIView.animate(withDuration: 0.3) {
+               self.view.layoutIfNeeded()
+           }
+       }
 }

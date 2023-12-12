@@ -2,27 +2,28 @@ import UIKit
 
 class ImageOutgoingMessageCell: UITableViewCell {
 
+    // MARK: Outlets
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var messageImageView: UIImageView!
 
-    
-    
+    // MARK: Methods
+
     func configure(messageImage: UIImage, userImageUrl: String) {
         // Set initial corner radius and masking
         self.messageImageView.layer.cornerRadius = 15.0
         self.messageImageView.layer.masksToBounds = true
 
         // Calculate image dimensions
-        let dimensions = calculateImageDimensions(for: messageImage, maxWidth: 310.0, minWidth: 150.0)
+        let dimensions = calculateImageDimensions(for: messageImage)
 
         // Update image view frame constraints
         self.messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
         self.messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
-        self.messageImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40).isActive = true
 
         // Set image and content mode
         self.messageImageView.image = messageImage
-        
+
         // Calculate aspect ratio
         let aspectRatio = dimensions.width / dimensions.height
 
@@ -46,33 +47,28 @@ class ImageOutgoingMessageCell: UITableViewCell {
         loadUserImage(urlString: userImageUrl)
     }
 
-    
-    func calculateImageDimensions(for image: UIImage, maxWidth: CGFloat , minWidth: CGFloat) -> (width: CGFloat, height: CGFloat) {
-      let imageWidth = image.size.width
-      let imageHeight = image.size.height
-      let aspectRatio = imageWidth / imageHeight
-      
-      // Calculate width based on maximum width and aspect ratio
-        
-      let width = min (maxWidth , max(minWidth , imageWidth))
-      let height = width / aspectRatio
-      
-      return (width, height)
+    func calculateImageDimensions(for image: UIImage) -> (width: CGFloat, height: CGFloat) {
+        let maxWidth = 310.0, minWidth = 150.0
+
+        let imageWidth = image.size.width
+        let imageHeight = image.size.height
+        let aspectRatio = imageWidth / imageHeight
+
+        // Calculate width based on maximum width and aspect ratio
+        let width = min(maxWidth, max(minWidth, imageWidth))
+        let height = width / aspectRatio
+
+        return (width, height)
     }
 
-
-
-    
     func loadUserImage(urlString: String) {
         DispatchQueue.global(qos: .userInitiated).async {
             if let imageURL = URL(string: urlString),
                let imageData = try? Data(contentsOf: imageURL),
                let image = UIImage(data: imageData) {
-                
                 DispatchQueue.main.async {
                     self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
                     self.userImageView.image = image
-                    
                 }
             }
         }

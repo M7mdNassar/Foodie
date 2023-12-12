@@ -3,12 +3,12 @@ import UIKit
 
 class TextIncomingMessageCell: UITableViewCell {
 
-    
+    // MARK: Outlets
     @IBOutlet weak var backgroundMessage: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var messageTextLabel: UILabel!
     
-    
+    // MARK: Methods
     func configure(messageText: String, userImageUrl: String) {
         
         self.backgroundMessage.backgroundColor = .foodieLightBlue
@@ -36,7 +36,4 @@ class TextIncomingMessageCell: UITableViewCell {
             }
         }
     }
-
-    
-    
 }

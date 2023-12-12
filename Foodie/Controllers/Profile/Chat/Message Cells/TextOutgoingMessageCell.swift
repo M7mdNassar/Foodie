@@ -4,11 +4,12 @@ import UIKit
 
 class TextOutgoingMessageCell: UITableViewCell {
 
+    // MARK: Outlets
     @IBOutlet weak var backgroundMessage: UIView!
     @IBOutlet weak var messageTextLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     
-    
+    // MARK: Methods
     func configure(messageText: String, userImageUrl: String) {
         
         self.backgroundMessage.backgroundColor = .foodieLightGreen

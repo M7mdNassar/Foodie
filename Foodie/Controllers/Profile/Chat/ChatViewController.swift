@@ -1,5 +1,6 @@
 import UIKit
 import IQKeyboardManagerSwift
+import AVFoundation
 
 class ChatViewController: UIViewController {
 
@@ -10,8 +11,18 @@ class ChatViewController: UIViewController {
     let otherUser = User(gender: "female", name: Name(first: "Krystle", last: "Melis"), email: "krystle.melis@example.com", dob: DateOfBirth(date: "1987-02-03T21:40:35.906Z", age: 36), phone: "(025) 7310305", id: ID(name: "BSN", value: "51718516"), picture: Picture(large: "https://randomuser.me/api/portraits/women/77.jpg"))
 
     var messages: [Message] = []
+         
     private let defaultTextViewHeight: CGFloat = 33.0
     private let maxTextViewHeight: CGFloat = 50.0
+    
+    var longPressGesture: UILongPressGestureRecognizer!
+
+    let audioRecorder = AudioRecorder()
+ 
+    
+    let testAudioURL = URL(fileURLWithPath: "/Users/mac/Library/Developer/mm.mp3")
+
+    
 
     // MARK: - Outlets
   
@@ -21,20 +32,25 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mic: UIButton!
+    
     
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         IQKeyboardManager.shared.enable = false
+        configureGestureRecognizer()
+        mic.addGestureRecognizer(longPressGesture)
         setUpNavigationItem()
         setUpTable()
         setUpTextView()
         populateMessages()
         addNotifications()
-
+        
 
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
            super.viewDidAppear(animated)
@@ -55,9 +71,9 @@ class ChatViewController: UIViewController {
               }
 
               // Create a new message and add it to the messages array
-           let newMessage = Message(text: messageText, image: nil, sender: currentUser!, type: .text)
+        let newMessage = Message(text: messageText, image: nil, audioURL: nil, sender: currentUser!, type: .text)
                messages.append(newMessage)
-
+                
               // Reload the table view to display the new message
               tableView.reloadData()
 
@@ -76,7 +92,8 @@ class ChatViewController: UIViewController {
     @IBAction func sendImage(_ sender: UIButton) {
         showImagePicker()
     }
-
+    
+    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -97,6 +114,12 @@ extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
 
         case .image:
             return configureImageCell(for: data, at: indexPath)
+        case .audio:
+            return configureAudioCell(for: data, at: indexPath)
+
+        case .textAndImage:
+            return configureTextAndImageCell(for: data, at: indexPath)
+
         }
     }
 
@@ -112,15 +135,19 @@ private extension ChatViewController {
 
     func populateMessages() {
         messages = [
-            Message(text: "Helo!Helo!Helo!Helo!Helo!Helo!Helo!Helo!Helo!", image: nil, sender: currentUser!, type: .text),
-            Message(text: "Hi there!", image: nil, sender: otherUser, type: .text),
-            Message(text: "Hi there!", image: nil, sender: currentUser!, type: .text),
-            Message(text: "Helo!Helo!Helo!...", image: nil, sender: otherUser, type: .text),
-            Message(text: "", image: UIImage(named: "1005"), sender: currentUser!, type: .image),
-            Message(text: "", image: UIImage(named: "1002"), sender: otherUser, type: .image),
-            Message(text: "", image: UIImage(named: "1003"), sender: otherUser, type: .image),
-            Message(text: "", image: UIImage(named: "1004"), sender: currentUser!, type: .image),
-            Message(text: "", image: UIImage(named: "1001"), sender: currentUser!, type: .image)
+            Message(text: "Helo!Helo!Helo!Helo!Helo!Helo!Helo!Helo!Helo!", image: nil, audioURL: nil, sender: currentUser!, type: .text),
+            Message(text: "Hi there!", image: nil, audioURL: nil, sender: otherUser, type: .text),
+            Message(text: "Hi there!", image: nil, audioURL: nil, sender: currentUser!, type: .text),
+            Message(text: "Helo!Helo!Helo!...", image: nil, audioURL: nil, sender: otherUser, type: .text),
+            Message(text: "", image: UIImage(named: "1005"), audioURL: nil, sender: currentUser!, type: .image),
+            Message(text: "", image: UIImage(named: "1002"), audioURL: nil, sender: otherUser, type: .image),
+            Message(text: "", image: UIImage(named: "1003"), audioURL: nil, sender: otherUser, type: .image),
+            Message(text: "", image: UIImage(named: "1004"), audioURL: nil, sender: currentUser!, type: .image),
+            Message(text: "", image: UIImage(named: "1001"), audioURL: nil, sender: currentUser!, type: .image),
+            Message(text: "", image: nil, audioURL: testAudioURL, sender: otherUser, type: .audio),
+            Message(text: "mohamad hello", image: UIImage(named: "1005"), audioURL: nil, sender: currentUser!, type: .textAndImage),
+            Message(text: "Hello", image: UIImage(named: "1004"), audioURL: nil, sender: otherUser, type: .textAndImage)
+         
         ]
     }
 
@@ -131,6 +158,11 @@ private extension ChatViewController {
         tableView.register(Cell: TextIncomingMessageCell.self)
         tableView.register(Cell: ImageIncomingMessageCell.self)
         tableView.register(Cell: ImageOutgoingMessageCell.self)
+        tableView.register(Cell: AudioIncomingMessageCell.self)
+        tableView.register(Cell: AudioOutgoingMessageCell.self)
+        tableView.register(Cell: TextAndImageOutgoingMessageCell.self)
+        tableView.register(Cell: TextAndImageIncomingMessageCell.self)
+        
 
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
@@ -171,6 +203,34 @@ private extension ChatViewController {
             tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
         }
     }
+    
+    func configureGestureRecognizer(){
+        longPressGesture  = UILongPressGestureRecognizer(target: self, action: #selector(recordAndSend))
+    }
+    
+    @objc func recordAndSend() {
+            switch longPressGesture.state {
+            case .began:
+                audioRecorder.startRecording()
+                print("Recording...")
+
+            case .ended:
+                audioRecorder.stopRecording()
+                print("Stopped recording.")
+                
+                if let audioURL = audioRecorder.getAudioFileURL() {
+                    // Create the audio message
+                    let newMessage = Message(text: "", image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
+                    messages.append(newMessage)
+                    tableView.reloadData()
+                    scrollToBottom()
+                }
+
+            @unknown default:
+                print("Unknown")
+            }
+        }
+
 
 }
 
@@ -198,6 +258,32 @@ private extension ChatViewController {
         } else {
             let cell = tableView.dequeue() as ImageIncomingMessageCell
             cell.configure(messageImage: data.image ?? UIImage(named: "1001")!, userImageUrl: otherUser.picture.large)
+            return cell
+        }
+    }
+    
+    func configureAudioCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
+        
+        if data.sender == currentUser {
+            let cell = tableView.dequeue() as AudioOutgoingMessageCell
+            cell.configure(audioURL: data.audioURL!, userImageUrl: currentUser!.picture.large)
+            return cell
+        } else {
+            let cell = tableView.dequeue() as AudioIncomingMessageCell
+            cell.configure(audioURL:data.audioURL! , userImageUrl: otherUser.picture.large)
+            return cell
+        }
+    }
+    
+    func configureTextAndImageCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
+        
+        if data.sender == currentUser {
+            let cell = tableView.dequeue() as TextAndImageOutgoingMessageCell
+            cell.configure(messageText: data.text,messageImage:data.image! , userImageUrl: currentUser!.picture.large)
+            return cell
+        } else {
+            let cell = tableView.dequeue() as TextAndImageIncomingMessageCell
+            cell.configure(messageText: data.text,messageImage:data.image! , userImageUrl: otherUser.picture.large)
             return cell
         }
     }
@@ -238,7 +324,7 @@ extension ChatViewController: UINavigationControllerDelegate, UIImagePickerContr
             
             if let pickedImage = info[.originalImage] as? UIImage {
              
-                let newMessage = Message(text: "", image: pickedImage, sender: currentUser!, type: .image)
+                let newMessage = Message(text: "", image: pickedImage, audioURL: nil, sender: currentUser!, type: .image)
                 messages.append(newMessage)
                 
                 // Reload the table view to display the new message
@@ -296,3 +382,4 @@ extension ChatViewController {
             scrollToBottom()
         }
 }
+

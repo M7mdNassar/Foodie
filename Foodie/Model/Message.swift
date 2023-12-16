@@ -3,9 +3,11 @@ import UIKit
 
 // MARK: MessageType Enum
 
-enum MessageType : CaseIterable {
+enum MessageType: String {
     case text
     case image
+    case audio
+    case textAndImage
 }
 
 // MARK: Message Struct
@@ -13,6 +15,7 @@ enum MessageType : CaseIterable {
 struct Message {
     let text: String
     let image: UIImage?
+    let audioURL: URL?
     let sender: User
     let type: MessageType
 }

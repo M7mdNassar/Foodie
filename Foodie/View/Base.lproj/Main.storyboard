@@ -566,18 +566,18 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="mVK-Cw-UVp">
-                                <rect key="frame" x="12.333333333333343" y="400" width="368.33333333333326" height="258"/>
+                                <rect key="frame" x="12.333333333333343" y="400" width="368.33333333333326" height="259"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="45I-DP-Ne9">
-                                        <rect key="frame" x="0.0" y="0.0" width="358.33333333333331" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="358.33333333333331" height="34.333333333333336"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eHk-Eg-A3Z">
-                                                <rect key="frame" x="0.0" y="0.0" width="280.66666666666669" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="289" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الإسم :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jot-eV-oOo">
-                                                <rect key="frame" x="307.66666666666669" y="0.0" width="50.666666666666686" height="34"/>
+                                                <rect key="frame" x="316" y="0.0" width="42.333333333333314" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -585,15 +585,15 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="BJX-6h-NeK">
-                                        <rect key="frame" x="0.0" y="52" width="358.33333333333331" height="34"/>
+                                        <rect key="frame" x="0.0" y="52.333333333333314" width="358.33333333333331" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sf4-D5-Ybc">
-                                                <rect key="frame" x="0.0" y="0.0" width="249" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="261.66666666666669" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="300" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="البريد الإلكتروني :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oab-X3-kMN">
-                                                <rect key="frame" x="251.99999999999997" y="0.0" width="106.33333333333334" height="34"/>
+                                                <rect key="frame" x="264.66666666666669" y="0.0" width="93.666666666666686" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="86" id="bMZ-97-Euh"/>
                                                 </constraints>
@@ -604,15 +604,15 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="jGd-12-9D7">
-                                        <rect key="frame" x="0.0" y="104" width="358.33333333333331" height="34"/>
+                                        <rect key="frame" x="0.0" y="104.33333333333331" width="358.33333333333331" height="34.333333333333343"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LaI-6d-M7T">
-                                                <rect key="frame" x="0.0" y="0.0" width="289.33333333333331" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="288.66666666666669" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المدينة :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JK-6J-fnR">
-                                                <rect key="frame" x="307.33333333333337" y="0.0" width="51" height="34"/>
+                                                <rect key="frame" x="306.66666666666669" y="0.0" width="51.666666666666686" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -620,15 +620,15 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="U7e-uh-0iI">
-                                        <rect key="frame" x="0.0" y="156" width="358.33333333333331" height="34"/>
+                                        <rect key="frame" x="0.0" y="156.66666666666663" width="358.33333333333331" height="34.333333333333343"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jkK-PG-xnh">
-                                                <rect key="frame" x="0.0" y="0.0" width="282.66666666666669" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="291" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الهاتف :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrg-s8-QqN">
-                                                <rect key="frame" x="300.66666666666669" y="0.0" width="57.666666666666686" height="34"/>
+                                                <rect key="frame" x="309" y="0.0" width="49.333333333333314" height="34.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -636,10 +636,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ar5-Xw-Sqa">
-                                        <rect key="frame" x="0.0" y="208" width="358.33333333333331" height="50"/>
+                                        <rect key="frame" x="0.0" y="209" width="358.33333333333331" height="50"/>
                                         <subviews>
                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-sv-xOT">
-                                                <rect key="frame" x="0.0" y="0.0" width="258" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="271" height="50"/>
                                                 <date key="minimumDate" timeIntervalSinceReferenceDate="-1609419600">
                                                     <!--1950-01-01 11:00:00 am +0000-->
                                                 </date>
@@ -648,7 +648,7 @@
                                                 </date>
                                             </datePicker>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تاريخ الميلاد :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQy-nd-8JM">
-                                                <rect key="frame" x="266" y="0.0" width="92.333333333333314" height="50"/>
+                                                <rect key="frame" x="279" y="0.0" width="79.333333333333314" height="50"/>
                                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -665,7 +665,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRn-TG-QUR">
-                                <rect key="frame" x="121" y="693" width="151" height="40"/>
+                                <rect key="frame" x="121" y="694" width="151" height="40"/>
                                 <color key="backgroundColor" name="FoodieLightGreen"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
@@ -1132,6 +1132,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="dm4-2y-Jss" id="gH7-iK-5Kz"/>
+                        <outlet property="mic" destination="Jv2-QK-Knj" id="72Y-ld-tbm"/>
                         <outlet property="tableView" destination="ceo-mO-eyH" id="kgk-B2-Aq6"/>
                         <outlet property="textView" destination="wNB-td-oZF" id="dxf-ii-y6w"/>
                         <outlet property="textViewHeightConstraint" destination="ei6-zs-HgW" id="HQz-A0-OEr"/>

@@ -1,15 +1,30 @@
+
 import UIKit
 
-class ImageIncomingMessageCell: UITableViewCell {
+class TextAndImageIncomingMessageCell: UITableViewCell {
 
-    // MARK: Outlets
     
     @IBOutlet weak var userImageView: UIImageView!
+    
+    @IBOutlet weak var backgroundMessage: UIView!
+    
+    @IBOutlet weak var messageTextLabel: UILabel!
+    
     @IBOutlet weak var messageImageView: UIImageView!
-
+    
+    
     // MARK: Methods
-
-    func configure(messageImage: UIImage?, userImageUrl: String) {
+    func configure(messageText: String?, messageImage: UIImage?, userImageUrl: String) {
+        
+        self.backgroundMessage.backgroundColor = .foodieLightGreen
+        self.backgroundMessage.layer.cornerRadius = 15.0
+        self.backgroundMessage.layer.masksToBounds = true
+        
+        if let messageText = messageText{
+            self.messageTextLabel.text = messageText
+        }
+        loadUserImage(urlString : userImageUrl)
+        
         // Set initial corner radius and masking
         self.messageImageView.layer.cornerRadius = 15.0
         self.messageImageView.layer.masksToBounds = true
@@ -43,13 +58,26 @@ class ImageIncomingMessageCell: UITableViewCell {
                     aspectRatioConstraint.isActive = true
                 }
             }
-            
-            // Load user image (optional)
-            loadUserImage(urlString: userImageUrl)
         }
         
     }
-
+    
+    func loadUserImage(urlString: String) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let imageURL = URL(string: urlString),
+               let imageData = try? Data(contentsOf: imageURL),
+               let image = UIImage(data: imageData) {
+                
+                DispatchQueue.main.async {
+                    self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
+                    self.userImageView.image = image
+                    
+                }
+            }
+        }
+    }
+    
+    
     func calculateImageDimensions(for image: UIImage) -> (width: CGFloat, height: CGFloat) {
         let maxWidth = UIScreen.main.bounds.width * 0.7 , minWidth = 150.0
 
@@ -64,16 +92,8 @@ class ImageIncomingMessageCell: UITableViewCell {
         return (width, height)
     }
 
-    func loadUserImage(urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: urlString),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-                DispatchQueue.main.async {
-                    self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
-                    self.userImageView.image = image
-                }
-            }
-        }
-    }
+    
+    
 }
+
+

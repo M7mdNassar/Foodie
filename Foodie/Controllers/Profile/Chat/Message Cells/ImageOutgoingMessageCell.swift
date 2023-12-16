@@ -9,42 +9,45 @@ class ImageOutgoingMessageCell: UITableViewCell {
 
     // MARK: Methods
 
-    func configure(messageImage: UIImage, userImageUrl: String) {
+    func configure(messageImage: UIImage?, userImageUrl: String) {
         // Set initial corner radius and masking
         self.messageImageView.layer.cornerRadius = 15.0
         self.messageImageView.layer.masksToBounds = true
-
-        // Calculate image dimensions
-        let dimensions = calculateImageDimensions(for: messageImage)
-
-        // Update image view frame constraints
-        self.messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
-        self.messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
-
-        // Set image and content mode
-        self.messageImageView.image = messageImage
-
-        // Calculate aspect ratio
-        let aspectRatio = dimensions.width / dimensions.height
-
-        if dimensions.width > dimensions.height {
-            self.messageImageView.contentMode = .scaleAspectFill // Landscape
-        } else {
-            self.messageImageView.contentMode = .scaleAspectFit // Portrait
-        }
-
-        // Update aspect ratio constraint
-        for constraint in self.messageImageView.constraints {
-            if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
-                // Assuming you have only one aspect ratio constraint
-                constraint.isActive = false // deactivate existing constraint
-                let aspectRatioConstraint = self.messageImageView.widthAnchor.constraint(equalTo: self.messageImageView.heightAnchor, multiplier: aspectRatio)
-                aspectRatioConstraint.isActive = true
+        
+        if let messageImage = messageImage{
+            
+            // Calculate image dimensions
+            let dimensions = calculateImageDimensions(for: messageImage)
+            
+            // Update image view frame constraints
+            self.messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+            self.messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
+            
+            // Set image and content mode
+            self.messageImageView.image = messageImage
+            
+            // Calculate aspect ratio
+            let aspectRatio = dimensions.width / dimensions.height
+            
+            if dimensions.width > dimensions.height {
+                self.messageImageView.contentMode = .scaleAspectFill // Landscape
+            } else {
+                self.messageImageView.contentMode = .scaleAspectFit // Portrait
             }
+            
+            // Update aspect ratio constraint
+            for constraint in self.messageImageView.constraints {
+                if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
+                    // Assuming you have only one aspect ratio constraint
+                    constraint.isActive = false // deactivate existing constraint
+                    let aspectRatioConstraint = self.messageImageView.widthAnchor.constraint(equalTo: self.messageImageView.heightAnchor, multiplier: aspectRatio)
+                    aspectRatioConstraint.isActive = true
+                }
+            }
+            
+            // Load user image (optional)
+            loadUserImage(urlString: userImageUrl)
         }
-
-        // Load user image (optional)
-        loadUserImage(urlString: userImageUrl)
     }
 
     func calculateImageDimensions(for image: UIImage) -> (width: CGFloat, height: CGFloat) {

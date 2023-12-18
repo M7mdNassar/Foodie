@@ -44,7 +44,6 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.039275519549999999" green="0.039056681099999997" blue="0.047059856359999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
                     <constraint firstItem="9Fo-eP-rGg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="4F6-zi-CxM"/>
                     <constraint firstAttribute="bottom" secondItem="9Fo-eP-rGg" secondAttribute="bottom" constant="16" id="7vY-fj-bpk"/>

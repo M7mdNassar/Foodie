@@ -10,7 +10,7 @@ class TextIncomingMessageCell: UITableViewCell {
     
     // MARK: Methods
     func configure(messageText: String?, userImageUrl: String) {
-        
+        self.backgroundColor = .clear
         self.backgroundMessage.backgroundColor = .foodieLightBlue
         self.backgroundMessage.layer.cornerRadius = 15.0
         self.backgroundMessage.layer.masksToBounds = true

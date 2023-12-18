@@ -50,7 +50,6 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="UXE-ht-maN" firstAttribute="leading" secondItem="HkA-bB-IUY" secondAttribute="trailing" constant="8" id="2Fx-UZ-DRW"/>
                     <constraint firstItem="3hX-He-nX0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="100" id="2jH-9t-jWZ"/>

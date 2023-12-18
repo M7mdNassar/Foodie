@@ -22,7 +22,7 @@
                         <rect key="frame" x="20" y="5" width="253" height="70"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-XY-bAa">
-                                <rect key="frame" x="203" y="10" width="50" height="50"/>
+                                <rect key="frame" x="195" y="10" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Aq7-D6-g6w"/>
                                     <constraint firstAttribute="width" constant="50" id="YGc-JM-83r"/>
@@ -33,27 +33,26 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="playButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GCb-gt-3wh"/>
+                                    <action selector="playButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ynw-s3-7rg"/>
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="24Y-6Y-FhS">
-                                <rect key="frame" x="46" y="18.666666666666671" width="151" height="34"/>
+                                <rect key="frame" x="46" y="18.666666666666671" width="146" height="34"/>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7SF-XY-bAa" firstAttribute="centerY" secondItem="kjZ-dC-s5H" secondAttribute="centerY" id="0wT-40-K3J"/>
-                            <constraint firstItem="7SF-XY-bAa" firstAttribute="leading" secondItem="24Y-6Y-FhS" secondAttribute="trailing" constant="8" symbolic="YES" id="9Y6-yf-n7B"/>
-                            <constraint firstAttribute="trailing" secondItem="7SF-XY-bAa" secondAttribute="trailing" id="ARX-ao-W5Z"/>
                             <constraint firstItem="giC-tr-BsD" firstAttribute="leading" secondItem="kjZ-dC-s5H" secondAttribute="leading" id="Bix-Q7-TX0"/>
                             <constraint firstAttribute="height" constant="70" id="NCc-DS-H3P"/>
                             <constraint firstItem="24Y-6Y-FhS" firstAttribute="centerY" secondItem="kjZ-dC-s5H" secondAttribute="centerY" id="QBE-My-cPv"/>
                             <constraint firstItem="giC-tr-BsD" firstAttribute="centerY" secondItem="kjZ-dC-s5H" secondAttribute="centerY" id="SzZ-vv-tHc"/>
+                            <constraint firstItem="7SF-XY-bAa" firstAttribute="leading" secondItem="24Y-6Y-FhS" secondAttribute="trailing" constant="5" id="cSK-Rp-Q6j"/>
+                            <constraint firstAttribute="trailing" secondItem="7SF-XY-bAa" secondAttribute="trailing" constant="8" id="jFK-ln-dgK"/>
                             <constraint firstItem="24Y-6Y-FhS" firstAttribute="leading" secondItem="giC-tr-BsD" secondAttribute="trailing" constant="4" id="ofQ-EC-Xab"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="kjZ-dC-s5H" secondAttribute="bottom" constant="5" id="43G-WQ-R5o"/>
                     <constraint firstItem="kjZ-dC-s5H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nci-pR-TYd"/>
@@ -64,6 +63,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundMessage" destination="kjZ-dC-s5H" id="MFS-ZF-CkU"/>
+                <outlet property="playButton" destination="giC-tr-BsD" id="6wt-EO-pa4"/>
+                <outlet property="progressBar" destination="24Y-6Y-FhS" id="GTn-jh-lgp"/>
                 <outlet property="userImageView" destination="7SF-XY-bAa" id="zwb-ac-Cr1"/>
             </connections>
             <point key="canvasLocation" x="45.038167938931295" y="-5.6338028169014089"/>

@@ -33,7 +33,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="play:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ckn-PZ-M0E"/>
+                                    <action selector="playButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Cwc-oa-6vO"/>
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5jk-8T-XXH">
@@ -53,7 +53,6 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Pvx-pa-Tkq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="OPb-MD-8P6"/>
                     <constraint firstAttribute="bottom" secondItem="Pvx-pa-Tkq" secondAttribute="bottom" constant="5" id="mTc-qQ-xlE"/>
@@ -64,7 +63,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundMessage" destination="Pvx-pa-Tkq" id="31E-rg-t9f"/>
-                <outlet property="playButton" destination="Be3-dT-L6F" id="V8v-mM-Oqz"/>
+                <outlet property="playButton" destination="Be3-dT-L6F" id="2jl-zf-tVo"/>
+                <outlet property="progressBar" destination="5jk-8T-XXH" id="BYm-F0-5as"/>
                 <outlet property="userImageView" destination="dT4-Dg-igD" id="IFW-nB-Uvj"/>
             </connections>
             <point key="canvasLocation" x="74.809160305343511" y="19.014084507042256"/>

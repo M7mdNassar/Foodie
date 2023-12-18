@@ -10,6 +10,7 @@ class ImageIncomingMessageCell: UITableViewCell {
     // MARK: Methods
 
     func configure(messageImage: UIImage?, userImageUrl: String) {
+        self.backgroundColor = .clear
         // Set initial corner radius and masking
         self.messageImageView.layer.cornerRadius = 15.0
         self.messageImageView.layer.masksToBounds = true

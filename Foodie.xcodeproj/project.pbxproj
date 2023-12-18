@@ -40,7 +40,6 @@
 		046A75022B1935C2002F62E2 /* ImageIncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A75002B1935C2002F62E2 /* ImageIncomingMessageCell.swift */; };
 		046A75032B1935C2002F62E2 /* ImageIncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046A75012B1935C2002F62E2 /* ImageIncomingMessageCell.xib */; };
 		0480428B2B14BAD4001406FA /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480428A2B14BAD4001406FA /* EditProfile.swift */; };
-		04A01A7F2B2B29810085018A /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A01A7E2B2B29810085018A /* AudioRecorder.swift */; };
 		04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */; };
 		04BF4AF42B0CD4940000EB36 /* IngredientsServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */; };
 		04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */; };
@@ -61,6 +60,7 @@
 		04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */; };
 		04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */; };
 		04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */; };
+		04FD42792B2F8A4800010D69 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD42782B2F8A4800010D69 /* AudioManager.swift */; };
 		04FD8E0B2B0F3C4800EB9941 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */; };
 		04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0F2B0F598200EB9941 /* UserResult.swift */; };
 		04FD8E122B0F5D2200EB9941 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E112B0F5D2200EB9941 /* UserApi.swift */; };
@@ -102,7 +102,6 @@
 		046A75002B1935C2002F62E2 /* ImageIncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIncomingMessageCell.swift; sourceTree = "<group>"; };
 		046A75012B1935C2002F62E2 /* ImageIncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageIncomingMessageCell.xib; sourceTree = "<group>"; };
 		0480428A2B14BAD4001406FA /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
-		04A01A7E2B2B29810085018A /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsServiceManager.swift; sourceTree = "<group>"; };
 		04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoKufiArabic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
+		04FD42782B2F8A4800010D69 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		04FD8E0F2B0F598200EB9941 /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
 		04FD8E112B0F5D2200EB9941 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 				042483212B11EEE900B84CB0 /* Profile */,
 				04DB69942B232AED0074569A /* UserManager.swift */,
 				04DB69962B232B110074569A /* Message.swift */,
-				04A01A7E2B2B29810085018A /* AudioRecorder.swift */,
+				04FD42782B2F8A4800010D69 /* AudioManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -551,12 +551,12 @@
 				0424831F2B11ECD200B84CB0 /* ProfileTableViewCell.swift in Sources */,
 				04567A0B2B2CD11D00ADD4BC /* TextAndImageIncomingMessageCell.swift in Sources */,
 				04FD8E0B2B0F3C4800EB9941 /* ProfileViewController.swift in Sources */,
+				04FD42792B2F8A4800010D69 /* AudioManager.swift in Sources */,
 				041641D82AFD24B70054CCAC /* RestaurantViewController.swift in Sources */,
 				044CC8CC2B1938D500CAE3B8 /* UITableViewExtension.swift in Sources */,
 				0455BD412AF7FFB1006218AB /* Restaurant.swift in Sources */,
 				04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */,
 				041519E22B1D03E900053B0A /* TextIncomingMessageCell.swift in Sources */,
-				04A01A7F2B2B29810085018A /* AudioRecorder.swift in Sources */,
 				04BF4AF42B0CD4940000EB36 /* IngredientsServiceManager.swift in Sources */,
 				041519E62B1D089900053B0A /* ImageOutgoingMessageCell.swift in Sources */,
 				04FD8E122B0F5D2200EB9941 /* UserApi.swift in Sources */,

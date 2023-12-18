@@ -11,7 +11,7 @@ class ChatViewController: UIViewController {
     var messages: [Message] = []
     var selectedImage: UIImage?
     var longPressGesture: UILongPressGestureRecognizer!
-    let audioRecorder = AudioRecorder()
+    private let audioManager = AudioManager.shared
     let testAudioURL = URL(fileURLWithPath: "/Users/mac/Library/Developer/mm.mp3")
 
     // MARK: - Outlets
@@ -23,7 +23,8 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mic: UIButton!
-
+    @IBOutlet weak var sendButton: UIButton!
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -83,24 +84,29 @@ class ChatViewController: UIViewController {
     @objc private func recordAndSend() {
         switch longPressGesture.state {
         case .began:
-            audioRecorder.startRecording()
+            sendButton.isHidden = true
             print("Recording...")
+            audioManager.startRecording()
 
         case .ended:
-            audioRecorder.stopRecording()
+            sendButton.isHidden = false
             print("Stopped recording.")
+            audioManager.stopRecording()
 
-            if let audioURL = audioRecorder.getAudioFileURL() {
-                let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
-                messages.append(newMessage)
-                tableView.reloadData()
-                scrollToBottom()
-            }
+            // Create message and reload table
+            let audioURL = audioManager.currentRecordingURL
+            print("The Path is : \(String(describing: audioURL!))")
+            
+            let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
+            messages.append(newMessage)
+            tableView.reloadData()
+            scrollToBottom()
 
-        @unknown default:
+        default:
             print("Unknown")
         }
     }
+
 
 }
 
@@ -249,9 +255,15 @@ private extension ChatViewController {
         tableView.register(Cell: TextAndImageOutgoingMessageCell.self)
         tableView.register(Cell: TextAndImageIncomingMessageCell.self)
 
+         let backgroundImage = UIImageView(image: UIImage(named: "whatsApp background"))
+         backgroundImage.contentMode = .scaleAspectFill
+         backgroundImage.clipsToBounds = true
+         tableView.backgroundView = backgroundImage
+         
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+         tableView.allowsSelection = false
     }
 
      func setUpNavigationItem() {

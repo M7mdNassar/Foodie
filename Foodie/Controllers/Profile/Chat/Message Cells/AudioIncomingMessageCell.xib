@@ -39,10 +39,18 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="24Y-6Y-FhS">
                                 <rect key="frame" x="46" y="18.666666666666671" width="146" height="34"/>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrc-YC-GBT">
+                                <rect key="frame" x="187" y="65" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7SF-XY-bAa" firstAttribute="centerY" secondItem="kjZ-dC-s5H" secondAttribute="centerY" id="0wT-40-K3J"/>
+                            <constraint firstAttribute="bottom" secondItem="vrc-YC-GBT" secondAttribute="bottom" constant="5" id="35B-D5-lPj"/>
+                            <constraint firstItem="7SF-XY-bAa" firstAttribute="leading" secondItem="vrc-YC-GBT" secondAttribute="trailing" constant="8" symbolic="YES" id="38V-kd-lLF"/>
                             <constraint firstItem="giC-tr-BsD" firstAttribute="leading" secondItem="kjZ-dC-s5H" secondAttribute="leading" id="Bix-Q7-TX0"/>
                             <constraint firstAttribute="height" constant="70" id="NCc-DS-H3P"/>
                             <constraint firstItem="24Y-6Y-FhS" firstAttribute="centerY" secondItem="kjZ-dC-s5H" secondAttribute="centerY" id="QBE-My-cPv"/>
@@ -65,6 +73,7 @@
                 <outlet property="backgroundMessage" destination="kjZ-dC-s5H" id="MFS-ZF-CkU"/>
                 <outlet property="playButton" destination="giC-tr-BsD" id="6wt-EO-pa4"/>
                 <outlet property="progressBar" destination="24Y-6Y-FhS" id="GTn-jh-lgp"/>
+                <outlet property="timeLabel" destination="vrc-YC-GBT" id="l8I-IH-N6W"/>
                 <outlet property="userImageView" destination="7SF-XY-bAa" id="zwb-ac-Cr1"/>
             </connections>
             <point key="canvasLocation" x="45.038167938931295" y="-5.6338028169014089"/>

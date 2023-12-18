@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be3-dT-L6F">
-                                <rect key="frame" x="66" y="17.666666666666671" width="44" height="35"/>
+                                <rect key="frame" x="66" y="17.666666666666671" width="43.333333333333343" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="play.fill" catalog="system"/>
                                 <connections>
@@ -37,15 +37,23 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5jk-8T-XXH">
-                                <rect key="frame" x="113" y="18.666666666666671" width="185" height="34"/>
+                                <rect key="frame" x="112.33333333333336" y="18.666666666666671" width="185.66666666666663" height="34"/>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mI-RH-cDh">
+                                <rect key="frame" x="296" y="65" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5jk-8T-XXH" firstAttribute="leading" secondItem="Be3-dT-L6F" secondAttribute="trailing" constant="5" id="Cwi-yI-Z1X"/>
                             <constraint firstItem="dT4-Dg-igD" firstAttribute="leading" secondItem="Pvx-pa-Tkq" secondAttribute="leading" constant="8" id="EJ6-cN-Hy1"/>
+                            <constraint firstAttribute="bottom" secondItem="0mI-RH-cDh" secondAttribute="bottom" constant="5" id="HQw-kV-pPs"/>
                             <constraint firstItem="Be3-dT-L6F" firstAttribute="centerY" secondItem="Pvx-pa-Tkq" secondAttribute="centerY" id="IWs-uK-IBA"/>
                             <constraint firstAttribute="height" constant="70" id="LbK-Lk-FEy"/>
+                            <constraint firstAttribute="trailing" secondItem="0mI-RH-cDh" secondAttribute="trailing" constant="8" id="Q5z-Ex-2dk"/>
                             <constraint firstItem="5jk-8T-XXH" firstAttribute="centerY" secondItem="Pvx-pa-Tkq" secondAttribute="centerY" id="QFm-Dp-9fc"/>
                             <constraint firstAttribute="trailing" secondItem="5jk-8T-XXH" secondAttribute="trailing" constant="8" id="bLz-Mk-HBZ"/>
                             <constraint firstItem="dT4-Dg-igD" firstAttribute="centerY" secondItem="Pvx-pa-Tkq" secondAttribute="centerY" id="gZm-47-CHG"/>
@@ -65,6 +73,7 @@
                 <outlet property="backgroundMessage" destination="Pvx-pa-Tkq" id="31E-rg-t9f"/>
                 <outlet property="playButton" destination="Be3-dT-L6F" id="2jl-zf-tVo"/>
                 <outlet property="progressBar" destination="5jk-8T-XXH" id="BYm-F0-5as"/>
+                <outlet property="timeLabel" destination="0mI-RH-cDh" id="XjH-cb-lO1"/>
                 <outlet property="userImageView" destination="dT4-Dg-igD" id="IFW-nB-Uvj"/>
             </connections>
             <point key="canvasLocation" x="74.809160305343511" y="19.014084507042256"/>

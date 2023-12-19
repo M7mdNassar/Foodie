@@ -1,7 +1,7 @@
 import UIKit
 import AVFoundation
 
-class AudioIncomingMessageCell: UITableViewCell {
+class AudioIncomingMessageCell: UITableViewCell, AudioManagerDelegate {
 
     @IBOutlet weak var backgroundMessage: UIView!
     @IBOutlet weak var userImageView: UIImageView!
@@ -22,6 +22,7 @@ class AudioIncomingMessageCell: UITableViewCell {
                         return
                     }
 
+                    self!.playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
                     // Store total duration in the cell
                     self?.totalDuration = totalDuration
 
@@ -58,7 +59,8 @@ class AudioIncomingMessageCell: UITableViewCell {
            self.backgroundMessage.layer.masksToBounds = true
            self.progressBar.value = 0
            self.audioURL = audioURL
-
+           AudioManager.shared.delegate = self
+        
            loadUserImage(urlString: userImageUrl)
 
            // Get audio duration and update the time label
@@ -87,6 +89,10 @@ class AudioIncomingMessageCell: UITableViewCell {
             }
         }
     }
+    
+    func playbackFinished() {
+           playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+       }
 }
 
 

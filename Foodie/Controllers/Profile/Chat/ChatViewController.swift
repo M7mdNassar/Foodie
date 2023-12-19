@@ -85,14 +85,14 @@ class ChatViewController: UIViewController {
         switch longPressGesture.state {
         case .began:
             sendButton.isHidden = true
-            print("Recording...")
+            startRecordingAnimation()
             audioManager.startRecording()
-
+            
         case .ended:
             sendButton.isHidden = false
-            print("Stopped recording.")
+            stopRecordingAnimation()
             audioManager.stopRecording()
-
+            
             // Create message and reload table
             let audioURL = audioManager.currentRecordingURL
             print("The Path is : \(String(describing: audioURL!))")
@@ -106,7 +106,19 @@ class ChatViewController: UIViewController {
             print("Unknown")
         }
     }
+    
+    
+    private func startRecordingAnimation() {
+        UIView.animate(withDuration: 0.3) {
+            self.mic.tintColor = .red
+        }
+    }
 
+    private func stopRecordingAnimation() {
+        UIView.animate(withDuration: 0.3) {
+            self.mic.tintColor = .tintColor
+        }
+    }
 
 }
 

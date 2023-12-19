@@ -1,7 +1,7 @@
 import UIKit
 import AVFoundation
 
-class AudioOutgoingMessageCell: UITableViewCell {
+class AudioOutgoingMessageCell: UITableViewCell, AudioManagerDelegate {
     
   
     @IBOutlet weak var backgroundMessage: UIView!
@@ -62,6 +62,7 @@ class AudioOutgoingMessageCell: UITableViewCell {
            self.backgroundMessage.layer.masksToBounds = true
            self.progressBar.value = 0
            self.audioURL = audioURL
+           AudioManager.shared.delegate = self
 
            loadUserImage(urlString: userImageUrl)
 
@@ -91,6 +92,10 @@ class AudioOutgoingMessageCell: UITableViewCell {
             }
         }
     }
+    
+    func playbackFinished() {
+           playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+       }
     
 }
 

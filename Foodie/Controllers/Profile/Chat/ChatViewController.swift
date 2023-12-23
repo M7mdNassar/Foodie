@@ -10,10 +10,14 @@ class ChatViewController: UIViewController {
     let otherUser = User(gender: "female", name: Name(first: "Krystle", last: "Melis"), email: "krystle.melis@example.com", dob: DateOfBirth(date: "1987-02-03T21:40:35.906Z", age: 36), phone: "(025) 7310305", id: ID(name: "BSN", value: "51718516"), picture: Picture(large: "https://randomuser.me/api/portraits/women/77.jpg"))
     var messages: [Message] = []
     var selectedImage: UIImage?
-    var longPressGesture: UILongPressGestureRecognizer!
     private let audioManager = AudioManager.shared
     let testAudioURL = URL(fileURLWithPath: "/Users/mac/Library/Developer/mm.mp3")
+    var isRecording = false
+    var isCancelled = false
+    var originalMicButtonCenter: CGPoint = .zero
+    
 
+    
     // MARK: - Outlets
 
     @IBOutlet weak var userImageView: UIImageView!
@@ -31,12 +35,13 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         IQKeyboardManager.shared.enable = false
         configureGestureRecognizer()
-        mic.addGestureRecognizer(longPressGesture)
         setUpNavigationItem()
         setUpTable()
         setUpTextView()
         populateMessages()
         addNotifications()
+        sendButton.isHidden = true
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -76,49 +81,71 @@ class ChatViewController: UIViewController {
 
         tableView.reloadData()
         textView.text = nil
+        sendButton.isHidden = true
+        mic.isHidden = false
         selectedImage = nil
         scrollToBottom()
     }
     
+    // MARK: - Private Methods
 
-    @objc private func recordAndSend() {
-        switch longPressGesture.state {
-        case .began:
-            sendButton.isHidden = true
-            startRecordingAnimation()
-            audioManager.startRecording()
-            
-        case .ended:
-            sendButton.isHidden = false
-            stopRecordingAnimation()
-            audioManager.stopRecording()
-            
-            // Create message and reload table
-            let audioURL = audioManager.currentRecordingURL
-            print("The Path is : \(String(describing: audioURL!))")
-            
-            let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
-            messages.append(newMessage)
-            tableView.reloadData()
-            scrollToBottom()
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+            switch gesture.state {
+            case .began:
+                print("recording")
+                isRecording = true
+                originalMicButtonCenter = mic.center
+                sendButton.isHidden = true
+                audioManager.startRecording()
 
-        default:
-            print("Unknown")
-        }
-    }
-    
-    
-    private func startRecordingAnimation() {
-        UIView.animate(withDuration: 0.3) {
-            self.mic.tintColor = .red
-        }
-    }
+            case .changed:
+                guard isRecording else { return }
 
-    private func stopRecordingAnimation() {
-        UIView.animate(withDuration: 0.3) {
-            self.mic.tintColor = .tintColor
+                let translation = gesture.translation(in: view)
+                print("Pan gesture: \(translation)")
+                textView.text = "Slide to cancel <<<"
+                // Check if the pan gesture is to the left and cancel recording
+                if translation.x < -100 {
+                    isCancelled = true
+                    mic.center.x = originalMicButtonCenter.x + translation.x
+                } else {
+                    isCancelled = false
+                    mic.center.x = originalMicButtonCenter.x + translation.x
+                }
+
+            case .ended, .cancelled:
+                if isRecording {
+                    audioManager.stopRecording()
+
+                    if !isCancelled {
+                        // Create message and reload table
+                        let audioURL = self.audioManager.currentRecordingURL
+                        print("The Path is : \(String(describing: audioURL!))")
+
+                        let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
+                        messages.append(newMessage)
+                        tableView.reloadData()
+                        scrollToBottom()
+                        print("created record")
+                        
+                    } else {
+                        print("Recording cancelled")
+                        audioManager.cancelRecording()
+                    }
+                    textView.text = ""
+                    sendButton.isHidden = true // Hide the sendButton
+                    isRecording = false
+
+                    // Reset the microphone position with animation
+                    UIView.animate(withDuration: 0.3) {
+                        self.mic.center = self.originalMicButtonCenter
+                    }
+                }
+
+            default:
+                break
+            }
         }
-    }
 
 }
 
@@ -214,6 +241,11 @@ private extension ChatViewController {
 extension ChatViewController: UITextViewDelegate {
 
     func textViewDidChange(_ textView: UITextView) {
+        let isTextViewEmpty = textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            // Update the visibility of micButton and sendButton accordingly
+            mic.isHidden = !isTextViewEmpty
+            sendButton.isHidden = isTextViewEmpty
+        
         updateTextViewHeight()
         scrollToBottom()
     }
@@ -239,7 +271,8 @@ extension ChatViewController: UINavigationControllerDelegate, UIImagePickerContr
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-
+        sendButton.isHidden = false
+        mic.isHidden = true
         if let pickedImage = info[.originalImage] as? UIImage {
             selectedImage = pickedImage
         }
@@ -291,9 +324,13 @@ private extension ChatViewController {
         textView.delegate = self
     }
 
-     func configureGestureRecognizer() {
-        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(recordAndSend))
-    }
+    func configureGestureRecognizer() {
+           // Add a pan gesture recognizer
+           let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+           panGesture.minimumNumberOfTouches = 1
+           mic.addGestureRecognizer(panGesture)
+       }
+
 
      func populateMessages() {
         messages = [

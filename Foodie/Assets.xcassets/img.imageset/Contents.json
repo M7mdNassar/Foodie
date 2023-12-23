@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "icons8-image-30.png",
+      "filename" : "gallery.png",
       "idiom" : "universal"
     }
   ],
@@ -10,6 +10,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }

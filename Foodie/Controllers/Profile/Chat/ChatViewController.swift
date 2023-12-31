@@ -97,7 +97,6 @@ class ChatViewController: UIViewController {
                 originalMicButtonCenter = mic.center
                 sendButton.isHidden = true
                 audioManager.startRecording()
-
             case .changed:
                 guard isRecording else { return }
 

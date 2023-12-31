@@ -40,6 +40,12 @@
 		046A75022B1935C2002F62E2 /* ImageIncomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046A75002B1935C2002F62E2 /* ImageIncomingMessageCell.swift */; };
 		046A75032B1935C2002F62E2 /* ImageIncomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046A75012B1935C2002F62E2 /* ImageIncomingMessageCell.xib */; };
 		0480428B2B14BAD4001406FA /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0480428A2B14BAD4001406FA /* EditProfile.swift */; };
+		0483A76B2B41A54C0012AFF0 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483A76A2B41A54C0012AFF0 /* CommunityViewController.swift */; };
+		0483A76E2B41CC560012AFF0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483A76D2B41CC560012AFF0 /* Post.swift */; };
+		0483A7712B41CF3B0012AFF0 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483A76F2B41CF3B0012AFF0 /* PostCell.swift */; };
+		0483A7722B41CF3B0012AFF0 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0483A7702B41CF3B0012AFF0 /* PostCell.xib */; };
+		0483A7752B4205F60012AFF0 /* StoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0483A7732B4205F60012AFF0 /* StoryCollectionViewCell.swift */; };
+		0483A7762B4205F60012AFF0 /* StoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */; };
 		04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */; };
 		04BF4AF42B0CD4940000EB36 /* IngredientsServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */; };
 		04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */; };
@@ -102,6 +108,12 @@
 		046A75002B1935C2002F62E2 /* ImageIncomingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIncomingMessageCell.swift; sourceTree = "<group>"; };
 		046A75012B1935C2002F62E2 /* ImageIncomingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageIncomingMessageCell.xib; sourceTree = "<group>"; };
 		0480428A2B14BAD4001406FA /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		0483A76A2B41A54C0012AFF0 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		0483A76D2B41CC560012AFF0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0483A76F2B41CF3B0012AFF0 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		0483A7702B41CF3B0012AFF0 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		0483A7732B4205F60012AFF0 /* StoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsServiceManager.swift; sourceTree = "<group>"; };
 		04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -239,6 +251,18 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		0483A76C2B41A5530012AFF0 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				0483A76A2B41A54C0012AFF0 /* CommunityViewController.swift */,
+				0483A76F2B41CF3B0012AFF0 /* PostCell.swift */,
+				0483A7702B41CF3B0012AFF0 /* PostCell.xib */,
+				0483A7732B4205F60012AFF0 /* StoryCollectionViewCell.swift */,
+				0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
 		04B838342B13EB0200494F49 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +340,7 @@
 				04DB69942B232AED0074569A /* UserManager.swift */,
 				04DB69962B232B110074569A /* Message.swift */,
 				04FD42782B2F8A4800010D69 /* AudioManager.swift */,
+				0483A76D2B41CC560012AFF0 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +414,7 @@
 				04D0BF342B1E87FA0084A7BF /* Profile View */,
 				04D0BF352B1E8B420084A7BF /* EditView */,
 				04C73CD82B1881CE005D7F38 /* Chat */,
+				0483A76C2B41A5530012AFF0 /* Community */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -475,6 +501,7 @@
 				04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */,
 				04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */,
 				04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */,
+				0483A7762B4205F60012AFF0 /* StoryCollectionViewCell.xib in Resources */,
 				04567A0C2B2CD11D00ADD4BC /* TextAndImageIncomingMessageCell.xib in Resources */,
 				042483202B11ECD200B84CB0 /* ProfileTableViewCell.xib in Resources */,
 				04D08D1C2AF79F22004C2E7E /* Assets.xcassets in Resources */,
@@ -490,6 +517,7 @@
 				041519E32B1D03E900053B0A /* TextIncomingMessageCell.xib in Resources */,
 				04FD8E172B0FEF0300EB9941 /* Localizable.strings in Resources */,
 				04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */,
+				0483A7722B41CF3B0012AFF0 /* PostCell.xib in Resources */,
 				046A75032B1935C2002F62E2 /* ImageIncomingMessageCell.xib in Resources */,
 				04DC0F3B2B0BF8900077FE2B /* cookingPotBlue.json in Resources */,
 				04D08D1A2AF79F1F004C2E7E /* Main.storyboard in Resources */,
@@ -545,8 +573,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0483A7752B4205F60012AFF0 /* StoryCollectionViewCell.swift in Sources */,
 				042F7F7B2B29AD78004D501E /* AudioOutgoingMessageCell.swift in Sources */,
 				0412220D2B0382120013A273 /* LoginViewController.swift in Sources */,
+				0483A7712B41CF3B0012AFF0 /* PostCell.swift in Sources */,
 				0455BD3F2AF7FD85006218AB /* RestaurantCell.swift in Sources */,
 				0424831F2B11ECD200B84CB0 /* ProfileTableViewCell.swift in Sources */,
 				04567A0B2B2CD11D00ADD4BC /* TextAndImageIncomingMessageCell.swift in Sources */,
@@ -568,6 +598,7 @@
 				04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */,
 				04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */,
 				04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */,
+				0483A76B2B41A54C0012AFF0 /* CommunityViewController.swift in Sources */,
 				04DB69972B232B110074569A /* Message.swift in Sources */,
 				042F7F7F2B29AD99004D501E /* AudioIncomingMessageCell.swift in Sources */,
 				046A75022B1935C2002F62E2 /* ImageIncomingMessageCell.swift in Sources */,
@@ -579,6 +610,7 @@
 				04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */,
 				041641E12AFD2E5E0054CCAC /* RestaurantCollectionViewCell.swift in Sources */,
 				043325042AFC2D9D00452C1E /* PageCollectionViewCell.swift in Sources */,
+				0483A76E2B41CC560012AFF0 /* Post.swift in Sources */,
 				045A7A362AFAD7F400C29688 /* RestaurantServiceManager.swift in Sources */,
 				046A74FE2B1935A3002F62E2 /* TextOutgoingMessageCell.swift in Sources */,
 			);

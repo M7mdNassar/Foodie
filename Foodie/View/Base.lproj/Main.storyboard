@@ -529,6 +529,7 @@
                         <outlet property="userNameLabel" destination="gl3-52-uaG" id="cPa-Tg-Job"/>
                         <segue destination="d7R-Hr-f9s" kind="show" identifier="goToEdit" id="15b-ca-2zB"/>
                         <segue destination="O2U-df-cc2" kind="show" identifier="goToChat" id="e11-dq-LyK"/>
+                        <segue destination="Fjo-h3-ICg" kind="show" identifier="goToCommunity" id="7jY-yq-5kB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RS-9g-Xu5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1116,7 +1117,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="mic">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="1"/>
-                                            <color key="baseForegroundColor" systemColor="tintColor"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6q-yC-4aQ">
@@ -1182,7 +1183,86 @@
             </objects>
             <point key="canvasLocation" x="5745.801526717557" y="1454.9295774647887"/>
         </scene>
+        <!--المنتدى-->
+        <scene sceneID="AZX-vY-IOm">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Fjo-h3-ICg" customClass="CommunityViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fmv-8l-YdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIg-ow-MbK">
+                                <rect key="frame" x="0.0" y="772" width="393" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8B-UB-uws">
+                                        <rect key="frame" x="154.33333333333334" y="0.0" width="84.333333333333343" height="70"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addPostButton:" destination="Fjo-h3-ICg" eventType="touchUpInside" id="wgV-fQ-G4I"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="u8B-UB-uws" firstAttribute="top" secondItem="hIg-ow-MbK" secondAttribute="top" id="Cdm-vn-g0y"/>
+                                    <constraint firstAttribute="bottom" secondItem="u8B-UB-uws" secondAttribute="bottom" constant="10" id="EKf-uV-o68"/>
+                                    <constraint firstAttribute="height" constant="80" id="HFa-Os-UOY"/>
+                                    <constraint firstItem="u8B-UB-uws" firstAttribute="centerX" secondItem="hIg-ow-MbK" secondAttribute="centerX" id="UEc-Vd-aji"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZIi-Cd-JBR">
+                                <rect key="frame" x="0.0" y="223" width="393" height="549"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4fo-XK-g8M">
+                                <rect key="frame" x="0.0" y="103" width="393" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="yuJ-bO-ndV"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vmc-zx-ZRA">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mAp-7X-cvA"/>
+                        <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hIg-ow-MbK" firstAttribute="top" secondItem="ZIi-Cd-JBR" secondAttribute="bottom" id="2hE-SH-wvE"/>
+                            <constraint firstItem="hIg-ow-MbK" firstAttribute="top" secondItem="ZIi-Cd-JBR" secondAttribute="bottom" id="6KB-7M-PTL"/>
+                            <constraint firstItem="4fo-XK-g8M" firstAttribute="trailing" secondItem="mAp-7X-cvA" secondAttribute="trailing" id="C6m-C7-PVG"/>
+                            <constraint firstItem="ZIi-Cd-JBR" firstAttribute="top" secondItem="4fo-XK-g8M" secondAttribute="bottom" id="JuO-2E-FAZ"/>
+                            <constraint firstItem="4fo-XK-g8M" firstAttribute="top" secondItem="mAp-7X-cvA" secondAttribute="top" id="TsN-8m-fUF"/>
+                            <constraint firstItem="hIg-ow-MbK" firstAttribute="trailing" secondItem="mAp-7X-cvA" secondAttribute="trailing" id="awP-PI-bvE"/>
+                            <constraint firstItem="ZIi-Cd-JBR" firstAttribute="top" secondItem="4fo-XK-g8M" secondAttribute="bottom" id="fu6-eC-YOy"/>
+                            <constraint firstItem="hIg-ow-MbK" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" id="j5H-uF-9sd"/>
+                            <constraint firstAttribute="bottom" secondItem="hIg-ow-MbK" secondAttribute="bottom" id="kPc-Ve-BYa"/>
+                            <constraint firstItem="ZIi-Cd-JBR" firstAttribute="trailing" secondItem="mAp-7X-cvA" secondAttribute="trailing" id="nDC-Oj-UEk"/>
+                            <constraint firstItem="4fo-XK-g8M" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" id="tyL-G2-MQP"/>
+                            <constraint firstItem="ZIi-Cd-JBR" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" id="uwA-2Q-Em9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="المنتدى" id="YNa-tL-UG5"/>
+                    <connections>
+                        <outlet property="collectionView" destination="4fo-XK-g8M" id="lWd-Vv-uL5"/>
+                        <outlet property="tableView" destination="ZIi-Cd-JBR" id="PPM-TD-yTM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxc-c6-byi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6678.6259541984728" y="1453.5211267605634"/>
+        </scene>
     </scenes>
+    <designables>
+        <designable name="uf4-eV-bzy"/>
+    </designables>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
@@ -1192,6 +1272,7 @@
         <image name="list.bullet.circle.fill" catalog="system" width="128" height="123"/>
         <image name="mic" width="32" height="32"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="profile" width="684" height="684"/>
         <image name="send" width="32" height="32"/>
         <image name="star.circle.fill" catalog="system" width="128" height="123"/>

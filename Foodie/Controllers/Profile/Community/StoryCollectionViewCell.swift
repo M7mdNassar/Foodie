@@ -13,9 +13,10 @@ class StoryCollectionViewCell: UICollectionViewCell {
         self.userNameLabel.text = userName
         
         
+        self.borderView.layer.cornerRadius = self.borderView.frame.size.width / 2
         self.storyImageView.layer.cornerRadius = self.storyImageView.frame.size.width / 2
-        self.storyImageView.layer.borderWidth = 1.0
-        self.storyImageView.layer.borderColor = UIColor.blue.cgColor
+        self.storyImageView.layer.borderWidth = 2
+        self.storyImageView.layer.borderColor = UIColor.white.cgColor
         self.storyImageView.clipsToBounds = true
         
         self.storyImageView.image = storyImage

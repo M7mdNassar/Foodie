@@ -1218,7 +1218,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4fo-XK-g8M">
-                                <rect key="frame" x="0.0" y="103" width="393" height="120"/>
+                                <rect key="frame" x="6" y="103" width="387" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="yuJ-bO-ndV"/>
@@ -1245,7 +1245,7 @@
                             <constraint firstItem="hIg-ow-MbK" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" id="j5H-uF-9sd"/>
                             <constraint firstAttribute="bottom" secondItem="hIg-ow-MbK" secondAttribute="bottom" id="kPc-Ve-BYa"/>
                             <constraint firstItem="ZIi-Cd-JBR" firstAttribute="trailing" secondItem="mAp-7X-cvA" secondAttribute="trailing" id="nDC-Oj-UEk"/>
-                            <constraint firstItem="4fo-XK-g8M" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" id="tyL-G2-MQP"/>
+                            <constraint firstItem="4fo-XK-g8M" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" constant="6" id="tyL-G2-MQP"/>
                             <constraint firstItem="ZIi-Cd-JBR" firstAttribute="leading" secondItem="mAp-7X-cvA" secondAttribute="leading" id="uwA-2Q-Em9"/>
                         </constraints>
                     </view>

@@ -17,6 +17,7 @@
 		041641E22AFD2E5E0054CCAC /* RestaurantCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041641E02AFD2E5E0054CCAC /* RestaurantCollectionViewCell.xib */; };
 		0424831F2B11ECD200B84CB0 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0424831D2B11ECD200B84CB0 /* ProfileTableViewCell.swift */; };
 		042483202B11ECD200B84CB0 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0424831E2B11ECD200B84CB0 /* ProfileTableViewCell.xib */; };
+		042505272B49CE720077FE6A /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042505262B49CE720077FE6A /* ExpandableLabel.swift */; };
 		04285EF32B023EA100461CFE /* Loadingbbb.json in Resources */ = {isa = PBXBuildFile; fileRef = 04285EF22B023EA100461CFE /* Loadingbbb.json */; };
 		042F7F7B2B29AD78004D501E /* AudioOutgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F7F792B29AD78004D501E /* AudioOutgoingMessageCell.swift */; };
 		042F7F7C2B29AD78004D501E /* AudioOutgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042F7F7A2B29AD78004D501E /* AudioOutgoingMessageCell.xib */; };
@@ -85,6 +86,7 @@
 		041641E02AFD2E5E0054CCAC /* RestaurantCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantCollectionViewCell.xib; sourceTree = "<group>"; };
 		0424831D2B11ECD200B84CB0 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		0424831E2B11ECD200B84CB0 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		042505262B49CE720077FE6A /* ExpandableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
 		04285EF22B023EA100461CFE /* Loadingbbb.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loadingbbb.json; sourceTree = "<group>"; };
 		042F7F792B29AD78004D501E /* AudioOutgoingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioOutgoingMessageCell.swift; sourceTree = "<group>"; };
 		042F7F7A2B29AD78004D501E /* AudioOutgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioOutgoingMessageCell.xib; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */,
 				04D08D122AF79F1F004C2E7E /* AppDelegate.swift */,
 				04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */,
+				042505262B49CE720077FE6A /* ExpandableLabel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				042F7F7F2B29AD99004D501E /* AudioIncomingMessageCell.swift in Sources */,
 				046A75022B1935C2002F62E2 /* ImageIncomingMessageCell.swift in Sources */,
 				043325022AFC2D6000452C1E /* PageViewController.swift in Sources */,
+				042505272B49CE720077FE6A /* ExpandableLabel.swift in Sources */,
 				04567A072B2CB50900ADD4BC /* TextAndImageOutgoingMessageCell.swift in Sources */,
 				04DB69952B232AED0074569A /* UserManager.swift in Sources */,
 				0480428B2B14BAD4001406FA /* EditProfile.swift in Sources */,

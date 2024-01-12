@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -39,17 +40,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU8-3Q-Tcx" customClass="ExpandableLabel" customModule="Foodie" customModuleProvider="target">
-                                <rect key="frame" x="20" y="90" width="408" height="8.3333333333333286"/>
+                                <rect key="frame" x="20" y="90" width="408" height="32"/>
                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ULH-gL-iKa">
-                                <rect key="frame" x="20" y="108.33333333333334" width="408" height="277.66666666666663"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uJ8-3b-qqx">
+                                <rect key="frame" x="20" y="132" width="408" height="254"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ULH-gL-iKa" secondAttribute="height" multiplier="448:305" id="I5P-8x-vTm"/>
+                                    <constraint firstAttribute="height" constant="254" id="Q6a-mC-hv5"/>
                                 </constraints>
-                            </imageView>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wpV-py-15T">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOC-rg-SAo">
                                 <rect key="frame" x="20" y="346" width="408" height="40"/>
                                 <subviews>
@@ -113,22 +121,21 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90641933679999998" green="0.93246519569999997" blue="0.97647684810000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="ULH-gL-iKa" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" id="754-NG-P8Z"/>
+                            <constraint firstItem="rOC-rg-SAo" firstAttribute="leading" secondItem="uJ8-3b-qqx" secondAttribute="leading" id="5a7-uG-0PI"/>
+                            <constraint firstItem="uJ8-3b-qqx" firstAttribute="top" secondItem="UU8-3Q-Tcx" secondAttribute="bottom" constant="10" id="AXT-O0-vRp"/>
                             <constraint firstItem="LOM-VI-f8P" firstAttribute="leading" secondItem="m06-db-NS3" secondAttribute="trailing" constant="8" symbolic="YES" id="Abd-OI-fqG"/>
                             <constraint firstAttribute="trailing" secondItem="UU8-3Q-Tcx" secondAttribute="trailing" constant="20" id="CJy-bR-i3B"/>
-                            <constraint firstAttribute="bottom" secondItem="ULH-gL-iKa" secondAttribute="bottom" constant="20" id="CpF-Mz-0rb"/>
                             <constraint firstItem="LOM-VI-f8P" firstAttribute="top" secondItem="kaZ-JH-p7p" secondAttribute="top" constant="35" id="EXP-Sz-g1W"/>
-                            <constraint firstAttribute="trailing" secondItem="ULH-gL-iKa" secondAttribute="trailing" constant="20" id="HnS-8h-Tli"/>
+                            <constraint firstAttribute="trailing" secondItem="uJ8-3b-qqx" secondAttribute="trailing" constant="20" id="HIX-1N-BC9"/>
                             <constraint firstItem="UU8-3Q-Tcx" firstAttribute="top" secondItem="m06-db-NS3" secondAttribute="bottom" constant="20" id="UcW-zz-doo"/>
-                            <constraint firstItem="rOC-rg-SAo" firstAttribute="leading" secondItem="ULH-gL-iKa" secondAttribute="leading" id="VI0-8y-ilM"/>
                             <constraint firstAttribute="trailing" secondItem="LOM-VI-f8P" secondAttribute="trailing" id="XwB-fi-YX9"/>
+                            <constraint firstItem="rOC-rg-SAo" firstAttribute="trailing" secondItem="uJ8-3b-qqx" secondAttribute="trailing" id="aXG-Cl-SRj"/>
                             <constraint firstItem="UU8-3Q-Tcx" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" id="e35-Ni-823"/>
-                            <constraint firstItem="ULH-gL-iKa" firstAttribute="top" secondItem="UU8-3Q-Tcx" secondAttribute="bottom" constant="10" id="f59-Rp-6Of"/>
-                            <constraint firstItem="rOC-rg-SAo" firstAttribute="bottom" secondItem="ULH-gL-iKa" secondAttribute="bottom" id="h2T-t4-WCv"/>
-                            <constraint firstItem="rOC-rg-SAo" firstAttribute="trailing" secondItem="ULH-gL-iKa" secondAttribute="trailing" id="iVb-lz-7uB"/>
+                            <constraint firstItem="uJ8-3b-qqx" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" id="jsS-Hk-5qH"/>
                             <constraint firstItem="m06-db-NS3" firstAttribute="top" secondItem="kaZ-JH-p7p" secondAttribute="top" constant="20" id="tfs-l3-kqU"/>
                             <constraint firstItem="m06-db-NS3" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" id="uYJ-5p-xbf"/>
-                            <constraint firstAttribute="bottom" secondItem="ULH-gL-iKa" secondAttribute="bottom" constant="20" id="wnt-Gn-kfJ"/>
+                            <constraint firstItem="rOC-rg-SAo" firstAttribute="bottom" secondItem="uJ8-3b-qqx" secondAttribute="bottom" id="v3n-5x-Emy"/>
+                            <constraint firstAttribute="bottom" secondItem="uJ8-3b-qqx" secondAttribute="bottom" constant="20" id="zct-MN-uNw"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -143,9 +150,9 @@
             <connections>
                 <outlet property="backgroundContentView" destination="kaZ-JH-p7p" id="VNg-yH-lZd"/>
                 <outlet property="bottomBarView" destination="rOC-rg-SAo" id="YRg-2u-vaG"/>
+                <outlet property="collectionView" destination="uJ8-3b-qqx" id="1N2-dG-NHp"/>
                 <outlet property="commentsContLabel" destination="yAc-Lo-lwv" id="dXU-cs-AC2"/>
                 <outlet property="likesCountLabel" destination="aOY-f9-Hhm" id="IBD-SX-Xpu"/>
-                <outlet property="postImageView" destination="ULH-gL-iKa" id="uhf-OL-ZgU"/>
                 <outlet property="textPostLabel" destination="UU8-3Q-Tcx" id="o61-pF-ca5"/>
                 <outlet property="userImageView" destination="m06-db-NS3" id="Mhm-FD-KcW"/>
                 <outlet property="userNameLabel" destination="LOM-VI-f8P" id="AH9-pX-NN1"/>
@@ -156,5 +163,8 @@
     <resources>
         <image name="ellipsis.message.fill" catalog="system" width="128" height="114"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

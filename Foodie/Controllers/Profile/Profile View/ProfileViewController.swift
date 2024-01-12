@@ -156,9 +156,7 @@ extension ProfileViewController : UITableViewDataSource {
         if selectedOption == 0 {
             performSegue(withIdentifier: "goToEdit", sender: self)
         }
-        else if selectedOption == 1{
-            performSegue(withIdentifier: "goToCommunity", sender: self)
-        }
+       
         else if selectedOption == 2 {
             performSegue(withIdentifier: "goToChat", sender: self)
         }

@@ -3,12 +3,12 @@ import UIKit
 
 class StoryCollectionViewCell: UICollectionViewCell {
 
-
+    // MARK: Outlets
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var storyImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     
-    
+    // MARK: Methods
     func configure(userName: String , storyImage: UIImage){
         self.userNameLabel.text = userName
         
@@ -23,8 +23,4 @@ class StoryCollectionViewCell: UICollectionViewCell {
         
         
     }
-    
-    
-    
-    
 }

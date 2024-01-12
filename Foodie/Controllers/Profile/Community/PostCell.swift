@@ -9,23 +9,36 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var textPostLabel: ExpandableLabel!
-    @IBOutlet weak var postImageView: UIImageView!
+
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var backgroundContentView: UIView!
     @IBOutlet weak var commentsContLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var bottomBarView: UIView!
     
+    var postImages: [UIImage?] = []
     
-
+    // MARK: Life Cycle
+    
+    override func awakeFromNib() {
+         super.awakeFromNib()
+         
+         collectionView.delegate = self
+         collectionView.dataSource = self
+         
+         // Register your custom cell if needed
+        let nib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "ImageCollectionViewCell")
+     }
+    
+    // MARK: Methods
+    
     func configure(userImage:String? , post: Post){
         loadUserImage(from: userImage!)
         self.userNameLabel.text = post.username
     
-    
         self.textPostLabel.text = post.content
-   
 
-        
         self.commentsContLabel.text = String(post.comments.count)
         self.likesCountLabel.text = String(post.likes)
         
@@ -33,63 +46,12 @@ class PostCell: UITableViewCell {
         
         setBottomCorners(for: bottomBarView, cornerRadius: 20.0)
         
-        
-        self.postImageView.layer.cornerRadius = 20
-        self.postImageView.layer.masksToBounds = true
-        
-        
-        if let image = post.images{
-            
-            // Calculate image dimensions
-            let dimensions = calculateImageDimensions(for: image)
-            
-            // Update image view frame constraints
-            self.postImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
-            self.postImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
-            
-            // Set image and content mode
-            self.postImageView.image = post.images
-            
-            // Calculate aspect ratio
-            let aspectRatio = dimensions.width / dimensions.height
-            
-            if dimensions.width > dimensions.height {
-                self.postImageView.contentMode = .scaleAspectFill // Landscape
-            } else {
-                self.postImageView.contentMode = .scaleAspectFit // Portrait
-            }
-            
-            // Update aspect ratio constraint
-            for constraint in self.postImageView.constraints {
-                if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
-                    // Assuming you have only one aspect ratio constraint
-                    constraint.isActive = false // deactivate existing constraint
-                    let aspectRatioConstraint = self.postImageView.widthAnchor.constraint(equalTo: self.postImageView.heightAnchor, multiplier: aspectRatio)
-                    aspectRatioConstraint.isActive = true
-                }
-                
-                
-            }
-            
-        }
-        else {
-            self.postImageView.image = nil
+        self.postImages = post.images
+        self.collectionView.reloadData()
 
-        }
+        
     }
-        func calculateImageDimensions(for image: UIImage) -> (width: CGFloat, height: CGFloat) {
-            let maxWidth = UIScreen.main.bounds.width * 0.7 , minWidth = 150.0
-            
-            let imageWidth = image.size.width
-            let imageHeight = image.size.height
-            let aspectRatio = imageWidth / imageHeight
-            
-            // Calculate width based on maximum width and aspect ratio
-            let width = min(maxWidth, max(minWidth, imageWidth))
-            let height = width / aspectRatio
-            
-            return (width, height)
-        }
+    
         
         
         func loadUserImage(from urlString: String) {
@@ -105,6 +67,9 @@ class PostCell: UITableViewCell {
                 }
             }
         }
+    
+    
+    
         
         func setBottomCorners(for view: UIView, cornerRadius: CGFloat) {
              let maskPath = UIBezierPath(
@@ -120,3 +85,37 @@ class PostCell: UITableViewCell {
         
     
     }
+
+
+extension PostCell: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return postImages.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionViewCell", for: indexPath) as! ImageCollectionViewCell
+
+        
+        if let image = postImages[indexPath.item] {
+            cell.configure(image: image)
+        }
+//        else {
+//            // Placeholder image or handle the case where the image is nil
+//            cell.imageView.image = UIImage(named: "placeholderImage")
+//        }
+
+        return cell
+    }
+}
+
+extension PostCell: UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+

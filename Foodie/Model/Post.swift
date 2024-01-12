@@ -6,7 +6,7 @@ struct Post {
     var postId: String
     var username: String?
     var content: String
-    var images: UIImage?
+    var images: [UIImage?]
     var likes: Int
     var comments: [Comment]
 }

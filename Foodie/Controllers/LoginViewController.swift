@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     var defaults = UserDefaults.standard
-    
+
     // MARK: - Life Cycle Controller
     
     override func viewDidLoad() {
@@ -25,26 +25,43 @@ class LoginViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func loginButton(_ sender: UIButton) {
-        if attemptLogin() {
-                self.transitionToHomeScreen()
-            
-        } else {
-            return
+            if attemptLogin() {
+                // Fetch user data after successful login
+                Task {
+                    do {
+                        let user = try await UserApi().fetchData().results.first
+                        DispatchQueue.main.async {
+                            self.handleSuccessfulLogin(user: user!)
+                        }
+                    } catch {
+                        print("Error fetching data: \(error)")
+                    }
+                }
+            } else {
+                return
+            }
         }
-    }
-    
-    // MARK: - Private Methods
-    private func attemptLogin() -> Bool {
-        guard let username = userNameLabel.text,
-              let password = userPasswordLabel.text,
-              !username.isEmpty, !password.isEmpty else {
-            return false
+
+        // MARK: - Private Methods
+        private func attemptLogin() -> Bool {
+            guard let username = userNameLabel.text,
+                  let password = userPasswordLabel.text,
+                  !username.isEmpty, !password.isEmpty else {
+                return false
+            }
+            defaults.set(username, forKey: "username")
+            defaults.set(password, forKey: "password")
+
+            return true
         }
-        
-        defaults.set(username, forKey: "username")
-        defaults.set(password, forKey: "password")
-        return true
-    }
+
+        private func handleSuccessfulLogin(user: User) {
+            // Save the user to UserDefaults
+            UserManager.saveUserToUserDefaults(user: user)
+
+            // Transition to the home screen with the user data
+            transitionToHomeScreen()
+        }
     
     private func transitionToHomeScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -73,6 +90,7 @@ class LoginViewController: UIViewController {
         loginButton.clipsToBounds = true
         loginButton.setTitle(NSLocalizedString("loginButton", comment: "Login Button Title"), for: .normal)
     }
+
     
 }
 

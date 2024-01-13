@@ -189,6 +189,7 @@
 		042483212B11EEE900B84CB0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				04DB69942B232AED0074569A /* UserManager.swift */,
 				04FD8E0F2B0F598200EB9941 /* UserResult.swift */,
 				04FD8E112B0F5D2200EB9941 /* UserApi.swift */,
 			);
@@ -258,6 +259,15 @@
 			path = "Message Cells";
 			sourceTree = "<group>";
 		};
+		0470BE012B5317EE0097A9EA /* Story Collection */ = {
+			isa = PBXGroup;
+			children = (
+				0483A7732B4205F60012AFF0 /* StoryCollectionViewCell.swift */,
+				0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */,
+			);
+			path = "Story Collection";
+			sourceTree = "<group>";
+		};
 		0478B8F12B02B8980054818E /* PagingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,11 +291,10 @@
 				0483A76A2B41A54C0012AFF0 /* CommunityViewController.swift */,
 				0483A76F2B41CF3B0012AFF0 /* PostCell.swift */,
 				0483A7702B41CF3B0012AFF0 /* PostCell.xib */,
-				0483A7732B4205F60012AFF0 /* StoryCollectionViewCell.swift */,
-				0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */,
-				0440CBA22B4BF3C800AAE9E4 /* Create Post */,
 				0440CBA72B4C08C900AAE9E4 /* ImageCollectionViewCell.swift */,
 				0440CBA82B4C08C900AAE9E4 /* ImageCollectionViewCell.xib */,
+				0470BE012B5317EE0097A9EA /* Story Collection */,
+				0440CBA22B4BF3C800AAE9E4 /* Create Post */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -364,7 +373,6 @@
 				04B838342B13EB0200494F49 /* Restaurant */,
 				04BF4AF92B0D04100000EB36 /* Home */,
 				042483212B11EEE900B84CB0 /* Profile */,
-				04DB69942B232AED0074569A /* UserManager.swift */,
 				04DB69962B232B110074569A /* Message.swift */,
 				04FD42782B2F8A4800010D69 /* AudioManager.swift */,
 				0483A76D2B41CC560012AFF0 /* Post.swift */,
@@ -379,6 +387,7 @@
 				043325002AFC2D2200452C1E /* Featured */,
 				0456DFB72B053FE6003BA658 /* List */,
 				04FD8E0C2B0F3C5000EB9941 /* Profile */,
+				0483A76C2B41A5530012AFF0 /* Community */,
 				0412220C2B0382120013A273 /* LoginViewController.swift */,
 				04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */,
 				044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */,
@@ -443,7 +452,6 @@
 				04D0BF342B1E87FA0084A7BF /* Profile View */,
 				04D0BF352B1E8B420084A7BF /* EditView */,
 				04C73CD82B1881CE005D7F38 /* Chat */,
-				0483A76C2B41A5530012AFF0 /* Community */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

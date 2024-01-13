@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Variables
     
     let backButton = UIBarButtonItem()
-    let userApi = UserApi()
+    var currentUser = UserManager.getUserFromUserDefaults()
     let options:[Option] = [
         Option(title: "تعديل الملف الشخصي", icon: UIImage(systemName: "person.crop.circle.fill")!),
         Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
         configureTable()
         PlaceholderForImage()
         configureNavigationBar()
-        fetchDataAndUpdateUI()
+        updateUI(user: currentUser!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,17 +73,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func fetchDataAndUpdateUI() {
-        Task {
-            do {
-                let user = try await userApi.fetchData().results.first
-                updateUI(user: user!)
-                UserManager.saveUserToUserDefaults(user: user!)
-            } catch {
-                print("Error fetching data: \(error)")
-            }
-        }
-    }
     func updateUI(user: User) {
         DispatchQueue.global(qos: .userInitiated).async {
             if let imageURL = URL(string: user.picture.large),

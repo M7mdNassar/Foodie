@@ -52,8 +52,6 @@ class PostCell: UITableViewCell {
         
     }
     
-        
-        
         func loadUserImage(from urlString: String) {
             DispatchQueue.global(qos: .userInitiated).async {
                 if let imageURL = URL(string: urlString),
@@ -68,9 +66,7 @@ class PostCell: UITableViewCell {
             }
         }
     
-    
-    
-        
+
         func setBottomCorners(for view: UIView, cornerRadius: CGFloat) {
              let maskPath = UIBezierPath(
                  roundedRect: view.bounds,

@@ -26,4 +26,8 @@ struct UserManager {
         }
         return nil
     }
+    
+    static func resetCurrentUser() {
+         UserDefaults.standard.removeObject(forKey: "currentUser")
+     }
 }

@@ -1,17 +1,14 @@
-//
-//  ImageCollectionViewCell.swift
-//  Foodie
-//
-//  Created by Mac on 08/01/2024.
-//
+
 
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
+    // MARK: Outlets
+    
     @IBOutlet weak var imageView: UIImageView!
     
- 
+    // MARK: Methods
     
     func configure(image: UIImage){
         

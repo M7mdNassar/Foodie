@@ -7,7 +7,7 @@ class CommunityViewController: UIViewController {
     
     var posts: [Post] = []
     var stories: [Story] = []
-    let currentUser = UserManager.getUserFromUserDefaults()
+    var currentUser = UserManager.getUserFromUserDefaults()
 
     // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -16,6 +16,11 @@ class CommunityViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showLoadingView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.hideLoadingView() }
+        
         setUpTable()
         setUpCollection()
         populatePosts()
@@ -115,4 +120,26 @@ extension CommunityViewController{
 }
 
 
-
+// MARK: - Loading View
+extension CommunityViewController {
+    private func showLoadingView() {
+        let loadingView = UIView(frame: view.bounds)
+        loadingView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        loadingView.tag = 123 // Set a unique tag
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = loadingView.center
+        activityIndicator.color = .white
+        activityIndicator.startAnimating()
+        
+        loadingView.addSubview(activityIndicator)
+        view.addSubview(loadingView)
+    }
+    
+    func hideLoadingView() {
+        let loadingViewTag = 123 // Assign a unique tag to your loading view
+        if let loadingView = view.viewWithTag(loadingViewTag) {
+            loadingView.removeFromSuperview()
+        }
+    }
+}

@@ -103,7 +103,7 @@ class EditProfile: UIViewController {
         // Convert the string dob.date to a Date object
         userBirthDatePicker.date = toDateFormat(dateString: user.dob.date)
         // Load image
-        loadUserImage(from: user.picture.large)
+        userImageView.load(from: user.picture.large)
         setUpFont()
     }
     
@@ -112,19 +112,6 @@ class EditProfile: UIViewController {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: dateString)
         return date!
-    }
-    
-    private func loadUserImage(from urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: urlString),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-                
-                DispatchQueue.main.async {
-                    self.userImageView.image = image
-                }
-            }
-        }
     }
     
     private func setUpImageAsCircleWithShadowAndBorder() {

@@ -1,6 +1,6 @@
 import UIKit
 
-@MainActor
+//@MainActor
 class RestaurantsList: UIViewController {
 
     // MARK: - Properties

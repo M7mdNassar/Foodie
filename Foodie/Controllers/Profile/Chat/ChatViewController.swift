@@ -307,12 +307,12 @@ private extension ChatViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-         tableView.allowsSelection = false
+        tableView.allowsSelection = false
     }
 
      func setUpNavigationItem() {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        loadUserImage(from: otherUser.picture.large)
+         self.userImageView.load(from : otherUser.picture.large)
         userNameLabel.text = otherUser.name.first
     }
 
@@ -348,19 +348,6 @@ private extension ChatViewController {
         ]
     }
 
-     func loadUserImage(from urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: urlString),
-                let imageData = try? Data(contentsOf: imageURL),
-                let image = UIImage(data: imageData) {
-
-                DispatchQueue.main.async {
-                    self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
-                    self.userImageView.image = image
-                }
-            }
-        }
-    }
 
      func scrollToBottom() {
         if tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: tableView.numberOfSections - 1) > 0 {

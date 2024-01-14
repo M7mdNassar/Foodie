@@ -15,6 +15,7 @@ class AddPostViewController: UIViewController {
     @IBOutlet weak var postContent: UITextView!
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var addImageButton: UIButton!
     
     // MARK: Actions
     
@@ -118,24 +119,13 @@ private extension AddPostViewController {
     }
     
     func setUpView() {
-        loadUserImage(from: (self.currentUser?.picture.large)!)
+        self.userImageView.load(from: (self.currentUser?.picture.large)!)
         self.userNameLabel.text = self.currentUser?.name.first
         
         self.postButton.layer.cornerRadius = 15
         self.postButton.clipsToBounds = true
-    }
-
-    func loadUserImage(from urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: urlString),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-                
-                DispatchQueue.main.async {
-                    self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
-                    self.userImageView.image = image
-                }
-            }
-        }
+        
+        self.addImageButton.layer.cornerRadius = 15
+        self.addImageButton.clipsToBounds = true
     }
 }

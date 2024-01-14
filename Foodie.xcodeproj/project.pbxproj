@@ -53,6 +53,8 @@
 		0483A7762B4205F60012AFF0 /* StoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */; };
 		0488E26D2B4B0537004EC43F /* MyCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488E26C2B4B0537004EC43F /* MyCustomTabBarController.swift */; };
 		0488E26F2B4B2434004EC43F /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488E26E2B4B2434004EC43F /* AddPostViewController.swift */; };
+		04A834222B53F31D00CA72EF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A834212B53F31D00CA72EF /* UIColorExtension.swift */; };
+		04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */; };
 		04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */; };
 		04BF4AF42B0CD4940000EB36 /* IngredientsServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */; };
 		04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */; };
@@ -128,6 +130,8 @@
 		0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		0488E26C2B4B0537004EC43F /* MyCustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomTabBarController.swift; sourceTree = "<group>"; };
 		0488E26E2B4B2434004EC43F /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		04A834212B53F31D00CA72EF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsServiceManager.swift; sourceTree = "<group>"; };
 		04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +303,16 @@
 			path = Community;
 			sourceTree = "<group>";
 		};
+		04A834202B53F21D00CA72EF /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */,
+				04A834212B53F31D00CA72EF /* UIColorExtension.swift */,
+				04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		04B838342B13EB0200494F49 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +361,7 @@
 		04D08D112AF79F1F004C2E7E /* Foodie */ = {
 			isa = PBXGroup;
 			children = (
+				04A834202B53F21D00CA72EF /* Extentions */,
 				04D08D282AF79F41004C2E7E /* Controllers */,
 				04D08D272AF79F3B004C2E7E /* Model */,
 				04D08D262AF79F31004C2E7E /* View */,
@@ -390,7 +405,6 @@
 				0483A76C2B41A5530012AFF0 /* Community */,
 				0412220C2B0382120013A273 /* LoginViewController.swift */,
 				04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */,
-				044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */,
 				04D08D122AF79F1F004C2E7E /* AppDelegate.swift */,
 				04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */,
 				042505262B49CE720077FE6A /* ExpandableLabel.swift */,
@@ -617,6 +631,7 @@
 				0483A7752B4205F60012AFF0 /* StoryCollectionViewCell.swift in Sources */,
 				042F7F7B2B29AD78004D501E /* AudioOutgoingMessageCell.swift in Sources */,
 				0412220D2B0382120013A273 /* LoginViewController.swift in Sources */,
+				04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */,
 				0483A7712B41CF3B0012AFF0 /* PostCell.swift in Sources */,
 				0440CBA92B4C08C900AAE9E4 /* ImageCollectionViewCell.swift in Sources */,
 				0455BD3F2AF7FD85006218AB /* RestaurantCell.swift in Sources */,
@@ -639,6 +654,7 @@
 				04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
 				04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */,
+				04A834222B53F31D00CA72EF /* UIColorExtension.swift in Sources */,
 				04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */,
 				04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */,
 				0483A76B2B41A54C0012AFF0 /* CommunityViewController.swift in Sources */,

@@ -19,23 +19,7 @@ class TextOutgoingMessageCell: UITableViewCell {
         if let messageText = messageText{
             self.messageTextLabel.text = messageText
         }
-        loadUserImage(urlString : userImageUrl)
-    }
-
-    
-    func loadUserImage(urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: urlString),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-                
-                DispatchQueue.main.async {
-                    self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
-                    self.userImageView.image = image
-                    
-                }
-            }
-        }
+        self.userImageView.load(from : userImageUrl)
     }
     
 }

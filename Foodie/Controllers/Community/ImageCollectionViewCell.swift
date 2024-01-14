@@ -1,5 +1,4 @@
 
-
 import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
@@ -18,9 +17,5 @@ class ImageCollectionViewCell: UICollectionViewCell {
         self.imageView.image = image
         
     }
-
-    
-   
-     
  
 }

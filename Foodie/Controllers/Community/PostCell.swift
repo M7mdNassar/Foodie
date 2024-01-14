@@ -34,7 +34,7 @@ class PostCell: UITableViewCell {
     // MARK: Methods
     
     func configure(userImage:String? , post: Post){
-        loadUserImage(from: userImage!)
+        self.userImageView.load(from: userImage!)
         self.userNameLabel.text = post.username
     
         self.textPostLabel.text = post.content
@@ -52,21 +52,6 @@ class PostCell: UITableViewCell {
         
     }
     
-        func loadUserImage(from urlString: String) {
-            DispatchQueue.global(qos: .userInitiated).async {
-                if let imageURL = URL(string: urlString),
-                   let imageData = try? Data(contentsOf: imageURL),
-                   let image = UIImage(data: imageData) {
-                    
-                    DispatchQueue.main.async {
-                        self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
-                        self.userImageView.image = image
-                    }
-                }
-            }
-        }
-    
-
         func setBottomCorners(for view: UIView, cornerRadius: CGFloat) {
              let maskPath = UIBezierPath(
                  roundedRect: view.bounds,

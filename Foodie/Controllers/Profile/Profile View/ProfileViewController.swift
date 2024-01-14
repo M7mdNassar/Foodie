@@ -74,18 +74,10 @@ class ProfileViewController: UIViewController {
     }
     
     func updateUI(user: User) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: user.picture.large),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-                DispatchQueue.main.async {
-                    self.setShadowAroundImage()
-                    self.userImageView.image = image
-                    self.userNameLabel.text = user.name.first
-                    self.setUpFont()
-                }
-            }
-        }
+        userImageView.load(from: user.picture.large)
+        userNameLabel.text = user.name.first
+        setUpFont()
+        setShadowAroundImage()
     }
     
     func logout() {

@@ -22,47 +22,17 @@ class AudioOutgoingMessageCell: UITableViewCell, AudioManagerDelegate {
     @IBAction func playButtonTapped(_ sender: UIButton) {
         progressBar.isHidden = false
         
-        if let audioURL = audioURL {
-            if isPlaying {
-                // Pause the audio playback
-                AudioManager.shared.pauseAudio()
-                playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-                
-                // Store the current playback position
-                if let audioPlayer = AudioManager.shared.audioPlayer {
-                    AudioManager.shared.currentPlaybackPosition = audioPlayer.currentTime
-                }
-                
-                isPlaying = false
-            } else {
-                AudioManager.shared.getAudioDuration(at: audioURL) { [weak self] (totalDuration) in
-                    guard totalDuration != nil else {
-                        // Handle error
-                        return
-                    }
-                    
-                    if self?.isPlaying == false {
-                        // Resume playback from the current position
-                        AudioManager.shared.playAudio(at: audioURL, resumePlayback: true,
-                                                      updateProgress: { [weak self] (progress) in
-                                                          // Update progress bar here
-                                                          self?.progressBar.value = Float(progress)
-                                                      },
-                                                      updateTimeLabel: { [weak self] (timeString) in
-                                                          // Update time label here
-                                                          self?.timeLabel.text = timeString
-                                                      })
-                        self?.playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-                        self?.isPlaying = true
-                    }
-                }
-            }
+        guard let audioURL = audioURL else { return }
+        
+        if isPlaying {
+            pauseAudio()
+        } else {
+            playAudio(at: audioURL)
         }
     }
     
     // MARK: - Helper Methods
     
-    // Helper method to format time in seconds as mm:ss
     func formatTime(seconds: Int) -> String {
         let minutes = seconds / 60
         let seconds = seconds % 60
@@ -73,41 +43,12 @@ class AudioOutgoingMessageCell: UITableViewCell, AudioManagerDelegate {
     
     func configure(audioURL: URL, userImageUrl: String) {
         backgroundColor = .clear
-        backgroundMessage.backgroundColor = .foodieLightGreen
-        backgroundMessage.layer.cornerRadius = 15.0
-        backgroundMessage.layer.masksToBounds = true
-        progressBar.value = 0
-        progressBar.isHidden = true
+        configureBackground()
+        configureProgressBar()
         self.audioURL = audioURL
-        AudioManager.shared.delegate = self
-        
-        loadUserImage(urlString: userImageUrl)
-        
-        // Get audio duration and update the time label
-        AudioManager.shared.getAudioDuration(at: audioURL) { [weak self] (totalDuration) in
-            guard let totalDuration = totalDuration else {
-                // Handle error
-                return
-            }
-            
-            // Update UI with total duration (you may want to format it)
-            let totalDurationString = self?.formatTime(seconds: Int(totalDuration))
-            self?.timeLabel.text = totalDurationString
-        }
-    }
-    
-    func loadUserImage(urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageURL = URL(string: urlString),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-                
-                DispatchQueue.main.async {
-                    self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
-                    self.userImageView.image = image
-                }
-            }
-        }
+        configureAudioManager()
+        userImageView.load(from: userImageUrl)
+        configureAudioDuration()
     }
     
     // MARK: - AudioManagerDelegate
@@ -118,5 +59,60 @@ class AudioOutgoingMessageCell: UITableViewCell, AudioManagerDelegate {
         isPlaying = false
         progressBar.isHidden = true
         AudioManager.shared.currentPlaybackPosition = 0
+    }
+    
+    // MARK: - Private Methods
+    
+    private func pauseAudio() {
+        AudioManager.shared.pauseAudio()
+        playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        if let audioPlayer = AudioManager.shared.audioPlayer {
+            AudioManager.shared.currentPlaybackPosition = audioPlayer.currentTime
+        }
+        isPlaying = false
+    }
+    
+    private func playAudio(at audioURL: URL) {
+        AudioManager.shared.getAudioDuration(at: audioURL) { [weak self] _ in
+            guard self?.isPlaying == false else {
+                return
+            }
+            
+            AudioManager.shared.playAudio(at: audioURL, resumePlayback: true,
+                                          updateProgress: { [weak self] progress in
+                                              self?.progressBar.value = Float(progress)
+                                          },
+                                          updateTimeLabel: { [weak self] timeString in
+                                              self?.timeLabel.text = timeString
+                                          })
+            self?.playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            self?.isPlaying = true
+        }
+    }
+
+    
+    private func configureBackground() {
+        backgroundMessage.backgroundColor = .foodieLightGreen
+        backgroundMessage.layer.cornerRadius = 15.0
+        backgroundMessage.layer.masksToBounds = true
+    }
+    
+    private func configureProgressBar() {
+        progressBar.value = 0
+        progressBar.isHidden = true
+    }
+    
+    private func configureAudioManager() {
+        AudioManager.shared.delegate = self
+    }
+    
+    private func configureAudioDuration() {
+        guard let audioURL = audioURL else { return }
+        
+        AudioManager.shared.getAudioDuration(at: audioURL) { [weak self] totalDuration in
+            guard let totalDuration = totalDuration else { return }
+            let totalDurationString = self?.formatTime(seconds: Int(totalDuration))
+            self?.timeLabel.text = totalDurationString
+        }
     }
 }

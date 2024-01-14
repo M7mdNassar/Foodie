@@ -16,10 +16,7 @@ class RestaurantCell: UITableViewCell {
     
     @IBAction func addToFavourite(_ sender: UIButton) {
         print("Star Clicked")
-        
         favoriteButtonTapped?()
-
-        
     }
     
     // MARK: - UI Setup Cell
@@ -36,7 +33,6 @@ class RestaurantCell: UITableViewCell {
             favouriteButton.tintColor = .systemGray3
 
         }
-      
     }
     
     func setUpFontLabels(){

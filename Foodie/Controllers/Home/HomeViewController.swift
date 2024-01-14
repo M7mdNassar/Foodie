@@ -18,8 +18,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showLoadingView()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { self.hideLoadingView() }
         configureTabBar()
         configureCollection()
         setUpAnimation()
@@ -166,30 +164,4 @@ extension HomeViewController: UICollectionViewDragDelegate,  UICollectionViewDro
         return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
 
-}
-
-
-
-// MARK: - Loading View
-extension HomeViewController {
-    private func showLoadingView() {
-        let loadingView = UIView(frame: view.bounds)
-        loadingView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
-        loadingView.tag = 123 // Set a unique tag
-        
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.center = loadingView.center
-        activityIndicator.color = .white
-        activityIndicator.startAnimating()
-        
-        loadingView.addSubview(activityIndicator)
-        view.addSubview(loadingView)
-    }
-    
-    func hideLoadingView() {
-        let loadingViewTag = 123 // Assign a unique tag to your loading view
-        if let loadingView = view.viewWithTag(loadingViewTag) {
-            loadingView.removeFromSuperview()
-        }
-    }
 }

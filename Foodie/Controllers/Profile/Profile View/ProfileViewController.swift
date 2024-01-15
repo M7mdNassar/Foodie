@@ -88,6 +88,8 @@ class ProfileViewController: UIViewController {
             // Perform logout actions
             UserDefaults.standard.removeObject(forKey: "username")
             UserDefaults.standard.removeObject(forKey: "password")
+            UserManager.resetCurrentUser()
+            
             if let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
                 let navigationController = UINavigationController(rootViewController: loginViewController)
                 navigationController.modalPresentationStyle = .fullScreen

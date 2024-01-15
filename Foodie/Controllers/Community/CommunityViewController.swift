@@ -63,6 +63,7 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
         let post = posts[indexPath.row]
         let cell = tableView.dequeue() as PostCell
         cell.configure(userImage: currentUser?.picture.large, post: post)
+      
         return cell
     }
 }
@@ -101,7 +102,7 @@ extension CommunityViewController{
             Post(postId: "2", username: currentUser?.name.first,content: "Hello" ,images: [UIImage(named: "1005")!] , likes: 13, comments: [Comment(username: "Mohammed", text: "Good") , Comment(username: "Ahmad", text: "Nice!")]) ,
             Post(postId: "2", username: currentUser?.name.first,content: "Hello" ,images: [UIImage(named: "1004")!] , likes: 13, comments: [Comment(username: "Mohammed", text: "Good") , Comment(username: "Ahmad", text: "Nice!")])
         ]
-        
+                
     }
     
     func populateStories(){
@@ -115,6 +116,7 @@ extension CommunityViewController{
         Story(username: "Ahmad", image: UIImage(named: "1005")!)
         
         ]
+        
     }
 
 }

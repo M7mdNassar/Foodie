@@ -39,7 +39,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU8-3Q-Tcx" customClass="ExpandableLabel" customModule="Foodie" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU8-3Q-Tcx" customClass="ExpandableLabel" customModule="Foodie" customModuleProvider="target">
                                 <rect key="frame" x="20" y="90" width="408" height="32"/>
                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -84,6 +84,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="14"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="makeLike:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YtX-Ki-bS7"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAc-Lo-lwv">
                                         <rect key="frame" x="50" y="15" width="22.666666666666671" height="10"/>
@@ -152,6 +155,7 @@
                 <outlet property="bottomBarView" destination="rOC-rg-SAo" id="YRg-2u-vaG"/>
                 <outlet property="collectionView" destination="uJ8-3b-qqx" id="1N2-dG-NHp"/>
                 <outlet property="commentsContLabel" destination="yAc-Lo-lwv" id="dXU-cs-AC2"/>
+                <outlet property="likeButton" destination="2pl-sk-iyG" id="Moc-ay-qxj"/>
                 <outlet property="likesCountLabel" destination="aOY-f9-Hhm" id="IBD-SX-Xpu"/>
                 <outlet property="textPostLabel" destination="UU8-3Q-Tcx" id="o61-pF-ca5"/>
                 <outlet property="userImageView" destination="m06-db-NS3" id="Mhm-FD-KcW"/>

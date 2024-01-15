@@ -9,6 +9,7 @@ struct Post {
     var images: [UIImage?]
     var likes: Int
     var comments: [Comment]
+    var isLiked: Bool = false
 }
 
 struct Comment {

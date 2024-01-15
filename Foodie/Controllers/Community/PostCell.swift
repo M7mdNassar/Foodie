@@ -15,9 +15,11 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var commentsContLabel: UILabel!
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var bottomBarView: UIView!
+    @IBOutlet weak var likeButton: UIButton!
+    
     
     var postImages: [UIImage?] = []
-    
+    var likes: Int = 0
     // MARK: Life Cycle
     
     override func awakeFromNib() {
@@ -31,6 +33,23 @@ class PostCell: UITableViewCell {
         collectionView.register(nib, forCellWithReuseIdentifier: "ImageCollectionViewCell")
      }
     
+    // MARK: Actions
+    
+    
+    @IBAction func makeLike(_ sender: UIButton) {
+        
+        if self.likeButton.tintColor == .white{
+            likes += 1
+            self.likesCountLabel.text = String(likes)
+            self.likeButton.tintColor = .red
+            
+        }else{
+            likes -= 1
+            self.likesCountLabel.text = String(likes)
+            self.likeButton.tintColor = .white
+        }
+    }
+    
     // MARK: Methods
     
     func configure(userImage:String? , post: Post){
@@ -40,7 +59,9 @@ class PostCell: UITableViewCell {
         self.textPostLabel.text = post.content
 
         self.commentsContLabel.text = String(post.comments.count)
+        
         self.likesCountLabel.text = String(post.likes)
+        self.likes = post.likes
         
         self.backgroundContentView.layer.cornerRadius = 20
         

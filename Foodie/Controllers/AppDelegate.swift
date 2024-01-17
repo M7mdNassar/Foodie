@@ -1,13 +1,17 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
            IQKeyboardManager.shared.enable = true
-           
+           FirebaseApp.configure()
            return true
        }
    

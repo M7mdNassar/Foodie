@@ -17,10 +17,16 @@ class MyCustomTabBarController : UITabBarController {
     
 
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         btnMiddle.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 30, y: -20, width: 60, height: 60)
         btnMiddle.addTarget(self, action: #selector(btnMiddleTapped), for: .touchUpInside)
+        
+        
+        // Disable the last tab
+        disableTab(atIndex: 2)
 
     }
     
@@ -46,6 +52,7 @@ class MyCustomTabBarController : UITabBarController {
         self.tabBar.addSubview(btnMiddle)
         setupCustomTabBar()
     }
+    
     func setupCustomTabBar() {
         let path: UIBezierPath = getPathForTabBar()
         let shape = CAShapeLayer()
@@ -91,5 +98,13 @@ class MyCustomTabBarController : UITabBarController {
         path.close()
         return path
     }
+    
+    
+    func disableTab(atIndex index: Int) {
+        
+         if let tabBarItem = viewControllers?[index].tabBarItem {
+             tabBarItem.isEnabled = false
+         }
+     }
 
 }

@@ -15,7 +15,7 @@ class AddPostViewController: UIViewController {
     @IBOutlet weak var postContent: UITextView!
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var addImageButton: UIButton!
+//    @IBOutlet weak var addImageButton: UIButton!
     
     // MARK: Actions
     
@@ -125,7 +125,7 @@ private extension AddPostViewController {
         self.postButton.layer.cornerRadius = 15
         self.postButton.clipsToBounds = true
         
-        self.addImageButton.layer.cornerRadius = 15
-        self.addImageButton.clipsToBounds = true
+//        self.addImageButton.layer.cornerRadius = 15
+//        self.addImageButton.clipsToBounds = true
     }
 }

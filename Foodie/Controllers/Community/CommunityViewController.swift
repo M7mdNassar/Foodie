@@ -62,7 +62,10 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
         
         let post = posts[indexPath.row]
         let cell = tableView.dequeue() as PostCell
-        cell.configure(userImage: currentUser?.picture.large, post: post)
+
+        cell.textPostLabel.isExpaded = false
+
+        cell.configure(userImage: currentUser?.picture.large, post: post , indexPath: indexPath)
       
         return cell
     }

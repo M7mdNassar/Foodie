@@ -4,7 +4,7 @@ import UIKit
 class ExpandableLabel :UILabel {
     
     var isExpaded = false
-    
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -52,6 +52,7 @@ class ExpandableLabel :UILabel {
             
             self.numberOfLines = 2
         }
+        
     }
     
     //Calculating the number of lines. -> Int

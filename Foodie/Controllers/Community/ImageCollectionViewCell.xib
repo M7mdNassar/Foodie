@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="imageView" destination="g3x-KD-3DB" id="faf-Wk-NCq"/>
             </connections>
-            <point key="canvasLocation" x="70" y="26"/>
+            <point key="canvasLocation" x="-8" y="-17"/>
         </collectionViewCell>
     </objects>
 </document>

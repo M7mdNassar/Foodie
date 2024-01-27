@@ -195,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxg-oa-XEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3246.5648854961833" y="676.76056338028172"/>
+            <point key="canvasLocation" x="3140" y="677"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="L9x-l0-HLB">
@@ -1315,7 +1315,7 @@
         <!--المنتدى-->
         <scene sceneID="AZX-vY-IOm">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Fjo-h3-ICg" customClass="CommunityViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="communityView" hidesBottomBarWhenPushed="YES" id="Fjo-h3-ICg" customClass="CommunityViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fmv-8l-YdJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

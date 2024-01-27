@@ -102,7 +102,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
               cell.ingredientNameLabel.textColor = .black
               cell.ingredientImageView.tintColor = .black
 
-
           }
         
         return cell

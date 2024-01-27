@@ -19,6 +19,7 @@ class PostCell: UITableViewCell {
     
     var postImages: [UIImage?] = []
     var likes: Int = 0
+    
     // MARK: Life Cycle
     
     override func awakeFromNib() {
@@ -31,6 +32,25 @@ class PostCell: UITableViewCell {
         let nib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ImageCollectionViewCell")
      }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        // Reset label's content
+        textPostLabel.text = nil
+        
+        // Remove the "Read more" button if it's added
+        removeReadMoreButtonIfNeeded()
+    }
+
+    private func removeReadMoreButtonIfNeeded() {
+        // Find and remove the "Read more" button if it's added
+        if let readMoreButton = self.contentView.viewWithTag(9090) {
+            readMoreButton.removeFromSuperview()
+        }
+    }
+
+
     
     // MARK: Actions
     
@@ -51,12 +71,14 @@ class PostCell: UITableViewCell {
     
     // MARK: Methods
     
-    func configure(userImage:String? , post: Post){
+    func configure(userImage:String? , post: Post , indexPath: IndexPath){
         self.userImageView.load(from: userImage!)
         self.userNameLabel.text = post.username
     
+        
         self.textPostLabel.text = post.content
 
+        
         self.commentsContLabel.text = String(post.comments.count)
         
         self.likesCountLabel.text = String(post.likes)
@@ -68,6 +90,8 @@ class PostCell: UITableViewCell {
         
         self.postImages = post.images
         self.collectionView.reloadData()
+        
+        self.layoutIfNeeded()
 
         
     }

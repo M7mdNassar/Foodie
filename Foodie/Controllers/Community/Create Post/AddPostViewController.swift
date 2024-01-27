@@ -25,15 +25,23 @@ class AddPostViewController: UIViewController {
     
     @IBAction func postButton(_ sender: UIButton) {
         let post = Post(postId: "uniqueID", username: "currentUser", content: postContent.text, images: images, likes: 0, comments: [])
-        // Check if communityViewController is not nil and its tableView is not nil
-         if let tableView = self.communityViewController?.tableView {
-             self.communityViewController?.posts.insert(post, at: 0)
-             print("dose execute ?")
-             tableView.reloadData()
-         }
-
+        
+        // Check if the presenting view controller is a tab bar controller
+        if let tabBarController = presentingViewController as? UITabBarController {
+            // Set the selectedIndex to the index of the first tab (CommunityViewController)
+            tabBarController.selectedIndex = 0
+        }
+        
+        if let communityViewController = communityViewController {
+            if let tableView = communityViewController.tableView {
+                communityViewController.posts.insert(post, at: 0)
+                tableView.reloadData()
+            }
+        }
+        
         dismiss(animated: true, completion: nil)
     }
+
     
     @IBAction func addImages(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()

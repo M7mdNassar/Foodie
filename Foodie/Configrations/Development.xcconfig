@@ -1,0 +1,12 @@
+//
+//  Development.xcconfig
+//  Foodie
+//
+//  Created by Mac on 28/01/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+endpoint_url    = www.dev.com

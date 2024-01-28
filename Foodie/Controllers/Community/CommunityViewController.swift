@@ -25,6 +25,8 @@ class CommunityViewController: UIViewController {
         setUpCollection()
         populatePosts()
         populateStories()
+        
+        print("End Point URL : " , Env().configure(InfoPlistKey.EndpointURL))
     }
   
 }

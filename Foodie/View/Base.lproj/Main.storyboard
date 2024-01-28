@@ -23,7 +23,7 @@
         <!--Home View Controller-->
         <scene sceneID="waR-cA-HsB">
             <objects>
-                <viewController id="sgH-rM-WmL" customClass="HomeViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sgH-rM-WmL" customClass="HomeViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Jq-ut-RGi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
         <!--Add Post View Controller-->
         <scene sceneID="KNX-Cy-L8D">
             <objects>
-                <viewController storyboardIdentifier="AddPostViewController" id="uSy-jb-ePh" customClass="AddPostViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPostViewController" id="uSy-jb-ePh" customClass="AddPostViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5wo-bT-4fr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,7 +200,7 @@
         <!--Page View Controller-->
         <scene sceneID="L9x-l0-HLB">
             <objects>
-                <viewController storyboardIdentifier="featured" id="8ol-RW-EeF" customClass="PageViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="featured" id="8ol-RW-EeF" customClass="PageViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Vo-qe-CeE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -215,7 +215,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeCell" id="N49-4A-05A" customClass="PageCollectionViewCell" customModule="Foodie" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeCell" id="N49-4A-05A" customClass="PageCollectionViewCell" customModule="Debug_Foodie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="10" width="394" height="193"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -305,7 +305,7 @@
         <!--Restaurants List-->
         <scene sceneID="wMe-c1-yUI">
             <objects>
-                <viewController id="7qc-7B-7PT" customClass="RestaurantsList" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7qc-7B-7PT" customClass="RestaurantsList" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BQd-aU-laD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,7 +344,7 @@
                                         <rect key="frame" x="0.0" y="42" width="361" height="514"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" rowHeight="100" id="cvD-dy-T8Z" customClass="RestaurantCell" customModule="Foodie" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" rowHeight="100" id="cvD-dy-T8Z" customClass="RestaurantCell" customModule="Debug_Foodie" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="361" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cvD-dy-T8Z" id="4IK-bm-Duv">
@@ -463,7 +463,7 @@
         <!--Restaurant Details-->
         <scene sceneID="wBj-hi-qX6">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="R8W-sa-26L" customClass="RestaurantDetails" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="R8W-sa-26L" customClass="RestaurantDetails" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hTd-RC-KPS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -576,7 +576,7 @@
         <!--Profile View Controller-->
         <scene sceneID="LBT-xw-etR">
             <objects>
-                <viewController id="1cU-H3-bsp" customClass="ProfileViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1cU-H3-bsp" customClass="ProfileViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0fm-fh-s8s">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -661,7 +661,7 @@
         <!--Edit Profile-->
         <scene sceneID="z1N-IF-I7k">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="d7R-Hr-f9s" customClass="EditProfile" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="d7R-Hr-f9s" customClass="EditProfile" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W3F-tt-N89">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -878,7 +878,7 @@
         <!--Login View Controller-->
         <scene sceneID="To2-0Q-KZE">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wi4-kt-25T" customClass="LoginViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wi4-kt-25T" customClass="LoginViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzw-LX-tcU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -971,7 +971,7 @@
         <!--HomeView-->
         <scene sceneID="Ckc-S4-d8N">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" title="HomeView" automaticallyAdjustsScrollViewInsets="NO" id="ZVY-OF-G77" customClass="MyCustomTabBarController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" title="HomeView" automaticallyAdjustsScrollViewInsets="NO" id="ZVY-OF-G77" customClass="MyCustomTabBarController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Q6V-dq-YGL"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6HN-DK-MKz">
@@ -1043,7 +1043,7 @@
         <!--Restaurant View Controller-->
         <scene sceneID="7hR-Me-HXV">
             <objects>
-                <viewController id="POn-yD-vGT" customClass="RestaurantViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="POn-yD-vGT" customClass="RestaurantViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ykQ-XC-8cD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1052,7 +1052,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tabelViewCell" rowHeight="160" id="ccy-eS-iGr" customClass="RestaurantTableViewCell" customModule="Foodie" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tabelViewCell" rowHeight="160" id="ccy-eS-iGr" customClass="RestaurantTableViewCell" customModule="Debug_Foodie" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ccy-eS-iGr" id="isk-sG-WYd">
@@ -1155,7 +1155,7 @@
         <!--Chat View Controller-->
         <scene sceneID="hH1-uQ-CZ0">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="O2U-df-cc2" customClass="ChatViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="O2U-df-cc2" customClass="ChatViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M2M-SU-Px5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1315,7 +1315,7 @@
         <!--المنتدى-->
         <scene sceneID="AZX-vY-IOm">
             <objects>
-                <viewController storyboardIdentifier="communityView" hidesBottomBarWhenPushed="YES" id="Fjo-h3-ICg" customClass="CommunityViewController" customModule="Foodie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="communityView" hidesBottomBarWhenPushed="YES" id="Fjo-h3-ICg" customClass="CommunityViewController" customModule="Debug_Foodie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fmv-8l-YdJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -96,7 +96,11 @@
 		04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */; };
 		04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */; };
 		04EB58262B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */; };
+		04EC020B2B66D1A600AC63FC /* Production.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04EC020A2B66D1A600AC63FC /* Production.plist */; };
 		04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */; };
+		04FA3B122B66CF2000AE671E /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 04FA3B112B66CF2000AE671E /* Development.xcconfig */; };
+		04FA3B152B66CF5700AE671E /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 04FA3B142B66CF5700AE671E /* Production.xcconfig */; };
+		04FA3B182B66CFF000AE671E /* EnvironmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA3B172B66CFF000AE671E /* EnvironmentHelper.swift */; };
 		04FD42792B2F8A4800010D69 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD42782B2F8A4800010D69 /* AudioManager.swift */; };
 		04FD8E0B2B0F3C4800EB9941 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */; };
 		04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0F2B0F598200EB9941 /* UserResult.swift */; };
@@ -160,13 +164,13 @@
 		04BF4AF52B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCollectionViewCell.swift; sourceTree = "<group>"; };
 		04BF4AF62B0D02EC0000EB36 /* IngredientsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IngredientsCollectionViewCell.xib; sourceTree = "<group>"; };
 		04C73CD92B1881F6005D7F38 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		04D08D0F2AF79F1F004C2E7E /* Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04D08D0F2AF79F1F004C2E7E /* Debug Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debug Foodie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D08D122AF79F1F004C2E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		04D08D192AF79F1F004C2E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04D08D1B2AF79F22004C2E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04D08D1E2AF79F22004C2E7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		04D08D202AF79F22004C2E7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04D08D202AF79F22004C2E7E /* Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Regular.ttf"; sourceTree = "<group>"; };
 		04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Bold.ttf"; sourceTree = "<group>"; };
 		04DB69942B232AED0074569A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -176,7 +180,11 @@
 		04E427072AF8D6DE00E32CF5 /* RestaurantsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RestaurantsData.json; sourceTree = "<group>"; };
 		04E427092AF8F2F500E32CF5 /* RestaurantDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetails.swift; sourceTree = "<group>"; };
 		04EB58252B021EAB0035D5A4 /* NotoKufiArabic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoKufiArabic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		04EC020A2B66D1A600AC63FC /* Production.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Production.plist; sourceTree = "<group>"; };
 		04F5015F2B0235B2008820C6 /* LaunchScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenController.swift; sourceTree = "<group>"; };
+		04FA3B112B66CF2000AE671E /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		04FA3B142B66CF5700AE671E /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		04FA3B172B66CFF000AE671E /* EnvironmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentHelper.swift; sourceTree = "<group>"; };
 		04FD42782B2F8A4800010D69 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		04FD8E0F2B0F598200EB9941 /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
@@ -185,8 +193,12 @@
 		04FD8E142B0FECB300EB9941 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		04FD8E182B0FEF0300EB9941 /* ar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04FD8E1A2B0FEF1F00EB9941 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0F91F5BEDCB2735F790EEDC3 /* Pods-Foodie.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.dev debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.dev debug.xcconfig"; sourceTree = "<group>"; };
+		1A8D141B3663A871DAA4E579 /* Pods-Foodie.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.prod debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.prod debug.xcconfig"; sourceTree = "<group>"; };
+		440EC93D555EADFE4A661610 /* Pods-Foodie.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.dev release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.dev release.xcconfig"; sourceTree = "<group>"; };
 		441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.debug.xcconfig"; sourceTree = "<group>"; };
 		5DBCB224C774BBE67C855047 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
+		752AEB6232DA9537E759894C /* Pods-Foodie.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.prod release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.prod release.xcconfig"; sourceTree = "<group>"; };
 		F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -397,7 +409,7 @@
 		04D08D102AF79F1F004C2E7E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04D08D0F2AF79F1F004C2E7E /* Foodie.app */,
+				04D08D0F2AF79F1F004C2E7E /* Debug Foodie.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -412,8 +424,10 @@
 				045A7A342AFAD6B300C29688 /* Resources */,
 				0480428C2B152409001406FA /* Localization */,
 				04D08D1B2AF79F22004C2E7E /* Assets.xcassets */,
-				04D08D202AF79F22004C2E7E /* Info.plist */,
+				04D08D202AF79F22004C2E7E /* Development.plist */,
+				04EC020A2B66D1A600AC63FC /* Production.plist */,
 				04424C192B584CAB00C0E9A2 /* GoogleService-Info.plist */,
+				04FA3B162B66CF9200AE671E /* Configrations */,
 			);
 			path = Foodie;
 			sourceTree = "<group>";
@@ -505,6 +519,16 @@
 			path = "Animations Lottie";
 			sourceTree = "<group>";
 		};
+		04FA3B162B66CF9200AE671E /* Configrations */ = {
+			isa = PBXGroup;
+			children = (
+				04FA3B172B66CFF000AE671E /* EnvironmentHelper.swift */,
+				04FA3B112B66CF2000AE671E /* Development.xcconfig */,
+				04FA3B142B66CF5700AE671E /* Production.xcconfig */,
+			);
+			path = Configrations;
+			sourceTree = "<group>";
+		};
 		04FD8E0C2B0F3C5000EB9941 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +552,10 @@
 			children = (
 				441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */,
 				5DBCB224C774BBE67C855047 /* Pods-Foodie.release.xcconfig */,
+				0F91F5BEDCB2735F790EEDC3 /* Pods-Foodie.dev debug.xcconfig */,
+				1A8D141B3663A871DAA4E579 /* Pods-Foodie.prod debug.xcconfig */,
+				440EC93D555EADFE4A661610 /* Pods-Foodie.dev release.xcconfig */,
+				752AEB6232DA9537E759894C /* Pods-Foodie.prod release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -574,7 +602,7 @@
 				04BBCDD82B5863B5004E9AA5 /* FirebaseStorageCombine-Community */,
 			);
 			productName = Foodie;
-			productReference = 04D08D0F2AF79F1F004C2E7E /* Foodie.app */;
+			productReference = 04D08D0F2AF79F1F004C2E7E /* Debug Foodie.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -620,7 +648,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				042F7F802B29AD99004D501E /* AudioIncomingMessageCell.xib in Resources */,
+				04EC020B2B66D1A600AC63FC /* Production.plist in Resources */,
 				04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */,
+				04FA3B122B66CF2000AE671E /* Development.xcconfig in Resources */,
 				04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */,
 				04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */,
 				0483A7762B4205F60012AFF0 /* StoryCollectionViewCell.xib in Resources */,
@@ -636,6 +666,7 @@
 				0440CBA62B4BF40400AAE9E4 /* ImageCell.xib in Resources */,
 				04285EF32B023EA100461CFE /* Loadingbbb.json in Resources */,
 				046A74FF2B1935A3002F62E2 /* TextOutgoingMessageCell.xib in Resources */,
+				04FA3B152B66CF5700AE671E /* Production.xcconfig in Resources */,
 				04567A082B2CB50900ADD4BC /* TextAndImageOutgoingMessageCell.xib in Resources */,
 				042F7F7C2B29AD78004D501E /* AudioOutgoingMessageCell.xib in Resources */,
 				041519E32B1D03E900053B0A /* TextIncomingMessageCell.xib in Resources */,
@@ -705,6 +736,7 @@
 				0412220D2B0382120013A273 /* LoginViewController.swift in Sources */,
 				04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */,
 				0483A7712B41CF3B0012AFF0 /* PostCell.swift in Sources */,
+				04FA3B182B66CFF000AE671E /* EnvironmentHelper.swift in Sources */,
 				0440CBA92B4C08C900AAE9E4 /* ImageCollectionViewCell.swift in Sources */,
 				0455BD3F2AF7FD85006218AB /* RestaurantCell.swift in Sources */,
 				0424831F2B11ECD200B84CB0 /* ProfileTableViewCell.swift in Sources */,
@@ -783,6 +815,7 @@
 /* Begin XCBuildConfiguration section */
 		04D08D212AF79F22004C2E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04FA3B112B66CF2000AE671E /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -841,13 +874,14 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) LOCAL";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		04D08D222AF79F22004C2E7E /* Release */ = {
+		04D08D222AF79F22004C2E7E /* Dev Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04FA3B112B66CF2000AE671E /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -899,21 +933,23 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEV;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = "Dev Release";
 		};
 		04D08D242AF79F22004C2E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				APP_NAME = "Debug Foodie";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Foodie/Info.plist;
+				INFOPLIST_FILE = Foodie/Development.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow us to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to access your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -928,24 +964,25 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie_debug;
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		04D08D252AF79F22004C2E7E /* Release */ = {
+		04D08D252AF79F22004C2E7E /* Dev Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DBCB224C774BBE67C855047 /* Pods-Foodie.release.xcconfig */;
+			baseConfigurationReference = 440EC93D555EADFE4A661610 /* Pods-Foodie.dev release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				APP_NAME = "Dev Foodie";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Foodie/Info.plist;
+				INFOPLIST_FILE = Foodie/Development.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow us to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to access your location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -960,13 +997,304 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie_dev;
+				PRODUCT_NAME = "$(APP_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Release;
+			name = "Dev Release";
+		};
+		04FA3B072B66BDCF00AE671E /* Dev Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04FA3B112B66CF2000AE671E /* Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) DEV";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Dev Debug";
+		};
+		04FA3B082B66BDCF00AE671E /* Dev Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F91F5BEDCB2735F790EEDC3 /* Pods-Foodie.dev debug.xcconfig */;
+			buildSettings = {
+				APP_NAME = "Dev Foodie";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Foodie/Development.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow us to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to access your location";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie_dev;
+				PRODUCT_NAME = "$(APP_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Dev Debug";
+		};
+		04FA3B0B2B66BDE700AE671E /* Prod Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04FA3B142B66CF5700AE671E /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Prod Release";
+		};
+		04FA3B0C2B66BDE700AE671E /* Prod Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 752AEB6232DA9537E759894C /* Pods-Foodie.prod release.xcconfig */;
+			buildSettings = {
+				APP_NAME = "Prod Foodie";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Foodie/Production.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow us to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to access your location";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie_prod;
+				PRODUCT_NAME = "$(APP_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Prod Release";
+		};
+		04FA3B0F2B66C0A300AE671E /* Prod Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04FA3B142B66CF5700AE671E /* Production.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) PROD";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Prod Debug";
+		};
+		04FA3B102B66C0A300AE671E /* Prod Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A8D141B3663A871DAA4E579 /* Pods-Foodie.prod debug.xcconfig */;
+			buildSettings = {
+				APP_NAME = "Prod Foodie";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Foodie/Production.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow us to access your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow us to access your location";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = nassar.Foodie_prod;
+				PRODUCT_NAME = "$(APP_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = "Prod Debug";
 		};
 /* End XCBuildConfiguration section */
 
@@ -975,19 +1303,25 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04D08D212AF79F22004C2E7E /* Debug */,
-				04D08D222AF79F22004C2E7E /* Release */,
+				04FA3B072B66BDCF00AE671E /* Dev Debug */,
+				04FA3B0F2B66C0A300AE671E /* Prod Debug */,
+				04D08D222AF79F22004C2E7E /* Dev Release */,
+				04FA3B0B2B66BDE700AE671E /* Prod Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Dev Release";
 		};
 		04D08D232AF79F22004C2E7E /* Build configuration list for PBXNativeTarget "Foodie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04D08D242AF79F22004C2E7E /* Debug */,
-				04D08D252AF79F22004C2E7E /* Release */,
+				04FA3B082B66BDCF00AE671E /* Dev Debug */,
+				04FA3B102B66C0A300AE671E /* Prod Debug */,
+				04D08D252AF79F22004C2E7E /* Dev Release */,
+				04FA3B0C2B66BDE700AE671E /* Prod Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = "Dev Release";
 		};
 /* End XCConfigurationList section */
 

@@ -91,8 +91,6 @@ class PostCell: UITableViewCell {
         self.postImages = post.images
         self.collectionView.reloadData()
         
-        self.layoutIfNeeded()
-
         
     }
     

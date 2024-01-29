@@ -3,6 +3,7 @@ import UIKit
 import Foundation
 
 class MyCustomTabBarController : UITabBarController {
+    
     let btnMiddle : UIButton = {
        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         btn.setTitle("", for: .normal)
@@ -16,9 +17,6 @@ class MyCustomTabBarController : UITabBarController {
     }()
     
 
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         btnMiddle.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 30, y: -20, width: 60, height: 60)
@@ -63,14 +61,6 @@ class MyCustomTabBarController : UITabBarController {
 
         self.tabBar.layer.insertSublayer(shape, at: 0)
 
-        // Adjust the item spacing to create space between the tabs and the center button
-        let centerButtonWidth: CGFloat = 60
-        let totalItemWidth: CGFloat = self.tabBar.bounds.width - centerButtonWidth
-        let itemSpacing = totalItemWidth / 6 // You can adjust this value to increase or decrease the spacing
-
-        self.tabBar.itemWidth = 50
-        self.tabBar.itemPositioning = .centered
-        self.tabBar.itemSpacing = itemSpacing
         self.tabBar.tintColor = UIColor.foodieLightGreen
     }
 

@@ -9,4 +9,5 @@ target 'Foodie' do
 
 pod 'lottie-ios'
 pod 'IQKeyboardManagerSwift'
+pod 'ProgressHUD'
 end

@@ -17,7 +17,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     
-    var postImages: [UIImage?] = []
+    var postImages: [String?] = []
     var likes: Int = 0
     
     // MARK: Life Cycle
@@ -71,8 +71,10 @@ class PostCell: UITableViewCell {
     
     // MARK: Methods
     
-    func configure(userImage:String? , post: Post , indexPath: IndexPath){
+    func configure(userImage:String? , post: Post ){
         self.userImageView.load(from: userImage!)
+        
+        
         self.userNameLabel.text = post.username
     
         
@@ -121,7 +123,7 @@ extension PostCell: UICollectionViewDataSource, UICollectionViewDelegate {
 
         
         if let image = postImages[indexPath.item] {
-            cell.configure(image: image)
+            cell.configure(imageUrl: image)
         }
 //        else {
 //            // Placeholder image or handle the case where the image is nil

@@ -1,5 +1,6 @@
 
 import UIKit
+import FirebaseDatabase
 
 class CommunityViewController: UIViewController {
 
@@ -8,7 +9,10 @@ class CommunityViewController: UIViewController {
     var posts: [Post] = []
     var stories: [Story] = []
     var currentUser = UserManager.getUserFromUserDefaults()
-
+    
+    var ref: DatabaseReference!
+    var databaseHandle : DatabaseHandle!
+    
     // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
@@ -17,17 +21,43 @@ class CommunityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         showLoadingView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.hideLoadingView() }
         
         setUpTable()
         setUpCollection()
-        populatePosts()
+        
+        ref = Database.database().reference().child("posts")
+        observePosts()
+        
         populateStories()
         
         print("End Point URL : " , Env().configure(InfoPlistKey.EndpointURL))
     }
+    
+    
+    // MARK: Methods
+      func observePosts() {
+          databaseHandle = ref.observe(.value, with: { snapshot in
+              self.posts.removeAll() // Clear the existing posts
+              
+              for case let child as DataSnapshot in snapshot.children {
+                  if let postDict = child.value as? [String: Any],
+                     let postId = postDict["postId"] as? String,
+                     let username = postDict["username"] as? String,
+                     let content = postDict["content"] as? String,
+                     let imageUrls = postDict["imageUrls"] as? [String] {
+                      let post = Post(postId: postId, username: username, content: content, images: imageUrls , likes: 0,comments: [])
+                      self.posts.append(post)
+                  }
+              }
+              
+              self.tableView.reloadData()
+          })
+      }
+
   
 }
 
@@ -67,7 +97,7 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
 
         cell.textPostLabel.isExpaded = false
 
-        cell.configure(userImage: currentUser?.picture.large, post: post , indexPath: indexPath)
+        cell.configure(userImage: currentUser?.picture.large, post: post)
       
         return cell
     }
@@ -97,18 +127,7 @@ extension CommunityViewController{
         collectionView.register(nib, forCellWithReuseIdentifier: "storyCell")
     }
     
-    func populatePosts(){
-        
-        posts = [
-        
-            Post(postId: "1", username: currentUser?.name.first,content: "Hello , i need help !Hello , i need help Hello , i need help Hello , i need help Hello , i need help Hello , i need helpHello , i need help !Hello , i need help Hello , i need help Hello , i need help Hello , i need help Hello , i need helpHello , i need help !Hello , i need help Hello , i need help Hello , i need help Hello , i need help Hello , i need help " , images: [UIImage(named: "1002")!] ,likes: 10, comments: [Comment(username: "Mohammed", text: "Good") , Comment(username: "Ahmad", text: "Nice!")]) ,
-            Post(postId: "2", username: currentUser?.name.first,content: "Hello" ,images: [UIImage(named: "1003")!] , likes: 13, comments: [Comment(username: "Mohammed", text: "Good") , Comment(username: "Ahmad", text: "Nice!")]) ,
-            
-            Post(postId: "2", username: currentUser?.name.first,content: "Hello" ,images: [UIImage(named: "1005")!] , likes: 13, comments: [Comment(username: "Mohammed", text: "Good") , Comment(username: "Ahmad", text: "Nice!")]) ,
-            Post(postId: "2", username: currentUser?.name.first,content: "Hello" ,images: [UIImage(named: "1004")!] , likes: 13, comments: [Comment(username: "Mohammed", text: "Good") , Comment(username: "Ahmad", text: "Nice!")])
-        ]
-                
-    }
+  
     
     func populateStories(){
         

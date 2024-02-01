@@ -1,20 +1,24 @@
 PODS:
   - IQKeyboardManagerSwift (7.0.0)
   - lottie-ios (4.4.0)
+  - ProgressHUD (14.1.1)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - lottie-ios
+  - ProgressHUD
 
 SPEC REPOS:
   trunk:
     - IQKeyboardManagerSwift
     - lottie-ios
+    - ProgressHUD
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: bd69f3a49f6ead9cb6ce17723cf0c6c9b948d83e
   lottie-ios: ef1be1f90d54255f08e09d767950e43714661178
+  ProgressHUD: abb9136ae23c85204236828562cb9a8ec98efb44
 
-PODFILE CHECKSUM: ab2f959d717d07cd4922b17d2991b7f5d78d2054
+PODFILE CHECKSUM: 5ec9bf69b12bae9906046d57e005a8420dda38f4
 
 COCOAPODS: 1.14.2

@@ -33,6 +33,7 @@
 		04424C1A2B584CAB00C0E9A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04424C192B584CAB00C0E9A2 /* GoogleService-Info.plist */; };
 		044CC8CC2B1938D500CAE3B8 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */; };
 		044E1E3B2AFD4ABB006E554E /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044E1E3A2AFD4ABB006E554E /* RestaurantTableViewCell.swift */; };
+		0450A7932B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450A7922B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift */; };
 		0455BD3B2AF7F518006218AB /* RestaurantsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD3A2AF7F518006218AB /* RestaurantsList.swift */; };
 		0455BD3F2AF7FD85006218AB /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD3E2AF7FD85006218AB /* RestaurantCell.swift */; };
 		0455BD412AF7FFB1006218AB /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455BD402AF7FFB1006218AB /* Restaurant.swift */; };
@@ -89,6 +90,7 @@
 		04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D1D2AF79F22004C2E7E /* LaunchScreen.storyboard */; };
 		04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */; };
 		04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */; };
+		04D606942B6BF54A00C13F3B /* FirebaseDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D606932B6BF54A00C13F3B /* FirebaseDatabaseManager.swift */; };
 		04DB69952B232AED0074569A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB69942B232AED0074569A /* UserManager.swift */; };
 		04DB69972B232B110074569A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB69962B232B110074569A /* Message.swift */; };
 		04DC0F392B0BF8800077FE2B /* IngredientsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F382B0BF8800077FE2B /* IngredientsData.json */; };
@@ -136,6 +138,7 @@
 		04424C192B584CAB00C0E9A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		044E1E3A2AFD4ABB006E554E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		0450A7922B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		0455BD3A2AF7F518006218AB /* RestaurantsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsList.swift; sourceTree = "<group>"; };
 		0455BD3E2AF7FD85006218AB /* RestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 		0455BD402AF7FFB1006218AB /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -173,6 +176,7 @@
 		04D08D202AF79F22004C2E7E /* Development.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Development.plist; sourceTree = "<group>"; };
 		04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Regular.ttf"; sourceTree = "<group>"; };
 		04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Bold.ttf"; sourceTree = "<group>"; };
+		04D606932B6BF54A00C13F3B /* FirebaseDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseManager.swift; sourceTree = "<group>"; };
 		04DB69942B232AED0074569A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		04DB69962B232B110074569A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		04DC0F382B0BF8800077FE2B /* IngredientsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IngredientsData.json; sourceTree = "<group>"; };
@@ -273,6 +277,15 @@
 				0440CBA42B4BF40400AAE9E4 /* ImageCell.xib */,
 			);
 			path = "Create Post";
+			sourceTree = "<group>";
+		};
+		0450A7912B6BCB4700EDB0C6 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				0450A7922B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift */,
+				04D606932B6BF54A00C13F3B /* FirebaseDatabaseManager.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		0456DFB72B053FE6003BA658 /* List */ = {
@@ -417,6 +430,7 @@
 		04D08D112AF79F1F004C2E7E /* Foodie */ = {
 			isa = PBXGroup;
 			children = (
+				0450A7912B6BCB4700EDB0C6 /* Firebase */,
 				04A834202B53F21D00CA72EF /* Extentions */,
 				04D08D282AF79F41004C2E7E /* Controllers */,
 				04D08D272AF79F3B004C2E7E /* Model */,
@@ -734,6 +748,7 @@
 				0483A7752B4205F60012AFF0 /* StoryCollectionViewCell.swift in Sources */,
 				042F7F7B2B29AD78004D501E /* AudioOutgoingMessageCell.swift in Sources */,
 				0412220D2B0382120013A273 /* LoginViewController.swift in Sources */,
+				0450A7932B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift in Sources */,
 				04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */,
 				0483A7712B41CF3B0012AFF0 /* PostCell.swift in Sources */,
 				04FA3B182B66CFF000AE671E /* EnvironmentHelper.swift in Sources */,
@@ -755,6 +770,7 @@
 				0441F3F82B0B5B22009E8043 /* HomeViewController.swift in Sources */,
 				04C73CDA2B1881F6005D7F38 /* ChatViewController.swift in Sources */,
 				044E1E3B2AFD4ABB006E554E /* RestaurantTableViewCell.swift in Sources */,
+				04D606942B6BF54A00C13F3B /* FirebaseDatabaseManager.swift in Sources */,
 				04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
 				04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */,

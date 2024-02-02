@@ -72,12 +72,16 @@ class PostCell: UITableViewCell {
     // MARK: Methods
     
     func configure(userImage:String? , post: Post ){
-        self.userImageView.load(from: userImage!)
         
+        if userImage != ""{
+            FileStorage.downloadImage(imageUrl: userImage!) { image in
+                self.userImageView.image = image?.circleMasked
+            }
+        }else{
+            self.userImageView.image = UIImage(named:"avatar")
+        }
         
         self.userNameLabel.text = post.username
-    
-        
         self.textPostLabel.text = post.content
 
         

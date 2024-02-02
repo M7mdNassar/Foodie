@@ -1,4 +1,5 @@
 import UIKit
+import ProgressHUD
 
    // MARK: - Option Struct
 
@@ -19,8 +20,9 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Variables
     
+//    var currentUser = User.currentUser
     let backButton = UIBarButtonItem()
-    var currentUser = UserManager.getUserFromUserDefaults()
+    
     let options:[Option] = [
         Option(title: "تعديل الملف الشخصي", icon: UIImage(systemName: "person.crop.circle.fill")!),
         Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
@@ -38,12 +40,34 @@ class ProfileViewController: UIViewController {
         configureTable()
         PlaceholderForImage()
         configureNavigationBar()
-        updateUI(user: currentUser!)
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.backgroundColor = UIColor.tertiarySystemGroupedBackground
+        
+        setupUI()
     }
+    
+    func setupUI(){
+        setUpFont()
+        setShadowAroundImage()
+        
+        if let user = User.currentUser{
+            
+            self.userNameLabel.text = user.userName
+            
+            if user.avatarLink != ""{
+                FileStorage.downloadImage(imageUrl: user.avatarLink) { avatarImage in
+                    self.userImageView.image = avatarImage?.circleMasked
+                }
+            }else{
+                self.userImageView.image = UIImage(named:"avatar")
+            }
+        }
+    }
+    
+  
     
     // MARK: - Methods
     
@@ -73,12 +97,7 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func updateUI(user: User) {
-        userImageView.load(from: user.picture.large)
-        userNameLabel.text = user.name.first
-        setUpFont()
-        setShadowAroundImage()
-    }
+ 
     
     func logout() {
         let alert = UIAlertController(title: "تسجيل الخروج", message:"هل أنت متأكد أنك تريد تسجيل الخروج؟", preferredStyle: .alert)
@@ -86,27 +105,30 @@ class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "إلغاء", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "تسجيل الخروج", style: .destructive, handler: { action in
             // Perform logout actions
-            UserDefaults.standard.removeObject(forKey: "username")
-            UserDefaults.standard.removeObject(forKey: "password")
-            UserManager.resetCurrentUser()
             
-            if let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-                let navigationController = UINavigationController(rootViewController: loginViewController)
-                navigationController.modalPresentationStyle = .fullScreen
-                self.present(navigationController, animated: true, completion: nil)
+            
+            FUserListener.shared.logoutUser { error in
+                
+                if error == nil{
+                    let loginView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "loginView")
+                    
+                    loginView.modalPresentationStyle = .fullScreen
+                    
+                    DispatchQueue.main.async {
+                        self.present(loginView, animated: true)
+                    }
+                }
+                else{
+                    ProgressHUD.error(error?.localizedDescription)
+                }
+                
             }
+            
+            
         }))
         present(alert, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToEdit"{
-            if let editProfileVC = segue.destination as? EditProfile {
-                editProfileVC.delegate = self
-            }
-        }
-    }
     
 }
 
@@ -182,26 +204,4 @@ private extension ProfileViewController {
     }
 }
 
-// MARK: - Update User After Edit
 
-extension ProfileViewController: EditProfileDelegate {
-    
-    func saveUpdatedUserToUserDefaults(updatedUser: User) {
-        if var currentUser = UserManager.getUserFromUserDefaults() {
-            // Update the locally saved user data
-            currentUser.name = updatedUser.name
-            currentUser.location = updatedUser.location
-            currentUser.phone = updatedUser.phone
-            currentUser.dob = updatedUser.dob
-            currentUser.picture = updatedUser.picture
-
-            // Save the updated user to UserDefaults
-            UserManager.saveUserToUserDefaults(user: currentUser)
-        }
-    }
-    
-    func didUpdateUser(_ user: User) {
-        updateUI(user: user)
-        saveUpdatedUserToUserDefaults(updatedUser: user)
-    }
-}

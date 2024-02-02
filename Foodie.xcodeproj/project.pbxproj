@@ -91,7 +91,12 @@
 		04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */; };
 		04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */; };
 		04D606942B6BF54A00C13F3B /* FirebaseDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D606932B6BF54A00C13F3B /* FirebaseDatabaseManager.swift */; };
-		04DB69952B232AED0074569A /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB69942B232AED0074569A /* UserManager.swift */; };
+		04D90B012B6CEDE7001290B7 /* FUserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B002B6CEDE7001290B7 /* FUserListener.swift */; };
+		04D90B032B6CEEB3001290B7 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B022B6CEEB3001290B7 /* FCollectionReference.swift */; };
+		04D90B062B6CEF6D001290B7 /* Constents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B052B6CEF6D001290B7 /* Constents.swift */; };
+		04D90B082B6D2BD7001290B7 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B072B6D2BD7001290B7 /* FileStorage.swift */; };
+		04D90B0A2B6D2CB7001290B7 /* Global Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B092B6D2CB7001290B7 /* Global Functions.swift */; };
+		04D90B0C2B6D3464001290B7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B0B2B6D3464001290B7 /* StringExtension.swift */; };
 		04DB69972B232B110074569A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB69962B232B110074569A /* Message.swift */; };
 		04DC0F392B0BF8800077FE2B /* IngredientsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F382B0BF8800077FE2B /* IngredientsData.json */; };
 		04DC0F3B2B0BF8900077FE2B /* cookingPotBlue.json in Resources */ = {isa = PBXBuildFile; fileRef = 04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */; };
@@ -105,8 +110,7 @@
 		04FA3B182B66CFF000AE671E /* EnvironmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA3B172B66CFF000AE671E /* EnvironmentHelper.swift */; };
 		04FD42792B2F8A4800010D69 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD42782B2F8A4800010D69 /* AudioManager.swift */; };
 		04FD8E0B2B0F3C4800EB9941 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */; };
-		04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0F2B0F598200EB9941 /* UserResult.swift */; };
-		04FD8E122B0F5D2200EB9941 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E112B0F5D2200EB9941 /* UserApi.swift */; };
+		04FD8E102B0F598200EB9941 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0F2B0F598200EB9941 /* User.swift */; };
 		04FD8E172B0FEF0300EB9941 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04FD8E192B0FEF0300EB9941 /* Localizable.strings */; };
 		3F24F946D0BE8214D935CFBE /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */; };
 /* End PBXBuildFile section */
@@ -177,7 +181,12 @@
 		04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Regular.ttf"; sourceTree = "<group>"; };
 		04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Harmattan-Bold.ttf"; sourceTree = "<group>"; };
 		04D606932B6BF54A00C13F3B /* FirebaseDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseManager.swift; sourceTree = "<group>"; };
-		04DB69942B232AED0074569A /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		04D90B002B6CEDE7001290B7 /* FUserListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUserListener.swift; sourceTree = "<group>"; };
+		04D90B022B6CEEB3001290B7 /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
+		04D90B052B6CEF6D001290B7 /* Constents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constents.swift; sourceTree = "<group>"; };
+		04D90B072B6D2BD7001290B7 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		04D90B092B6D2CB7001290B7 /* Global Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Global Functions.swift"; sourceTree = "<group>"; };
+		04D90B0B2B6D3464001290B7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		04DB69962B232B110074569A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		04DC0F382B0BF8800077FE2B /* IngredientsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IngredientsData.json; sourceTree = "<group>"; };
 		04DC0F3A2B0BF8900077FE2B /* cookingPotBlue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cookingPotBlue.json; sourceTree = "<group>"; };
@@ -191,8 +200,7 @@
 		04FA3B172B66CFF000AE671E /* EnvironmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentHelper.swift; sourceTree = "<group>"; };
 		04FD42782B2F8A4800010D69 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		04FD8E0F2B0F598200EB9941 /* UserResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResult.swift; sourceTree = "<group>"; };
-		04FD8E112B0F5D2200EB9941 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		04FD8E0F2B0F598200EB9941 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04FD8E132B0FECB300EB9941 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		04FD8E142B0FECB300EB9941 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		04FD8E182B0FEF0300EB9941 /* ar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -253,9 +261,7 @@
 		042483212B11EEE900B84CB0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				04DB69942B232AED0074569A /* UserManager.swift */,
-				04FD8E0F2B0F598200EB9941 /* UserResult.swift */,
-				04FD8E112B0F5D2200EB9941 /* UserApi.swift */,
+				04FD8E0F2B0F598200EB9941 /* User.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -284,6 +290,9 @@
 			children = (
 				0450A7922B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift */,
 				04D606932B6BF54A00C13F3B /* FirebaseDatabaseManager.swift */,
+				04D90B002B6CEDE7001290B7 /* FUserListener.swift */,
+				04D90B022B6CEEB3001290B7 /* FCollectionReference.swift */,
+				04D90B072B6D2BD7001290B7 /* FileStorage.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -378,6 +387,7 @@
 				044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */,
 				04A834212B53F31D00CA72EF /* UIColorExtension.swift */,
 				04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */,
+				04D90B0B2B6D3464001290B7 /* StringExtension.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -431,7 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				0450A7912B6BCB4700EDB0C6 /* Firebase */,
-				04A834202B53F21D00CA72EF /* Extentions */,
+				04D90B042B6CEF4C001290B7 /* Helpers */,
 				04D08D282AF79F41004C2E7E /* Controllers */,
 				04D08D272AF79F3B004C2E7E /* Model */,
 				04D08D262AF79F31004C2E7E /* View */,
@@ -502,6 +512,16 @@
 				0480428A2B14BAD4001406FA /* EditProfile.swift */,
 			);
 			path = EditView;
+			sourceTree = "<group>";
+		};
+		04D90B042B6CEF4C001290B7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04A834202B53F21D00CA72EF /* Extentions */,
+				04D90B052B6CEF6D001290B7 /* Constents.swift */,
+				04D90B092B6D2CB7001290B7 /* Global Functions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		04DC0F3C2B0BFE240077FE2B /* Home */ = {
@@ -746,13 +766,16 @@
 				0488E26D2B4B0537004EC43F /* MyCustomTabBarController.swift in Sources */,
 				0488E26F2B4B2434004EC43F /* AddPostViewController.swift in Sources */,
 				0483A7752B4205F60012AFF0 /* StoryCollectionViewCell.swift in Sources */,
+				04D90B012B6CEDE7001290B7 /* FUserListener.swift in Sources */,
 				042F7F7B2B29AD78004D501E /* AudioOutgoingMessageCell.swift in Sources */,
 				0412220D2B0382120013A273 /* LoginViewController.swift in Sources */,
 				0450A7932B6BCB5F00EDB0C6 /* FirebaseStorageManager.swift in Sources */,
+				04D90B082B6D2BD7001290B7 /* FileStorage.swift in Sources */,
 				04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */,
 				0483A7712B41CF3B0012AFF0 /* PostCell.swift in Sources */,
 				04FA3B182B66CFF000AE671E /* EnvironmentHelper.swift in Sources */,
 				0440CBA92B4C08C900AAE9E4 /* ImageCollectionViewCell.swift in Sources */,
+				04D90B0A2B6D2CB7001290B7 /* Global Functions.swift in Sources */,
 				0455BD3F2AF7FD85006218AB /* RestaurantCell.swift in Sources */,
 				0424831F2B11ECD200B84CB0 /* ProfileTableViewCell.swift in Sources */,
 				04567A0B2B2CD11D00ADD4BC /* TextAndImageIncomingMessageCell.swift in Sources */,
@@ -766,13 +789,13 @@
 				041519E22B1D03E900053B0A /* TextIncomingMessageCell.swift in Sources */,
 				04BF4AF42B0CD4940000EB36 /* IngredientsServiceManager.swift in Sources */,
 				041519E62B1D089900053B0A /* ImageOutgoingMessageCell.swift in Sources */,
-				04FD8E122B0F5D2200EB9941 /* UserApi.swift in Sources */,
 				0441F3F82B0B5B22009E8043 /* HomeViewController.swift in Sources */,
 				04C73CDA2B1881F6005D7F38 /* ChatViewController.swift in Sources */,
 				044E1E3B2AFD4ABB006E554E /* RestaurantTableViewCell.swift in Sources */,
 				04D606942B6BF54A00C13F3B /* FirebaseDatabaseManager.swift in Sources */,
-				04FD8E102B0F598200EB9941 /* UserResult.swift in Sources */,
+				04FD8E102B0F598200EB9941 /* User.swift in Sources */,
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
+				04D90B0C2B6D3464001290B7 /* StringExtension.swift in Sources */,
 				04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */,
 				04A834222B53F31D00CA72EF /* UIColorExtension.swift in Sources */,
 				04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */,
@@ -784,13 +807,14 @@
 				043325022AFC2D6000452C1E /* PageViewController.swift in Sources */,
 				042505272B49CE720077FE6A /* ExpandableLabel.swift in Sources */,
 				04567A072B2CB50900ADD4BC /* TextAndImageOutgoingMessageCell.swift in Sources */,
-				04DB69952B232AED0074569A /* UserManager.swift in Sources */,
+				04D90B032B6CEEB3001290B7 /* FCollectionReference.swift in Sources */,
 				0480428B2B14BAD4001406FA /* EditProfile.swift in Sources */,
 				0455BD3B2AF7F518006218AB /* RestaurantsList.swift in Sources */,
 				04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */,
 				041641E12AFD2E5E0054CCAC /* RestaurantCollectionViewCell.swift in Sources */,
 				043325042AFC2D9D00452C1E /* PageCollectionViewCell.swift in Sources */,
 				0483A76E2B41CC560012AFF0 /* Post.swift in Sources */,
+				04D90B062B6CEF6D001290B7 /* Constents.swift in Sources */,
 				045A7A362AFAD7F400C29688 /* RestaurantServiceManager.swift in Sources */,
 				046A74FE2B1935A3002F62E2 /* TextOutgoingMessageCell.swift in Sources */,
 			);

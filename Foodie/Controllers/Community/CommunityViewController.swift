@@ -8,7 +8,7 @@ class CommunityViewController: UIViewController {
     
     var posts: [Post] = []
     var stories: [Story] = []
-    var currentUser = UserManager.getUserFromUserDefaults()
+    var currentUser = User.currentUser
     
     var ref: DatabaseReference!
     var databaseHandle : DatabaseHandle!
@@ -97,7 +97,7 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
 
         cell.textPostLabel.isExpaded = false
 
-        cell.configure(userImage: currentUser?.picture.large, post: post)
+        cell.configure(userImage: currentUser?.avatarLink, post: post)
       
         return cell
     }

@@ -1,9 +1,14 @@
 
 import UIKit
 import Lottie
+import Firebase
 
 class LaunchScreenController: UIViewController {
     
+    // MARK: Variables
+    
+    var authListener : AuthStateDidChangeListenerHandle?
+
     // MARK: - Outlets
     
     @IBOutlet weak var animationView: LottieAnimationView!
@@ -44,20 +49,36 @@ class LaunchScreenController: UIViewController {
             // Access the windows property on the window scene
             if let window = windowScene.windows.first {
                 // if user is logged in before
-                if UserDefaults.standard.string(forKey: "username") != nil {
-                   
-                    // instantiate the main tab bar controller and set it as root view controller
-                    let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
-                    window.rootViewController = mainTabBarController
-                } else {
-                    // if user isn't logged in
-                    // instantiate the navigation controller and set it as root view controller
-                    let loginNavController = storyboard.instantiateViewController(identifier: "LoginNavigationController")
-                    window.rootViewController = loginNavController
-                }
+
+                authListener = Auth.auth().addStateDidChangeListener({ auth, user in
+                    Auth.auth().removeStateDidChangeListener(self.authListener!)
+                    
+                    if user != nil && UserDefaults.standard.object(forKey: kCURRENTUSER) != nil{
+                        
+                            // instantiate the main tab bar controller and set it as root view controller
+                            let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
+                            window.rootViewController = mainTabBarController
+
+                      
+                    }
+                    
+                    else{
+                        
+                        // if user isn't logged in
+                        // instantiate the navigation controller and set it as root view controller
+                        let loginNavController = storyboard.instantiateViewController(identifier: "loginView")
+                        window.rootViewController = loginNavController
+                        
+                    }
+                    
+                })
+                
+                
             }
         }
     }
+    
+    
 
 
 }

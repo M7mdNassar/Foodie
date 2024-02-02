@@ -5,7 +5,7 @@ class AddPostViewController: UIViewController {
    
   // MARK: Properties
    
-  let currentUser = UserManager.getUserFromUserDefaults()
+    let currentUser = User.currentUser
   var communityViewController: CommunityViewController?
   var images: [UIImage] = []
    
@@ -39,9 +39,9 @@ class AddPostViewController: UIViewController {
    
     @IBAction func postButton(_ sender: UIButton) {
 
-            let userId = currentUser!.id.value
-            let userImageUrl = currentUser!.picture.large
-            let userName = currentUser!.name.first
+            let userId = currentUser!.id
+            let userImageUrl = currentUser!.avatarLink
+            let userName = currentUser!.userName
             let content = postContent.text ?? ""
             
             var imageUrls: [String] = []
@@ -148,8 +148,8 @@ private extension AddPostViewController {
   }
    
   func setUpView() {
-    self.userImageView.load(from: (self.currentUser?.picture.large)!)
-    self.userNameLabel.text = self.currentUser?.name.first
+      self.userImageView.load(from: (self.currentUser!.avatarLink))
+      self.userNameLabel.text = self.currentUser!.userName
      
     self.postButton.layer.cornerRadius = 15
     self.postButton.clipsToBounds = true

@@ -6,8 +6,9 @@ class ChatViewController: UIViewController {
 
     // MARK: - Variables
 
-    let currentUser = UserManager.getUserFromUserDefaults()
-    let otherUser = User(gender: "female", name: Name(first: "Krystle", last: "Melis"), email: "krystle.melis@example.com", dob: DateOfBirth(date: "1987-02-03T21:40:35.906Z", age: 36), phone: "(025) 7310305", id: ID(name: "BSN", value: "51718516"), picture: Picture(large: "https://randomuser.me/api/portraits/women/77.jpg"))
+    let currentUser = User.currentUser
+    let otherUser = User(id: "123", userName: "Oday", email: "oday@gmail.com", pushId: "987" , avatarLink: "https://randomuser.me/api/portraits/women/77.jpg" , date: "" , phoneNumber:"224455" , country: "Jenin")
+    
     var messages: [Message] = []
     var selectedImage: UIImage?
     private let audioManager = AudioManager.shared
@@ -188,11 +189,11 @@ private extension ChatViewController {
     func configureTextCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
         if data.sender == currentUser {
             let cell = tableView.dequeue() as TextOutgoingMessageCell
-            cell.configure(messageText: data.text, userImageUrl: currentUser!.picture.large)
+            cell.configure(messageText: data.text, userImageUrl: currentUser!.avatarLink)
             return cell
         } else {
             let cell = tableView.dequeue() as TextIncomingMessageCell
-            cell.configure(messageText: data.text, userImageUrl: otherUser.picture.large)
+            cell.configure(messageText: data.text, userImageUrl: otherUser.avatarLink)
             return cell
         }
     }
@@ -200,11 +201,11 @@ private extension ChatViewController {
     func configureImageCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
         if data.sender == currentUser {
             let cell = tableView.dequeue() as ImageOutgoingMessageCell
-            cell.configure(messageImage: data.image, userImageUrl: currentUser!.picture.large)
+            cell.configure(messageImage: data.image, userImageUrl: currentUser!.avatarLink)
             return cell
         } else {
             let cell = tableView.dequeue() as ImageIncomingMessageCell
-            cell.configure(messageImage: data.image, userImageUrl: otherUser.picture.large)
+            cell.configure(messageImage: data.image, userImageUrl: otherUser.avatarLink)
             return cell
         }
     }
@@ -212,11 +213,11 @@ private extension ChatViewController {
     func configureAudioCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
         if data.sender == currentUser {
             let cell = tableView.dequeue() as AudioOutgoingMessageCell
-            cell.configure(audioURL: data.audioURL!, userImageUrl: currentUser!.picture.large)
+            cell.configure(audioURL: data.audioURL!, userImageUrl: currentUser!.avatarLink)
             return cell
         } else {
             let cell = tableView.dequeue() as AudioIncomingMessageCell
-            cell.configure(audioURL: data.audioURL!, userImageUrl: otherUser.picture.large)
+            cell.configure(audioURL: data.audioURL!, userImageUrl: otherUser.avatarLink)
             return cell
         }
     }
@@ -224,11 +225,11 @@ private extension ChatViewController {
     func configureTextAndImageCell(for data: Message, at indexPath: IndexPath) -> UITableViewCell {
         if data.sender == currentUser {
             let cell = tableView.dequeue() as TextAndImageOutgoingMessageCell
-            cell.configure(messageText: data.text, messageImage: data.image, userImageUrl: currentUser!.picture.large)
+            cell.configure(messageText: data.text, messageImage: data.image, userImageUrl: currentUser!.avatarLink)
             return cell
         } else {
             let cell = tableView.dequeue() as TextAndImageIncomingMessageCell
-            cell.configure(messageText: data.text, messageImage: data.image, userImageUrl: otherUser.picture.large)
+            cell.configure(messageText: data.text, messageImage: data.image, userImageUrl: otherUser.avatarLink)
             return cell
         }
     }
@@ -312,8 +313,8 @@ private extension ChatViewController {
 
      func setUpNavigationItem() {
         navigationController?.setNavigationBarHidden(true, animated: false)
-         self.userImageView.load(from : otherUser.picture.large)
-        userNameLabel.text = otherUser.name.first
+         self.userImageView.load(from : otherUser.avatarLink)
+        userNameLabel.text = otherUser.userName
     }
 
      func setUpTextView() {

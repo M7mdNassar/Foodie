@@ -1,15 +1,10 @@
-//
-//  SceneDelegate.swift
-//  Foodie
-//
-//  Created by Mac on 05/11/2023.
-//
 
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
+
     
     func changeRootViewController(_ vc: UIViewController, animated: Bool = true) {
         guard let window = self.window else {
@@ -83,6 +78,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
     }
+
     
 }
 

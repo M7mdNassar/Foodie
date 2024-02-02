@@ -1,14 +1,15 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Gallery
+import ProgressHUD
 
 class EditProfile: UIViewController {
     
     // MARK: - Variables
     
-    var currentUser = UserManager.getUserFromUserDefaults()
-    weak var delegate: EditProfileDelegate?
-    
+    var gallery: GalleryController!
+
     // MARK: - Outlets
     
     @IBOutlet weak var cameraIconImageView: UIImageView!
@@ -30,11 +31,13 @@ class EditProfile: UIViewController {
         setUpButton()
         setUpImageAsCircleWithShadowAndBorder()
         tapGesture()
-        populateUserData()
 
+        showUserInformation()
+        
         userBirthDatePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
     }
+    
     
     // MARK: - Actions
     
@@ -54,23 +57,65 @@ class EditProfile: UIViewController {
         }
         
         
-        currentUser!.name.first = userNameTextField.text!
-        currentUser!.location?.city = userCityTextField.text!
-        currentUser!.phone = userPhoneTextField.text!
-        // Convert Date to String
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let dateString = dateFormatter.string(from: userBirthDatePicker.date)
-        currentUser!.dob.date = dateString
+        // Update currentUser with modified values
+        if var user = User.currentUser{
         
-        delegate?.didUpdateUser(currentUser!)
-        delegate?.saveUpdatedUserToUserDefaults(updatedUser: currentUser!)
+            user.userName = userNameTextField.text!
+            user.country = userCityTextField.text!
+            user.phoneNumber = userPhoneTextField.text!
+            // Convert Date to String
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            user.date = dateFormatter.string(from: userBirthDatePicker.date)
+            
+            saveUserLocally(user: user)
+            FUserListener.shared.saveUserToFierbase(user: user)
+            
+            // Dismiss the current view controller
+            navigationController?.popViewController(animated: true)
+        }
+       
 
-        // Dismiss the current view controller
-        navigationController?.popViewController(animated: true)
+
+        
+
     }
+
     
     // MARK: - Private Methods
+    
+    private func showUserInformation(){
+        if let user = User.currentUser {
+            userNameTextField.text = user.userName
+            userEmailTextField.text = user.email
+            userCityTextField.text = user.country
+            userPhoneTextField.text = user.phoneNumber
+            // Convert string date to Date object using the extension
+                if let date = user.date.toDate() {
+                    userBirthDatePicker.date = date
+                }
+            
+                 FileStorage.downloadImage(imageUrl: user.avatarLink) { image in
+                     self.userImageView.image = image ?? UIImage(named: "avatar")
+             }
+         }
+    }
+    
+    func uploadAvatarImage(image:UIImage){
+        let fileDirectory = "Avatars/" + "_\(User.currentId)" + ".jpg"
+        FileStorage.uploadImage(image, directory: fileDirectory) { avatarLink in
+            if var user = User.currentUser{
+                user.avatarLink = avatarLink ?? ""
+                saveUserLocally(user: user)
+                FUserListener.shared.saveUserToFierbase(user: user)
+            }
+            
+            //.. save file loccally in device
+            
+            FileStorage.saveFileLocally(fileData: image.jpegData(compressionQuality: 0.5)! as NSData, fileName: User.currentId)
+        }
+    }
+
     
     private func showAlert(message: String, title: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -86,33 +131,10 @@ class EditProfile: UIViewController {
     }
     
     @objc private func imageTapped() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        showGallery()
     }
     
     // MARK: - Set Up UI
-    
-    private func populateUserData() {
-        guard let user = currentUser else { return }
-        userNameTextField.text = user.name.first
-        userEmailTextField.text = user.email
-        userCityTextField.text = user.location?.city
-        userPhoneTextField.text = user.phone
-        // Convert the string dob.date to a Date object
-        userBirthDatePicker.date = toDateFormat(dateString: user.dob.date)
-        // Load image
-        userImageView.load(from: user.picture.large)
-        setUpFont()
-    }
-    
-    private func toDateFormat(dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        let date = dateFormatter.date(from: dateString)
-        return date!
-    }
     
     private func setUpImageAsCircleWithShadowAndBorder() {
         // Make view as circle shape & apply a shadow
@@ -173,21 +195,57 @@ class EditProfile: UIViewController {
     }
 }
 
-// MARK: - UIImage Picker Delegate
+// MARK: Gallery
 
-extension EditProfile: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        userImageView.image = info[.originalImage] as? UIImage
-        dismiss(animated: true, completion: nil)
+extension EditProfile : GalleryControllerDelegate{
+    func galleryController(_ controller: Gallery.GalleryController, didSelectImages images: [Gallery.Image]) {
+        
+        if images.count > 0{
+            images.first!.resolve { (avatarImage) in
+                if avatarImage != nil {
+                    //... uplaod image
+                    self.uploadAvatarImage(image: avatarImage!)
+                    self.userImageView.image = avatarImage
+                }
+                else{
+                    ProgressHUD.error("No Image")
+                }
+            }
+        }
+        
+        
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    // this methods i dont need , so dismiss it
+    
+    func galleryController(_ controller: Gallery.GalleryController, didSelectVideo video: Gallery.Video) {
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func galleryController(_ controller: Gallery.GalleryController, requestLightbox images: [Gallery.Image]) {
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func galleryControllerDidCancel(_ controller: Gallery.GalleryController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func showGallery(){
+        self.gallery = GalleryController()
+        self.gallery.delegate = self
+        Config.tabsToShow = [.imageTab , .cameraTab]
+        Config.Camera.imageLimit = 1 // just chose one image
+        Config.initialTab = .imageTab
+        self.present(self.gallery, animated: true)
     }
 }
 
-// MARK: - Assistance Protocol
-
-protocol EditProfileDelegate: AnyObject {
-    func didUpdateUser(_ user: User)
-    func saveUpdatedUserToUserDefaults(updatedUser: User)
-}
 
 
 // MARK: - UITextField Delegate
@@ -200,6 +258,10 @@ func configureTextFields() {
     userNameTextField.delegate = self
     userCityTextField.delegate = self
     userPhoneTextField.delegate = self
+    userNameTextField.clearButtonMode = .whileEditing
+    userCityTextField.clearButtonMode = .whileEditing
+    userPhoneTextField.clearButtonMode = .whileEditing
+
     
     userNameTextField.placeholder = NSLocalizedString("userName", comment: "")
     userCityTextField.placeholder = NSLocalizedString("userCity", comment: "")

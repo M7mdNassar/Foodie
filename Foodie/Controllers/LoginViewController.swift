@@ -1,73 +1,230 @@
 import UIKit
 import IQKeyboardManagerSwift
-
+import ProgressHUD
 class LoginViewController: UIViewController {
     
-    // MARK: - Outlets
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var userNameLabel: UITextField!
-    @IBOutlet weak var userPasswordLabel: UITextField!
-    @IBOutlet weak var welcomeLabel: UILabel!
+    // MARK: Outlets
     
-    // MARK: - Properties
-    var defaults = UserDefaults.standard
-
-    // MARK: - Life Cycle Controller
+    //Labels
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var confirmPasswordLabel: UILabel!
+    @IBOutlet weak var haveAnAccountLabel: UILabel!
+    
+    //TextFields
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordField: UITextField!
+    
+    //Buttons
+    @IBOutlet weak var forgetPasswordButtonOutlet: UIButton!
+    @IBOutlet weak var resendEmailButtonOutlet: UIButton!
+    @IBOutlet weak var registerButtonOutlet: UIButton!
+    @IBOutlet weak var loginButtonOutlet: UIButton!
+    
+    // MARK: Actions
+    
+    @IBAction func forgetPasswordButton(_ sender: UIButton) {
+        if isInputDataValid(mode: "forgetPassword"){
+            
+            forgetPassword()
+        }
+        else{
+            ProgressHUD.error("All Fields requierd")
+        }
+    }
+    
+    
+    @IBAction func resendEmailButton(_ sender: UIButton) {
+      
+        resendEmailVerfication()
+    }
+    
+    
+    @IBAction func registerButton(_ sender: UIButton) {
+        if isInputDataValid(mode: isLogin ? "login" : "register"){
+            
+            // Login or Register
+            
+            isLogin ? loginUser() : registerUser()
+           
+        }
+        else{
+            ProgressHUD.error("All Fields requierd")
+            
+        }
+        
+        
+    }
+    
+    
+    @IBAction func loginButton(_ sender: UIButton) {
+        updateUIMode(mode : isLogin)
+    }
+    
+    // MARK: Variables
+    
+    var isLogin : Bool = false
+    
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IQKeyboardManager.shared.enable = true
-        configure()
-        setUpUI()
-        setUpBackground()
+        setupLabels()
+        configureTextFields()
+        setupBackgroundGesture()
     }
     
-    // MARK: - Actions
-    @IBAction func loginButton(_ sender: UIButton) {
-            if attemptLogin() {
-                // Fetch user data after successful login
-                Task {
-                    do {
-                        let user = try await UserApi().fetchData().results.first
-                        DispatchQueue.main.async {
-                            self.handleSuccessfulLogin(user: user!)
-                        }
-                    } catch {
-                        print("Error fetching data: \(error)")
-                    }
-                }
-            } else {
-                return
-            }
-        }
-
-        // MARK: - Private Methods
-        private func attemptLogin() -> Bool {
-            guard let username = userNameLabel.text,
-                  let password = userPasswordLabel.text,
-                  !username.isEmpty, !password.isEmpty else {
-                return false
-            }
-            defaults.set(username, forKey: "username")
-            defaults.set(password, forKey: "password")
-
-            return true
-        }
-
-        private func handleSuccessfulLogin(user: User) {
-            // Save the user to UserDefaults
-            UserManager.saveUserToUserDefaults(user: user)
-
-            // Transition to the home screen with the user data
-            transitionToHomeScreen()
-        }
+    // MARK: Methods
     
-    private func transitionToHomeScreen() {
+    func setupLabels(){
+        emailLabel.text = ""
+        passwordLabel.text = ""
+        confirmPasswordLabel.text = ""
+    }
+    
+    func configureTextFields(){
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordField.delegate = self
+    }
+    
+    func updateUIMode(mode:Bool){
+        if !mode{
+            titleLabel.text = "Login"
+            confirmPasswordLabel.isHidden = true
+            confirmPasswordField.isHidden = true
+            loginButtonOutlet.setTitle("Register", for: .normal)
+            registerButtonOutlet.setTitle("Login", for: .normal)
+            haveAnAccountLabel.text = "New Here ?"
+            resendEmailButtonOutlet.isHidden = true
+            forgetPasswordButtonOutlet.isHidden = false
+            
+        }
+        else{
+            titleLabel.text = "Register"
+            confirmPasswordLabel.isHidden = false
+            confirmPasswordField.isHidden = false
+            loginButtonOutlet.setTitle("Login", for: .normal)
+            registerButtonOutlet.setTitle("Register", for: .normal)
+            haveAnAccountLabel.text = "Have An Account"
+            resendEmailButtonOutlet.isHidden = false
+            forgetPasswordButtonOutlet.isHidden = true
+
+        }
+        
+        isLogin.toggle()
+    }
+    
+    // MARK: Helpers
+    
+    func isInputDataValid (mode: String) -> Bool{
+        
+        switch (mode)
+        {
+        case "login":
+            return emailTextField.hasText && passwordTextField.hasText
+            
+        case "register":
+            return emailTextField.hasText && passwordTextField.hasText && confirmPasswordField.hasText
+            
+        case "forgetPassword":
+            return emailTextField.hasText
+            
+        default :
+            return false
+            
+        }
+    }
+    
+    // MARK: Background Tap Gesture
+    
+    func setupBackgroundGesture(){
+        
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func hideKeyboard(){
+        view.endEditing(false)
+    }
+    
+    
+    func registerUser(){
+        if passwordTextField.text == confirmPasswordField.text{
+            FUserListener.shared.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!) { error in
+                
+                if error == nil{
+                    ProgressHUD.success("Verification Email Sent , please check you email :)")
+                }else {
+                    ProgressHUD.error(error?.localizedDescription)
+                }
+            }
+        }else {
+            ProgressHUD.error("Not matching in Password")
+        }
+    }
+    
+    
+    func loginUser(){
+        FUserListener.shared.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { error, isEmailVerified in
+            
+            if error == nil{
+                
+                if isEmailVerified{
+                    
+                    self.goToApp()
+                    
+                }else{
+                    ProgressHUD.failed("Please check you email to verify and complet registration")
+                }
+                
+            }
+            else{
+                ProgressHUD.error(error?.localizedDescription)
+            }
+            
+        }
+        
+        
+    }
+    
+    func resendEmailVerfication(){
+        
+        FUserListener.shared.resendVerficationEmailWith(email: emailTextField.text!) { error in
+            if error == nil{
+                ProgressHUD.succeed("Verfication Email Send :)")
+            }
+            else{
+                ProgressHUD.error(error?.localizedDescription)
+            }
+        }
+    }
+    
+    func forgetPassword(){
+        FUserListener.shared.resetPasswordFor(email: emailTextField.text!) { error in
+            if error == nil{
+                ProgressHUD.success("Email for reset your password has been sent !")
+            }else{
+                ProgressHUD.failed(error?.localizedDescription)
+            }
+        }
+        
+    }
+    
+    
+    // Navigation to app
+    
+    func goToApp(){
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainTabBarController = storyboard.instantiateViewController(identifier: "MainTabBarController")
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        
     }
+    
     
     // MARK: - Set Up UI
     private func setUpBackground() {
@@ -78,37 +235,19 @@ class LoginViewController: UIViewController {
         gradientLayer.locations = [0.0, 1.2]
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
-    private func setUpUI() {
-        welcomeLabel.text = NSLocalizedString("welcome", comment: "greeting")
-        
-        // make the image as a circle
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
-        
-        // make corner for Button
-        loginButton.layer.cornerRadius = 18.0
-        loginButton.clipsToBounds = true
-        loginButton.setTitle(NSLocalizedString("loginButton", comment: "Login Button Title"), for: .normal)
-    }
 
     
 }
 
-    // MARK: - UITextFieldDelegate
-    extension LoginViewController: UITextFieldDelegate {
-        func configure() {
-            userNameLabel.delegate = self
-            userPasswordLabel.delegate = self
-            userNameLabel.placeholder = NSLocalizedString("userName", comment: "")
-            userPasswordLabel.placeholder = NSLocalizedString("password", comment: "")
-        }
+// MARK: UITextFieldDelegate
 
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            if textField == userNameLabel {
-                userPasswordLabel.becomeFirstResponder()
-            } else if textField == userPasswordLabel {
-                textField.resignFirstResponder()
-            }
-            return true
-        }
+extension LoginViewController : UITextFieldDelegate{
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        emailLabel.text = emailTextField.hasText ? "Email" : ""
+        passwordLabel.text = passwordTextField.hasText ? "Password" : ""
+        confirmPasswordLabel.text = confirmPasswordField.hasText ? "Confirm Password" : ""
     }
+    
+}
+

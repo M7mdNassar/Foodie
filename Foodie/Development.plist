@@ -2,12 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMediaLibraryUsageDescription</key>
+	<string>$(APP_NAME) need access to your Media</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(APP_NAME) need access to your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(APP_NAME) need access to your library</string>
 	<key>endpoint_url</key>
 	<string>$(endpoint_url)</string>
 	<key>CFBundleName</key>
 	<string>$(APP_NAME)</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow to use microphone ?</string>
+	<string>$(APP_NAME) need access to your microphone</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

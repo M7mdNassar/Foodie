@@ -4,21 +4,21 @@ import UIKit
 
 struct Post {
     var postId: String
-    var username: String?
+    var userName: String
+    var userImageUrl: String?
     var content: String
-    var images: [String?]
+    var imageUrls: [String?]
     var likes: Int
     var comments: [Comment]
-    var isLiked: Bool = false
 }
 
 struct Comment {
-    var username: String
+    var userName: String
     var text: String
 }
 
 
 struct Story{
-    var username: String
+    var userName: String
     var image: UIImage
 }

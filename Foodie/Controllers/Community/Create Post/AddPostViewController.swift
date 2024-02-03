@@ -1,13 +1,17 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import Gallery
+import ProgressHUD
+
 class AddPostViewController: UIViewController {
    
   // MARK: Properties
    
-    let currentUser = User.currentUser
+  let currentUser = User.currentUser
   var communityViewController: CommunityViewController?
   var images: [UIImage] = []
+  var gallery: GalleryController!
    
    
   // MARK: Outlets
@@ -36,50 +40,102 @@ class AddPostViewController: UIViewController {
   @IBAction func backButton(_ sender: UIButton) {
     dismiss(animated: true, completion: nil)
   }
-   
+    
     @IBAction func postButton(_ sender: UIButton) {
-
-            let userId = currentUser!.id
-            let userImageUrl = currentUser!.avatarLink
-            let userName = currentUser!.userName
-            let content = postContent.text ?? ""
+        guard
+            let userImageUrl = currentUser?.avatarLink,
+            let userName = currentUser?.userName,
+            let content = postContent.text else {
+                return
+        }
+        
+        var imageUrls: [String] = []
+        let dispatchGroup = DispatchGroup() // Use dispatch group to track completion of all image uploads
+        
+        for image in images {
+            dispatchGroup.enter() // Enter the dispatch group before starting each image upload
             
-            var imageUrls: [String] = []
-            let dispatchGroup = DispatchGroup()
-            
-            for image in images {
-                dispatchGroup.enter()
-                FirebaseStorageManager.shared.uploadImage(image) { result in
-                    switch result {
-                    case .success(let url):
-                        imageUrls.append(url.absoluteString)
-                    case .failure(let error):
-                        print("Error uploading image: \(error.localizedDescription)")
-                    }
-                    dispatchGroup.leave()
+            uploadPostImages(image: image) { imageUrl in
+                if let imageUrl = imageUrl {
+                    imageUrls.append(imageUrl)
+                } else {
+                    ProgressHUD.error("Failed to upload post images.")
                 }
-            }
-            
-            dispatchGroup.notify(queue: .main) {
-                FirebaseDatabaseManager.shared.addPost(username: userName, userImageUrl: userImageUrl, content: content, imageUrls: imageUrls) { error in
-                    if let error = error {
-                        print("Error adding post: \(error.localizedDescription)")
-                    } else {
-                        print("Post added successfully")
-                    }
-                }
+                
+                dispatchGroup.leave() // Leave the dispatch group after each image upload is completed
             }
         }
+        
+        dispatchGroup.notify(queue: .main) {
+            // All image uploads are completed
+            let post = Post(postId: UUID().uuidString, userName: userName, userImageUrl: userImageUrl, content: content, imageUrls: imageUrls, likes: 0, comments: [])
+            RealtimeDatabaseManager.shared.addPost(post: post)
+            ProgressHUD.success("Post added successfully!")
+        }
+    }
+
+    func uploadPostImages(image: UIImage, completion: @escaping (String?) -> Void) {
+        let fileDirectory = "PostImages/" + "_\(UUID().uuidString)" + ".jpg"
+        FileStorage.uploadImage(image, directory: fileDirectory) { imageUrl in
+            completion(imageUrl)
+        }
+    }
 
 
   @IBAction func addImages(_ sender: UIButton) {
-    let imagePicker = UIImagePickerController()
-    imagePicker.delegate = self
-    imagePicker.sourceType = .photoLibrary
-    present(imagePicker, animated: true, completion: nil)
+      showGallery()
+      
   }
    
 }
+
+// MARK: Gallery
+
+extension AddPostViewController : GalleryControllerDelegate{
+    func galleryController(_ controller: Gallery.GalleryController, didSelectImages images: [Gallery.Image]) {
+        
+        for image in images{
+            image.resolve { image in
+                if let image = image{
+                    self.images.append(image)
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        controller.dismiss(animated: true, completion: nil)
+
+    }
+
+    
+    
+    // this methods i dont need , so dismiss it
+    
+    func galleryController(_ controller: Gallery.GalleryController, didSelectVideo video: Gallery.Video) {
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func galleryController(_ controller: Gallery.GalleryController, requestLightbox images: [Gallery.Image]) {
+        controller.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func galleryControllerDidCancel(_ controller: Gallery.GalleryController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func showGallery(){
+        self.gallery = GalleryController()
+        self.gallery.delegate = self
+        Config.tabsToShow = [.imageTab , .cameraTab]
+        Config.Camera.imageLimit = 1 // just chose one image
+        Config.initialTab = .imageTab
+        self.present(self.gallery, animated: true)
+    }
+}
+
+
 
 // MARK: UICollectionViewDataSource, UICollectionViewDelegate
 
@@ -99,18 +155,6 @@ extension AddPostViewController: UICollectionViewDataSource, UICollectionViewDel
   }
 }
 
-// MARK: UIImagePickerControllerDelegate
-
-extension AddPostViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-    if let pickedImage = info[.originalImage] as? UIImage {
-      images.append(pickedImage)
-      collectionView.reloadData()
-    }
-
-    picker.dismiss(animated: true, completion: nil)
-  }
-}
 
 // MARK: UITextViewDelegate
 

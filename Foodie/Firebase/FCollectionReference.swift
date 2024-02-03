@@ -5,7 +5,6 @@ import FirebaseFirestoreInternal
 
 enum FCollectionReference : String{
     case User
- 
 }
 
 // get the refernce of specific collection

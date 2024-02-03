@@ -26,7 +26,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaZ-JH-p7p">
                         <rect key="frame" x="20" y="20" width="448" height="406"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m06-db-NS3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="m06-db-NS3">
                                 <rect key="frame" x="20" y="17.666666666666664" width="50" height="49.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OCY-BK-ed8"/>
@@ -156,6 +156,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="avatar" width="200" height="200"/>
         <image name="ellipsis.message.fill" catalog="system" width="128" height="114"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">

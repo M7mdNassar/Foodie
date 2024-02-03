@@ -71,17 +71,15 @@ class PostCell: UITableViewCell {
     
     // MARK: Methods
     
-    func configure(userImage:String? , post: Post ){
+    func configure(post: Post ){
         
-        if userImage != ""{
-            FileStorage.downloadImage(imageUrl: userImage!) { image in
+        if post.userImageUrl != ""{
+            FileStorage.downloadImage(imageUrl: post.userImageUrl!) { image in
                 self.userImageView.image = image?.circleMasked
             }
-        }else{
-            self.userImageView.image = UIImage(named:"avatar")
         }
         
-        self.userNameLabel.text = post.username
+        self.userNameLabel.text = post.userName
         self.textPostLabel.text = post.content
 
         
@@ -94,7 +92,7 @@ class PostCell: UITableViewCell {
         
         setBottomCorners(for: bottomBarView, cornerRadius: 20.0)
         
-        self.postImages = post.images
+        self.postImages = post.imageUrls
         self.collectionView.reloadData()
         
         

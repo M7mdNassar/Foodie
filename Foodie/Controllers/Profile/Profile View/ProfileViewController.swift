@@ -20,7 +20,6 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Variables
     
-//    var currentUser = User.currentUser
     let backButton = UIBarButtonItem()
     
     let options:[Option] = [

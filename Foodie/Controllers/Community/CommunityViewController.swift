@@ -10,16 +10,15 @@ class CommunityViewController: UIViewController {
     var stories: [Story] = []
     var currentUser = User.currentUser
     
- 
-    
     // MARK: Outlets
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
 
     // MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         showLoadingView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -28,21 +27,18 @@ class CommunityViewController: UIViewController {
         setUpTable()
         setUpCollection()
         fetchPosts()
-     
-        
         populateStories()
         
         print("End Point URL : " , Env().configure(InfoPlistKey.EndpointURL))
     }
     
     func fetchPosts(){
-        RealtimeDatabaseManager.shared.fetchPosts { posts in
+        RealtimeDatabaseManager.shared.getPostsFromRTDatabase { posts in
             
             self.posts = posts
             self.tableView.reloadData()
         }
     }
-    
     
   
 }

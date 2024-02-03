@@ -1,6 +1,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import ProgressHUD
+
 class LoginViewController: UIViewController {
     
     // MARK: Outlets
@@ -71,6 +72,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpBackground()
         setupLabels()
         configureTextFields()
         setupBackgroundGesture()
@@ -88,6 +90,13 @@ class LoginViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordField.delegate = self
+        
+        self.emailTextField.layer.cornerRadius = 15
+        self.emailTextField.layer.masksToBounds = true
+        self.passwordTextField.layer.cornerRadius = 15
+        self.passwordTextField.layer.masksToBounds = true
+        self.confirmPasswordField.layer.cornerRadius = 15
+        self.confirmPasswordField.layer.masksToBounds = true
     }
     
     func updateUIMode(mode:Bool){
@@ -108,7 +117,7 @@ class LoginViewController: UIViewController {
             confirmPasswordField.isHidden = false
             loginButtonOutlet.setTitle("Login", for: .normal)
             registerButtonOutlet.setTitle("Register", for: .normal)
-            haveAnAccountLabel.text = "Have An Account"
+            haveAnAccountLabel.text = "Have An Account ?"
             resendEmailButtonOutlet.isHidden = false
             forgetPasswordButtonOutlet.isHidden = true
 
@@ -234,6 +243,11 @@ class LoginViewController: UIViewController {
         gradientLayer.colors = [foodieColor!.cgColor, UIColor.white.cgColor]
         gradientLayer.locations = [0.0, 1.2]
         view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        
+        
+        self.registerButtonOutlet.layer.cornerRadius = 20
+        
     }
 
     

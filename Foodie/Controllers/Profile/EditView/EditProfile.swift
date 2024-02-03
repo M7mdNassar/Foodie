@@ -74,11 +74,6 @@ class EditProfile: UIViewController {
             // Dismiss the current view controller
             navigationController?.popViewController(animated: true)
         }
-       
-
-
-        
-
     }
 
     

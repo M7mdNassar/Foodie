@@ -4,7 +4,11 @@ import Firebase
 
 class FUserListener{
     
+    // MARK: variables
+    
     static let shared = FUserListener()
+    
+    // MARK: Private Initializer (singleton)
     
     private init (){}
     
@@ -66,6 +70,8 @@ class FUserListener{
         
     }
     
+    // MARK: Save To Firebase store
+    
     func saveUserToFierbase(user : User){
         
         do{
@@ -75,6 +81,7 @@ class FUserListener{
         }
     }
     
+    // MARK: Download User From Firestore
     
     func downloadUserFromFirestore(userId : String){
         FirestoreReference(collectionReference: .User).document(userId).getDocument { document, error in
@@ -84,11 +91,9 @@ class FUserListener{
                 return
             }
             
-            
             let result = Result{
                 
                 try? userDocument.data(as: User.self)     // bcoz FirebaseFirestoreSwift , you can convert document data to user object
-                
             }
             
             switch result{
@@ -109,7 +114,7 @@ class FUserListener{
     
     
     
-    // resend verification
+    // MARK: Resend Verfication With Email
     
     func resendVerficationEmailWith(email: String , completion : @escaping (_ error: Error?) -> Void){
         
@@ -121,7 +126,7 @@ class FUserListener{
     }
     
     
-    // forget Password
+    // MARK: Resend Password
     
     func resetPasswordFor(email: String , completion: @escaping (_ error: Error?) -> Void){
         
@@ -130,8 +135,5 @@ class FUserListener{
         }
     
     }
-    
-    
-    
     
 }

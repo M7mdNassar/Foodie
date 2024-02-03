@@ -7,7 +7,7 @@ enum FCollectionReference : String{
     case User
 }
 
-// get the refernce of specific collection
+// MARK: Get the refernce of specific collection
 
 func FirestoreReference(collectionReference : FCollectionReference) -> CollectionReference
 {

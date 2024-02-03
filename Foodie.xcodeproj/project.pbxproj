@@ -54,7 +54,6 @@
 		0483A7762B4205F60012AFF0 /* StoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */; };
 		0488E26D2B4B0537004EC43F /* MyCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488E26C2B4B0537004EC43F /* MyCustomTabBarController.swift */; };
 		0488E26F2B4B2434004EC43F /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488E26E2B4B2434004EC43F /* AddPostViewController.swift */; };
-		04A834222B53F31D00CA72EF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A834212B53F31D00CA72EF /* UIColorExtension.swift */; };
 		04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */; };
 		04BBCDB12B5863B5004E9AA5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04BBCDB02B5863B5004E9AA5 /* FirebaseAnalyticsOnDeviceConversion */; };
 		04BBCDB32B5863B5004E9AA5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 04BBCDB22B5863B5004E9AA5 /* FirebaseAuth */; };
@@ -162,7 +161,6 @@
 		0483A7742B4205F60012AFF0 /* StoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		0488E26C2B4B0537004EC43F /* MyCustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomTabBarController.swift; sourceTree = "<group>"; };
 		0488E26E2B4B2434004EC43F /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
-		04A834212B53F31D00CA72EF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		04BF4AF12B0CD3DF0000EB36 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		04BF4AF32B0CD4940000EB36 /* IngredientsServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsServiceManager.swift; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				044CC8CB2B1938D500CAE3B8 /* UITableViewExtension.swift */,
-				04A834212B53F31D00CA72EF /* UIColorExtension.swift */,
 				04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */,
 				04D90B0B2B6D3464001290B7 /* StringExtension.swift */,
 			);
@@ -793,7 +790,6 @@
 				04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */,
 				04D90B0C2B6D3464001290B7 /* StringExtension.swift in Sources */,
 				04BF4AF72B0D02EC0000EB36 /* IngredientsCollectionViewCell.swift in Sources */,
-				04A834222B53F31D00CA72EF /* UIColorExtension.swift in Sources */,
 				04BF4AF22B0CD3DF0000EB36 /* Ingredients.swift in Sources */,
 				04F501602B0235B2008820C6 /* LaunchScreenController.swift in Sources */,
 				0483A76B2B41A54C0012AFF0 /* CommunityViewController.swift in Sources */,

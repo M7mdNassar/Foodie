@@ -9,8 +9,9 @@ let storage = Storage.storage()
 class FileStorage{
     
     
-    // MARK:Images
+    // MARK: Images
     
+    // Uplaod Image
     class func uploadImage (_ image: UIImage , directory: String , completion: @escaping (_ documentLink: String?) -> Void){
         
         // 1. create folder on firestore
@@ -50,7 +51,7 @@ class FileStorage{
         
     }
     
-    // download
+    // Download Image
     
     class func downloadImage(imageUrl: String, completion: @escaping (_ image: UIImage?) -> Void) {
         
@@ -94,7 +95,7 @@ class FileStorage{
   
     
     
-    // save file locally in device
+    // save file locally in device (to make it fast in retrive , if not in local so, get it from firebase )
     
     class func saveFileLocally(fileData: NSData , fileName: String){
         let docUrl = getDocumentURL().appendingPathComponent(fileName, isDirectory: false)

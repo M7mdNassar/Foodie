@@ -17,29 +17,12 @@ extension UIImageView {
             }
         }
     }
-    
 }
 
 // MARK: Extension UIImage
 
 extension UIImage {
-    
-    func calculateImageDimensions(maxWidth: CGFloat, minWidth: CGFloat) -> (width: CGFloat, height: CGFloat) {
-        let imageWidth = self.size.width
-        let imageHeight = self.size.height
-         let aspectRatio = imageWidth / imageHeight
 
-         // Calculate width based on maximum width and aspect ratio
-         let width = min(maxWidth, max(minWidth, imageWidth))
-         let height = width / aspectRatio
-
-         return (width, height)
-     }
-    
-}
-
-
-extension UIImage {
     var isPortrait:  Bool    { size.height > size.width }
     var isLandscape: Bool    { size.width > size.height }
     var breadth:     CGFloat { min(size.width, size.height) }
@@ -58,4 +41,18 @@ extension UIImage {
             .draw(in: .init(origin: .zero, size: breadthSize))
         }
     }
+    
+    
+    func calculateImageDimensions(maxWidth: CGFloat, minWidth: CGFloat) -> (width: CGFloat, height: CGFloat) {
+        let imageWidth = self.size.width
+        let imageHeight = self.size.height
+         let aspectRatio = imageWidth / imageHeight
+
+         // Calculate width based on maximum width and aspect ratio
+         let width = min(maxWidth, max(minWidth, imageWidth))
+         let height = width / aspectRatio
+
+         return (width, height)
+     }
+    
 }

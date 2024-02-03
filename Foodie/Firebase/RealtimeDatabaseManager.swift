@@ -2,9 +2,14 @@ import Foundation
 import FirebaseDatabase
 
 class RealtimeDatabaseManager {
+    
+    // MARK: Variables
+    
     static let shared = RealtimeDatabaseManager()
     private let databaseRef = Database.database().reference()
     var refHandle = DatabaseHandle()
+    
+    // MARK: Add post to Realtime Database
     
     func addPost(post: Post) {
         let postData: [String: Any] = [
@@ -28,8 +33,9 @@ class RealtimeDatabaseManager {
     }
     
     
-    // Function to fetch posts from Firebase Realtime Database
-      func fetchPosts(completion: @escaping ([Post]) -> Void) {
+    // MARK: get posts from Firebase Realtime Database
+    
+      func getPostsFromRTDatabase(completion: @escaping ([Post]) -> Void) {
     
     
           refHandle = databaseRef.child("posts").observe(DataEventType.value, with: { snapshot in

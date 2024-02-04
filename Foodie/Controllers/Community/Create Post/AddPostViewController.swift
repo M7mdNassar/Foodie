@@ -69,8 +69,24 @@ class AddPostViewController: UIViewController {
         dispatchGroup.notify(queue: .main) {
             // All image uploads are completed
             let post = Post(postId: UUID().uuidString, userName: userName, userImageUrl: userImageUrl, content: content, imageUrls: imageUrls, likes: 0, comments: [])
-            RealtimeDatabaseManager.shared.addPost(post: post)
-            ProgressHUD.success("Post added successfully!")
+            
+            
+            
+            // Check if the presenting view controller is a tab bar controller
+            if let tabBarController = self.presentingViewController as? UITabBarController {
+                        // Set the selectedIndex to the index of the first tab (CommunityViewController)
+                        tabBarController.selectedIndex = 0
+                    }
+                    
+            if let communityViewController = self.communityViewController {
+                        if let tableView = communityViewController.tableView {
+                            
+                            RealtimeDatabaseManager.shared.addPost(post: post)
+                            self.dismiss(animated: true)
+                            ProgressHUD.success("Post added successfully!")
+                        }
+                    }
+          
         }
     }
 

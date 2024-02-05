@@ -90,26 +90,29 @@ class EditProfile: UIViewController {
                     userBirthDatePicker.date = date
                 }
             
-                 FileStorage.downloadImage(imageUrl: user.avatarLink) { image in
-                     self.userImageView.image = image ?? UIImage(named: "avatar")
-             }
+            if user.avatarLink != ""{
+                self.userImageView.load(from: user.avatarLink)
+            }
+            
          }
     }
     
     func uploadAvatarImage(image:UIImage){
-        let fileDirectory = "Avatars/" + "_\(User.currentId)" + ".jpg"
-        FileStorage.uploadImage(image, directory: fileDirectory) { avatarLink in
-            if var user = User.currentUser{
-                user.avatarLink = avatarLink ?? ""
-                saveUserLocally(user: user)
-                FUserListener.shared.saveUserToFierbase(user: user)
-            }
-            
-            //.. save file loccally in device
-            
-            FileStorage.saveFileLocally(fileData: image.jpegData(compressionQuality: 0.5)! as NSData, fileName: User.currentId)
-        }
-    }
+           let fileDirectory = "Avatars/" + "_\(User.currentId)" + ".jpg"
+           FileStorage.uploadImage(image, directory: fileDirectory) { avatarLink in
+               if var user = User.currentUser{
+                   user.avatarLink = avatarLink ?? ""
+                   saveUserLocally(user: user)
+                   FUserListener.shared.saveUserToFierbase(user: user)
+               }
+               
+               //.. save file loccally in device
+               
+               FileStorage.saveFileLocally(fileData: image.jpegData(compressionQuality: 0.5)! as NSData, fileName: User.currentId)
+           }
+       }
+
+
 
     
     private func showAlert(message: String, title: String) {

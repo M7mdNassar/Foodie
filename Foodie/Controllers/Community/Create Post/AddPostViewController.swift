@@ -50,7 +50,7 @@ class AddPostViewController: UIViewController {
         }
         
         var imageUrls: [String] = []
-        let dispatchGroup = DispatchGroup() // Use dispatch group to track completion of all image uploads
+        let dispatchGroup = DispatchGroup() // dispatch group to track completion of all image uploads
         
         for image in images {
             dispatchGroup.enter() // Enter the dispatch group before starting each image upload
@@ -78,11 +78,14 @@ class AddPostViewController: UIViewController {
                         tabBarController.selectedIndex = 0
                     }
                     
+            // go to community
             if let communityViewController = self.communityViewController {
                         if let tableView = communityViewController.tableView {
                             
                             RealtimeDatabaseManager.shared.addPost(post: post)
                             self.dismiss(animated: true)
+                            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+
                             ProgressHUD.success("Post added successfully!")
                         }
                     }

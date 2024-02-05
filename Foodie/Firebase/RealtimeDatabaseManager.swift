@@ -55,7 +55,8 @@ class RealtimeDatabaseManager {
                                likes: postData["likes"] as? Int ?? 0,
                                comments: postData["comments"] as? [Comment] ?? [] // Handle comments later
                            )
-                  posts.append(post)
+//                  posts.append(post)
+                  posts.insert(post, at: 0)
               }
               completion(posts)
               

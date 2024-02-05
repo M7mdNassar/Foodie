@@ -116,13 +116,13 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-2e-Fny">
-                                <rect key="frame" x="16" y="241" width="361" height="194"/>
+                                <rect key="frame" x="16" y="253.66666666666663" width="361" height="181.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="spe-rs-Yc6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="spe-rs-Yc6">
                                 <rect key="frame" x="16" y="144" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="OX1-Wk-7AA"/>
@@ -130,8 +130,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXg-Y5-rNy">
-                                <rect key="frame" x="94" y="169" width="283" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="94" y="156" width="283" height="46"/>
+                                <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -386,7 +386,7 @@
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vf-lR-JfN">
                                                             <rect key="frame" x="106" y="0.0" width="165" height="100"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                            <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="19"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -472,7 +472,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfN-Rs-VhM">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="519"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="553.33333333333337"/>
                                         <subviews>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFn-HF-KS6">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
@@ -482,20 +482,20 @@
                                                 <standardMapConfiguration key="preferredConfiguration"/>
                                             </mapView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWs-hc-2pn">
-                                                <rect key="frame" x="0.0" y="424" width="385" height="37"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                <rect key="frame" x="0.0" y="424" width="385" height="53"/>
+                                                <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="31"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8r-J3-0fQ">
-                                                <rect key="frame" x="0.0" y="464" width="385" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="480" width="385" height="29"/>
+                                                <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcz-mL-58c">
-                                                <rect key="frame" x="12" y="495" width="369" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <rect key="frame" x="12" y="519" width="369" height="34.333333333333371"/>
+                                                <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -587,7 +587,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e9-S6-Rjm">
                                         <rect key="frame" x="74.666666666666686" y="20" width="204" height="204"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MOP-TN-NPr">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="MOP-TN-NPr">
                                                 <rect key="frame" x="2" y="2" width="200" height="200"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
@@ -675,7 +675,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7E-yv-aQR" userLabel="Circle View">
                                                 <rect key="frame" x="94.666666666666686" y="40" width="204" height="204"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VFR-cJ-HR7">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="VFR-cJ-HR7">
                                                         <rect key="frame" x="2" y="2" width="200" height="200"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
@@ -1299,7 +1299,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.333333333333332" id="gyk-RH-XnN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1316,7 +1316,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.333333333333329" id="Fi1-Mi-xkx"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1333,7 +1333,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.333333333333343" id="J8n-zG-Ppg"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1491,6 +1491,7 @@
         <image name="mic" width="32" height="32"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="123"/>
         <image name="photo.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="profile" width="684" height="684"/>
         <image name="send" width="32" height="32"/>
         <image name="star.circle.fill" catalog="system" width="128" height="123"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

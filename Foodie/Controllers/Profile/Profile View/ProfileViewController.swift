@@ -44,7 +44,6 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.backgroundColor = UIColor.tertiarySystemGroupedBackground
-        
         setupUI()
     }
     
@@ -60,9 +59,8 @@ class ProfileViewController: UIViewController {
                 FileStorage.downloadImage(imageUrl: user.avatarLink) { avatarImage in
                     self.userImageView.image = avatarImage?.circleMasked
                 }
-            }else{
-                self.userImageView.image = UIImage(named:"avatar")
             }
+            
         }
     }
     

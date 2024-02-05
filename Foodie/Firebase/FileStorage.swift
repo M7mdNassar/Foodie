@@ -63,15 +63,6 @@ class FileStorage{
         
         let imageFileName = fileNameFrom(fileUrl: imageUrl)
         
-        if fileExistsPath(path: imageFileName) {
-            // file exists locally
-            if let contentsOfFile = UIImage(contentsOfFile: fileInDocumentsDirectory(fileName: imageFileName)) {
-                completion(contentsOfFile)
-            } else {
-                print("Could not convert local image")
-                completion(UIImage(named: "avatar"))
-            }
-        } else {
             // download from Firebase
             let downloadQueue = DispatchQueue(label: "imageDownloadQueue")
             
@@ -88,7 +79,7 @@ class FileStorage{
                     }
                 }
             }
-        }
+        
     }
     
     

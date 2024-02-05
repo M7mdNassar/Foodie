@@ -1,6 +1,7 @@
 
 import UIKit
 import FirebaseDatabase
+import SDWebImage
 
 class CommunityViewController: UIViewController {
 
@@ -26,13 +27,13 @@ class CommunityViewController: UIViewController {
         
         setUpTable()
         setUpCollection()
-        fetchPosts()
+        getPosts()
         populateStories()
         
         print("End Point URL : " , Env().configure(InfoPlistKey.EndpointURL))
     }
     
-    func fetchPosts(){
+    func getPosts(){
         RealtimeDatabaseManager.shared.getPostsFromRTDatabase { posts in
             
             self.posts = posts

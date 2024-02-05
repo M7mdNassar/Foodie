@@ -56,8 +56,6 @@ class RealtimeDatabaseManager {
                                comments: postData["comments"] as? [Comment] ?? [] // Handle comments later
                            )
                   posts.append(post)
-                      
-                  
               }
               completion(posts)
               

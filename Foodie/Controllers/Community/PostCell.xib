@@ -26,7 +26,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaZ-JH-p7p">
                         <rect key="frame" x="20" y="20" width="448" height="406"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="m06-db-NS3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="m06-db-NS3">
                                 <rect key="frame" x="20" y="17.666666666666664" width="50" height="49.999999999999993"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="OCY-BK-ed8"/>
@@ -125,7 +125,7 @@
                             <constraint firstItem="LOM-VI-f8P" firstAttribute="centerY" secondItem="m06-db-NS3" secondAttribute="centerY" id="Kne-NY-98j"/>
                             <constraint firstItem="uJ8-3b-qqx" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" symbolic="YES" id="SHa-He-rF7"/>
                             <constraint firstItem="uJ8-3b-qqx" firstAttribute="top" secondItem="UU8-3Q-Tcx" secondAttribute="bottom" constant="15" id="SXt-jx-Wt7"/>
-                            <constraint firstItem="UU8-3Q-Tcx" firstAttribute="top" secondItem="m06-db-NS3" secondAttribute="bottom" constant="15" id="UFl-iR-jvc"/>
+                            <constraint firstItem="UU8-3Q-Tcx" firstAttribute="top" secondItem="LOM-VI-f8P" secondAttribute="bottom" constant="29.670000000000002" id="bK1-Ui-shp"/>
                             <constraint firstAttribute="trailing" secondItem="uJ8-3b-qqx" secondAttribute="trailing" constant="20" symbolic="YES" id="f26-vS-Cxe"/>
                             <constraint firstItem="LOM-VI-f8P" firstAttribute="leading" secondItem="m06-db-NS3" secondAttribute="trailing" constant="8" symbolic="YES" id="nh5-IR-hL2"/>
                             <constraint firstItem="UU8-3Q-Tcx" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" symbolic="YES" id="uVJ-wd-olQ"/>

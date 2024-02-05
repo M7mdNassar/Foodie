@@ -1,5 +1,6 @@
 
 import UIKit
+import SDWebImage
 
 class PostCell: UITableViewCell {
 
@@ -16,6 +17,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var bottomBarView: UIView!
     @IBOutlet weak var likeButton: UIButton!
     
+    // MARK: Variables
     
     var postImages: [String?] = []
     var likes: Int = 0
@@ -74,11 +76,10 @@ class PostCell: UITableViewCell {
     func configure(post: Post ){
         
         if post.userImageUrl != ""{
-            FileStorage.downloadImage(imageUrl: post.userImageUrl!) { image in
-                self.userImageView.image = image?.circleMasked
-            }
+            self.userImageView.sd_setImage(with: URL(string: post.userImageUrl!))
+            self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
+            self.userImageView.clipsToBounds = true
         }
-        
         self.userNameLabel.text = post.userName
         self.textPostLabel.text = post.content
 
@@ -127,10 +128,7 @@ extension PostCell: UICollectionViewDataSource, UICollectionViewDelegate {
         if let image = postImages[indexPath.item] {
             cell.configure(imageUrl: image)
         }
-//        else {
-//            // Placeholder image or handle the case where the image is nil
-//            cell.imageView.image = UIImage(named: "placeholderImage")
-//        }
+
 
         return cell
     }

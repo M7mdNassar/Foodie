@@ -5,14 +5,15 @@ import UIKit
 extension UIImageView {
 
     func load(from urlString: String) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        
+        DispatchQueue.global().async { [weak self] in
             if let imageURL = URL(string: urlString),
                let imageData = try? Data(contentsOf: imageURL),
                let image = UIImage(data: imageData) {
 
                 DispatchQueue.main.async {
-                    self.layer.cornerRadius = self.frame.width / 2
-                    self.image = image
+                    self!.layer.cornerRadius = self!.layer.frame.width / 2
+                    self!.image = image
                 }
             }
         }

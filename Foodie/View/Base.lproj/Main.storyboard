@@ -102,7 +102,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-US-zjo">
                                         <rect key="frame" x="294.66666666666669" y="0.0" width="78.333333333333314" height="51.333333333333336"/>
-                                        <color key="backgroundColor" name="FoodieLightGreen"/>
+                                        <color key="backgroundColor" red="0.69803921568627447" green="0.72549019607843135" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="نشر"/>
@@ -1478,9 +1478,6 @@
             <point key="canvasLocation" x="3140" y="-970"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="uf4-eV-bzy"/>
-    </designables>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>

@@ -34,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The post content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UU8-3Q-Tcx" customClass="ExpandableLabel" customModule="Debug_Foodie" customModuleProvider="target">
-                                <rect key="frame" x="20" y="94.666666666666671" width="408" height="22.333333333333329"/>
+                                <rect key="frame" x="20" y="85" width="408" height="32"/>
                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,7 +125,7 @@
                             <constraint firstItem="LOM-VI-f8P" firstAttribute="centerY" secondItem="m06-db-NS3" secondAttribute="centerY" id="Kne-NY-98j"/>
                             <constraint firstItem="uJ8-3b-qqx" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" symbolic="YES" id="SHa-He-rF7"/>
                             <constraint firstItem="uJ8-3b-qqx" firstAttribute="top" secondItem="UU8-3Q-Tcx" secondAttribute="bottom" constant="15" id="SXt-jx-Wt7"/>
-                            <constraint firstItem="UU8-3Q-Tcx" firstAttribute="top" secondItem="LOM-VI-f8P" secondAttribute="bottom" constant="29.670000000000002" id="bK1-Ui-shp"/>
+                            <constraint firstItem="UU8-3Q-Tcx" firstAttribute="top" secondItem="LOM-VI-f8P" secondAttribute="bottom" constant="20" id="bK1-Ui-shp"/>
                             <constraint firstAttribute="trailing" secondItem="uJ8-3b-qqx" secondAttribute="trailing" constant="20" symbolic="YES" id="f26-vS-Cxe"/>
                             <constraint firstItem="LOM-VI-f8P" firstAttribute="leading" secondItem="m06-db-NS3" secondAttribute="trailing" constant="8" symbolic="YES" id="nh5-IR-hL2"/>
                             <constraint firstItem="UU8-3Q-Tcx" firstAttribute="leading" secondItem="kaZ-JH-p7p" secondAttribute="leading" constant="20" symbolic="YES" id="uVJ-wd-olQ"/>

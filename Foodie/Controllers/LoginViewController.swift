@@ -76,6 +76,7 @@ class LoginViewController: UIViewController {
         setupLabels()
         configureTextFields()
         setupBackgroundGesture()
+        updateUIMode(mode: false)
     }
     
     // MARK: Methods

@@ -77,6 +77,9 @@ class PostCell: UITableViewCell {
         
         if post.userImageUrl != ""{
             self.userImageView.sd_setImage(with: URL(string: post.userImageUrl!))
+            
+            
+            
             self.userImageView.layer.cornerRadius = self.userImageView.frame.height/2
             self.userImageView.clipsToBounds = true
         }

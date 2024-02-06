@@ -20,60 +20,47 @@ class ExpandableLabel :UILabel {
     //Add readmore button in the label.
     func addReadMoreButton() {
         
-        let theNumberOfLines = numberOfLinesInLabel(yourString: self.text ?? "", labelWidth: self.frame.width, labelHeight: self.frame.height, font: self.font)
+        let theNumberOfLines = self.countLines()
         
         let height = self.frame.height
-        self.numberOfLines =  self.isExpaded ? 0 : 2
+        self.numberOfLines =  self.isExpaded ? 0 : min(2,theNumberOfLines)
         
         if theNumberOfLines > 2{
             
             self.numberOfLines = 2
             
-            let button = UIButton(frame: CGRect(x: 0, y: height+15, width: 70, height: 15))
+            let button = UIButton(frame: CGRect(x: 0, y: height+17, width: 70, height: 15))
             button.tag = 9090
             button.frame = self.frame
             button.frame.origin.y =  self.frame.origin.y  +  self.frame.size.height + 25
-            button.setTitle("Read more...", for: .normal)
+            button.setTitle("إقرأ المزيد", for: .normal)
             button.titleLabel?.font = button.titleLabel?.font.withSize(17)
             button.backgroundColor = .clear
             button.setTitleColor(UIColor.blue, for: .normal)
             button.addTarget(self, action: #selector(ExpandableLabel.buttonTapped(sender:)), for: .touchUpInside)
             self.superview?.addSubview(button)
             self.superview?.bringSubviewToFront(button)
-            button.setTitle("Read less..", for: .selected)
+            button.setTitle("أقل", for: .selected)
             button.isSelected = self.isExpaded
             button.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
                 button.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                button.bottomAnchor.constraint(equalTo:  self.bottomAnchor, constant: +15)
+                button.bottomAnchor.constraint(equalTo:  self.bottomAnchor, constant: +17)
                 ])
-        }else{
-            
-            self.numberOfLines = 2
         }
         
     }
     
     //Calculating the number of lines. -> Int
-    func numberOfLinesInLabel(yourString: String, labelWidth: CGFloat, labelHeight: CGFloat, font: UIFont) -> Int {
+    func countLines() -> Int{
+        guard let text = self.text else {return 0}
         
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.minimumLineHeight = labelHeight
-        paragraphStyle.maximumLineHeight = labelHeight
-        paragraphStyle.lineBreakMode = .byWordWrapping
+        let rect = CGSize(width: self.bounds.width, height: CGFloat.greatestFiniteMagnitude)
+        let labelSize = text.boundingRect(with: rect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font : self.font as Any], context: nil)
         
-        let attributes: [NSAttributedString.Key: AnyObject] = [NSAttributedString.Key(rawValue: NSAttributedString.Key.font.rawValue): font, NSAttributedString.Key(rawValue: NSAttributedString.Key.paragraphStyle.rawValue): paragraphStyle]
+        return Int(ceil(labelSize.height / self.font.lineHeight))
         
-        let constrain = CGSize(width: labelWidth, height: CGFloat(Float.infinity))
-        
-        let size = yourString.size(withAttributes: attributes)
-        
-        let stringWidth = size.width
-        
-        let numberOfLines = ceil(Double(stringWidth/constrain.width))
-        
-        return Int(numberOfLines)
     }
     
     //ReadMore Button Action
@@ -113,4 +100,3 @@ class ExpandableLabel :UILabel {
     }
     
 }
-

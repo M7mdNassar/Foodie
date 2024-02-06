@@ -238,13 +238,13 @@ class LoginViewController: UIViewController {
     
     // MARK: - Set Up UI
     private func setUpBackground() {
-        let foodieColor = UIColor(named: "FoodieLightGreen")
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [foodieColor!.cgColor, UIColor.white.cgColor]
-        gradientLayer.locations = [0.0, 1.2]
-        view.layer.insertSublayer(gradientLayer, at: 0)
-        
+//        let foodieColor = UIColor(named: "FoodieLightGreen")
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = view.bounds
+//        gradientLayer.colors = [foodieColor!.cgColor, UIColor.white.cgColor]
+//        gradientLayer.locations = [0.0, 1.2]
+//        view.layer.insertSublayer(gradientLayer, at: 0)
+//        
         
         
         self.registerButtonOutlet.layer.cornerRadius = 20

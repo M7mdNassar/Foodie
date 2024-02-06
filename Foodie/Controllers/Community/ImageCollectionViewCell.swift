@@ -22,18 +22,4 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func load(from urlString: String) {
-        
-        DispatchQueue.global().async { [weak self] in
-            if let imageURL = URL(string: urlString),
-               let imageData = try? Data(contentsOf: imageURL),
-               let image = UIImage(data: imageData) {
-
-                DispatchQueue.main.async {
-                    self?.imageView.image = image
-                }
-            }
-        }
-    }
-
 }

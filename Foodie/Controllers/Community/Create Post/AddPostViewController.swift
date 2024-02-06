@@ -21,8 +21,8 @@ class AddPostViewController: UIViewController {
   @IBOutlet weak var postContent: UITextView!
   @IBOutlet weak var postButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
-//  @IBOutlet weak var addImageButton: UIButton!
-   
+  @IBOutlet weak var collectionViewHeightConstrain: NSLayoutConstraint!
+    
     
    // MARK: Life Cycle Controller
      
@@ -113,6 +113,7 @@ class AddPostViewController: UIViewController {
 extension AddPostViewController : GalleryControllerDelegate{
     func galleryController(_ controller: Gallery.GalleryController, didSelectImages images: [Gallery.Image]) {
         
+        self.collectionViewHeightConstrain.constant = 100
         for image in images{
             image.resolve { image in
                 if let image = image{
@@ -211,9 +212,11 @@ private extension AddPostViewController {
   }
    
   func setUpView() {
-      self.userImageView.load(from: (self.currentUser!.avatarLink))
-      self.userNameLabel.text = self.currentUser!.userName
-     
+      self.userImageView.sd_setImage(with: URL(string: self.currentUser!.avatarLink))
+      self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
+      
+    self.userNameLabel.text = self.currentUser!.userName
+
     self.postButton.layer.cornerRadius = 15
     self.postButton.clipsToBounds = true
      

@@ -11,7 +11,7 @@ class CommunityViewController: UIViewController {
     var posts: [Post] = []
     var stories: [Story] = []
     var currentUser = User.currentUser
-    
+    let realtimeDatabaseManager = RealtimeDatabaseManager()
     // MARK: Outlets
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -85,6 +85,57 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
       
         return cell
     }
+    
+    private func createSpinnerFooter() -> UIView{
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        return footerView
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        let contentHeight = tableView.contentSize.height
+        let screenHeight = scrollView.frame.size.height
+
+        // Load more data when the user reaches near the bottom
+        if position > (contentHeight - screenHeight) {
+            guard !realtimeDatabaseManager.isPagination else {
+                // We are already fetching more data
+                return
+            }
+            self.tableView.tableFooterView = createSpinnerFooter()
+
+            // Start fetching more data
+            realtimeDatabaseManager.isPagination = true
+            let lastPostId = posts.last?.postId // Retrieve the last post ID from the current posts
+            realtimeDatabaseManager.getPostsFromRTDatabase(startingAfter: lastPostId) { [weak self] additionalPosts in
+                guard let self = self else { return }
+
+                // Check if there are additional posts
+                if additionalPosts.isEmpty {
+                    // No more posts to fetch
+                    self.realtimeDatabaseManager.isPagination = false
+                    self.tableView.tableFooterView = nil
+                    return
+                }
+
+                // Append the additional posts to the existing array
+                self.posts.append(contentsOf: additionalPosts)
+
+                DispatchQueue.main.async {
+                    self.tableView.tableFooterView = nil
+                    // Reload the table view with the new data
+                    self.tableView.reloadData()
+                    self.realtimeDatabaseManager.isPagination = false
+                }
+            }
+        }
+    }
+
+   
     
 }
 

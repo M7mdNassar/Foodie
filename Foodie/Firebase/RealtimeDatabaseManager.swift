@@ -8,6 +8,7 @@ class RealtimeDatabaseManager {
     static let shared = RealtimeDatabaseManager()
     private let databaseRef = Database.database().reference()
     var refHandle = DatabaseHandle()
+    var isPagination = false
     
     // MARK: Add post to Realtime Database
     
@@ -35,35 +36,38 @@ class RealtimeDatabaseManager {
     
     // MARK: get posts from Firebase Realtime Database
     
-      func getPostsFromRTDatabase(completion: @escaping ([Post]) -> Void) {
-    
-    
-          refHandle = databaseRef.child("posts").observe(DataEventType.value, with: { snapshot in
-            
-              var posts: [Post] = []
-              
-              for child in snapshot.children {
-                  guard let childSnapshot = child as? DataSnapshot,
-                              let postData = childSnapshot.value as? [String: Any] else { continue }
-                    
-                      let post = Post(
-                               postId: childSnapshot.key,
-                               userName: postData["userName"] as? String ?? "",
-                               userImageUrl : postData["userImageUrl"] as? String ?? "", 
-                               content: postData["content"] as? String ?? "",
-                               imageUrls: postData["imageUrls"] as? [String?] ?? [],
-                               likes: postData["likes"] as? Int ?? 0,
-                               comments: postData["comments"] as? [Comment] ?? [] // Handle comments later
-                           )
-//                  posts.append(post)
-                  posts.insert(post, at: 0)
-              }
-              completion(posts)
-              
-          })
-         
-      }
-    
+    func getPostsFromRTDatabase(startingAfter start: String? = nil, limit: UInt = 10, completion: @escaping ([Post]) -> Void) {
+        var query = databaseRef.child("posts").queryOrderedByKey().queryLimited(toFirst: limit)
+        if let start = start {
+            // Query posts starting after the last retrieved post ID
+            query = query.queryStarting(afterValue: start)
+        }
+
+        query.observeSingleEvent(of: .value) { snapshot in
+            var posts: [Post] = []
+
+            for child in snapshot.children {
+                guard let childSnapshot = child as? DataSnapshot,
+                    let postData = childSnapshot.value as? [String: Any] else { continue }
+
+                let post = Post(
+                    postId: childSnapshot.key,
+                    userName: postData["userName"] as? String ?? "",
+                    userImageUrl: postData["userImageUrl"] as? String ?? "",
+                    content: postData["content"] as? String ?? "",
+                    imageUrls: postData["imageUrls"] as? [String] ?? [],
+                    likes: postData["likes"] as? Int ?? 0,
+                    comments: postData["comments"] as? [Comment] ?? []
+                )
+
+                posts.append(post)
+            }
+            completion(posts)
+        }
+    }
+
+
+
 }
 
 

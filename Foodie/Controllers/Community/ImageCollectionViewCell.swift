@@ -20,7 +20,4 @@ class ImageCollectionViewCell: UICollectionViewCell {
         
     }
     
-
-    
-    
 }

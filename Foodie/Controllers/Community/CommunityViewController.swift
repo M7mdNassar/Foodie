@@ -2,6 +2,7 @@
 import UIKit
 import FirebaseDatabase
 import SDWebImage
+import SKPhotoBrowser
 
 class CommunityViewController: UIViewController {
 
@@ -77,13 +78,14 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
         
         let post = posts[indexPath.row]
         let cell = tableView.dequeue() as PostCell
-
+        cell.delegate = self
         cell.textPostLabel.isExpaded = false
 
         cell.configure(post: post)
       
         return cell
     }
+    
 }
 
 
@@ -150,5 +152,29 @@ extension CommunityViewController {
         if let loadingView = view.viewWithTag(loadingViewTag) {
             loadingView.removeFromSuperview()
         }
+    }
+}
+
+
+
+// MARK: Show the image from post cell
+
+extension CommunityViewController: PostCellDelegate {
+
+    func postCell(_ cell: PostCell, didSelectImageAt indexPath: IndexPath) {
+        guard let imageUrl = cell.postImages[indexPath.item] else {
+            return
+        }
+
+        var images = [SKPhoto]()
+        let photo = SKPhoto.photoWithImageURL(imageUrl)
+        photo.shouldCachePhotoURLImage = false
+        images.append(photo)
+
+        let browser = SKPhotoBrowser(photos: images)
+        browser.initializePageIndex(0)
+
+        // Here you can present the SKPhotoBrowser
+        present(browser, animated: true, completion: nil)
     }
 }

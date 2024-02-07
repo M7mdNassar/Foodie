@@ -1,6 +1,7 @@
 
 import UIKit
 import SDWebImage
+import SKPhotoBrowser
 
 class PostCell: UITableViewCell {
 
@@ -21,7 +22,8 @@ class PostCell: UITableViewCell {
     
     var postImages: [String?] = []
     var likes: Int = 0
-    
+    weak var delegate: PostCellDelegate?
+
     // MARK: Life Cycle
     
     override func awakeFromNib() {
@@ -114,6 +116,7 @@ class PostCell: UITableViewCell {
              view.layer.mask = maskLayer
          }
         
+
     
     }
 
@@ -132,9 +135,15 @@ extension PostCell: UICollectionViewDataSource, UICollectionViewDelegate {
             cell.configure(imageUrl: image)
         }
 
-
         return cell
     }
+    
+    //
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.postCell(self, didSelectImageAt: indexPath)
+    }
+
+
 }
 
 extension PostCell: UICollectionViewDelegateFlowLayout{
@@ -147,3 +156,8 @@ extension PostCell: UICollectionViewDelegateFlowLayout{
     }
 }
 
+
+// MARK: Protocol to handle image selection events
+protocol PostCellDelegate: AnyObject {
+    func postCell(_ cell: PostCell, didSelectImageAt indexPath: IndexPath)
+}

@@ -17,9 +17,10 @@ class ImageCollectionViewCell: UICollectionViewCell {
             self.imageView.sd_setImage(with: URL(string: imageUrl))
            
         }
-       
         
     }
+    
+
     
     
 }

@@ -149,7 +149,7 @@ extension AddPostViewController : GalleryControllerDelegate{
         self.gallery = GalleryController()
         self.gallery.delegate = self
         Config.tabsToShow = [.imageTab , .cameraTab]
-        Config.Camera.imageLimit = 1 // just chose one image
+        Config.Camera.imageLimit = 10
         Config.initialTab = .imageTab
         self.present(self.gallery, animated: true)
     }

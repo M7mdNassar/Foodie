@@ -56,6 +56,7 @@
 		0485CEFF2B70E83700899C1A /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0485CEFE2B70E83700899C1A /* SDWebImageMapKit */; };
 		0488E26D2B4B0537004EC43F /* MyCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488E26C2B4B0537004EC43F /* MyCustomTabBarController.swift */; };
 		0488E26F2B4B2434004EC43F /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488E26E2B4B2434004EC43F /* AddPostViewController.swift */; };
+		048FCA4A2B7378E600BDF735 /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = 048FCA492B7378E600BDF735 /* SKPhotoBrowser */; };
 		04A834242B53F39B00CA72EF /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A834232B53F39B00CA72EF /* UIImageViewExtension.swift */; };
 		04BBCDB12B5863B5004E9AA5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 04BBCDB02B5863B5004E9AA5 /* FirebaseAnalyticsOnDeviceConversion */; };
 		04BBCDB32B5863B5004E9AA5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 04BBCDB22B5863B5004E9AA5 /* FirebaseAuth */; };
@@ -222,6 +223,7 @@
 				04BBCDB92B5863B5004E9AA5 /* FirebaseDatabaseSwift in Frameworks */,
 				04BBCDD12B5863B5004E9AA5 /* FirebasePerformance in Frameworks */,
 				04BBCDC92B5863B5004E9AA5 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
+				048FCA4A2B7378E600BDF735 /* SKPhotoBrowser in Frameworks */,
 				04BBCDCD2B5863B5004E9AA5 /* FirebaseMLModelDownloader in Frameworks */,
 				04BBCDB72B5863B5004E9AA5 /* FirebaseDatabase in Frameworks */,
 				3F24F946D0BE8214D935CFBE /* Pods_Foodie.framework in Frameworks */,
@@ -634,6 +636,7 @@
 				04BBCDD82B5863B5004E9AA5 /* FirebaseStorageCombine-Community */,
 				0485CEFC2B70E83700899C1A /* SDWebImage */,
 				0485CEFE2B70E83700899C1A /* SDWebImageMapKit */,
+				048FCA492B7378E600BDF735 /* SKPhotoBrowser */,
 			);
 			productName = Foodie;
 			productReference = 04D08D0F2AF79F1F004C2E7E /* Debug Foodie.app */;
@@ -667,6 +670,7 @@
 			packageReferences = (
 				04BBCDAF2B5863B5004E9AA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0485CEFB2B70E83700899C1A /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				048FCA482B7378E600BDF735 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 			);
 			productRefGroup = 04D08D102AF79F1F004C2E7E /* Products */;
 			projectDirPath = "";
@@ -1373,6 +1377,14 @@
 				minimumVersion = 5.18.10;
 			};
 		};
+		048FCA482B7378E600BDF735 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/suzuki-0000/SKPhotoBrowser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 		04BBCDAF2B5863B5004E9AA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1393,6 +1405,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0485CEFB2B70E83700899C1A /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		048FCA492B7378E600BDF735 /* SKPhotoBrowser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048FCA482B7378E600BDF735 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */;
+			productName = SKPhotoBrowser;
 		};
 		04BBCDB02B5863B5004E9AA5 /* FirebaseAnalyticsOnDeviceConversion */ = {
 			isa = XCSwiftPackageProductDependency;

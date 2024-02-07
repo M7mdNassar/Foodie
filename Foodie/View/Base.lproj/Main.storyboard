@@ -129,7 +129,7 @@
                                     <constraint firstAttribute="height" constant="70" id="S32-nS-daU"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXg-Y5-rNy">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXg-Y5-rNy">
                                 <rect key="frame" x="94" y="155.66666666666666" width="283" height="46.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Harmattan-Regular" family="Harmattan" pointSize="27"/>
                                 <nil key="textColor"/>
@@ -598,7 +598,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIG-po-d49">
-                                <rect key="frame" x="20" y="153" width="353" height="516"/>
+                                <rect key="frame" x="20" y="153" width="353" height="491"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e9-S6-Rjm">
                                         <rect key="frame" x="74.666666666666686" y="20" width="204" height="204"/>
@@ -629,7 +629,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-ak-oyc">
-                                        <rect key="frame" x="8" y="260" width="337" height="146"/>
+                                        <rect key="frame" x="8" y="260" width="337" height="221"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -640,7 +640,7 @@
                                     <constraint firstAttribute="trailing" secondItem="gl3-52-uaG" secondAttribute="trailing" id="BBE-tJ-xwN"/>
                                     <constraint firstAttribute="trailing" secondItem="uF3-ak-oyc" secondAttribute="trailing" constant="8" id="S8Q-fl-f4T"/>
                                     <constraint firstItem="uF3-ak-oyc" firstAttribute="top" secondItem="gl3-52-uaG" secondAttribute="bottom" constant="16" id="VhQ-Yl-Nq1"/>
-                                    <constraint firstAttribute="bottom" secondItem="uF3-ak-oyc" secondAttribute="bottom" constant="110" id="VjT-Kq-Rt9"/>
+                                    <constraint firstAttribute="bottom" secondItem="uF3-ak-oyc" secondAttribute="bottom" constant="10" id="VjT-Kq-Rt9"/>
                                     <constraint firstItem="gl3-52-uaG" firstAttribute="top" secondItem="1e9-S6-Rjm" secondAttribute="bottom" constant="20" id="Xm4-8i-DrE"/>
                                     <constraint firstItem="1e9-S6-Rjm" firstAttribute="top" secondItem="yIG-po-d49" secondAttribute="top" constant="20" id="eTl-PU-rc2"/>
                                     <constraint firstItem="gl3-52-uaG" firstAttribute="leading" secondItem="yIG-po-d49" secondAttribute="leading" id="wN6-ni-PNQ"/>
@@ -651,8 +651,8 @@
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yIG-po-d49" firstAttribute="leading" secondItem="bfN-Lr-OYm" secondAttribute="leading" constant="20" id="AV9-LZ-Zzv"/>
-                            <constraint firstItem="bfN-Lr-OYm" firstAttribute="bottom" secondItem="yIG-po-d49" secondAttribute="bottom" constant="100" id="UOe-hd-iQa"/>
                             <constraint firstItem="yIG-po-d49" firstAttribute="top" secondItem="bfN-Lr-OYm" secondAttribute="top" constant="50" id="aLL-1Z-aAQ"/>
+                            <constraint firstItem="bfN-Lr-OYm" firstAttribute="bottom" secondItem="yIG-po-d49" secondAttribute="bottom" constant="125" id="t39-xu-WcC"/>
                             <constraint firstAttribute="trailing" secondItem="yIG-po-d49" secondAttribute="trailing" constant="20" id="tvK-zF-gaF"/>
                         </constraints>
                     </view>
@@ -669,7 +669,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RS-9g-Xu5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6885" y="677"/>
+            <point key="canvasLocation" x="6884.7328244274804" y="676.76056338028172"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="z1N-IF-I7k">
@@ -1498,6 +1498,9 @@
             <point key="canvasLocation" x="3139.6946564885493" y="-970.4225352112677"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="uf4-eV-bzy"/>
+    </designables>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>

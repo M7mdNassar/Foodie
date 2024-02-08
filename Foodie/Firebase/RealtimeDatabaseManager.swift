@@ -29,6 +29,8 @@ class RealtimeDatabaseManager {
                 print("Error adding post: \(error.localizedDescription)")
             } else {
                 print("Post added successfully!")
+                
+                
             }
         }
     }
@@ -59,7 +61,6 @@ class RealtimeDatabaseManager {
                     likes: postData["likes"] as? Int ?? 0,
                     comments: postData["comments"] as? [Comment] ?? []
                 )
-
                 posts.append(post)
             }
             completion(posts)

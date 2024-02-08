@@ -84,7 +84,6 @@ class AddPostViewController: UIViewController {
                             
                             RealtimeDatabaseManager.shared.addPost(post: post)
                             self.dismiss(animated: true)
-                            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
 
                             ProgressHUD.success("Post added successfully!")
                         }

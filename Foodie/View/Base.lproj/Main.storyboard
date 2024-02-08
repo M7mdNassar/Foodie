@@ -1288,7 +1288,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="house.circle.fill" catalog="system" id="xPZ-z6-LSe"/>
                     <navigationItem key="navigationItem" title="المنتدى" id="YNa-tL-UG5"/>
                     <connections>
-                        <outlet property="collectionView" destination="4fo-XK-g8M" id="lWd-Vv-uL5"/>
+                        <outlet property="storiesCollectionView" destination="4fo-XK-g8M" id="lWd-Vv-uL5"/>
                         <outlet property="tableView" destination="ZIi-Cd-JBR" id="PPM-TD-yTM"/>
                     </connections>
                 </viewController>

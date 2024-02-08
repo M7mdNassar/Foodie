@@ -3,7 +3,7 @@ import UIKit
 import SDWebImage
 import SKPhotoBrowser
 
-class PostCell: UITableViewCell {
+class MixedPostCell: UITableViewCell {
 
     // MARK: Outlets
     
@@ -22,7 +22,7 @@ class PostCell: UITableViewCell {
     
     var postImages: [String?] = []
     var likes: Int = 0
-    weak var delegate: PostCellDelegate?
+    weak var delegate: MixedPostCellDelegate?
 
     // MARK: Life Cycle
     
@@ -121,7 +121,7 @@ class PostCell: UITableViewCell {
     }
 
 
-extension PostCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MixedPostCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return postImages.count
@@ -140,13 +140,13 @@ extension PostCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     //
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.postCell(self, didSelectImageAt: indexPath)
+        delegate?.mixedPostCell(self, didSelectImageAt: indexPath)
     }
 
 
 }
 
-extension PostCell: UICollectionViewDelegateFlowLayout{
+extension MixedPostCell: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
@@ -158,6 +158,6 @@ extension PostCell: UICollectionViewDelegateFlowLayout{
 
 
 // MARK: Protocol to handle image selection events
-protocol PostCellDelegate: AnyObject {
-    func postCell(_ cell: PostCell, didSelectImageAt indexPath: IndexPath)
+protocol MixedPostCellDelegate: AnyObject {
+    func mixedPostCell(_ cell: MixedPostCell, didSelectImageAt indexPath: IndexPath)
 }

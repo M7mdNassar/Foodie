@@ -14,7 +14,7 @@ class CommunityViewController: UIViewController {
     let realtimeDatabaseManager = RealtimeDatabaseManager()
     // MARK: Outlets
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var storiesCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
 
     // MARK: Life Cycle
@@ -77,13 +77,24 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post = posts[indexPath.row]
-        let cell = tableView.dequeue() as PostCell
-        cell.delegate = self
-        cell.textPostLabel.isExpaded = false
+        
+        if post.imageUrls.isEmpty{
+            
+        let cell = tableView.dequeue() as TextPostCell
+            cell.textPostLabel.isExpaded = false
+            cell.configure(post: post)
+            return cell
+        }
+        
+        else
+        {
+            let cell = tableView.dequeue() as MixedPostCell
+            cell.delegate = self
+            cell.textPostLabel.isExpaded = false
+            cell.configure(post: post)
+            return cell
+        }
 
-        cell.configure(post: post)
-      
-        return cell
     }
     
     private func createSpinnerFooter() -> UIView{
@@ -135,8 +146,7 @@ extension CommunityViewController : UITableViewDataSource , UITableViewDelegate 
         }
     }
 
-   
-    
+
 }
 
 
@@ -147,8 +157,8 @@ extension CommunityViewController{
     func setUpTable() {
        tableView.dataSource = self
        tableView.delegate = self
-       tableView.register(Cell: PostCell.self)
-    
+       tableView.register(Cell: MixedPostCell.self)
+        tableView.register(Cell: TextPostCell.self)
         
        tableView.separatorStyle = .none
        tableView.rowHeight = UITableView.automaticDimension
@@ -157,10 +167,10 @@ extension CommunityViewController{
    }
     
     func setUpCollection(){
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        storiesCollectionView.delegate = self
+        storiesCollectionView.dataSource = self
         let nib = UINib(nibName: "StoryCollectionViewCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "storyCell")
+        storiesCollectionView.register(nib, forCellWithReuseIdentifier: "storyCell")
     }
     
   
@@ -210,9 +220,9 @@ extension CommunityViewController {
 
 // MARK: Show the image from post cell
 
-extension CommunityViewController: PostCellDelegate {
+extension CommunityViewController: MixedPostCellDelegate {
 
-    func postCell(_ cell: PostCell, didSelectImageAt indexPath: IndexPath) {
+    func mixedPostCell(_ cell: MixedPostCell, didSelectImageAt indexPath: IndexPath) {
         guard let imageUrl = cell.postImages[indexPath.item] else {
             return
         }

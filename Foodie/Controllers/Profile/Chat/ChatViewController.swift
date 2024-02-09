@@ -10,7 +10,7 @@ class ChatViewController: UIViewController {
     let otherUser = User(id: "123", userName: "Oday", email: "oday@gmail.com", pushId: "987" , avatarLink: "https://randomuser.me/api/portraits/women/77.jpg" , date: "" , phoneNumber:"224455" , country: "Jenin")
     
     var messages: [Message] = []
-    var selectedImage: UIImage?
+    var selectedImages: [UIImage] = []
     private let audioManager = AudioManager.shared
     let testAudioURL = URL(fileURLWithPath: "/Users/mac/Library/Developer/mm.mp3")
     var isRecording = false
@@ -28,7 +28,14 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var mic: UIButton!
+    @IBOutlet weak var attach: UIButton!
     @IBOutlet weak var sendButton: UIButton!
+    
+    @IBOutlet weak var selectedImagesCollectionView: UICollectionView!
+    @IBOutlet weak var selectedImagesCollectionViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var cancelRecordingLabel: UILabel!
+    
     
     // MARK: - Life Cycle
 
@@ -38,10 +45,12 @@ class ChatViewController: UIViewController {
         configureGestureRecognizer()
         setUpNavigationItem()
         setUpTable()
+        setUpCollection()
         setUpTextView()
         populateMessages()
         addNotifications()
         sendButton.isHidden = true
+        
         
     }
 
@@ -57,7 +66,7 @@ class ChatViewController: UIViewController {
     }
 
     @IBAction func sendButton(_ sender: UIButton) {
-        sendMessage(text: textView.text, image: selectedImage)
+        sendMessage(text: textView.text, image: selectedImages.first)
     }
 
     @IBAction func sendImage(_ sender: UIButton) {
@@ -84,68 +93,106 @@ class ChatViewController: UIViewController {
         textView.text = nil
         sendButton.isHidden = true
         mic.isHidden = false
-        selectedImage = nil
+        selectedImages = []
+        selectedImagesCollectionViewHeightConstraint.constant = 0
+        selectedImagesCollectionView.isHidden = true
         scrollToBottom()
     }
     
     // MARK: - Private Methods
 
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
-            switch gesture.state {
-            case .began:
-                print("recording")
+    @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            print("Long press began")
+            if hasMicrophonePermission() {
                 isRecording = true
+                startRecordingAnnimation()
                 originalMicButtonCenter = mic.center
                 sendButton.isHidden = true
                 audioManager.startRecording()
-            case .changed:
-                guard isRecording else { return }
-
-                let translation = gesture.translation(in: view)
-                print("Pan gesture: \(translation)")
-                textView.text = "Slide to cancel <<<"
-                // Check if the pan gesture is to the left and cancel recording
-                if translation.x < -100 {
-                    isCancelled = true
-                    mic.center.x = originalMicButtonCenter.x + translation.x
-                } else {
-                    isCancelled = false
-                    mic.center.x = originalMicButtonCenter.x + translation.x
-                }
-
-            case .ended, .cancelled:
-                if isRecording {
+            } else {
+                // Inform the user that microphone access is required
+                print("Microphone access is required to start recording.")
+                requestMicrophonePermission()
+            }
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            print("Long press ended")
+            if isRecording {
+                if !isCancelled{
+                    // Stop and send the recording
                     audioManager.stopRecording()
-
-                    if !isCancelled {
-                        // Create message and reload table
-                        let audioURL = self.audioManager.currentRecordingURL
-                        print("The Path is : \(String(describing: audioURL!))")
-
+                    stopRecordingAnnimation()
+                    if let audioURL = self.audioManager.currentRecordingURL {
+                        // Recording successful, create message and reload table
+                        print("The Path is : \(audioURL)")
                         let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
                         messages.append(newMessage)
                         tableView.reloadData()
                         scrollToBottom()
                         print("created record")
-                        
-                    } else {
-                        print("Recording cancelled")
-                        audioManager.cancelRecording()
                     }
-                    textView.text = ""
-                    sendButton.isHidden = true // Hide the sendButton
-                    isRecording = false
+                }else {
+                    // Recording failed due to permissions
+                    print("Recording Canceld")
+                }
 
-                    // Reset the microphone position with animation
+                textView.text = ""
+                sendButton.isHidden = true // Hide the sendButton
+                isRecording = false
+                isCancelled = false
+                // Reset the microphone position with animation
+                UIView.animate(withDuration: 0.3) {
+                    self.mic.center = self.originalMicButtonCenter
+                }
+            }
+        }
+    }
+
+    
+    
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .changed {
+            // Only handle pan gesture if long press is active
+            guard isRecording else { return }
+
+            let translation = gesture.translation(in: view)
+            print("Pan gesture: \(translation)")
+
+            // Check if the pan gesture is within the allowed range (-60 to 0)
+            if translation.x >= -60 && translation.x <= 0 {
+                mic.center.x = originalMicButtonCenter.x + translation.x
+            } else if translation.x < -60 {
+                // Limit the pan gesture to -60 units
+                mic.center.x = originalMicButtonCenter.x - 60
+            }
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            if isRecording {
+                if mic.center.x <= originalMicButtonCenter.x - 60 {
+                    // If the pan distance is greater than 60, consider it as cancelled
+                    isCancelled = true
+                }
+
+                if isCancelled {
+                    // Cancel the recording
+                    audioManager.cancelRecording()
+                    stopRecordingAnnimation()
+                    print("Recording cancelled")
+                } else {
+                    // Stop and send the recording (handled in handleLongPress(_:))
+                }
+
+                // Reset mic position if needed
+                if !isCancelled {
                     UIView.animate(withDuration: 0.3) {
                         self.mic.center = self.originalMicButtonCenter
                     }
                 }
-
-            default:
-                break
             }
         }
+    }
+
+
+
 
 }
 
@@ -274,7 +321,11 @@ extension ChatViewController: UINavigationControllerDelegate, UIImagePickerContr
         sendButton.isHidden = false
         mic.isHidden = true
         if let pickedImage = info[.originalImage] as? UIImage {
-            selectedImage = pickedImage
+            selectedImages.append(pickedImage)
+            selectedImagesCollectionViewHeightConstraint.constant = 80
+            selectedImagesCollectionView.isHidden = false
+            selectedImagesCollectionView.reloadData()
+            dismiss(animated: true)
         }
     }
 
@@ -325,10 +376,21 @@ private extension ChatViewController {
     }
 
     func configureGestureRecognizer() {
+        
+        // Add a long press gesture recognizer
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 0.2 // Adjust this as needed
+        mic.addGestureRecognizer(longPressGesture)
+        
+        longPressGesture.delegate = self
+
            // Add a pan gesture recognizer
            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
            panGesture.minimumNumberOfTouches = 1
            mic.addGestureRecognizer(panGesture)
+        
+  
+        
        }
 
 
@@ -356,6 +418,31 @@ private extension ChatViewController {
             tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
         }
     }
+    
+    // Helper function to request microphone permission
+    private func requestMicrophonePermission() {
+        let audioSession = AVAudioSession.sharedInstance()
+        audioSession.requestRecordPermission { [weak self] (granted) in
+            guard let self = self else { return }
+            
+            if granted {
+                // Permission granted, proceed with recording
+                self.isRecording = true
+                self.originalMicButtonCenter = self.mic.center
+                self.sendButton.isHidden = true
+                self.audioManager.startRecording()
+            } else {
+                // Permission denied, request permission again
+                let alertController = UIAlertController(title: "Microphone Access Required", message: "Please grant microphone access to start recording.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                }))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+
 }
 
 // MARK: - Keyboard Handling
@@ -393,4 +480,78 @@ extension ChatViewController {
         scrollToBottom()
     }
 
+}
+
+// MARK: Show Selected Image in the Collection View
+
+extension ChatViewController : UICollectionViewDataSource , UICollectionViewDelegate{
+    
+    func setUpCollection() {
+      selectedImagesCollectionView.delegate = self
+        selectedImagesCollectionView.dataSource = self
+      let nib = UINib(nibName: "selectedImagesCollectionViewCell", bundle: nil)
+        selectedImagesCollectionView.register(nib, forCellWithReuseIdentifier: "selectedImagesCollectionViewCell")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      return selectedImages.count
+    }
+     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "selectedImagesCollectionViewCell", for: indexPath) as! selectedImagesCollectionViewCell
+        cell.imageView.image = selectedImages[indexPath.row]
+      return cell
+    }
+     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      return CGSize(width: 80, height: 80)
+    }
+    
+    
+}
+
+
+// MARK: Animations
+
+extension ChatViewController {
+    
+    func startRecordingAnnimation() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, delay: 0.07) {
+                let scaled = CGAffineTransform(scaleX: 1.7, y: 1.7)
+                self.mic.transform = scaled
+                
+                self.textView.isHidden = true
+                self.cancelRecordingLabel.isHidden = false
+                self.attach.isHidden = true
+                
+            }
+            
+            // Animate the cancelRecordingLabel back and forth
+            UIView.animate(withDuration: 0.8, delay: 0, options: [.autoreverse, .repeat]) {
+                self.cancelRecordingLabel.alpha = 0.7
+                self.cancelRecordingLabel.transform = CGAffineTransform(translationX: -35, y: 0)
+            }
+        }
+    }
+    
+    func stopRecordingAnnimation() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, delay: 0.07) {
+                self.mic.transform = .identity
+                
+                self.textView.isHidden = false
+                self.attach.isHidden = false
+                self.cancelRecordingLabel.isHidden = true
+                self.cancelRecordingLabel.alpha = 1
+                self.cancelRecordingLabel.transform = .identity
+            }
+        }
+    }
+}
+
+extension ChatViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }

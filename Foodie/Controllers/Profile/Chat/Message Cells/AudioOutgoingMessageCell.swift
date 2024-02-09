@@ -47,7 +47,8 @@ class AudioOutgoingMessageCell: UITableViewCell, AudioManagerDelegate {
         configureProgressBar()
         self.audioURL = audioURL
         configureAudioManager()
-        userImageView.load(from: userImageUrl)
+        self.userImageView.sd_setImage(with: URL(string: userImageUrl))
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
         configureAudioDuration()
     }
     

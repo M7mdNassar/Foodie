@@ -26,39 +26,47 @@ class AudioManager: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             try audioSession.setCategory(.playAndRecord, mode: .default)
             try audioSession.setActive(true)
 
-            audioSession.requestRecordPermission { [weak self] (granted) in
-                guard let self = self else { return }
-                
-                if granted {
-                    // Permission granted, proceed with recording
-                    let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            if audioSession.recordPermission == .granted {
+                // Permission granted, proceed with recording
+                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
 
-                    // Generate a unique file name using a timestamp
-                    let timestamp = Date().description
-                    let fileName = "\(String(describing: timestamp)).m4a"
-                    self.currentRecordingURL = documentDirectory.appendingPathComponent(fileName)
+                // Generate a unique file name using a timestamp
+                let timestamp = Date().description
+                let fileName = "\(String(describing: timestamp)).m4a"
+                self.currentRecordingURL = documentDirectory.appendingPathComponent(fileName)
 
-                    let settings: [String: Any] = [
-                        AVFormatIDKey: kAudioFormatMPEG4AAC,
-                        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
-                        AVEncoderBitRateKey: 320000,
-                        AVNumberOfChannelsKey: 2,
-                        AVSampleRateKey: 44100.0
-                    ]
+                let settings: [String: Any] = [
+                    AVFormatIDKey: kAudioFormatMPEG4AAC,
+                    AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
+                    AVEncoderBitRateKey: 320000,
+                    AVNumberOfChannelsKey: 2,
+                    AVSampleRateKey: 44100.0
+                ]
 
-                    self.audioRecorder = try? AVAudioRecorder(url: self.currentRecordingURL!, settings: settings)
-                    self.audioRecorder?.delegate = self
-                    self.audioRecorder?.record()
+                self.audioRecorder = try? AVAudioRecorder(url: self.currentRecordingURL!, settings: settings)
+                self.audioRecorder?.delegate = self
+                self.audioRecorder?.record()
 
-                } else {
-                    // Permission denied, handle accordingly
-                    print("Microphone permission denied.")
+            } else {
+                // Permission not granted, request permission again
+                audioSession.requestRecordPermission { [weak self] (granted) in
+                    guard let self = self else { return }
+
+                    if granted {
+                        // Permission granted after re-requesting, proceed with recording
+                        self.startRecording()
+                    } else {
+                        // Permission still denied, handle accordingly
+                        print("Microphone permission denied.")
+                        // You may want to inform the user and handle the situation appropriately
+                    }
                 }
             }
         } catch {
             print("Error starting audio recording: \(error.localizedDescription)")
         }
     }
+
     
     // MARK: - Playback
     
@@ -166,4 +174,11 @@ class AudioManager: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
 protocol AudioManagerDelegate: AnyObject {
     func playbackFinished()
+}
+
+
+// Helper function to check microphone permissions
+ func hasMicrophonePermission() -> Bool {
+    let audioSession = AVAudioSession.sharedInstance()
+    return audioSession.recordPermission == .granted
 }

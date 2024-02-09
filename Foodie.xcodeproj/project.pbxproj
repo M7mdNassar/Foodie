@@ -86,6 +86,8 @@
 		04C6AA9F2B74DFBB00FFA3D9 /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C6AA9D2B74DFBB00FFA3D9 /* TextPostCell.swift */; };
 		04C6AAA02B74DFBB00FFA3D9 /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C6AA9E2B74DFBB00FFA3D9 /* TextPostCell.xib */; };
 		04C73CDA2B1881F6005D7F38 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C73CD92B1881F6005D7F38 /* ChatViewController.swift */; };
+		04CE24672B7663C700342660 /* selectedImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE24652B7663C700342660 /* selectedImagesCollectionViewCell.swift */; };
+		04CE24682B7663C700342660 /* selectedImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CE24662B7663C700342660 /* selectedImagesCollectionViewCell.xib */; };
 		04D08D132AF79F1F004C2E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D122AF79F1F004C2E7E /* AppDelegate.swift */; };
 		04D08D152AF79F1F004C2E7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */; };
 		04D08D1A2AF79F1F004C2E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D182AF79F1F004C2E7E /* Main.storyboard */; };
@@ -174,6 +176,8 @@
 		04C6AA9D2B74DFBB00FFA3D9 /* TextPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
 		04C6AA9E2B74DFBB00FFA3D9 /* TextPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
 		04C73CD92B1881F6005D7F38 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		04CE24652B7663C700342660 /* selectedImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectedImagesCollectionViewCell.swift; sourceTree = "<group>"; };
+		04CE24662B7663C700342660 /* selectedImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = selectedImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		04D08D0F2AF79F1F004C2E7E /* Debug Foodie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Debug Foodie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D08D122AF79F1F004C2E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04D08D142AF79F1F004C2E7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -437,6 +441,8 @@
 			children = (
 				046A74FB2B19355D002F62E2 /* Message Cells */,
 				04C73CD92B1881F6005D7F38 /* ChatViewController.swift */,
+				04CE24652B7663C700342660 /* selectedImagesCollectionViewCell.swift */,
+				04CE24662B7663C700342660 /* selectedImagesCollectionViewCell.xib */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				042483202B11ECD200B84CB0 /* ProfileTableViewCell.xib in Resources */,
 				04D08D1C2AF79F22004C2E7E /* Assets.xcassets in Resources */,
 				041641E22AFD2E5E0054CCAC /* RestaurantCollectionViewCell.xib in Resources */,
+				04CE24682B7663C700342660 /* selectedImagesCollectionViewCell.xib in Resources */,
 				04E427082AF8D6DE00E32CF5 /* RestaurantsData.json in Resources */,
 				04DC0F392B0BF8800077FE2B /* IngredientsData.json in Resources */,
 				04424C1A2B584CAB00C0E9A2 /* GoogleService-Info.plist in Resources */,
@@ -840,6 +847,7 @@
 				04E4270A2AF8F2F500E32CF5 /* RestaurantDetails.swift in Sources */,
 				041641E12AFD2E5E0054CCAC /* RestaurantCollectionViewCell.swift in Sources */,
 				043325042AFC2D9D00452C1E /* PageCollectionViewCell.swift in Sources */,
+				04CE24672B7663C700342660 /* selectedImagesCollectionViewCell.swift in Sources */,
 				0483A76E2B41CC560012AFF0 /* Post.swift in Sources */,
 				04D90B062B6CEF6D001290B7 /* Constents.swift in Sources */,
 				045A7A362AFAD7F400C29688 /* RestaurantServiceManager.swift in Sources */,

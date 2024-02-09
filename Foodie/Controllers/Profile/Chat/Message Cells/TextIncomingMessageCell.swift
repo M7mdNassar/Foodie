@@ -19,7 +19,8 @@ class TextIncomingMessageCell: UITableViewCell {
         if let messageText = messageText{
             self.messageTextLabel.text = messageText
         }
-        self.userImageView.load(from : userImageUrl)
+        self.userImageView.sd_setImage(with: URL(string: userImageUrl))
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
     }
 
 }

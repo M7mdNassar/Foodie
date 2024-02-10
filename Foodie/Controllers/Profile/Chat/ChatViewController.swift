@@ -17,7 +17,6 @@ class ChatViewController: UIViewController {
     var isCancelled = false
     var originalMicButtonCenter: CGPoint = .zero
     
-
     
     // MARK: - Outlets
 
@@ -30,10 +29,8 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var mic: UIButton!
     @IBOutlet weak var attach: UIButton!
     @IBOutlet weak var sendButton: UIButton!
-    
     @IBOutlet weak var selectedImagesCollectionView: UICollectionView!
     @IBOutlet weak var selectedImagesCollectionViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var cancelRecordingLabel: UILabel!
     
     
@@ -50,7 +47,6 @@ class ChatViewController: UIViewController {
         populateMessages()
         addNotifications()
         sendButton.isHidden = true
-        
         
     }
 
@@ -102,27 +98,27 @@ class ChatViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
-        
         if gesture.state == .began {
             print("Long press began")
             if hasMicrophonePermission() {
+                // Perform recording animation only if microphone permission is granted
                 isRecording = true
                 startRecordingAnnimation()
                 originalMicButtonCenter = mic.center
                 audioManager.startRecording()
             } else {
-                // Inform the user that microphone access is required
+                // If microphone permission is not granted, show alert
                 print("Microphone access is required to start recording.")
                 requestMicrophonePermission()
             }
-            
         } else if gesture.state == .ended || gesture.state == .cancelled {
+            // Only handle recording logic if the gesture was previously initiated
+            guard isRecording else { return }
             print("Long press ended")
             isRecording = false // End of recording
             if !isCancelled {
-                // Stop and send the recording
+                // Stop and send the recording if the gesture was not canceled
                 audioManager.stopRecording()
-                //create the message
                 if let audioURL = self.audioManager.currentRecordingURL {
                     // Recording successful, create message and reload table
                     print("The Path is : \(audioURL)")
@@ -137,7 +133,8 @@ class ChatViewController: UIViewController {
                 print("Recording canceled")
                 audioManager.cancelRecording()
             }
-            
+
+            // Stop recording animation and reset mic button position
             stopRecordingAnnimation()
             textView.text = ""
             isCancelled = false
@@ -147,6 +144,7 @@ class ChatViewController: UIViewController {
             }
         }
     }
+
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         
@@ -351,24 +349,6 @@ private extension ChatViewController {
         textView.delegate = self
     }
 
-    func configureGestureRecognizer() {
-        
-        // Add a long press gesture recognizer
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-        longPressGesture.minimumPressDuration = 0.2 // Adjust this as needed
-        mic.addGestureRecognizer(longPressGesture)
-        
-        longPressGesture.delegate = self
-
-           // Add a pan gesture recognizer
-           let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-           panGesture.minimumNumberOfTouches = 1
-           mic.addGestureRecognizer(panGesture)
-        
-  
-        
-       }
-
 
      func populateMessages() {
         messages = [
@@ -396,18 +376,13 @@ private extension ChatViewController {
     }
     
     // Helper function to request microphone permission
-    private func requestMicrophonePermission() {
+     func requestMicrophonePermission() {
         let audioSession = AVAudioSession.sharedInstance()
         audioSession.requestRecordPermission { [weak self] (granted) in
             guard let self = self else { return }
             
-            if granted {
-                // Permission granted, proceed with recording
-                self.isRecording = true
-                self.originalMicButtonCenter = self.mic.center
-                self.sendButton.isHidden = true
-                self.audioManager.startRecording()
-            } else {
+            if !granted {
+      
                 // Permission denied, request permission again
                 let alertController = UIAlertController(title: "Microphone Access Required", message: "Please grant microphone access to start recording.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -487,7 +462,7 @@ extension ChatViewController : UICollectionViewDataSource , UICollectionViewDele
 }
 
 
-// MARK: Animations
+ // MARK: Recording Annimations
 
 extension ChatViewController {
     
@@ -526,7 +501,26 @@ extension ChatViewController {
     }
 }
 
+    // MARK: Gestures On Mic Button (Long + Pan)
 extension ChatViewController: UIGestureRecognizerDelegate {
+    
+    func configureGestureRecognizer() {
+        
+        // Add a long press gesture recognizer
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        longPressGesture.minimumPressDuration = 0.2 // Adjust this as needed
+        mic.addGestureRecognizer(longPressGesture)
+        
+        longPressGesture.delegate = self
+
+           // Add a pan gesture recognizer
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        panGesture.minimumNumberOfTouches = 1
+        mic.addGestureRecognizer(panGesture)
+        
+       }
+
+    // To let the long gesture work simultaneously with Pan
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

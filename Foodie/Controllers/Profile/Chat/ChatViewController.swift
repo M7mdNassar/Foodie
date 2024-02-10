@@ -102,55 +102,54 @@ class ChatViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+        
         if gesture.state == .began {
             print("Long press began")
             if hasMicrophonePermission() {
                 isRecording = true
                 startRecordingAnnimation()
                 originalMicButtonCenter = mic.center
-                sendButton.isHidden = true
                 audioManager.startRecording()
             } else {
                 // Inform the user that microphone access is required
                 print("Microphone access is required to start recording.")
                 requestMicrophonePermission()
             }
+            
         } else if gesture.state == .ended || gesture.state == .cancelled {
             print("Long press ended")
-            if isRecording {
-                if !isCancelled{
-                    // Stop and send the recording
-                    audioManager.stopRecording()
-                    stopRecordingAnnimation()
-                    if let audioURL = self.audioManager.currentRecordingURL {
-                        // Recording successful, create message and reload table
-                        print("The Path is : \(audioURL)")
-                        let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
-                        messages.append(newMessage)
-                        tableView.reloadData()
-                        scrollToBottom()
-                        print("created record")
-                    }
-                }else {
-                    // Recording failed due to permissions
-                    print("Recording Canceld")
+            isRecording = false // End of recording
+            if !isCancelled {
+                // Stop and send the recording
+                audioManager.stopRecording()
+                //create the message
+                if let audioURL = self.audioManager.currentRecordingURL {
+                    // Recording successful, create message and reload table
+                    print("The Path is : \(audioURL)")
+                    let newMessage = Message(text: nil, image: nil, audioURL: audioURL, sender: currentUser!, type: .audio)
+                    messages.append(newMessage)
+                    tableView.reloadData()
+                    scrollToBottom()
+                    print("created record")
                 }
-
-                textView.text = ""
-                sendButton.isHidden = true // Hide the sendButton
-                isRecording = false
-                isCancelled = false
-                // Reset the microphone position with animation
-                UIView.animate(withDuration: 0.3) {
-                    self.mic.center = self.originalMicButtonCenter
-                }
+            } else {
+                // Recording canceled
+                print("Recording canceled")
+                audioManager.cancelRecording()
+            }
+            
+            stopRecordingAnnimation()
+            textView.text = ""
+            isCancelled = false
+            // Reset the microphone position with animation
+            UIView.animate(withDuration: 0.3) {
+                self.mic.center = self.originalMicButtonCenter
             }
         }
     }
 
-    
-    
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        
         if gesture.state == .changed {
             // Only handle pan gesture if long press is active
             guard isRecording else { return }
@@ -161,38 +160,15 @@ class ChatViewController: UIViewController {
             // Check if the pan gesture is within the allowed range (-60 to 0)
             if translation.x >= -60 && translation.x <= 0 {
                 mic.center.x = originalMicButtonCenter.x + translation.x
-            } else if translation.x < -60 {
+                
+            } else if translation.x <= -60 {
                 // Limit the pan gesture to -60 units
                 mic.center.x = originalMicButtonCenter.x - 60
+                isCancelled = true // Recording is canceled if dragged more than 60 units to the left
             }
-        } else if gesture.state == .ended || gesture.state == .cancelled {
-            if isRecording {
-                if mic.center.x <= originalMicButtonCenter.x - 60 {
-                    // If the pan distance is greater than 60, consider it as cancelled
-                    isCancelled = true
-                }
+        } 
 
-                if isCancelled {
-                    // Cancel the recording
-                    audioManager.cancelRecording()
-                    stopRecordingAnnimation()
-                    print("Recording cancelled")
-                } else {
-                    // Stop and send the recording (handled in handleLongPress(_:))
-                }
-
-                // Reset mic position if needed
-                if !isCancelled {
-                    UIView.animate(withDuration: 0.3) {
-                        self.mic.center = self.originalMicButtonCenter
-                    }
-                }
-            }
-        }
     }
-
-
-
 
 }
 

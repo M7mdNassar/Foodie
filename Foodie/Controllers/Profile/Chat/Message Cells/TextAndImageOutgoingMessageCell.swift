@@ -14,7 +14,9 @@ class TextAndImageOutgoingMessageCell: UITableViewCell {
         backgroundColor = .clear
         setupBackground()
         setMessageText(messageText)
-        userImageView.load(from: userImageUrl)
+        
+        self.userImageView.sd_setImage(with: URL(string: userImageUrl))
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2 
         setupMessageImage(messageImage)
     }
 
@@ -33,29 +35,34 @@ class TextAndImageOutgoingMessageCell: UITableViewCell {
     private func setupMessageImage(_ messageImage: UIImage?) {
         guard let messageImage = messageImage else { return }
 
-        let dimensions = messageImage.calculateImageDimensions(maxWidth: UIScreen.main.bounds.width * 0.7, minWidth: 150.0)
+        // Calculate dimensions for the image
+           let maxWidth: CGFloat = UIScreen.main.bounds.width * 0.7
+           let minWidth: CGFloat = 150.0
+           let dimensions = messageImage.calculateImageDimensions(maxWidth: maxWidth, minWidth: minWidth)
 
-        messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
-        messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
+           // Set up constraints for the messageImageView
+           messageImageView.translatesAutoresizingMaskIntoConstraints = false
+           messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+           messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
 
-        messageImageView.image = messageImage
-        messageImageView.layer.cornerRadius = 15.0
-        messageImageView.layer.masksToBounds = true
+           messageImageView.image = messageImage
+           messageImageView.layer.cornerRadius = 15.0
+           messageImageView.layer.masksToBounds = true
 
-        let aspectRatio = dimensions.width / dimensions.height
+           // Adjust the content mode based on the aspect ratio
+           if dimensions.width > dimensions.height {
+               messageImageView.contentMode = .scaleAspectFill
+           } else {
+               messageImageView.contentMode = .scaleAspectFit
+           }
 
-        if dimensions.width > dimensions.height {
-            messageImageView.contentMode = .scaleAspectFill
-        } else {
-            messageImageView.contentMode = .scaleAspectFit
-        }
+           // Ensure existing aspect ratio constraint is removed
+           messageImageView.constraints.filter { $0.identifier == "AspectRatioConstraint" }.forEach { $0.isActive = false }
 
-        for constraint in messageImageView.constraints {
-            if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
-                constraint.isActive = false
-                let aspectRatioConstraint = messageImageView.widthAnchor.constraint(equalTo: messageImageView.heightAnchor, multiplier: aspectRatio)
-                aspectRatioConstraint.isActive = true
-            }
-        }
+           // Set up aspect ratio constraint
+           let aspectRatioConstraint = NSLayoutConstraint(item: messageImageView, attribute: .width, relatedBy: .equal, toItem: messageImageView, attribute: .height, multiplier: dimensions.width / dimensions.height, constant: 0)
+           aspectRatioConstraint.identifier = "AspectRatioConstraint"
+           aspectRatioConstraint.isActive = true
+       
     }
 }

@@ -9,13 +9,15 @@ class ChatViewController: UIViewController {
     let currentUser = User.currentUser
     let otherUser = User(id: "123", userName: "Oday", email: "oday@gmail.com", pushId: "987" , avatarLink: "https://randomuser.me/api/portraits/women/77.jpg" , date: "" , phoneNumber:"224455" , country: "Jenin")
     
-    var messages: [Message] = []
-    var selectedImages: [UIImage] = []
+    private var messages: [Message] = []
+    private var selectedImages: [UIImage] = []
     private let audioManager = AudioManager.shared
-    let testAudioURL = URL(fileURLWithPath: "/Users/mac/Library/Developer/mm.mp3")
+    private let testAudioURL = URL(fileURLWithPath: "/Users/mac/Library/Developer/mm.mp3")
     var isRecording = false
-    var isCancelled = false
-    var originalMicButtonCenter: CGPoint = .zero
+    private var isCancelled = false
+    private var originalMicButtonCenter: CGPoint = .zero
+    private var recordingTimer: Timer?
+    private var recordingDuration: TimeInterval = 0
     
     
     // MARK: - Outlets
@@ -32,7 +34,7 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var selectedImagesCollectionView: UICollectionView!
     @IBOutlet weak var selectedImagesCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cancelRecordingLabel: UILabel!
-    
+    @IBOutlet weak var durationLabel: UILabel!
     
     // MARK: - Life Cycle
 
@@ -98,6 +100,7 @@ class ChatViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
+    
         if gesture.state == .began {
             print("Long press began")
             if hasMicrophonePermission() {
@@ -106,6 +109,7 @@ class ChatViewController: UIViewController {
                 startRecordingAnnimation()
                 originalMicButtonCenter = mic.center
                 audioManager.startRecording()
+
             } else {
                 // If microphone permission is not granted, show alert
                 print("Microphone access is required to start recording.")
@@ -119,6 +123,7 @@ class ChatViewController: UIViewController {
             if !isCancelled {
                 // Stop and send the recording if the gesture was not canceled
                 audioManager.stopRecording()
+                
                 if let audioURL = self.audioManager.currentRecordingURL {
                     // Recording successful, create message and reload table
                     print("The Path is : \(audioURL)")
@@ -132,8 +137,8 @@ class ChatViewController: UIViewController {
                 // Recording canceled
                 print("Recording canceled")
                 audioManager.cancelRecording()
+                
             }
-
             // Stop recording animation and reset mic button position
             stopRecordingAnnimation()
             textView.text = ""
@@ -148,13 +153,14 @@ class ChatViewController: UIViewController {
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
         
+      
         if gesture.state == .changed {
             // Only handle pan gesture if long press is active
             guard isRecording else { return }
 
             let translation = gesture.translation(in: view)
             print("Pan gesture: \(translation)")
-
+              
             // Check if the pan gesture is within the allowed range (-60 to 0)
             if translation.x >= -60 && translation.x <= 0 {
                 mic.center.x = originalMicButtonCenter.x + translation.x
@@ -475,7 +481,7 @@ extension ChatViewController {
                 self.textView.isHidden = true
                 self.cancelRecordingLabel.isHidden = false
                 self.attach.isHidden = true
-                
+                                
             }
             
             // Animate the cancelRecordingLabel back and forth
@@ -490,7 +496,6 @@ extension ChatViewController {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, delay: 0.07) {
                 self.mic.transform = .identity
-                
                 self.textView.isHidden = false
                 self.attach.isHidden = false
                 self.cancelRecordingLabel.isHidden = true
@@ -524,4 +529,33 @@ extension ChatViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
+}
+
+// MARK: Timer For Duration label (Recording ..)
+
+extension ChatViewController{
+    private func startRecordingTimer() {
+        durationLabel.isHidden = false
+          recordingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateRecordingDuration), userInfo: nil, repeats: true)
+      }
+
+      private func stopRecordingTimer() {
+          recordingTimer?.invalidate()
+          recordingTimer = nil
+          recordingDuration = 0
+          // Remove duration label
+          durationLabel.isHidden = true
+      }
+
+      @objc private func updateRecordingDuration() {
+          recordingDuration += 1
+          updateDurationLabel()
+      }
+
+      private func updateDurationLabel() {
+          let minutes = Int(recordingDuration) / 60
+          let seconds = Int(recordingDuration) % 60
+          durationLabel.text = String(format: "%02d:%02d", minutes, seconds)
+      }
+
 }

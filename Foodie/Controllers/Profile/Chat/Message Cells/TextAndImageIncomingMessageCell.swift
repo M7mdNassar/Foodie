@@ -14,7 +14,11 @@ class TextAndImageIncomingMessageCell: UITableViewCell {
         backgroundColor = .clear
         setupBackground()
         setMessageText(messageText)
-        userImageView.load(from: userImageUrl)
+        
+        self.userImageView.sd_setImage(with: URL(string: userImageUrl))
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
+        
+        
         setupMessageImage(messageImage)
     }
 

@@ -14,7 +14,8 @@ class ImageIncomingMessageCell: UITableViewCell {
         guard let messageImage = messageImage else { return }
 
         setupMessageImageView(with: messageImage)
-        loadUserImage(from: userImageUrl)
+        self.userImageView.sd_setImage(with: URL(string: userImageUrl))
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
     }
 
     private func setupMessageImageView(with image: UIImage) {
@@ -52,7 +53,5 @@ class ImageIncomingMessageCell: UITableViewCell {
         }
     }
 
-    private func loadUserImage(from urlString: String) {
-        userImageView.load(from: urlString)
-    }
+ 
 }

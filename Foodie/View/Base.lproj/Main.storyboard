@@ -1175,15 +1175,23 @@
                                             <action selector="sendButton:" destination="O2U-df-cc2" eventType="touchUpInside" id="5lS-Hp-vje"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-NI-bn3">
+                                        <rect key="frame" x="179" y="0.0" width="35.333333333333343" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94916313890000004" green="0.94863802190000002" blue="0.96863013509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="J6o-NI-bn3" firstAttribute="top" secondItem="dKl-Ba-WpA" secondAttribute="top" id="28k-Vx-6ir"/>
                                     <constraint firstItem="Jv2-QK-Knj" firstAttribute="centerY" secondItem="dKl-Ba-WpA" secondAttribute="centerY" id="F8S-fM-PU7"/>
                                     <constraint firstItem="u0T-Nz-wFv" firstAttribute="leading" secondItem="wc1-3L-yPl" secondAttribute="trailing" constant="8" symbolic="YES" id="JCM-qf-WNz"/>
                                     <constraint firstAttribute="height" constant="100" id="KlA-IW-V5L"/>
                                     <constraint firstItem="S6q-yC-4aQ" firstAttribute="centerY" secondItem="dKl-Ba-WpA" secondAttribute="centerY" id="Mug-2m-uBe"/>
                                     <constraint firstItem="wc1-3L-yPl" firstAttribute="centerY" secondItem="dKl-Ba-WpA" secondAttribute="centerY" id="OyR-Zi-udk"/>
                                     <constraint firstItem="wc1-3L-yPl" firstAttribute="leading" secondItem="dKl-Ba-WpA" secondAttribute="leading" constant="8" id="RVW-HJ-LOX"/>
+                                    <constraint firstItem="J6o-NI-bn3" firstAttribute="centerX" secondItem="dKl-Ba-WpA" secondAttribute="centerX" id="YU5-6V-oiK"/>
                                     <constraint firstAttribute="trailing" secondItem="S6q-yC-4aQ" secondAttribute="trailing" constant="8" id="mOw-B2-e4i"/>
                                     <constraint firstItem="S6q-yC-4aQ" firstAttribute="leading" secondItem="u0T-Nz-wFv" secondAttribute="trailing" constant="7.6699999999999999" id="sg8-B9-ob9"/>
                                     <constraint firstAttribute="trailing" secondItem="Jv2-QK-Knj" secondAttribute="trailing" constant="8" id="z3y-YI-MdG"/>
@@ -1238,6 +1246,7 @@
                         <outlet property="attach" destination="wc1-3L-yPl" id="yhe-ax-Bmf"/>
                         <outlet property="bottomConstraint" destination="dm4-2y-Jss" id="gH7-iK-5Kz"/>
                         <outlet property="cancelRecordingLabel" destination="V80-uq-YdV" id="lTJ-W0-Avc"/>
+                        <outlet property="durationLabel" destination="J6o-NI-bn3" id="KHC-qi-XeZ"/>
                         <outlet property="mic" destination="Jv2-QK-Knj" id="72Y-ld-tbm"/>
                         <outlet property="selectedImagesCollectionView" destination="EbN-R4-I3X" id="q5G-mE-BXW"/>
                         <outlet property="selectedImagesCollectionViewHeightConstraint" destination="aKy-fa-SO8" id="iSk-6S-Y0p"/>
@@ -1538,6 +1547,9 @@
             <point key="canvasLocation" x="3139.6946564885493" y="-970.4225352112677"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="uf4-eV-bzy"/>
+    </designables>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>

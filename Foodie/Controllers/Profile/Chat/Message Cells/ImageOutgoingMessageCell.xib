@@ -32,9 +32,9 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="2tF-De-XzG" secondAttribute="bottom" constant="16" id="66Q-fe-Yws"/>
+                    <constraint firstAttribute="bottom" secondItem="2tF-De-XzG" secondAttribute="bottom" priority="100" constant="16" id="66Q-fe-Yws"/>
                     <constraint firstAttribute="trailing" secondItem="dWh-LT-4ca" secondAttribute="trailing" constant="5" id="BMY-VW-Syf"/>
-                    <constraint firstItem="2tF-De-XzG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Ouf-Bf-FdX"/>
+                    <constraint firstItem="2tF-De-XzG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="100" constant="16" id="Ouf-Bf-FdX"/>
                     <constraint firstItem="dWh-LT-4ca" firstAttribute="leading" secondItem="2tF-De-XzG" secondAttribute="trailing" constant="8" id="gOM-6g-41z"/>
                     <constraint firstAttribute="bottom" secondItem="dWh-LT-4ca" secondAttribute="bottom" constant="8" id="r0i-ug-gFS"/>
                 </constraints>

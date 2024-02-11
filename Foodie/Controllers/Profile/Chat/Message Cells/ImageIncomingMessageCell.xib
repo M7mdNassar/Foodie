@@ -34,8 +34,8 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="6h1-K3-yYD" secondAttribute="bottom" constant="8" id="2mA-ZS-elj"/>
                     <constraint firstItem="6h1-K3-yYD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="3QE-WD-cgm"/>
-                    <constraint firstItem="ATD-U4-G1f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Uog-RW-9Bp"/>
-                    <constraint firstAttribute="bottom" secondItem="ATD-U4-G1f" secondAttribute="bottom" constant="16" id="gxv-8h-14A"/>
+                    <constraint firstItem="ATD-U4-G1f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" priority="100" constant="16" id="Uog-RW-9Bp"/>
+                    <constraint firstAttribute="bottom" secondItem="ATD-U4-G1f" secondAttribute="bottom" priority="100" constant="16" id="gxv-8h-14A"/>
                     <constraint firstItem="ATD-U4-G1f" firstAttribute="leading" secondItem="6h1-K3-yYD" secondAttribute="trailing" constant="8" id="x6T-Zy-91y"/>
                 </constraints>
             </tableViewCellContentView>

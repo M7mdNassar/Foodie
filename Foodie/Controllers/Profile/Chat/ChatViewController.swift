@@ -100,7 +100,6 @@ class ChatViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer) {
-    
         if gesture.state == .began {
             print("Long press began")
             if hasMicrophonePermission() {
@@ -108,7 +107,9 @@ class ChatViewController: UIViewController {
                 isRecording = true
                 startRecordingAnnimation()
                 originalMicButtonCenter = mic.center
+                startRecordingTimer()
                 audioManager.startRecording()
+                
 
             } else {
                 // If microphone permission is not granted, show alert
@@ -137,18 +138,20 @@ class ChatViewController: UIViewController {
                 // Recording canceled
                 print("Recording canceled")
                 audioManager.cancelRecording()
-                
             }
             // Stop recording animation and reset mic button position
             stopRecordingAnnimation()
+            stopRecordingTimer()
             textView.text = ""
             isCancelled = false
             // Reset the microphone position with animation
             UIView.animate(withDuration: 0.3) {
                 self.mic.center = self.originalMicButtonCenter
             }
+
         }
     }
+
 
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -473,11 +476,12 @@ extension ChatViewController : UICollectionViewDataSource , UICollectionViewDele
 extension ChatViewController {
     
     func startRecordingAnnimation() {
+        
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.2, delay: 0.07) {
                 let scaled = CGAffineTransform(scaleX: 1.7, y: 1.7)
                 self.mic.transform = scaled
-                
+        
                 self.textView.isHidden = true
                 self.cancelRecordingLabel.isHidden = false
                 self.attach.isHidden = true
@@ -487,7 +491,8 @@ extension ChatViewController {
             // Animate the cancelRecordingLabel back and forth
             UIView.animate(withDuration: 0.8, delay: 0, options: [.autoreverse, .repeat]) {
                 self.cancelRecordingLabel.alpha = 0.7
-                self.cancelRecordingLabel.transform = CGAffineTransform(translationX: -35, y: 0)
+                self.durationLabel.alpha = 0.7
+                self.cancelRecordingLabel.transform = CGAffineTransform(translationX: -60, y: 0)
             }
         }
     }
@@ -500,6 +505,7 @@ extension ChatViewController {
                 self.attach.isHidden = false
                 self.cancelRecordingLabel.isHidden = true
                 self.cancelRecordingLabel.alpha = 1
+                self.durationLabel.alpha = 1
                 self.cancelRecordingLabel.transform = .identity
             }
         }

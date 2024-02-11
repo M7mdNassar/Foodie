@@ -1128,7 +1128,7 @@
                                             <action selector="sendImage:" destination="O2U-df-cc2" eventType="touchUpInside" id="3xv-yf-4gi"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="u0T-Nz-wFv">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="u0T-Nz-wFv">
                                         <rect key="frame" x="55" y="33" width="272.33333333333331" height="33"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wNB-td-oZF">
@@ -1141,10 +1141,16 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt;&lt;Slide to left for cancel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V80-uq-YdV">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="&lt;&lt;&lt;Slide for cancel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V80-uq-YdV">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="33"/>
-                                                <fontDescription key="fontDescription" name="Harmattan-Bold" family="Harmattan" pointSize="28"/>
+                                                <fontDescription key="fontDescription" name="Harmattan-Bold" family="Harmattan" pointSize="27"/>
                                                 <color key="textColor" name="FoodieLightGreen"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-NI-bn3">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="33"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -1175,23 +1181,15 @@
                                             <action selector="sendButton:" destination="O2U-df-cc2" eventType="touchUpInside" id="5lS-Hp-vje"/>
                                         </connections>
                                     </button>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02:5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-NI-bn3">
-                                        <rect key="frame" x="179" y="0.0" width="35.333333333333343" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94916313890000004" green="0.94863802190000002" blue="0.96863013509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="J6o-NI-bn3" firstAttribute="top" secondItem="dKl-Ba-WpA" secondAttribute="top" id="28k-Vx-6ir"/>
                                     <constraint firstItem="Jv2-QK-Knj" firstAttribute="centerY" secondItem="dKl-Ba-WpA" secondAttribute="centerY" id="F8S-fM-PU7"/>
                                     <constraint firstItem="u0T-Nz-wFv" firstAttribute="leading" secondItem="wc1-3L-yPl" secondAttribute="trailing" constant="8" symbolic="YES" id="JCM-qf-WNz"/>
                                     <constraint firstAttribute="height" constant="100" id="KlA-IW-V5L"/>
                                     <constraint firstItem="S6q-yC-4aQ" firstAttribute="centerY" secondItem="dKl-Ba-WpA" secondAttribute="centerY" id="Mug-2m-uBe"/>
                                     <constraint firstItem="wc1-3L-yPl" firstAttribute="centerY" secondItem="dKl-Ba-WpA" secondAttribute="centerY" id="OyR-Zi-udk"/>
                                     <constraint firstItem="wc1-3L-yPl" firstAttribute="leading" secondItem="dKl-Ba-WpA" secondAttribute="leading" constant="8" id="RVW-HJ-LOX"/>
-                                    <constraint firstItem="J6o-NI-bn3" firstAttribute="centerX" secondItem="dKl-Ba-WpA" secondAttribute="centerX" id="YU5-6V-oiK"/>
                                     <constraint firstAttribute="trailing" secondItem="S6q-yC-4aQ" secondAttribute="trailing" constant="8" id="mOw-B2-e4i"/>
                                     <constraint firstItem="S6q-yC-4aQ" firstAttribute="leading" secondItem="u0T-Nz-wFv" secondAttribute="trailing" constant="7.6699999999999999" id="sg8-B9-ob9"/>
                                     <constraint firstAttribute="trailing" secondItem="Jv2-QK-Knj" secondAttribute="trailing" constant="8" id="z3y-YI-MdG"/>
@@ -1578,25 +1576,28 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -26,35 +26,36 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i83-Rv-ueY">
-                        <rect key="frame" x="194" y="16" width="39" height="178"/>
+                        <rect key="frame" x="184" y="16" width="49" height="178"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RQ-v6-DTc">
-                                <rect key="frame" x="5" y="5" width="29" height="20.333333333333332"/>
+                                <rect key="frame" x="10" y="9.9999999999999982" width="29" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EDg-oX-ruZ">
-                                <rect key="frame" x="5" y="30.333333333333329" width="29" height="142.66666666666669"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="247" verticalHuggingPriority="247" horizontalCompressionResistancePriority="741" verticalCompressionResistancePriority="746" translatesAutoresizingMaskIntoConstraints="NO" id="EDg-oX-ruZ">
+                                <rect key="frame" x="10" y="40.333333333333336" width="29" height="127.66666666666666"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5RQ-v6-DTc" secondAttribute="trailing" constant="5" id="APe-Ku-EBd"/>
-                            <constraint firstItem="EDg-oX-ruZ" firstAttribute="top" secondItem="5RQ-v6-DTc" secondAttribute="bottom" priority="100" constant="5" id="EiM-4Y-NdZ"/>
-                            <constraint firstAttribute="bottom" secondItem="EDg-oX-ruZ" secondAttribute="bottom" priority="100" constant="5" id="Vbz-EV-auI"/>
-                            <constraint firstItem="5RQ-v6-DTc" firstAttribute="top" secondItem="i83-Rv-ueY" secondAttribute="top" constant="5" id="gi6-MN-dvM"/>
-                            <constraint firstItem="5RQ-v6-DTc" firstAttribute="leading" secondItem="i83-Rv-ueY" secondAttribute="leading" constant="5" id="h9I-mY-oCI"/>
-                            <constraint firstAttribute="trailing" secondItem="EDg-oX-ruZ" secondAttribute="trailing" constant="5" id="mlP-CM-Gld"/>
-                            <constraint firstItem="EDg-oX-ruZ" firstAttribute="leading" secondItem="i83-Rv-ueY" secondAttribute="leading" constant="5" id="y3J-13-EFj"/>
+                            <constraint firstAttribute="trailing" secondItem="5RQ-v6-DTc" secondAttribute="trailing" constant="10" id="APe-Ku-EBd"/>
+                            <constraint firstItem="EDg-oX-ruZ" firstAttribute="top" secondItem="5RQ-v6-DTc" secondAttribute="bottom" constant="10" id="EiM-4Y-NdZ"/>
+                            <constraint firstAttribute="bottom" secondItem="EDg-oX-ruZ" secondAttribute="bottom" priority="100" constant="10" id="Vbz-EV-auI"/>
+                            <constraint firstItem="5RQ-v6-DTc" firstAttribute="top" secondItem="i83-Rv-ueY" secondAttribute="top" constant="10" id="gi6-MN-dvM"/>
+                            <constraint firstItem="5RQ-v6-DTc" firstAttribute="leading" secondItem="i83-Rv-ueY" secondAttribute="leading" constant="10" id="h9I-mY-oCI"/>
+                            <constraint firstAttribute="trailing" secondItem="EDg-oX-ruZ" secondAttribute="trailing" constant="10" id="mlP-CM-Gld"/>
+                            <constraint firstItem="EDg-oX-ruZ" firstAttribute="leading" secondItem="i83-Rv-ueY" secondAttribute="leading" constant="10" id="y3J-13-EFj"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="i83-Rv-ueY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5z9-PN-lGD" secondAttribute="leading" priority="100" constant="70" id="0AH-SF-Js7"/>
+                    <constraint firstItem="i83-Rv-ueY" firstAttribute="centerY" secondItem="5z9-PN-lGD" secondAttribute="centerY" id="O08-h2-Ao2"/>
                     <constraint firstItem="i83-Rv-ueY" firstAttribute="top" secondItem="5z9-PN-lGD" secondAttribute="top" constant="16" id="SJE-xa-Yc0"/>
                     <constraint firstAttribute="trailing" secondItem="dn8-vG-MX7" secondAttribute="trailing" priority="100" constant="5" id="kfK-rD-btK"/>
-                    <constraint firstAttribute="bottom" secondItem="i83-Rv-ueY" secondAttribute="bottom" constant="16" id="lqB-zK-WR7"/>
+                    <constraint firstAttribute="bottom" secondItem="i83-Rv-ueY" secondAttribute="bottom" priority="100" constant="16" id="lqB-zK-WR7"/>
                     <constraint firstAttribute="bottom" secondItem="dn8-vG-MX7" secondAttribute="bottom" priority="100" constant="8" id="uA8-7t-9Wq"/>
                     <constraint firstItem="dn8-vG-MX7" firstAttribute="leading" secondItem="i83-Rv-ueY" secondAttribute="trailing" constant="8" symbolic="YES" id="vNs-kd-fw4"/>
                 </constraints>

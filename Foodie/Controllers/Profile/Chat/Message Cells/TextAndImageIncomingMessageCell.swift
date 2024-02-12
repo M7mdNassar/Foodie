@@ -39,8 +39,8 @@ class TextAndImageIncomingMessageCell: UITableViewCell {
 
         let dimensions = messageImage.calculateImageDimensions(maxWidth: UIScreen.main.bounds.width * 0.7, minWidth: 150.0)
 
-        messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
-        messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
+//        messageImageView.widthAnchor.constraint(equalToConstant: dimensions.width).isActive = true
+//        messageImageView.heightAnchor.constraint(equalToConstant: dimensions.height).isActive = true
 
         messageImageView.image = messageImage
         messageImageView.layer.cornerRadius = 15.0
@@ -54,12 +54,12 @@ class TextAndImageIncomingMessageCell: UITableViewCell {
             messageImageView.contentMode = .scaleAspectFit
         }
 
-        for constraint in messageImageView.constraints {
-            if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
-                constraint.isActive = false
-                let aspectRatioConstraint = messageImageView.widthAnchor.constraint(equalTo: messageImageView.heightAnchor, multiplier: aspectRatio)
-                aspectRatioConstraint.isActive = true
-            }
-        }
+//        for constraint in messageImageView.constraints {
+//            if constraint.firstAttribute == .width && constraint.secondAttribute == .height {
+//                constraint.isActive = false
+//                let aspectRatioConstraint = messageImageView.widthAnchor.constraint(equalTo: messageImageView.heightAnchor, multiplier: aspectRatio)
+//                aspectRatioConstraint.isActive = true
+//            }
+//        }
     }
 }

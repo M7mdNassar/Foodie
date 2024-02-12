@@ -28,13 +28,15 @@ class MixedPostCell: UITableViewCell {
     
     override func awakeFromNib() {
          super.awakeFromNib()
-         
+
          collectionView.delegate = self
          collectionView.dataSource = self
          
          // Register your custom cell if needed
         let nib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "ImageCollectionViewCell")
+        
+
      }
     
     override func prepareForReuse() {
@@ -77,6 +79,11 @@ class MixedPostCell: UITableViewCell {
     
     func configure(post: Post ){
         
+        DispatchQueue.main.async {
+            self.setBottomCorners(for: self.bottomBarView, cornerRadius: 20.0)
+
+        }
+        
         if post.userImageUrl != ""{
             self.userImageView.sd_setImage(with: URL(string: post.userImageUrl!))
             
@@ -96,7 +103,6 @@ class MixedPostCell: UITableViewCell {
         
         self.backgroundContentView.layer.cornerRadius = 20
         
-        setBottomCorners(for: bottomBarView, cornerRadius: 20.0)
         
         self.postImages = post.imageUrls
         self.collectionView.reloadData()

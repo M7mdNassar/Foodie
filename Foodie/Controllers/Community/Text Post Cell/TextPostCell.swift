@@ -24,6 +24,7 @@ class TextPostCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
     
@@ -65,6 +66,11 @@ class TextPostCell: UITableViewCell {
 
 
     func configure(post : Post){
+        
+        DispatchQueue.main.async {
+            self.setBottomCorners(for: self.bottomBarView, cornerRadius: 20.0)
+
+        }
         if post.userImageUrl != ""{
             self.userImageView.sd_setImage(with: URL(string: post.userImageUrl!))
             
@@ -84,7 +90,6 @@ class TextPostCell: UITableViewCell {
         
         self.backgroundContentView.layer.cornerRadius = 20
         
-        setBottomCorners(for: bottomBarView, cornerRadius: 20.0)
         
     }
     

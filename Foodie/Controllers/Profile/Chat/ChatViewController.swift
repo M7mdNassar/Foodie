@@ -144,9 +144,12 @@ class ChatViewController: UIViewController {
             stopRecordingTimer()
             textView.text = ""
             isCancelled = false
+            self.durationLabel.text = ""
+
             // Reset the microphone position with animation
             UIView.animate(withDuration: 0.3) {
                 self.mic.center = self.originalMicButtonCenter
+
             }
 
         }
@@ -347,7 +350,8 @@ private extension ChatViewController {
 
      func setUpNavigationItem() {
         navigationController?.setNavigationBarHidden(true, animated: false)
-         self.userImageView.load(from : otherUser.avatarLink)
+         self.userImageView.sd_setImage(with: URL(string: otherUser.avatarLink))
+         self.userImageView.layer.cornerRadius = self.userImageView.frame.width / 2
         userNameLabel.text = otherUser.userName
     }
 

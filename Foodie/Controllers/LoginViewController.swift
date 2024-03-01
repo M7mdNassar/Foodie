@@ -55,8 +55,6 @@ class LoginViewController: UIViewController {
             ProgressHUD.error("All Fields requierd")
             
         }
-        
-        
     }
     
     
@@ -197,7 +195,6 @@ class LoginViewController: UIViewController {
             }
             
         }
-        
         
     }
     

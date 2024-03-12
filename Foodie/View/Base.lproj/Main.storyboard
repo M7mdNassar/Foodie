@@ -798,10 +798,10 @@
                                                             <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="VXb-sv-xOT">
                                                                 <rect key="frame" x="0.0" y="37.333333333333258" width="353" height="50"/>
                                                                 <date key="minimumDate" timeIntervalSinceReferenceDate="-1609419600">
-                                                                    <!--1950-01-01 11:00:00 am +0000-->
+                                                                    <!--1950-01-01 11:00:00 AM +0000-->
                                                                 </date>
                                                                 <date key="maximumDate" timeIntervalSinceReferenceDate="704628000">
-                                                                    <!--2023-05-01 10:00:00 am +0000-->
+                                                                    <!--2023-05-01 10:00:00 AM +0000-->
                                                                 </date>
                                                             </datePicker>
                                                         </subviews>

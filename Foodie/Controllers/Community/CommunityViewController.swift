@@ -21,7 +21,7 @@ class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureNavigationBar()
         showLoadingView()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.hideLoadingView() }
@@ -187,6 +187,14 @@ extension CommunityViewController{
         
         ]
         
+    }
+    
+    func configureNavigationBar() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.tintColor = UIColor.foodieLightGreen
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+   
+        title = NSLocalizedString("المنتدى", comment: "")
     }
 
 }

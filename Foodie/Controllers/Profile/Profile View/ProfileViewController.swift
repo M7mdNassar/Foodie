@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     
     let options:[Option] = [
         Option(title: "تعديل الملف الشخصي", icon: UIImage(systemName: "person.crop.circle.fill")!),
-        Option(title: "تفعيل بطاقه هديه", icon: UIImage(systemName: "giftcard.fill")!),
+        Option(title: "المنتدى", icon: UIImage(systemName: "giftcard.fill")!),
         Option(title: "تواصل معنا", icon: UIImage(systemName: "message.fill")!),
         Option(title: "دعوه صديق", icon: UIImage(systemName: "person.crop.circle.badge.plus")!),
         Option(title: "سياسه الخصوصيه", icon: UIImage(systemName: "lock.circle.fill")!),
@@ -157,6 +157,10 @@ extension ProfileViewController : UITableViewDataSource {
         let selectedOption = indexPath.row
         if selectedOption == 0 {
             performSegue(withIdentifier: "goToEdit", sender: self)
+        }
+        
+        else if selectedOption == 1{
+            performSegue(withIdentifier: "goToCommunity", sender: self)
         }
        
         else if selectedOption == 2 {

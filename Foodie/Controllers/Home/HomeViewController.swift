@@ -157,6 +157,7 @@ extension HomeViewController: UICollectionViewDragDelegate,  UICollectionViewDro
         }
         // Reset draggedIndexPath
         draggedIndexPaths.removeAll()
+        stopAnimation()
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {

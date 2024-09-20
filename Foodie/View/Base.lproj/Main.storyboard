@@ -1533,9 +1533,6 @@
             <point key="canvasLocation" x="3139.6946564885493" y="-970.4225352112677"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="uf4-eV-bzy"/>
-    </designables>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>

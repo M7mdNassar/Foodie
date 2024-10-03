@@ -3,11 +3,13 @@
 
 target 'Foodie' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  
 
   # Pods for Foodie
 
-pod 'lottie-ios'
+# pod 'lottie-ios'
+
+
 pod 'IQKeyboardManagerSwift'
 pod 'ProgressHUD'
 pod 'Gallery'

@@ -95,6 +95,7 @@
 		04D08D1F2AF79F22004C2E7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D08D1D2AF79F22004C2E7E /* LaunchScreen.storyboard */; };
 		04D112A32B0A0109009B9EB4 /* Harmattan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A22B0A0109009B9EB4 /* Harmattan-Regular.ttf */; };
 		04D112A52B0A05AA009B9EB4 /* Harmattan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04D112A42B0A05AA009B9EB4 /* Harmattan-Bold.ttf */; };
+		04D452262CAF2D370033F4AF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 04D452252CAF2D370033F4AF /* Lottie */; };
 		04D606942B6BF54A00C13F3B /* RealtimeDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D606932B6BF54A00C13F3B /* RealtimeDatabaseManager.swift */; };
 		04D90B012B6CEDE7001290B7 /* FUserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B002B6CEDE7001290B7 /* FUserListener.swift */; };
 		04D90B032B6CEEB3001290B7 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D90B022B6CEEB3001290B7 /* FCollectionReference.swift */; };
@@ -117,7 +118,7 @@
 		04FD8E0B2B0F3C4800EB9941 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0A2B0F3C4800EB9941 /* ProfileViewController.swift */; };
 		04FD8E102B0F598200EB9941 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FD8E0F2B0F598200EB9941 /* User.swift */; };
 		04FD8E172B0FEF0300EB9941 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04FD8E192B0FEF0300EB9941 /* Localizable.strings */; };
-		3F24F946D0BE8214D935CFBE /* Pods_Foodie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */; };
+		2987E0710B77A78F24D94D60 /* libPods-Foodie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DECF3EF2CB319EACB78614A7 /* libPods-Foodie.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,13 +213,12 @@
 		04FD8E142B0FECB300EB9941 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		04FD8E182B0FEF0300EB9941 /* ar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; lineEnding = 0; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		04FD8E1A2B0FEF1F00EB9941 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0F91F5BEDCB2735F790EEDC3 /* Pods-Foodie.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.dev debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.dev debug.xcconfig"; sourceTree = "<group>"; };
-		1A8D141B3663A871DAA4E579 /* Pods-Foodie.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.prod debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.prod debug.xcconfig"; sourceTree = "<group>"; };
-		440EC93D555EADFE4A661610 /* Pods-Foodie.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.dev release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.dev release.xcconfig"; sourceTree = "<group>"; };
-		441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.debug.xcconfig"; sourceTree = "<group>"; };
-		5DBCB224C774BBE67C855047 /* Pods-Foodie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.release.xcconfig"; sourceTree = "<group>"; };
-		752AEB6232DA9537E759894C /* Pods-Foodie.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.prod release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.prod release.xcconfig"; sourceTree = "<group>"; };
-		F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8EFA551E4FF2E05F0BE74A /* Pods-Foodie.prod release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.prod release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.prod release.xcconfig"; sourceTree = "<group>"; };
+		7F718477A58A4E0709BAC660 /* Pods-Foodie.dev debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.dev debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.dev debug.xcconfig"; sourceTree = "<group>"; };
+		B58D2BF31E91190155A0493C /* Pods-Foodie.prod debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.prod debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.prod debug.xcconfig"; sourceTree = "<group>"; };
+		CE21903A1EA557DD0A1B1D35 /* Pods-Foodie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.debug.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.debug.xcconfig"; sourceTree = "<group>"; };
+		DECF3EF2CB319EACB78614A7 /* libPods-Foodie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Foodie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4F1271B957657603B62D706 /* Pods-Foodie.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodie.dev release.xcconfig"; path = "Target Support Files/Pods-Foodie/Pods-Foodie.dev release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,12 +234,12 @@
 				048FCA4A2B7378E600BDF735 /* SKPhotoBrowser in Frameworks */,
 				04BBCDCD2B5863B5004E9AA5 /* FirebaseMLModelDownloader in Frameworks */,
 				04BBCDB72B5863B5004E9AA5 /* FirebaseDatabase in Frameworks */,
-				3F24F946D0BE8214D935CFBE /* Pods_Foodie.framework in Frameworks */,
 				04BBCDBF2B5863B5004E9AA5 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				04BBCDB32B5863B5004E9AA5 /* FirebaseAuth in Frameworks */,
 				04BBCDC12B5863B5004E9AA5 /* FirebaseFirestoreSwift in Frameworks */,
 				04BBCDD32B5863B5004E9AA5 /* FirebaseRemoteConfig in Frameworks */,
 				0485CEFD2B70E83700899C1A /* SDWebImage in Frameworks */,
+				04D452262CAF2D370033F4AF /* Lottie in Frameworks */,
 				04BBCDD72B5863B5004E9AA5 /* FirebaseStorage in Frameworks */,
 				04BBCDCF2B5863B5004E9AA5 /* FirebaseMessaging in Frameworks */,
 				04BBCDB12B5863B5004E9AA5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
@@ -251,6 +251,7 @@
 				04BBCDB52B5863B5004E9AA5 /* FirebaseAuthCombine-Community in Frameworks */,
 				0485CEFF2B70E83700899C1A /* SDWebImageMapKit in Frameworks */,
 				04BBCDC52B5863B5004E9AA5 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				2987E0710B77A78F24D94D60 /* libPods-Foodie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +454,7 @@
 				04D08D112AF79F1F004C2E7E /* Foodie */,
 				04D08D102AF79F1F004C2E7E /* Products */,
 				A21DEC89818B933B6A87B5DC /* Pods */,
-				93B45B84C9182E69D047845E /* Frameworks */,
+				60F670F65E7FC2EE6706DD8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -601,10 +602,10 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		93B45B84C9182E69D047845E /* Frameworks */ = {
+		60F670F65E7FC2EE6706DD8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F57396E686F5F0D516E54C0C /* Pods_Foodie.framework */,
+				DECF3EF2CB319EACB78614A7 /* libPods-Foodie.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -612,12 +613,11 @@
 		A21DEC89818B933B6A87B5DC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */,
-				5DBCB224C774BBE67C855047 /* Pods-Foodie.release.xcconfig */,
-				0F91F5BEDCB2735F790EEDC3 /* Pods-Foodie.dev debug.xcconfig */,
-				1A8D141B3663A871DAA4E579 /* Pods-Foodie.prod debug.xcconfig */,
-				440EC93D555EADFE4A661610 /* Pods-Foodie.dev release.xcconfig */,
-				752AEB6232DA9537E759894C /* Pods-Foodie.prod release.xcconfig */,
+				CE21903A1EA557DD0A1B1D35 /* Pods-Foodie.debug.xcconfig */,
+				7F718477A58A4E0709BAC660 /* Pods-Foodie.dev debug.xcconfig */,
+				B58D2BF31E91190155A0493C /* Pods-Foodie.prod debug.xcconfig */,
+				E4F1271B957657603B62D706 /* Pods-Foodie.dev release.xcconfig */,
+				3A8EFA551E4FF2E05F0BE74A /* Pods-Foodie.prod release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -629,11 +629,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04D08D232AF79F22004C2E7E /* Build configuration list for PBXNativeTarget "Foodie" */;
 			buildPhases = (
-				9B3E8081FE19A80C7D1A2456 /* [CP] Check Pods Manifest.lock */,
+				A49E539C228A75FEDCBD8EEC /* [CP] Check Pods Manifest.lock */,
 				04D08D0B2AF79F1F004C2E7E /* Sources */,
 				04D08D0C2AF79F1F004C2E7E /* Frameworks */,
 				04D08D0D2AF79F1F004C2E7E /* Resources */,
-				F2610D959E3998E7A5DADA18 /* [CP] Embed Pods Frameworks */,
+				FD2FDB4D18C7C4B6D8F63B23 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -665,6 +665,7 @@
 				0485CEFC2B70E83700899C1A /* SDWebImage */,
 				0485CEFE2B70E83700899C1A /* SDWebImageMapKit */,
 				048FCA492B7378E600BDF735 /* SKPhotoBrowser */,
+				04D452252CAF2D370033F4AF /* Lottie */,
 			);
 			productName = Foodie;
 			productReference = 04D08D0F2AF79F1F004C2E7E /* Debug Foodie.app */;
@@ -699,6 +700,7 @@
 				04BBCDAF2B5863B5004E9AA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				0485CEFB2B70E83700899C1A /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				048FCA482B7378E600BDF735 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
+				04D452242CAF2D370033F4AF /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 04D08D102AF79F1F004C2E7E /* Products */;
 			projectDirPath = "";
@@ -752,7 +754,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9B3E8081FE19A80C7D1A2456 /* [CP] Check Pods Manifest.lock */ = {
+		A49E539C228A75FEDCBD8EEC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -774,21 +776,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F2610D959E3998E7A5DADA18 /* [CP] Embed Pods Frameworks */ = {
+		FD2FDB4D18C7C4B6D8F63B23 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foodie/Pods-Foodie-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1016,7 +1018,7 @@
 		};
 		04D08D242AF79F22004C2E7E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 441D545B2ACEA486259CF649 /* Pods-Foodie.debug.xcconfig */;
+			baseConfigurationReference = CE21903A1EA557DD0A1B1D35 /* Pods-Foodie.debug.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Debug Foodie";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
@@ -1049,7 +1051,7 @@
 		};
 		04D08D252AF79F22004C2E7E /* Dev Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 440EC93D555EADFE4A661610 /* Pods-Foodie.dev release.xcconfig */;
+			baseConfigurationReference = E4F1271B957657603B62D706 /* Pods-Foodie.dev release.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Dev Foodie";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
@@ -1148,7 +1150,7 @@
 		};
 		04FA3B082B66BDCF00AE671E /* Dev Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F91F5BEDCB2735F790EEDC3 /* Pods-Foodie.dev debug.xcconfig */;
+			baseConfigurationReference = 7F718477A58A4E0709BAC660 /* Pods-Foodie.dev debug.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Dev Foodie";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Dev";
@@ -1241,7 +1243,7 @@
 		};
 		04FA3B0C2B66BDE700AE671E /* Prod Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 752AEB6232DA9537E759894C /* Pods-Foodie.prod release.xcconfig */;
+			baseConfigurationReference = 3A8EFA551E4FF2E05F0BE74A /* Pods-Foodie.prod release.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Prod Foodie";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1340,7 +1342,7 @@
 		};
 		04FA3B102B66C0A300AE671E /* Prod Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A8D141B3663A871DAA4E579 /* Pods-Foodie.prod debug.xcconfig */;
+			baseConfigurationReference = B58D2BF31E91190155A0493C /* Pods-Foodie.prod debug.xcconfig */;
 			buildSettings = {
 				APP_NAME = "Prod Foodie";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1423,6 +1425,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.20.0;
+			};
+		};
+		04D452242CAF2D370033F4AF /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1547,6 +1557,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04BBCDAF2B5863B5004E9AA5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		04D452252CAF2D370033F4AF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04D452242CAF2D370033F4AF /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

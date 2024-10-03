@@ -1,4 +1,4 @@
-framework module Gallery {
+module Gallery {
   umbrella header "Gallery-umbrella.h"
 
   export *
